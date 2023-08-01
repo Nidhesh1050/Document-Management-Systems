@@ -106,7 +106,7 @@ class DocumentController extends Controller
     
     
        }
-       
+
     //code by anuj
 
     // code by soni start
@@ -157,4 +157,4 @@ class DocumentController extends Controller
     //code by soni end
 }
 
->>>>>>> 425f65ca966a2106b90fd69ff89896ff15643725
+

@@ -50,7 +50,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     /* Category management routes end*/
 
     /* Document management routes start*/
-    Route::get('/admin/document',[DocumentController::class,'document']);
+    Route::get('/admin/document',[DocumentController::class,'createdocument']);
     Route::post('/admin/add_document',[DocumentController::class,'add_document']);
     Route::get('/admin/document',[DocumentController::class,'document']);
     Route::get('/admin/delete/{id}', [DocumentController::class,'deletedocument']);
