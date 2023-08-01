@@ -65,6 +65,18 @@
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
 	<script src="{{asset('admin//js/setting-demo.js')}}"></script>
 	<script src="{{asset('admin//js/demo.js')}}"></script>
+
+
+	<script src="{{asset('admin//js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('admin//js/validate.min.js')}}"></script>
+	<script>
+    $(document).ready(function(){
+        $('#datatables').DataTable({
+                        "pageLength": 5,
+                    });
+    });
+
+</script>
 	<script>
 		Circles.create({
 			id:'circles-1',

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProjectManagementController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,5 +45,15 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/update_category/{id}',[CategoryController::class,'update_category']);
     Route::post('/admin/edit_category',[CategoryController::class,'edit_category']);
     /* Category management routes end*/
+
+
+     /* Project management routes start*/
+     Route::get('/admin/project_management',[ProjectManagementController::class,'project_management']);
+     Route::post('/admin/add_project',[ProjectManagementController::class,'add_project']);
+     Route::get('/admin/view_project',[ProjectManagementController::class,'view_project']);
+     Route::get('/admin/delete_project/{id}',[ProjectManagementController::class,'delete_project']);
+     Route::get('/admin/update_project/{id}',[ProjectManagementController::class,'update_project']);
+     Route::post('/admin/edit_project',[ProjectManagementController::class,'edit_project']);
+     /* Project management routes end*/
     
 });
