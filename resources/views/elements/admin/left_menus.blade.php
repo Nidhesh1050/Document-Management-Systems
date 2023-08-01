@@ -1,4 +1,4 @@
-<div class="sidebar sidebar-style-2">			
+<div class="sidebar sidebar-style-2">
 			<div class="sidebar-wrapper scrollbar scrollbar-inner">
 				<div class="sidebar-content">
 					<div class="user">
@@ -37,7 +37,7 @@
 						</div>
 					</div>
 					<ul class="nav nav-primary">
-						
+
 						<li class="nav-section">
 							<span class="sidebar-mini-icon">
 								<i class="fa fa-ellipsis-h"></i>
@@ -53,6 +53,7 @@
 							<a data-toggle="collapse" href="#base">
 								<i class="fas fa-users"></i>
 								<p>User Management</p>
+                                <span class="caret"></span>
 							</a>
 							<div class="collapse" id="base">
 								<ul class="nav nav-collapse">
@@ -66,7 +67,7 @@
 											<span class="sub-item">Add User</span>
 										</a>
 									</li>
-								
+
 								</ul>
 							</div>
 						</li>
@@ -88,12 +89,30 @@
 											<span class="sub-item">Add Category</span>
 										</a>
 									</li>
-									
-									
+
+
 								</ul>
 							</div>
 						</li>
-					
+                        <li class="nav-item">
+							<a data-toggle="collapse" href="#forms">
+								<i class="fas fa-pen-square"></i>
+								<p>Document Management</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="forms">
+								<ul class="nav nav-collapse">
+                                    <li>
+										<a href="{{url('admin/document')}}">
+											<span class="sub-item">View Document</span>
+										</a>
+									</li>
+
+									</li>
+								</ul>
+							</div>
+						</li>
+
 					</ul>
 				</div>
 			</div>

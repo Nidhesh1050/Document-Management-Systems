@@ -1,9 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DocumentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +25,7 @@ use App\Http\Controllers\CategoryController;
 Auth::routes();
 
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
-  
+
     Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
 
     /* User management routes start*/
@@ -34,7 +37,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/adduser',[HomeController::class,'adduser']);
     Route::post('/admin/register',[HomeController::class,'register']);
     /* User management routes end*/
-    
+
 
     /* Category management routes start*/
     Route::get('/admin/category',[CategoryController::class,'category']);
@@ -44,5 +47,12 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/update_category/{id}',[CategoryController::class,'update_category']);
     Route::post('/admin/edit_category',[CategoryController::class,'edit_category']);
     /* Category management routes end*/
-    
+
+    /* Document management routes start*/
+    Route::get('/admin/document',[DocumentController::class,'document']);
+    Route::get('/admin/delete/{id}', [DocumentController::class,'delete']);
+    Route::get('/admin/edit/{id}', [DocumentController::class,'edit_document']);
+    Route::post('/admin/update/', [DocumentController::class,'update_document']);
+    /* Document management routes end*/
+
 });
