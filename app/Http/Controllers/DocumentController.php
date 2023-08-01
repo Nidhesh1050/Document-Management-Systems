@@ -7,10 +7,11 @@ use Illuminate\Support\Facades\DB;
 
 class DocumentController extends Controller
 {
+    // code by anurag
     //View Document
     public function document(){
         $users = DB::table('file_uploads')->get();
-        return view('admin.document.view_document',['users'=>$users]);
+        return view('admin.document.show_document',['users'=>$users]);
 
     }
     //Delete function to delete in user body
@@ -64,5 +65,54 @@ class DocumentController extends Controller
         }
         return redirect('admin/document');
     }
+
+    //code by anurag end
+
+    // code by soni start
+    //Show data
+    public function view_document(){
+        $users = DB::table('document_types')->get();
+        return view('admin.document.view_document',['users'=>$users]);
+    }
+
+    //Delete data
+    public function deletedocument($id) {
+        DB::delete('delete from document_types where id = ?',[$id]);
+        return redirect()->back();
+     }
+
+    //Insert data
+    public function add_document(){
+        return view('admin.document.add_document');
+    }
+    public function register(Request $request)
+    {
+
+        $request->validate(
+            ['name'=>'required|max:50|string',]
+        );
+
+
+        $insertData['name'] = $request->name;
+         // print_r($insertData);die;
+        DB::table('document_types')->insert($insertData);
+        return redirect('admin/view_document');
+     }
+
+      //edit code in user body
+    public function edit(Request $request,$id) {
+        $users = DB::table('document_types')->where(['id'=> $id])->first();
+        return view('admin.document.edit')->with(['users'=>$users]);
+    }
+      //Update Code
+    public function update(Request $request){
+        DB::table('document_types')
+            ->where('id', $request['id'])
+            ->update([
+                'name' => $request['name'],
+            ]);
+        return redirect('admin/view_document');
+    }
+    //code by soni end
 }
 

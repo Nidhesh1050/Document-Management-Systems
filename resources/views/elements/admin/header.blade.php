@@ -1,8 +1,8 @@
 <div class="main-header">
 	<!-- Logo Header -->
-            <head>
-                <script src="{{asset('admin/js/jquery-1.12.1.min.js')}}"></script>
-            </head>
+				<head>
+					<script src="{{asset('admin//js/min.js')}}"></script>
+				</head>
 			<div class="logo-header" data-background-color="blue">
 
 				<a href="index.html" class="logo">

@@ -2,21 +2,7 @@
 				<div class="container-fluid">
 					<nav class="pull-left">
 						<ul class="nav">
-							<!-- <li class="nav-item">
-								<a class="nav-link" href="https://www.themekita.com">
-									ThemeKita
-								</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">
-									Help
-								</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">
-									Licenses
-								</a>
-							</li> -->
+
 						</ul>
 					</nav>
 					<div class="copyright ml-auto">
@@ -63,18 +49,18 @@
 	<script src="{{asset('admin/js/atlantis.min.js')}}"></script>
 
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
-	<script src="{{asset('admin/js/setting-demo.js')}}"></script>
-	<script src="{{asset('admin/js/demo.js')}}"></script>
-    <script>
-        $(document).ready(function(){
-            $('#datatables').DataTable({
-                            "pageLength": 5,
-                        });
-        });
-        bootstrap.min.js
-    </script>
-    <script src="{{asset('admin/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('admin/js/jquery.validate.min.js')}}"></script>
+	<script src="{{asset('admin//js/setting-demo.js')}}"></script>
+	<script src="{{asset('admin//js/demo.js')}}"></script>
+	<script src="{{asset('admin//js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('admin//js/validate.min.js')}}"></script>
+	<script>
+    $(document).ready(function(){
+        $('#datatables').DataTable({
+                        "pageLength": 5,
+                    });
+    });
+
+</script>
 	<script>
 		Circles.create({
 			id:'circles-1',
