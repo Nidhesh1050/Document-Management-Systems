@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DocumentController extends Controller
 {
@@ -69,7 +71,7 @@ class DocumentController extends Controller
 
     // code by anuj
 
-    public function document(){
+    public function createdocument(){
         $project_documents = DB::table('projects')->select('id','project_name')->get();
         $category_documents = DB::table('categories')->select('id','name')->get();
         $document_type= DB::table('document_type')->select('id','name')->get();
