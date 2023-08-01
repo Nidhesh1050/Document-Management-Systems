@@ -115,7 +115,30 @@
                     </div>
                 </li>
 
+                <li class="nav-item">
+							<a data-toggle="collapse" href="#list">
+								<i class="fas fa-list"></i>
+								<p>Document Type</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="list">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="{{url('admin/view_document')}}">
+											<span class="sub-item">Document List</span>
+										</a>
+									</li>
+									<li>
+										<a href="{{url('admin/add_document')}}">
+											<span class="sub-item">Add Document</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+
             </ul>
         </div>
     </div>
 </div>
+							

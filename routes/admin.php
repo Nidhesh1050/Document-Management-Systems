@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProjectManagementController;
+use App\Http\Controllers\DocumentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,5 +56,13 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
      Route::get('/admin/update_project/{id}',[ProjectManagementController::class,'update_project']);
      Route::post('/admin/edit_project',[ProjectManagementController::class,'edit_project']);
      /* Project management routes end*/
+    /* Document type routes start   */
+ 
+    Route::get('/admin/view_document',[DocumentController::class,'view_document']);
+    Route::get('/admin/delete/{id}', [DocumentController::class,'delete']);
+    Route::get('/admin/add_document', [DocumentController::class,'add_document']);
+    Route::post('/admin/register',[DocumentController::class,'register']);
+    Route::get('/admin/edit/{id}', [DocumentController::class,'edit']);
+    Route::post('/admin/update/', [DocumentController::class,'update']);
     
 });
