@@ -93,6 +93,22 @@
 								</ul>
 							</div>
 						</li>
+						<li class="nav-item">
+							<a data-toggle="collapse" href="#forms">
+								<i class="fas fa-pen-square"></i>
+								<p>Document Management</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="forms">
+								<ul class="nav nav-collapse">
+									<li>
+									<a href="{{url('admin/document')}}">
+											<span class="sub-item">Add Document</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
 					
 					</ul>
 				</div>

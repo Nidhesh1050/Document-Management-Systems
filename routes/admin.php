@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DocumentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,5 +46,13 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/update_category/{id}',[CategoryController::class,'update_category']);
     Route::post('/admin/edit_category',[CategoryController::class,'edit_category']);
     /* Category management routes end*/
+
+
+     /* Document management routes start*/
+     Route::get('/admin/document',[DocumentController::class,'document']);
+     Route::post('/admin/add_document',[DocumentController::class,'add_document']);
+     
+
+     /* Document management routes end*/
     
 });

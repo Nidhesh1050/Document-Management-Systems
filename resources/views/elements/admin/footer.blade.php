@@ -66,6 +66,14 @@
 	<script src="{{asset('admin//js/setting-demo.js')}}"></script>
 	<script src="{{asset('admin//js/demo.js')}}"></script>
 	<script>
+    $(document).ready(function(){
+        $('#datatables').DataTable({
+                        "pageLength": 5,
+                    });
+    });
+
+</script>
+	<script>
 		Circles.create({
 			id:'circles-1',
 			radius:45,
@@ -159,3 +167,5 @@
 			fillColor: 'rgba(255, 165, 52, .14)'
 		});
 	</script>
+<script src="{{asset('admin//js/bootstrap.min.js')}}"></script>
+<script src="{{asset('admin//js/validate.min.js')}}"></script>
