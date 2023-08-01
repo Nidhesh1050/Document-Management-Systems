@@ -78,7 +78,7 @@ class DocumentController extends Controller
         return view ('admin.documents.document')->with(['project_documents'=>$project_documents,'category_documents'=>$category_documents,'document_type'=>$document_type]);
        }
     
-       public function add_document(Request $request){
+    public function add_document(Request $request){
         //Add Document.
     
     
@@ -107,7 +107,7 @@ class DocumentController extends Controller
             return  redirect('admin/document');
     
     
-       }
+    }
 
     //code by anuj
 
@@ -125,7 +125,7 @@ class DocumentController extends Controller
      }
 
     //Insert data
-    public function add_document(){
+    public function add_documenttype(){
         return view('admin.document.add_document');
     }
     public function register(Request $request)
