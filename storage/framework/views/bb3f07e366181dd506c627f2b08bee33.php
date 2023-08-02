@@ -2,10 +2,35 @@
     
 <div class="content">
     
-    <div class="card">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-6 col-lg-4">
+    <div class="page-inner">
+        <div class="page-header">
+            <ul class="breadcrumbs">
+                <li class="nav-home">
+                    <a href="<?php echo e(url('admin/home')); ?>">
+                        <i class="flaticon-home"></i>
+                    </a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Category Management</a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Add Document</a>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Add Document</div>
+                    </div>
+                    <div class="card-body">
                     <form action="<?php echo e(url('admin/register')); ?>" method="post" id="validate">
                         <?php echo csrf_field(); ?>
                         <div class="form-group">
@@ -27,8 +52,10 @@ unset($__errorArgs, $__bag); ?>
                                 </span>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                        <div class="text-right">
+                                <button type="submit" class="mt-4 btn btn-success">Submit</button>
+                                <a href="<?php echo e(url('admin/home')); ?>" class="mt-4 btn btn-danger">Cancel</a>
+                            <div>                    </form>
 
 
                 </div>
@@ -61,4 +88,4 @@ unset($__errorArgs, $__bag); ?>
 <?php $__env->stopSection(); ?>
 
 
-<?php echo $__env->make('layouts.admin-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\laravel_10\resources\views/admin/document/add_document.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.admin-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\dms\resources\views/admin/document/add_document.blade.php ENDPATH**/ ?>

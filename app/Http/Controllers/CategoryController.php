@@ -19,7 +19,6 @@ class CategoryController extends Controller
             'name' => 'required|string',
             'description' =>  'required',
             'image' =>  'required','mimes:jpeg,png,jpg,gif,svg',
-            'status' => 'required',
         ]);
         $image = $request->file('image');
         $destinationPath = public_path('/images');
@@ -30,8 +29,6 @@ class CategoryController extends Controller
         $inserData['category_slag']= str_replace(' ', '_', $request->name);
         $inserData['description'] = $request->description;
         $inserData['image'] = $image_name;
-        $inserData['status'] =  $request->status;
-   
         DB::table('categories')->insert($inserData);
         return redirect('admin/view_category');
     }
@@ -66,7 +63,6 @@ class CategoryController extends Controller
                 'name' => $request['name'],
                 'description' => $request['description'],
                 'image' => $image_name,
-                'status' => $request['status'],
             ]);
         }else{
             DB::table('categories')
@@ -75,7 +71,6 @@ class CategoryController extends Controller
                 'parent_id' => $request['parent_id'],
                 'name' => $request['name'],
                 'description' => $request['description'],
-                'status' => $request['status'],
             ]);
         }
         return redirect('admin/view_category');

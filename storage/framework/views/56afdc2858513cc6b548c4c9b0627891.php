@@ -1,6 +1,4 @@
-@extends('layouts.admin-app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     
 <div class="content">
     
@@ -8,7 +6,7 @@
         <div class="page-header">
             <ul class="breadcrumbs">
                 <li class="nav-home">
-                    <a href="{{url('admin/home')}}">
+                    <a href="<?php echo e(url('admin/home')); ?>">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -33,15 +31,15 @@
                         <div class="card-title">Update Manager</div>
                     </div>
                     <div class="card-body">
-                            <form action="{{url('admin/edit_project')}}" method="post" enctype="multipart/form-data">
+                            <form action="<?php echo e(url('admin/edit_project')); ?>" method="post" enctype="multipart/form-data">
 
-                                @csrf
-                                <input type="hidden" name="id" value="{{$users->id}}">
+                                <?php echo csrf_field(); ?>
+                                <input type="hidden" name="id" value="<?php echo e($users->id); ?>">
 
 
                                 <div class="form-group">
                                     <label for="name">Project Name</label>
-                                    <input type="text" class="form-control" name="project_name" value="{{$users->project_name}}"
+                                    <input type="text" class="form-control" name="project_name" value="<?php echo e($users->project_name); ?>"
                                         placeholder="name">
                                 </div>
 
@@ -50,22 +48,22 @@
                                     <label for="name">Project Manager</label>
                                     <select name="manager_d" class="form-control">
                                         <option value=""> Please Select</option>
-                                    @foreach($project_manager as $parent)
-                                    <option value="{{$users->id}}">{{$users->manager_d}}</option>
-                                    @endforeach
+                                    <?php $__currentLoopData = $project_manager; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $parent): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($users->id); ?>"><?php echo e($users->manager_d); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                                 </div>
 
 
                                 <div class="form-group">
                                     <label for="status">Status</label>
-                                    <input type="" class="form-control" value="{{$users->status}}" name="status"
+                                    <input type="" class="form-control" value="<?php echo e($users->status); ?>" name="status"
                                         id="status" placeholder="Status">
                                 </div>
 
                                 <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Update</button>
-                                <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
+                                <a href="<?php echo e(url('admin/home')); ?>" class="mt-4 btn btn-danger">Cancel</a>
                                <div>
                             </form>
                         </div>
@@ -76,4 +74,5 @@
     </div>
 </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.admin-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\dms\resources\views/admin/project_management/update_project.blade.php ENDPATH**/ ?>

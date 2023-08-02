@@ -1,6 +1,4 @@
-@extends('layouts.admin-app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     
 <div class="content">
     
@@ -8,7 +6,7 @@
         <div class="page-header">
             <ul class="breadcrumbs">
                 <li class="nav-home">
-                    <a href="{{url('admin/home')}}">
+                    <a href="<?php echo e(url('admin/home')); ?>">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -33,49 +31,50 @@
                         <div class="card-title">Update Category</div>
                     </div>
                     <div class="card-body">
-                            <form action="{{url('admin/edit_category')}}" method="post" enctype="multipart/form-data">
+                            <form action="<?php echo e(url('admin/edit_category')); ?>" method="post" enctype="multipart/form-data">
 
-                                @csrf
-                                <input type="hidden" name="id" value="{{$users->id}}">
+                                <?php echo csrf_field(); ?>
+                                <input type="hidden" name="id" value="<?php echo e($users->id); ?>">
 
                                 <div class="form-row">
                                    <div class="form-group col-md-6">
                                     <label for="name">Parent ID</label>
                                     <select name="parent_id" class="form-control">
                                         <option value=""> Please Select</option>
-                                            @foreach($parent_categories as $parent)
-                                         <option value="{{$parent->id}}" 
-                                          @if($parent->id == $users->parent_id)
+                                            <?php $__currentLoopData = $parent_categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $parent): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                         <option value="<?php echo e($parent->id); ?>" 
+                                          <?php if($parent->id == $users->parent_id): ?>
                                           echo 'selected="selected"';
-                                          @endif >{{$parent->name}}
+                                          <?php endif; ?> ><?php echo e($parent->name); ?>
+
                                         </option>
-                                       @endforeach
+                                       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                    </select>
                                   </div>
 
                                 <div class="form-group  col-md-6">
                                     <label for="name">Name</label>
-                                    <input type="text" class="form-control" name="name" value="{{$users->name}}"
+                                    <input type="text" class="form-control" name="name" value="<?php echo e($users->name); ?>"
                                         placeholder="name">
                                 </div>
                                 <div class="form-group  col-md-6">
                                     <label for="description">Description</label>
                                     <textarea class="form-control" name="description" id="comment"
                                         placeholder="write text" rows="2">
-                                            {{$users->description}}</textarea>
+                                            <?php echo e($users->description); ?></textarea>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleFormControlFile1"> Image</label>
-                                    <input type="file" class="form-control-file"   value ="{{ $users->image }}" name="image"
+                                    <input type="file" class="form-control-file"   value ="<?php echo e($users->image); ?>" name="image"
                                         id="exampleFormControlFile1">
-                                    <img src="{{ asset('images/' .$users->image) }}"
+                                    <img src="<?php echo e(asset('images/' .$users->image)); ?>"
                                         style="height: 50px;width:100px;">
                                 </div>
 </div>
                                 <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Update</button>
-                                <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
+                                <a href="<?php echo e(url('admin/home')); ?>" class="mt-4 btn btn-danger">Cancel</a>
                                <div>  
                                 
 
@@ -85,4 +84,5 @@
         
 </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.admin-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\dms\resources\views/admin/category/update_category.blade.php ENDPATH**/ ?>

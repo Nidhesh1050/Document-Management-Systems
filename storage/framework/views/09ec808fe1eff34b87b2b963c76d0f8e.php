@@ -1,18 +1,43 @@
-
-
-
 <?php $__env->startSection('content'); ?>
-<div class="content">
-    <div class="card-header">
-        <div class="d-flex align-items-center">
-            <a href="<?php echo e(url('admin/category')); ?>"
-            class="btn btn-primary btn-round ml-auto" >
-                <i class="fa fa-plus"></i>
-                Add Category
-            </a>
-        </div>
-    </div>
 
+<div class="content">
+    <div class="page-inner">
+        <div class="page-header">
+            <ul class="breadcrumbs">
+                <li class="nav-home">
+                    <a href="<?php echo e(url('admin/home')); ?>">
+                        <i class="flaticon-home"></i>
+                    </a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">User Management</a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Add User</a>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <a href="<?php echo e(url('admin/category')); ?>"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
+                                    data-target="#addRowModal">
+                                    <i class="fa fa-plus"></i>
+                                    Add User
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
     <table id="datatables" class="display table table-striped table-hover">
         <thead>
             <tr>
@@ -43,7 +68,7 @@
                                 <i class="fa fa-edit">
                                 </i>
                             </button>
-                        </a>
+                             </a>
                         </div>
                     </td>
                     <td>
@@ -52,7 +77,7 @@
                                 <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
                                     <i class="fa fa-times"></i>
                                 </button>
-                        </a>
+                            </a>
                         </div>
                     </td>
                 </tr>
@@ -63,9 +88,10 @@
 
 
 
+
 <?php $__env->stopSection(); ?>
 
 
 
 
-<?php echo $__env->make('layouts.admin-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\laravel_10\resources\views/admin/category/view_category.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.admin-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\dms\resources\views/admin/category/view_category.blade.php ENDPATH**/ ?>

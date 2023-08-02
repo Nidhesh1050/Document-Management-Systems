@@ -1,14 +1,43 @@
 <?php $__env->startSection('content'); ?>
+    
 <div class="content">
-    <div class="card-header">
-        <div class="d-flex align-items-center">
-            <a href="<?php echo e(url('admin/project_management')); ?>"
-            class="btn btn-primary btn-round ml-auto" >
-                <i class="fa fa-plus"></i>
-                Add Manager
-            </a>
+    
+    <div class="page-inner">
+        <div class="page-header">
+            <ul class="breadcrumbs">
+                <li class="nav-home">
+                    <a href="<?php echo e(url('admin/home')); ?>">
+                        <i class="flaticon-home"></i>
+                    </a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Project Management</a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Add Manager</a>
+                </li>
+            </ul>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card">
+                <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <a href="<?php echo e(url('admin/project_management')); ?>"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
+                                    data-target="#addRowModal">
+                                    <i class="fa fa-plus"></i>
+                                    Add Manager
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
 
     <table id="datatables" class="display table table-striped table-hover">
         <thead>
@@ -63,4 +92,4 @@
 
 
 
-<?php echo $__env->make('layouts.admin-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\laravel_10\resources\views/admin/project_management/view_project.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.admin-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\dms\resources\views/admin/project_management/view_project.blade.php ENDPATH**/ ?>

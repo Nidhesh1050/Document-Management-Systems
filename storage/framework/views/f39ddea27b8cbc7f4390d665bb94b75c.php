@@ -1,19 +1,39 @@
 <?php $__env->startSection('content'); ?>
 
 <div class="content">
-
-    <div class="card-header">
+            <div class="page-inner">
+<div class="page-header">
+            <ul class="breadcrumbs">
+                <li class="nav-home">
+                    <a href="<?php echo e(url('admin/home')); ?>">
+                        <i class="flaticon-home"></i>
+                    </a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Document Type</a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Add Document</a>
+                </li>
+            </ul>
+        </div>
         <div class="d-flex align-items-center">
 
             <a href="<?php echo e(url('admin/add_document')); ?>"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
                     data-target="">
                     <i class="fa fa-plus"></i>
-                        Add User
+                        Add Document
                 </button>
             </a>
         </div>
     </div>
-
+    <div class="card-body">
     <div class="table-responsive">
         <table id="datatables" class="display table table-striped table-hover">
             <thead>
@@ -41,7 +61,7 @@
                                         </i>
                                     </button>
                                 </a>
-                                <a href="delete/<?php echo e($users->id); ?>"
+                                <a href="deletedocument/<?php echo e($users->id); ?>"
                                     onclick="return confirm('Are you sure to delete ?')">
                                     <button type="button" data-toggle="tooltip" title=""
                                         class="btn btn-link btn-danger" data-original-title="Remove">
@@ -55,8 +75,11 @@
             </tbody>
         </table>
     </div>
+    </div>
 </div>
+</div>
+
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.admin-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\laravel_10\resources\views/admin/document/view_document.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.admin-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\dms\resources\views/admin/document/view_document.blade.php ENDPATH**/ ?>

@@ -156,4 +156,4 @@
 		});
 	</script>
 <script src="<?php echo e(asset('admin//js/bootstrap.min.js')); ?>"></script>
-<script src="<?php echo e(asset('admin//js/validate.min.js')); ?>"></script><?php /**PATH D:\xampp\htdocs\laravel_10\resources\views/elements/admin/footer.blade.php ENDPATH**/ ?>
+<script src="<?php echo e(asset('admin//js/validate.min.js')); ?>"></script><?php /**PATH C:\wamp64\www\dms\resources\views/elements/admin/footer.blade.php ENDPATH**/ ?>
