@@ -66,21 +66,22 @@
                                             <td>{{ $status }}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href='edit/{{ $users->id }}'>
+                                                    <a href='/admin/edit_user/{{ $users->id }}'>
                                                         <button type="button" data-toggle="tooltip" title=""
                                                             class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
                                                             <i class="fa fa-edit">
                                                             </i>
                                                         </button>
                                                     </a>
-                                                    <a href="delete/{{ $users->id }}"
+
+
+
+                                                    <a href="/admin/delete_user/{{ $users->id }}"
                                                         onclick="return confirm('Are you sure to delete ?')">
                                                         <button type="button" data-toggle="tooltip" title=""
                                                             class="btn btn-link btn-danger" data-original-title="Remove">
                                                             <i class="fa fa-times"></i>
                                                         </button>
-                                                    </a>
-                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -93,5 +94,6 @@
         </div>
     </div>
 </div>
-   
+
+
 @endsection

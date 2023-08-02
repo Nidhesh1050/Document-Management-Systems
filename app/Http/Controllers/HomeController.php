@@ -33,38 +33,50 @@ class HomeController extends Controller
     public function index(): View
     {
         return view('home');
-    } 
-  
-   
+    }
+
+
     public function adminHome(): View
     {
         return view('adminHome');
     }
-  
+
     public function managerHome(): View
     {
         return view('managerHome');
     }
 
-    //List of users 
+    //List of users
+
     public function userManagement(){
-        $users = DB::table('users')->where(['type' => 0])->get();
+        $users = DB::table('users')->get();
+        // $users = DB::select('select * from users');
         return view('admin.user.userManagement',['users'=>$users]);
     }
-
     //Delete function to delete in user body
     public function delete($id) {
         DB::delete('delete from users where id = ?',[$id]);
         return redirect()->back();
      }
      //edit code in user body
-    public function edit(Request $request,$id) {
+     public function edit(Request $request,$id) {
+
         $users = DB::table('users')->where(['id'=> $id])->first();
         return view('admin.user.edit')->with(['users'=>$users]);
-    }
 
-    //Update Code
-    public function update(Request $request){
+      }
+      //Update Code
+      public function update(Request $request){
+        $request->validate(
+            [
+              'name'=>'required',
+              'email'=>'required',
+              'mobile' =>'required|max:12',
+              'designation' => 'required',
+              'username' => 'required',
+
+              ]
+          );
         DB::table('users')
             ->where('id', $request['id'])
             ->update([
@@ -74,26 +86,29 @@ class HomeController extends Controller
                 'designation' => $request['designation'],
                 'username' => $request['username'],
             ]);
-        return redirect('admin/user-list');
-    }
+            return redirect('admin/userManagement');
 
-    //Insert data Code
-    public function adduser(){
+
+      }
+      //Insert data Code
+      public function adduser(){
         return view('admin.user.adduser');
-    }
-
-    public function register(Request $request)
+      }
+      public function register(Request $request)
     {
-        $request->validate(
-            [
-            'name'=>'required|max:50|string',
-            'email'=>'required|email|unique:users',
-            'mobile' =>'required|max:12',
-            'designation' => 'required',
-            'username' => 'required',
-            'password' => 'required|max:8',
-            ]
-        );
+      // echo '<pre>';
+      // print_r($request->all());die;
+
+      $request->validate(
+        [
+          'name'=>'required|max:50|string',
+          'email'=>'required|email|unique:users',
+          'mobile' =>'required|max:12',
+          'designation' => 'required',
+          'username' => 'required',
+          'password' => 'required|max:8',
+          ]
+      );
 
         $inserData['name'] = $request->name;
         $inserData['email']= $request->email;
@@ -101,17 +116,13 @@ class HomeController extends Controller
         $inserData['designation'] = $request->designation;
         $inserData['username'] = $request->username;
         $inserData['password'] = $request->password;
-        $inserData['type'] = 0;
-
         //print_r($inserData);die;
 
         DB::table('users')->insert($inserData);
 
-        return redirect('admin/user-list');
+        return redirect('admin/userManagement');
 
     }
 
-    public function categorymanagement(){
-        return view('admin.categorymanagement');
-    }
 }
+

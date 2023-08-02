@@ -58,7 +58,7 @@
                     <div class="collapse" id="base">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('admin/user-list')}}">
+                                <a href="{{url('admin/userManagement')}}">
                                     <span class="sub-item">User List</span>
                                 </a>
                             </li>

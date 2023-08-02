@@ -1,9 +1,9 @@
 @extends('layouts.admin-app')
 
 @section('content')
-    
+
 <div class="content">
-    
+
     <div class="page-inner">
         <div class="page-header">
             <ul class="breadcrumbs">
@@ -33,7 +33,7 @@
                         <div class="card-title">Add User</div>
                     </div>
                     <div class="card-body">
-                        <form action="{{url('admin/register')}}" method="post" id="validate">
+                        <form action="{{url('admin/register_user')}}" method="post" id="validate">
                             @csrf
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -42,7 +42,7 @@
                                         placeholder="Enter Name" name="name">
                                         <span class="text-danger  ">
                                             @error('name')
-                                            {{$message}}    
+                                            {{$message}}
                                             @enderror
                                         </span>
                                 </div>
@@ -110,7 +110,7 @@
                     </div>
                 </div>
             </div>
-        </div>   
+        </div>
     </div>
 </div>
 
