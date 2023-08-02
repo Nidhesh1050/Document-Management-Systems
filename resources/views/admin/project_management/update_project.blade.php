@@ -1,16 +1,38 @@
 @extends('layouts.admin-app')
 
 @section('content')
-
+    
 <div class="content">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-title"> Update Project Manager</div>
-                <div class="card-body">
-                    <div class="row">
-
-                        <div class="col-md-6 col-lg-4">
+    
+    <div class="page-inner">
+        <div class="page-header">
+            <ul class="breadcrumbs">
+                <li class="nav-home">
+                    <a href="{{url('admin/home')}}">
+                        <i class="flaticon-home"></i>
+                    </a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Project Management</a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Update Manager</a>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Update Manager</div>
+                    </div>
+                    <div class="card-body">
                             <form action="{{url('admin/edit_project')}}" method="post" enctype="multipart/form-data">
 
                                 @csrf
@@ -41,7 +63,10 @@
                                         id="status" placeholder="Status">
                                 </div>
 
-                                <button type="submit" class="btn btn-success">Update</button>
+                                <div class="text-right">
+                                <button type="submit" class="mt-4 btn btn-success">Update</button>
+                                <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
+                               <div>
                             </form>
                         </div>
                     </div>

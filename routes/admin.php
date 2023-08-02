@@ -70,7 +70,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     /* Document type routes start   */
 
     Route::get('/admin/view_document',[DocumentController::class,'view_document']);
-    Route::get('/admin/delete/{id}', [DocumentController::class,'delete']);
+    Route::get('/admin/deletedocument/{id}', [DocumentController::class,'deletedocument']);
     Route::get('/admin/add_document', [DocumentController::class,'add_documenttype']);
     Route::post('/admin/register',[DocumentController::class,'register']);
     Route::get('/admin/edit/{id}', [DocumentController::class,'edit']);
