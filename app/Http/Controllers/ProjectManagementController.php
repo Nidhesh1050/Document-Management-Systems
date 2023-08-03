@@ -19,12 +19,13 @@ class ProjectManagementController extends Controller
         $request->validate([ 
             'project_name' => 'required|string',
             'manager_d' =>  'required',
-            'status' => 'required', 
+            'status' => 'nullable|boolean', 
         ]);
+       $status = $request->status == 1 ? 1 : 0;
        
         $inserData['project_name']= $request->project_name;  
         $inserData['manager_d'] = $request->manager_d;
-        $inserData['status'] =  $request->status; 
+        $inserData['status'] =  $status; 
         DB::table('projects')->insert($inserData);
         return redirect('/admin/view_project');
         
