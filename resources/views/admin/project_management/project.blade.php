@@ -66,8 +66,9 @@
 
                         <div class="form-group">
                             <label for="status">Status</label>
-                            <input type="" class="form-control" name="status" id="status"
-                                placeholder="Status">
+                         
+                           &nbsp;&nbsp;&nbsp;
+                            <input type="checkbox" name="status" id="status" value="1">
                                 <span class="text-danger error ">
                                 @error('status')
                                 {{$message}}
