@@ -22,7 +22,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Add Manager</a>
+                    <a href="#"> Project List</a>
                 </li>
             </ul>
         </div>
@@ -34,7 +34,7 @@
                             <a href="{{ url('admin/project_management') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
                                     data-target="#addRowModal">
                                     <i class="fa fa-plus"></i>
-                                    Add Manager
+                                    Add Project
                                 </button>
                             </a>
                         </div>
@@ -48,8 +48,7 @@
                 <th> Project Name</th>   
                 <th> Manager Id </th>
                 <th> Status</th>
-                <th> Edit</th>
-                <th> delete</th>
+                <th> Action</th>
             </tr>
         </thead>
         <tbody>
@@ -70,8 +69,7 @@
                             </button>
                         </a>
                         </div>
-                    </td>
-                    <td>
+                   
                         <div class="form-button-action">
                             <a href="/admin/delete_project/{{ $users->id }}" onclick="return confirm('Are you sure to delete ?')">
                                 <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">

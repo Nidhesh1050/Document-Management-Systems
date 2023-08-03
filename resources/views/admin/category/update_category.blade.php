@@ -22,7 +22,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Update Category</a>
+                    <a href="#">Edit Category</a>
                 </li>
             </ul>
         </div>
@@ -30,7 +30,7 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">Update Category</div>
+                        <div class="card-title">Edit Category</div>
                     </div>
                     <div class="card-body">
                             <form action="{{url('admin/edit_category')}}" method="post" enctype="multipart/form-data">
@@ -65,13 +65,7 @@
                                             {{$users->description}}</textarea>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="exampleFormControlFile1"> Image</label>
-                                    <input type="file" class="form-control-file"   value ="{{ $users->image }}" name="image"
-                                        id="exampleFormControlFile1">
-                                    <img src="{{ asset('images/' .$users->image) }}"
-                                        style="height: 50px;width:100px;">
-                                </div>
+                                
 </div>
                                 <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Update</button>

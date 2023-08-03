@@ -22,7 +22,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Update Manager</a>
+                    <a href="#">Edit Project</a>
                 </li>
             </ul>
         </div>
@@ -30,7 +30,7 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">Update Manager</div>
+                        <div class="card-title">Edit Project</div>
                     </div>
                     <div class="card-body">
                             <form action="{{url('admin/edit_project')}}" method="post" enctype="multipart/form-data">

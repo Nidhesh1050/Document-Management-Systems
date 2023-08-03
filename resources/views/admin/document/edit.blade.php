@@ -22,7 +22,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Update Document Type </a>
+                    <a href="#">Edit Document Type </a>
                 </li>
             </ul>
         </div>
@@ -30,7 +30,7 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">Update Document</div>
+                        <div class="card-title">Edit Document Type</div>
                     </div>
                     <div class="card-body">
                     <form action="{{url('admin/update')}}" method="post">

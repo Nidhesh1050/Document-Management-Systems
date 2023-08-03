@@ -16,13 +16,13 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Category Management</a>
+                    <a href="#">Document Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Add Document</a>
+                    <a href="#">Add Document Type</a>
                 </li>
             </ul>
         </div>
@@ -30,13 +30,12 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">Add Document</div>
+                        <div class="card-title">Add Document Type</div>
                     </div>
                     <div class="card-body">
                     <form action="{{url('admin/register')}}" method="post" id="validate">
                         @csrf
                         <div class="form-group">
-                            <h1>Add Document Name</h1>
                             <label for="name">Name</label>
                             <input type="name" class="form-control"
                                 placeholder="Enter Name" name="name">
@@ -45,6 +44,18 @@
                                     {{$message}}    
                                     @enderror
                                 </span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            &nbsp;&nbsp;&nbsp;
+                            <input type="checkbox" name="status" id="status" value="1">
+                                <span class="text-danger error ">
+                                @error('status')
+                                {{$message}}
+                                @enderror
+                             </span>
+                                
                         </div>
                         
                         <div class="text-right">

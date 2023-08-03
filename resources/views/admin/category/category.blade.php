@@ -73,16 +73,7 @@
                         </div>
 
 
-                        <div class="form-group">
-                            <label for="exampleFormControlFile1"> Image</label>
-                            <input type="file" class="form-control-file" name="image"
-                                id="exampleFormControlFile1">
-                            <span class="text-danger error ">
-                                @error('image')
-                                {{$message}}
-                                @enderror
-                            </span>
-                        </div>
+                       
 
 
                        

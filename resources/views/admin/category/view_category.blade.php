@@ -20,7 +20,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Add Category</a>
+                    <a href="#">Category List</a>
                 </li>
             </ul>
         </div>
@@ -46,23 +46,19 @@
                 <th> Parent ID </th>
                 <th> Name </th>
                 <th> Description</th>
-                <th> Image </th>
-                <th> Edit</th>
-                <th> delete</th>
+                <th> Action</th>
+                
                 
             </tr>
         </thead>
         <tbody>
             @foreach($users as $users )
-            <?php  
-                $image = ((!empty($users->image) ? $users->image : 'default.jpg'));
-            ?>
+           
                 <tr>
                     <td> {{$users->id}}</td>
                     <td> {{$users->parent_id}}</td>
                     <td> {{$users->name}}</td>
                     <td> {{$users->description}}</td>
-                    <td>  <img src="{{ asset('images/' .$image) }}" style="height: 50px;width:100px;">
                     </td>
                     <td>
                         <div class="form-button-action">
@@ -74,8 +70,6 @@
                             </button>
                              </a>
                         </div>
-                    </td>
-                    <td>
                         <div class="form-button-action">
                             <a href="/admin/delete_category/{{ $users->id }}" onclick="return confirm('Are you sure to delete ?')">
                                 <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
