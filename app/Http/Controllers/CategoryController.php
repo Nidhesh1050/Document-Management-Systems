@@ -9,9 +9,11 @@ use Illuminate\Support\Facades\DB;
 class CategoryController extends Controller
 {
     public function category(){
-        $parent_catogeris=DB::table('categories')->select('id','name')->where(['parent_id'=> 1])->get();
+        $parent_catogeris=DB::table('categories')->select('id','name')->get();
         return view ('admin.category.category')->with(['parent_categories'=> $parent_catogeris]);
     }
+
+  
 
     public function add_category(Request $request) {
         $request->validate([
@@ -45,7 +47,7 @@ class CategoryController extends Controller
 
     public function update_category(Request $request,$id) {
         $users = DB::table('categories')->where(['id'=> $id])->first();
-        $parent_catogeris=DB::table('categories')->select('id','name')->where(['parent_id'=> 1])->get();
+        $parent_catogeris=DB::table('categories')->select('id','name')->get();
         return view('admin.category.update_category')->with(['users'=>$users,'parent_categories'=> $parent_catogeris]);
     }
 

@@ -74,8 +74,8 @@ class DocumentController extends Controller
     public function createdocument(){
         $project_documents = DB::table('projects')->select('id','project_name')->get();
         $category_documents = DB::table('categories')->select('id','name')->get();
-        $document_type= DB::table('document_type')->select('id','name')->get();
-        return view ('admin.documents.document')->with(['project_documents'=>$project_documents,'category_documents'=>$category_documents,'document_type'=>$document_type]);
+        $document_type= DB::table('document_types')->select('id','name')->get();
+        return view ('admin.documents.createdocument')->with(['project_documents'=>$project_documents,'category_documents'=>$category_documents,'document_type'=>$document_type]);
        }
 
     public function add_document(Request $request){

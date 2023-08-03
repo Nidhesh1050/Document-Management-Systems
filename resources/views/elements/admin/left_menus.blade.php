@@ -130,7 +130,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/document')}}">
+                                <a href="{{url('admin/createdocument')}}">
                                         <span class="sub-item">Add Document</span>
                                     </a>
                                 </li>
