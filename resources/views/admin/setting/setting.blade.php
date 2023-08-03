@@ -22,7 +22,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Add Image</a>
+                    <a href="#">Add Logo</a>
                 </li>
             </ul>
         </div>
@@ -30,7 +30,7 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">Add Image</div>
+                        <div class="card-title">Add Logo</div>
                     </div>
                     <div class="card-body">
 

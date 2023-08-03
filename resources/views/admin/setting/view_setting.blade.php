@@ -22,7 +22,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Add Image</a>
+                    <a href="#">Logo List</a>
                 </li>
             </ul>
         </div>
@@ -34,7 +34,7 @@
                             <a href="{{ url('/admin/edit_image') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
                                     data-target="#addRowModal">
                                     <i class="fa fa-plus"></i>
-                                    Add Image
+                                    Add Logo
                                 </button>
                             </a>
                         </div>

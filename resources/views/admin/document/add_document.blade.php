@@ -47,10 +47,12 @@
                         </div>
 
                         <div class="form-group">
+
                             <label for="status">Status</label>
                             &nbsp;&nbsp;&nbsp;
                             <input type="checkbox" name="status" id="status" value="1">
                                 <span class="text-danger error ">
+                                    
                                 @error('status')
                                 {{$message}}
                                 @enderror
