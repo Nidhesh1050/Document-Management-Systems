@@ -175,12 +175,12 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
                     <div class="collapse" id="setting">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('view_image')}}">
+                                <a href="{{url('admin/view_image')}}">
                                     <span class="sub-item">Settings List</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('setting')}}">
+                                <a href="{{url('admin/setting')}}">
                                     <span class="sub-item">Add Settings</span>
                                 </a>
                             </li>
@@ -188,6 +188,28 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
                         </ul>
                     </div>
                 </li>
+
+                <li class="nav-item">
+							<a data-toggle="collapse" href="#tables">
+								<i class="fas fa-table"></i>
+								<p>Notification</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="tables">
+								<ul class="nav nav-collapse">
+									<li>
+                                    <a href="{{url('admin/show_notification')}}">
+											<span class="sub-item">View Notification</span>
+										</a>
+									</li>
+									<li>
+                                    <a href="{{url('admin/notification')}}">
+											<span class="sub-item">Add Notification</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
 
             </ul>
         </div>

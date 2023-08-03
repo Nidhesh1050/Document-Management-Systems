@@ -26,7 +26,7 @@ class SettingController extends Controller
       
 
         DB::table('side_setting')->insert($inserData);
-        return redirect('view_image');
+        return redirect('/admin/view_image');
     }
 
     public function view_image(){

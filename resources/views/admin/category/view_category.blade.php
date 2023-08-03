@@ -14,7 +14,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">User Management</a>
+                    <a href="#">Category Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>

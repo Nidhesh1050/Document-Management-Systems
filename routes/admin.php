@@ -9,6 +9,7 @@ use App\Http\Controllers\DocumentController;
 
 use App\Http\Controllers\ProjectManagementController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\NotificationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -78,13 +79,21 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::post('/admin/update/', [DocumentController::class,'update']);
 
     /* Side Setting routes start*/
-   Route::get('setting',[SettingController::class,'setting']);
-   Route::post('add_image',[SettingController::class,'add_image']);
-   Route::get('view_image',[SettingController::class,'view_image']);
-   Route::get('edit_image', [SettingController::class,'edit_image']);
-
-   Route::get('delete_image/{id}',[SettingController::class,'delete_image']);
-
+   Route::get('/admin/setting',[SettingController::class,'setting']);
+   Route::post('/admin/add_image',[SettingController::class,'add_image']);
+   Route::get('/admin/view_image',[SettingController::class,'view_image']);
+   Route::get('/admin/edit_image', [SettingController::class,'edit_image']);
+   Route::get('/admin/delete_image/{id}',[SettingController::class,'delete_image']);
 /*  Side Setting routes end*/
+
+/* Notification type routes start   */
+Route::get('/admin/notification',[NotificationController::class, 'Notification'])->name('notification');
+Route::post('/admin/add_notification',[NotificationController::class, 'add_notification']);
+Route::get('/admin/show_notification',[NotificationController::class, 'show_notification']);
+Route::get('/admin/delete/{id}', [NotificationController::class,'delete']);
+
+Route::get('/admin/edit_notification/{id}', [NotificationController::class,'edit_notification']);
+Route::post('/admin/update_notification', [NotificationController::class,'update_notification']);
+ /* Notification type routes end   */
 
 });

@@ -31,7 +31,7 @@
                 <div class="card">
                 <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <a href="{{ url('admin/project_management') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
+                            <a href="{{ url('/admin/edit_image') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
                                     data-target="#addRowModal">
                                     <i class="fa fa-plus"></i>
                                     Add Image
@@ -60,7 +60,7 @@
                     <td>
                         <div class="form-button-action">
 
-                            <a href='edit_image'>
+                        <a href="{{url('/admin/edit_image')}}">
                             <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
                                 <i class="fa fa-edit">
                                 </i>
@@ -70,7 +70,7 @@
                     </td>
                     <td>
                         <div class="form-button-action">
-                            <a href="delete_image/{{ $users->id }}">
+                            <a href="/admin/delete_image/{{ $users->id }}">
                                 <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
                                     <i class="fa fa-times"></i>
                                 </button>

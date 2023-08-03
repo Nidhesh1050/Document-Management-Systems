@@ -34,7 +34,7 @@
                     </div>
                     <div class="card-body">
 
-                    <form action="{{url('add_image')}}" method="post" id="category"
+                    <form action="{{url('/admin/add_image')}}" method="post" id="category"
                         enctype="multipart/form-data">
                         @csrf
 
