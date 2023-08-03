@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DocumentController;
 
 use App\Http\Controllers\ProjectManagementController;
+use App\Http\Controllers\SettingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -75,5 +76,15 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::post('/admin/register',[DocumentController::class,'register']);
     Route::get('/admin/edit/{id}', [DocumentController::class,'edit']);
     Route::post('/admin/update/', [DocumentController::class,'update']);
+
+    /* Side Setting routes start*/
+   Route::get('setting',[SettingController::class,'setting']);
+   Route::post('add_image',[SettingController::class,'add_image']);
+   Route::get('view_image',[SettingController::class,'view_image']);
+   Route::get('edit_image', [SettingController::class,'edit_image']);
+
+   Route::get('delete_image/{id}',[SettingController::class,'delete_image']);
+
+/*  Side Setting routes end*/
 
 });
