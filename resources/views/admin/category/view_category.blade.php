@@ -20,7 +20,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Add User</a>
+                    <a href="#">Add Category</a>
                 </li>
             </ul>
         </div>
@@ -32,7 +32,7 @@
                             <a href="{{ url('admin/category') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
                                     data-target="#addRowModal">
                                     <i class="fa fa-plus"></i>
-                                    Add User
+                                    Add Category
                                 </button>
                             </a>
                         </div>
@@ -54,12 +54,15 @@
         </thead>
         <tbody>
             @foreach($users as $users )
+            <?php  
+                $image = ((!empty($users->image) ? $users->image : 'default.jpg'));
+            ?>
                 <tr>
                     <td> {{$users->id}}</td>
                     <td> {{$users->parent_id}}</td>
                     <td> {{$users->name}}</td>
                     <td> {{$users->description}}</td>
-                    <td>  <img src="{{ asset('images/' .$users->image) }}" style="height: 50px;width:100px;">
+                    <td>  <img src="{{ asset('images/' .$image) }}" style="height: 50px;width:100px;">
                     </td>
                     <td>
                         <div class="form-button-action">
