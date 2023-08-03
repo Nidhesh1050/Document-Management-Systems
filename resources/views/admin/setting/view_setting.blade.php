@@ -16,13 +16,13 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Project Management</a>
+                    <a href="#">Side Setting</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#"> Project List</a>
+                    <a href="#">Logo List</a>
                 </li>
             </ul>
         </div>
@@ -31,10 +31,10 @@
                 <div class="card">
                 <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <a href="{{ url('admin/project_management') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
+                            <a href="{{ url('/admin/edit_image') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
                                     data-target="#addRowModal">
                                     <i class="fa fa-plus"></i>
-                                    Add Project
+                                    Add Logo
                                 </button>
                             </a>
                         </div>
@@ -45,40 +45,38 @@
         <thead>
             <tr>
                 <th> Id</th>
-                <th> Project Name</th>   
-                <th> Manager Id </th>
-                <th> Status</th>
-                <th> Action</th>
+                <th> Image </th>
+                <th> Edit</th>
+                <th> delete</th>
+                
             </tr>
         </thead>
         <tbody>
             @foreach($users as $users )
                 <tr>
                     <td> {{$users->id}}</td>
-                    <td> {{$users->project_name}}</td>
-                    <td> {{$users->manager_d}}</td>
-                    <td> {{$users->status}}</td>
-
+                    <td>  <img src="{{ asset('images/' .$users->image) }}" style="height: 50px;width:100px;"></td>
+                  
                     <td>
                         <div class="form-button-action">
 
-                            <a href='/admin/update_project/{{ $users->id }}'>
+                        <a href="{{url('/admin/edit_image')}}">
                             <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
                                 <i class="fa fa-edit">
                                 </i>
                             </button>
                         </a>
                         </div>
-                   
+                    </td>
+                    <td>
                         <div class="form-button-action">
-                            <a href="/admin/delete_project/{{ $users->id }}" onclick="return confirm('Are you sure to delete ?')">
+                            <a href="/admin/delete_image/{{ $users->id }}">
                                 <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
                                     <i class="fa fa-times"></i>
                                 </button>
                         </a>
                         </div>
                     </td>
-
                 </tr>
             @endforeach
         </tbody>

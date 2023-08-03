@@ -1,22 +1,44 @@
 @extends('layouts.admin-app')
 @section('content')
 
-
-    <div class="content">
-
-        <div class="card-header">
-            <div class="d-flex align-items-center">
-
-                <a href=""><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
-                        data-target="#addRowModal">
-                        <i class="fa fa-plus"></i>
-                        Add Document
-                    </button>
-                </a>
-            </div>
+<div class="content">
+    <div class="page-inner">
+        <div class="page-header">
+            <ul class="breadcrumbs">
+                <li class="nav-home">
+                    <a href="{{url('admin/home')}}">
+                        <i class="flaticon-home"></i>
+                    </a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Document Management</a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Document List</a>
+                </li>
+            </ul>
         </div>
-
-        <div class="table-responsive">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <a href="{{ url('admin/createdocument') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
+                                    data-target="#addRowModal">
+                                    <i class="fa fa-plus"></i>
+                                    Add Document
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
             <table id="datatables" class="display table table-striped table-hover">
                 <thead>
                     <tr>
@@ -32,9 +54,11 @@
                 </thead>
                 <tbody>
                     @foreach ($users as $users)
+
                         @php
                             $status = $users->status == 1 ? 'Active' : 'InActive';
                         @endphp
+                        
                         <tr>
                             <td> {{ $users->project_id }}</td>
                             <td> {{ $users->category_id }}</td>

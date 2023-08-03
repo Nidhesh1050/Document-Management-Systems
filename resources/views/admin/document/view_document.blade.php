@@ -20,7 +20,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Add Document</a>
+                    <a href="#"> Document List</a>
                 </li>
             </ul>
         </div>
@@ -29,7 +29,7 @@
             <a href="{{url('admin/add_document')}}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
                     data-target="">
                     <i class="fa fa-plus"></i>
-                        Add Document
+                        Add Document Type
                 </button>
             </a>
         </div>

@@ -1,3 +1,7 @@
+
+<?php 
+$users = DB::table('side_setting')->orderBy('id','DESC')->first();
+?>
 <div class="main-header">
 	<!-- Logo Header -->
 				<head>
@@ -227,9 +231,11 @@
 						</li>
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
-								<div class="avatar-sm">
-									<img src="{{asset('admin/img/profile.jpg')}}" alt="..." class="avatar-img rounded-circle">
-								</div>
+
+							<div class="avatar-sm">
+								 <td><img src="{{ asset('images/' .$users->image) }}" alt="..." class="avatar-img rounded-circle" ></td>
+							</div>
+
 							</a>
 							<ul class="dropdown-menu dropdown-user animated fadeIn">
 								<div class="dropdown-user-scroll scrollbar-outer">

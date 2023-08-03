@@ -20,17 +20,12 @@ class CategoryController extends Controller
             'parent_id' =>  'required',
             'name' => 'required|string',
             'description' =>  'required',
-            'image' =>  'required','mimes:jpeg,png,jpg,gif,svg',
         ]);
-        $image = $request->file('image');
-        $destinationPath = public_path('/images');
-        $image_name = rand().'.'.$image->getClientOriginalExtension(); 
-        $image->move($destinationPath, $image_name);
+       
         $inserData['parent_id'] = $request->parent_id;
         $inserData['name']= $request->name;     
         $inserData['category_slag']= str_replace(' ', '_', $request->name);
         $inserData['description'] = $request->description;
-        $inserData['image'] = $image_name;
         DB::table('categories')->insert($inserData);
         return redirect('admin/view_category');
     }
@@ -52,21 +47,14 @@ class CategoryController extends Controller
     }
 
     public function edit_category(Request $request){
-
-        if(!empty($request->file('image'))){
-            $image = $request->file('image');
-            $destinationPath = public_path('/images');
-            $image_name = rand().'.'.$image->getClientOriginalExtension(); 
-            $image->move($destinationPath, $image_name);
             DB::table('categories')
             ->where('id', $request['id'])
             ->update([
                 'parent_id' => $request['parent_id'],
                 'name' => $request['name'],
                 'description' => $request['description'],
-                'image' => $image_name,
             ]);
-        }else{
+        {
             DB::table('categories')
             ->where('id', $request['id'])
             ->update([

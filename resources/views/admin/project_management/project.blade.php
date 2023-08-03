@@ -22,7 +22,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Add Manager</a>
+                    <a href="#">Add Project</a>
                 </li>
             </ul>
         </div>
@@ -30,7 +30,7 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">Add Manager</div>
+                        <div class="card-title">Add Project</div>
                     </div>
                     <div class="card-body">
                     <form action="{{url('admin/add_project')}}" method="post" id="category"
@@ -39,7 +39,7 @@
 
 
                         <div class="form-group">
-                            <label for="name">Project Nameme</label>
+                            <label for="name">Project Name</label>
                             <input type="text" class="form-control" name="project_name" id="" placeholder="name">
                             <span class="text-danger error ">
                                 @error('project_name')
@@ -66,8 +66,9 @@
 
                         <div class="form-group">
                             <label for="status">Status</label>
-                            <input type="" class="form-control" name="status" id="status"
-                                placeholder="Status">
+                         
+                           &nbsp;&nbsp;&nbsp;
+                            <input type="checkbox" name="status" id="status" value="1">
                                 <span class="text-danger error ">
                                 @error('status')
                                 {{$message}}

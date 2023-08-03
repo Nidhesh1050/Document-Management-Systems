@@ -88,9 +88,11 @@ class DocumentController extends Controller
             'document_ty' =>  'required',
             'title' =>  'required',
             'document' => 'required',
-            'status' => 'required',
+
+           'status' => 'nullable|boolean', 
         ]);
 
+        $status = $request->status == 1 ? 1 : 0;
 
         $document = $request->file('document');
         $destinationPath = public_path('/documents');
@@ -102,7 +104,10 @@ class DocumentController extends Controller
             $inserData['document_type_id']= $request->document_ty;
             $inserData['title'] = $request->title;
             $inserData['documents'] = $document_name;
-            $inserData['status'] =  $request->status;
+            $inserData['status'] =  $status; 
+
+           
+
             DB::table('file_uploads')->insert($inserData);
             return  redirect('admin/document');
 
@@ -130,14 +135,14 @@ class DocumentController extends Controller
     }
     public function register(Request $request)
     {
-
-        $request->validate(
-            ['name'=>'required|max:50|string',]
+        $request->validate([
+            'status' => 'nullable|boolean', 
+            ]
         );
-
+        $status = $request->status == 1 ? 1 : 0;
 
         $insertData['name'] = $request->name;
-         // print_r($insertData);die;
+        $insertData['status'] =  $status; 
         DB::table('document_types')->insert($insertData);
         return redirect('admin/view_document');
      }

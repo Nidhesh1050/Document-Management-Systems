@@ -20,7 +20,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Add User</a>
+                    <a href="#">User List</a>
                 </li>
             </ul>
         </div>

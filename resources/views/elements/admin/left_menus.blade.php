@@ -1,10 +1,16 @@
+<?php 
+$users = DB::table('side_setting')->orderBy('id','DESC')->first();
+?>
+
 <div class="sidebar sidebar-style-2">
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
             <div class="user">
+
                 <div class="avatar-sm float-left mr-2">
-                    <img src="{{asset('admin/img/profile.jpg')}}" alt="..." class="avatar-img rounded-circle">
+                <img src="{{ asset('images/' .$users->image) }}" alt="..." class="avatar-img rounded-circle" >
                 </div>
+
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                         <span>
@@ -159,6 +165,51 @@
                         </ul>
                     </div>
 				</li>
+
+                <li class="nav-item">
+                    <a data-toggle="collapse" href="#setting">
+                        <i class="fas fa-laptop-code"></i>
+                        <p>Setting Management</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="setting">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{url('admin/view_image')}}">
+                                    <span class="sub-item">Settings List</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{url('admin/setting')}}">
+                                    <span class="sub-item">Add Settings</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+							<a data-toggle="collapse" href="#tables">
+								<i class="fas fa-table"></i>
+								<p>Notification</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="tables">
+								<ul class="nav nav-collapse">
+									<li>
+                                    <a href="{{url('admin/show_notification')}}">
+											<span class="sub-item">View Notification</span>
+										</a>
+									</li>
+									<li>
+                                    <a href="{{url('admin/notification')}}">
+											<span class="sub-item">Add Notification</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
 
             </ul>
         </div>
