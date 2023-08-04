@@ -1,18 +1,9 @@
 @extends('layouts.admin-app')
 
 @section('content')
-<<<<<<< HEAD
-    <div class="content">
-        <div class="card">
-            <div class="card-title p-3">Update Document</div>
 
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6 col-lg-4">
-=======
-    
 <div class="content">
-    
+
     <div class="page-inner">
         <div class="page-header">
             <ul class="breadcrumbs">
@@ -42,7 +33,6 @@
                         <div class="card-title">Edit Document </div>
                     </div>
                     <div class="card-body">
->>>>>>> e340c0edb333fb9c43ae9cf91fbc11dc5a904a34
                         <form action="{{ url('admin/update_document') }}" method="post" id="update" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="id" value="{{ $users->id }}">
@@ -57,9 +47,9 @@
                                     @enderror
                                 </span>
                             </div>
-                            
 
-                            
+
+
                             <div class="form-group col-md-6">
                                 <label><b>Category Id</b></label>
                                 <input type="text" name="category_id" id="category_id" value="{{ $users->category_id }}"
@@ -70,9 +60,9 @@
                                     @enderror
                                 </span>
                             </div>
-                            
 
-                        
+
+
                             <div class="form-group col-md-6">
                                 <label><b>Document Type Id</b></label>
                                 <input type="text" name="document_type_id" id="document_type_id"
@@ -83,9 +73,9 @@
                                     @enderror
                                 </span>
                             </div>
-                            
 
-                            
+
+
                             <div class="form-group col-md-6">
                                 <label><b>Title</b></label>
                                 <input type="text" name="title" id="title" value="{{ $users->title }}"
@@ -96,7 +86,7 @@
                                     @enderror
                                 </span>
                             </div>
-                            
+
 
                             <div class="form-group  col-md-6">
                                 <label for="exampleFormControlFile1"> Upload document</label>
@@ -117,7 +107,7 @@
                         </form>
 </div>
                     </div>
-          
+
     <script>
         $(document).ready(function() {
             // validate  form using jquey
@@ -139,10 +129,6 @@
                         required: true,
 
                     },
-<<<<<<< HEAD
-=======
-                  
->>>>>>> e340c0edb333fb9c43ae9cf91fbc11dc5a904a34
                     status: {
 
                         required: true,
@@ -164,15 +150,8 @@
                         required: "*Update your title",
 
                     },
-<<<<<<< HEAD
-                    status: {
-                        required: "*Update your  status",
 
-                    },
-=======
-                   
-                   
->>>>>>> e340c0edb333fb9c43ae9cf91fbc11dc5a904a34
+
                 }
 
             });

@@ -156,8 +156,4 @@
 		});
 	</script>
 <script src="{{asset('admin/js/bootstrap.min.js')}}"></script>
-<<<<<<< HEAD
 <script src="{{asset('admin/js/validate.min.js')}}"></script>
-=======
-<script src="{{asset('admin/js/validate.min.js')}}"></script>
->>>>>>> e340c0edb333fb9c43ae9cf91fbc11dc5a904a34

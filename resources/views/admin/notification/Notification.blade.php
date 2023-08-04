@@ -83,5 +83,6 @@
                 }
             });
         });
-        </script>
+
+</script>
 @endsection

@@ -1,9 +1,9 @@
 @extends('layouts.admin-app')
 
 @section('content')
-    
+
 <div class="content">
-    
+
     <div class="page-inner">
         <div class="page-header">
             <ul class="breadcrumbs">
@@ -41,7 +41,7 @@
                                 placeholder="Enter Name" name="name">
                                 <span class="text-danger  ">
                                     @error('name')
-                                    {{$message}}    
+                                    {{$message}}
                                     @enderror
                                 </span>
                         </div>
@@ -52,14 +52,14 @@
                             &nbsp;&nbsp;&nbsp;
                             <input type="checkbox" name="status" id="status" value="1">
                                 <span class="text-danger error ">
-                                    
+
                                 @error('status')
                                 {{$message}}
                                 @enderror
                              </span>
-                                
+
                         </div>
-                        
+
                         <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>
                                 <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
@@ -70,7 +70,7 @@
             </div>
         </div>
     </div>
-        
+
 </div>
 
 <script>
@@ -83,7 +83,7 @@
                     minlength:4,
                     maxlength:20,
                 },
-               
+
             },
             messages: {
                 name: {
