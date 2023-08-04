@@ -28,7 +28,7 @@
         </div>
         <div class="row">
             <div class="col-md-10">
-                <div class="card">
+                <!-- <div class="card">
                 <div class="card-header">
                         <div class="d-flex align-items-center">
                             <a href="{{ url('/admin/edit_image') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
@@ -39,7 +39,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body"> -->
 
     <table id="datatables" class="display table table-striped table-hover">
         <thead>
@@ -47,7 +47,6 @@
                 <th> Id</th>
                 <th> Image </th>
                 <th> Edit</th>
-                <th> delete</th>
                 
             </tr>
         </thead>
@@ -65,15 +64,6 @@
                                 <i class="fa fa-edit">
                                 </i>
                             </button>
-                        </a>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-button-action">
-                            <a href="/admin/delete_image/{{ $users->id }}">
-                                <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                    <i class="fa fa-times"></i>
-                                </button>
                         </a>
                         </div>
                     </td>

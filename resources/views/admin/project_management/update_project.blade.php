@@ -55,6 +55,8 @@
                                     <option value="{{$users->id}}">{{$users->manager_d}}</option>
                                     @endforeach
                                 </select>
+
+                                
                             </div>
 
                             <div class="text-right">

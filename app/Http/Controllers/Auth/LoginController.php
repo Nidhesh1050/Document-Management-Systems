@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -52,8 +53,16 @@ class LoginController extends Controller
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
             if (auth()->user()->type == 'admin') {
+                
+                Session::put('user_type', auth()->user()->type);
+                Session::put('user_id', auth()->user()->id);
+
                 return redirect()->route('admin.home');
             }else if (auth()->user()->type == 'manager') {
+
+                Session::put('user_type', auth()->user()->type);
+                Session::put('user_id', auth()->user()->id);
+                
                 return redirect()->route('manager.home');
             }else{
                 return redirect()->route('home');

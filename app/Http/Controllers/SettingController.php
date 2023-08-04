@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class SettingController extends Controller
 {
@@ -20,9 +21,14 @@ class SettingController extends Controller
         $image = $request->file('image');
         $destinationPath = public_path('/images');
         $image_name = rand().'.'.$image->getClientOriginalExtension(); 
+
+        if (!Storage::exists('images/' . $image_name)) {
         $image->move($destinationPath, $image_name);
 
         $inserData['image'] = $image_name;
+        }else {
+            return redirect()->back()->with('error', 'Image already exists.');
+        }
       
 
         DB::table('side_setting')->insert($inserData);
