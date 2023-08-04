@@ -42,9 +42,11 @@
                     <input type="text" name="title" id="title" class="form-control" >
                 </div>
                 <div>
+                <span class="text-danger error ">
                     @error('title')
                      {{$message}}
                     @enderror
+                    <span>
                 </div>
 
                 <div class="form-group col-md-6">
@@ -52,9 +54,11 @@
                     <input type="textarea"  name="description"  id="description" class="form-control" >
                 </div>
                 <div>
+                <span class="text-danger error ">
                     @error('description')
                      {{$message}}
                     @enderror
+                    <Span>
                 </div>
 
                 <div class="text-right">
@@ -67,26 +71,17 @@
  </div>
 </div>
 <script>
-if ($("#form").length > 0) {
-$("#form").validate({
-rules: {
-title: {
-required: true,
-
-},
-description: {
-required: true,
-},
-},
-messages: {
-title: {
-required: "Please enter title",
-},
-description: {
-required: "Please enter description",
-},
-},
-})
-}
-</script>
+        $(document).ready(function() {
+            $("#form").validate({
+                rules: {
+                    title: "required",
+                    description: "required",
+                },
+                messages: {
+                    title: "Please Enter Title.",
+                    description: "Please Enter Description.",
+                }
+            });
+        });
+        </script>
 @endsection

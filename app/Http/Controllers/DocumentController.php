@@ -32,7 +32,6 @@ class DocumentController extends Controller
             'category_id'=>'required',
             'document_type_id' =>'required',
             'title' => 'required',
-            'status' => 'required',
             ]);
 
         if(!empty($request->file('documents'))){
@@ -50,7 +49,6 @@ class DocumentController extends Controller
             'document_type_id' => $request['document_type_id'],
             'title' => $request['title'],
             'documents' => $documents_name,
-            'status' => $request['status'],
 
             ]);
         }else{
@@ -60,7 +58,6 @@ class DocumentController extends Controller
                 'project_id' => $request['project_id'],
                 'category_id' => $request['category_id'],
                 'title' => $request['title'],
-                'status' => $request['status'],
             ]);
         }
         return redirect('admin/document');
@@ -86,7 +83,7 @@ class DocumentController extends Controller
             'category_id' => 'required',
             'document_ty' =>  'required',
             'title' =>  'required',
-            'document' => 'required',
+            'document' =>  'required|mimes:pdf,xlsx,docx,ppt',
 
            'status' => 'nullable|boolean',
         ]);
@@ -153,6 +150,12 @@ class DocumentController extends Controller
     }
       //Update Code
     public function update(Request $request){
+
+        $request->validate(
+         ['name' => 'required',
+            ]);
+
+
         DB::table('document_types')
             ->where('id', $request['id'])
             ->update([
