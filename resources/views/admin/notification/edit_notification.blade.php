@@ -22,7 +22,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Update </a>
+                    <a href="#">Update Notification </a>
                 </li>
             </ul>
         </div>
@@ -33,18 +33,26 @@
                         <div class="card-title">Update Notification</div>
                     </div>
                     <div class="card-body">   
-        <form action="{{url('admin/update_notification')}}" method="POST">
+        <form action="{{url('admin/update_notification')}}" id="form" method="POST">
             @csrf
                 <input type="hidden" name="id" value="{{$users->id}}">
                 <div class="form-group">
                     <label>Title</label>
                     <input type="text" name="title" value="{{$users->title}}" class="form-control" >
-                    
+                    <span class="text-danger error ">
+                    @error('title')
+                     {{$message}}
+                    @enderror
+                    <span>
                 </div>
                 <div class="form-group">
                     <label>Description</label>
                     <input type="textarea" name="description" value="{{$users->description}}" class="form-control" >
-                    
+                    <span class="text-danger error ">
+                    @error('description')
+                     {{$message}}
+                    @enderror
+                    <span>
                 </div>
               
                 <div class="text-right">
@@ -54,5 +62,20 @@
         </form>
     </div>   
 </div>
+
+<script>
+        $(document).ready(function() {
+            $("#form").validate({
+                rules: {
+                    title: "required",
+                    description: "required",
+                },
+                messages: {
+                    title: "Please Enter Title.",
+                    description: "Please Enter Description.",
+                }
+            });
+        });
+        </script>
 
 @endsection

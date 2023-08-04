@@ -46,8 +46,7 @@
             <tr>
                 <th> Id</th>
                 <th> Image </th>
-                <th> Edit</th>
-                <th> delete</th>
+                <th> Action</th>
                 
             </tr>
         </thead>
@@ -67,8 +66,7 @@
                             </button>
                         </a>
                         </div>
-                    </td>
-                    <td>
+                   
                         <div class="form-button-action">
                             <a href="/admin/delete_image/{{ $users->id }}">
                                 <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">

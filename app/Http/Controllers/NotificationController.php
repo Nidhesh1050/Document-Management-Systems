@@ -54,6 +54,12 @@ class NotificationController extends Controller
          }
 
          public function update_notification(Request $request){
+            $request->validate(
+                [
+                  'title'=>'required',
+                  'description'=>'required',
+                  ]
+              );
     
             DB::table('notifications')
                 ->where('id', $request['id'])
