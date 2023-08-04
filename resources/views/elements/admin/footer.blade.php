@@ -155,5 +155,5 @@
 			fillColor: 'rgba(255, 165, 52, .14)'
 		});
 	</script>
-<script src="{{asset('admin//js/bootstrap.min.js')}}"></script>
-<script src="{{asset('admin//js/validate.min.js')}}"></script>
+<script src="{{asset('admin/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('admin/js/validate.min.js')}}"></script>

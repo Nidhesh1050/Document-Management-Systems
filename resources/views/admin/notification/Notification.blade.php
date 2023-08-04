@@ -1,9 +1,9 @@
 @extends('layouts.admin-app')
 
 @section('content')
-    
+
 <div class="content">
-    
+
     <div class="page-inner">
         <div class="page-header">
             <ul class="breadcrumbs">
@@ -32,8 +32,8 @@
                     <div class="card-header">
                         <div class="card-title">Add Notification</div>
                     </div>
-                    <div class="card-body">   
-        
+                    <div class="card-body">
+
         <form action="add_notification" id="form" method="POST">
             @csrf
 
@@ -42,9 +42,11 @@
                     <input type="text" name="title" id="title" class="form-control" >
                 </div>
                 <div>
+                <span class="text-danger error ">
                     @error('title')
                      {{$message}}
                     @enderror
+                    <span>
                 </div>
 
                 <div class="form-group col-md-6">
@@ -52,11 +54,13 @@
                     <input type="textarea"  name="description"  id="description" class="form-control" >
                 </div>
                 <div>
+                <span class="text-danger error ">
                     @error('description')
                      {{$message}}
                     @enderror
+                    <Span>
                 </div>
-            
+
                 <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>
                                 <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
@@ -64,29 +68,21 @@
         </form>
 
 
- </div>   
+ </div>
 </div>
 <script>
-if ($("#form").length > 0) {
-$("#form").validate({
-rules: {
-title: {
-required: true,
+        $(document).ready(function() {
+            $("#form").validate({
+                rules: {
+                    title: "required",
+                    description: "required",
+                },
+                messages: {
+                    title: "Please Enter Title.",
+                    description: "Please Enter Description.",
+                }
+            });
+        });
 
-},
-description: {
-required: true,
-},
-},
-messages: {
-title: {
-required: "Please enter title",
-},
-description: {
-required: "Please enter description",
-},
-},
-})
-} 
 </script>
 @endsection

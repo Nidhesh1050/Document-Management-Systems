@@ -47,6 +47,7 @@
                 <th> Id</th>
                 <th> Image </th>
                 <th> Edit</th>
+                <th> Action</th>
                 
             </tr>
         </thead>

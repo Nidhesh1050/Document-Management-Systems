@@ -16,25 +16,25 @@ class ProjectManagementController extends Controller
 
 
     public function add_project(Request $request) {
-        $request->validate([ 
+        $request->validate([
             'project_name' => 'required|string',
             'manager_d' =>  'required',
-            'status' => 'nullable|boolean', 
+            'status' => 'nullable|boolean',
         ]);
        $status = $request->status == 1 ? 1 : 0;
-       
-        $inserData['project_name']= $request->project_name;  
+
+        $inserData['project_name']= $request->project_name;
         $inserData['manager_d'] = $request->manager_d;
-        $inserData['status'] =  $status; 
+        $inserData['status'] =  $status;
         DB::table('projects')->insert($inserData);
         return redirect('/admin/view_project');
-        
-        
+
+
     }
 
 
     public function view_project(){
-        $users = DB::table('projects')->orderBy('id','DESC')->get(); 
+        $users = DB::table('projects')->orderBy('id','DESC')->get();
         return view('admin.project_management.view_project',['users'=>$users]);
     }
 
@@ -52,11 +52,11 @@ class ProjectManagementController extends Controller
     }
 
     public function edit_project(Request $request){
+        $request->validate([
+            'project_name' => 'required|string',
+            'manager_d' =>  'required',
+        ]);
         DB::table('projects')
-
-        
-
-
         ->where('id', $request['id'])
         ->update([
             'project_name' => $request['project_name'],

@@ -1,9 +1,9 @@
 @extends('layouts.admin-app')
 
 @section('content')
-    
+
 <div class="content">
-    
+
     <div class="page-inner">
         <div class="page-header">
             <ul class="breadcrumbs">
@@ -47,7 +47,7 @@
                             @endforeach
                           </select>
                           </div>
-                          
+
 
 
                         <div class="form-group col-md-6">
@@ -58,7 +58,7 @@
                                 {{$message}}
                                 @enderror
                             </span>
-                        
+
                         </div
 
                         <div class="form-group col-md-6">
@@ -72,11 +72,6 @@
                             </span>
                         </div>
 
-
-                       
-
-
-                       
                         <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>
                                 <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
@@ -84,7 +79,7 @@
                 </form>
         </div>
     </div>
-    
+
 </div>
 
 <script>

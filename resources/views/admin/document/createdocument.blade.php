@@ -104,7 +104,7 @@
                                     <input type="file" class="form-control-file" name="document"
                                         id="exampleFormControlFile1">
                                     <span class="text-danger error ">
-                                        @error('documents')
+                                        @error('document')
                                         {{$message}}
                                         @enderror
                                     </span>

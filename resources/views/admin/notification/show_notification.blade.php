@@ -63,10 +63,11 @@
 									</button>
                             </a>
 
-                            <a href='delete/{{$user->id}}'> 
-									<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Delete">
-										<i class="fa fa-times"></i>
-									</button>
+                            <a href='delete/{{$user->id}}' onclick="return confirm('Are you sure to delete ?')">
+                                <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            </a>
                             </a>
 						</div>
 					</td>

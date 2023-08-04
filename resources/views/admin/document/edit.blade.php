@@ -39,7 +39,12 @@
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="name" class="form-control"
-                                placeholder="Enter Name" name="name" value="{{ $users->name }}">                             
+                                placeholder="Enter Name" name="name" value="{{ $users->name }}">    
+            <span class="text-danger error ">
+                    @error('name')
+                     {{$message}}
+                    @enderror
+                    <span>                         
                             </div>                        
                             <div class="text-right">
                                 <button type="update" class="mt-4 btn btn-success">Update</button>
