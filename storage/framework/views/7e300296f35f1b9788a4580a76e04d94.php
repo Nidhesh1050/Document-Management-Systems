@@ -8,13 +8,14 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
             <div class="user">
 
                 <div class="avatar-sm float-left mr-2">
-                <img src="{{ asset('images/' .$users->image) }}" alt="..." class="avatar-img rounded-circle" >
+                <img src="<?php echo e(asset('images/' .$users->image)); ?>" alt="..." class="avatar-img rounded-circle" >
                 </div>
 
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                         <span>
-                            {{ Auth::user()->name }}
+                            <?php echo e(Auth::user()->name); ?>
+
                             <span class="user-level">Administrator</span>
                             <span class="caret"></span>
                         </span>
@@ -51,7 +52,7 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
                     <h4 class="text-section">Components</h4>
                 </li>
                 <li class="nav-item">
-                    <a href="{{url('admin/home')}}">
+                    <a href="<?php echo e(url('admin/home')); ?>">
                         <i class="fas fa-layer-group"></i>
                         <p>Dashboard</p>
                     </a>
@@ -64,12 +65,12 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
                     <div class="collapse" id="base">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('admin/userManagement')}}">
+                                <a href="<?php echo e(url('admin/userManagement')); ?>">
                                     <span class="sub-item">User List</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/adduser')}}">
+                                <a href="<?php echo e(url('admin/adduser')); ?>">
                                     <span class="sub-item">Add User</span>
                                 </a>
                             </li>
@@ -86,12 +87,12 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
                     <div class="collapse" id="sidebarLayouts">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('admin/view_category')}}">
+                                <a href="<?php echo e(url('admin/view_category')); ?>">
                                     <span class="sub-item">Category List</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/category')}}">
+                                <a href="<?php echo e(url('admin/category')); ?>">
                                     <span class="sub-item">Add Category</span>
                                 </a>
                             </li>
@@ -108,12 +109,12 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
                     <div class="collapse" id="project">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('admin/view_project')}}">
+                                <a href="<?php echo e(url('admin/view_project')); ?>">
                                     <span class="sub-item">Project List</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/project_management')}}">
+                                <a href="<?php echo e(url('admin/project_management')); ?>">
                                     <span class="sub-item">Add Project</span>
                                 </a>
                             </li>
@@ -131,12 +132,12 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
                     <div class="collapse" id="forms">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('admin/document')}}">
+                                <a href="<?php echo e(url('admin/document')); ?>">
                                     <span class="sub-item">View Document</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/createdocument')}}">
+                                <a href="<?php echo e(url('admin/createdocument')); ?>">
                                         <span class="sub-item">Add Document</span>
                                     </a>
                                 </li>
@@ -153,12 +154,12 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
                     <div class="collapse" id="list">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('admin/view_document')}}">
+                                <a href="<?php echo e(url('admin/view_document')); ?>">
                                     <span class="sub-item">Document List</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/add_document')}}">
+                                <a href="<?php echo e(url('admin/add_document')); ?>">
                                     <span class="sub-item">Add Document</span>
                                 </a>
                             </li>
@@ -175,12 +176,12 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
                     <div class="collapse" id="setting">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('admin/view_image')}}">
+                                <a href="<?php echo e(url('admin/view_image')); ?>">
                                     <span class="sub-item">Settings List</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/setting')}}">
+                                <a href="<?php echo e(url('admin/setting')); ?>">
                                     <span class="sub-item">Add Settings</span>
                                 </a>
                             </li>
@@ -198,12 +199,12 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 							<div class="collapse" id="tables">
 								<ul class="nav nav-collapse">
 									<li>
-                                    <a href="{{url('admin/show_notification')}}">
+                                    <a href="<?php echo e(url('admin/show_notification')); ?>">
 											<span class="sub-item">View Notification</span>
 										</a>
 									</li>
 									<li>
-                                    <a href="{{url('admin/notification')}}">
+                                    <a href="<?php echo e(url('admin/notification')); ?>">
 											<span class="sub-item">Add Notification</span>
 										</a>
 									</li>
@@ -216,3 +217,4 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
     </div>
 </div>
 
+<?php /**PATH C:\wamp\www\dms\resources\views/elements/admin/left_menus.blade.php ENDPATH**/ ?>

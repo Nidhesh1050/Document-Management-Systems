@@ -54,9 +54,9 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/createdocument',[DocumentController::class,'createdocument']);
     Route::post('/admin/add_document',[DocumentController::class,'add_document']);
     Route::get('/admin/document',[DocumentController::class,'document']);
-    Route::get('/admin/delete/{id}', [DocumentController::class,'deletedocument']);
-    Route::get('/admin/edit/{id}', [DocumentController::class,'edit_document']);
-    Route::post('/admin/update/', [DocumentController::class,'update_document']);
+    Route::get('/admin/delete_document/{id}', [DocumentController::class,'delete_document']);
+    Route::get('/admin/edit_document/{id}', [DocumentController::class,'edit_document']);
+    Route::post('/admin/update_document/', [DocumentController::class,'update_document']);
     /* Document management routes end*/
 
 

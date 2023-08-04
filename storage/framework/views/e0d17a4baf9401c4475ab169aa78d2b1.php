@@ -1,6 +1,4 @@
-@extends('layouts.admin-app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="content">
 
@@ -8,7 +6,7 @@
         <div class="page-header">
             <ul class="breadcrumbs">
                 <li class="nav-home">
-                    <a href="{{url('admin/notification')}}">
+                    <a href="<?php echo e(url('admin/notification')); ?>">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -35,16 +33,24 @@
                     <div class="card-body">
 
         <form action="add_notification" id="form" method="POST">
-            @csrf
+            <?php echo csrf_field(); ?>
 
                 <div class="form-group col-md-6">
                     <label>Title</label>
                     <input type="text" name="title" id="title" class="form-control" >
                 </div>
                 <div>
-                    @error('title')
-                     {{$message}}
-                    @enderror
+                    <?php $__errorArgs = ['title'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                     <?php echo e($message); ?>
+
+                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                 </div>
 
                 <div class="form-group col-md-6">
@@ -52,14 +58,22 @@
                     <input type="textarea"  name="description"  id="description" class="form-control" >
                 </div>
                 <div>
-                    @error('description')
-                     {{$message}}
-                    @enderror
+                    <?php $__errorArgs = ['description'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                     <?php echo e($message); ?>
+
+                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                 </div>
 
                 <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>
-                                <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
+                                <a href="<?php echo e(url('admin/home')); ?>" class="mt-4 btn btn-danger">Cancel</a>
                             <div>
         </form>
 
@@ -89,4 +103,6 @@ required: "Please enter description",
 })
 }
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.admin-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp\www\dms\resources\views/admin/notification/Notification.blade.php ENDPATH**/ ?>

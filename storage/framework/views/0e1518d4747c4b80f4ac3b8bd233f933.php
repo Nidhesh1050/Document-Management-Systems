@@ -1,6 +1,4 @@
-@extends('layouts.admin-app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="content">
 
@@ -8,7 +6,7 @@
         <div class="page-header">
             <ul class="breadcrumbs">
                 <li class="nav-home">
-                    <a href="{{url('admin/home')}}">
+                    <a href="<?php echo e(url('admin/home')); ?>">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -33,9 +31,9 @@
                         <div class="card-title">Add Document</div>
                     </div>
                     <div class="card-body">
-                        <form action="{{url('admin/add_document')}}" method="post" id="files"
+                        <form action="<?php echo e(url('admin/add_document')); ?>" method="post" id="files"
                             enctype="multipart/form-data">
-                            @csrf
+                            <?php echo csrf_field(); ?>
 
 
                             <div class="form-row">
@@ -43,15 +41,23 @@
                                     <label>Project Id</label>
                                     <select name="project_id" class="form-control">
                                         <option value=""> Please Select</option>
-                                        @foreach($project_documents as $project_documents)
-                                        <option value="{{$project_documents->id}}">
+                                        <?php $__currentLoopData = $project_documents; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $project_documents): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($project_documents->id); ?>">
                                             <?php echo $project_documents->project_name;?></option>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                     <span class="text-danger error ">
-                                        @error('project_id')
-                                        {{$message}}
-                                        @enderror
+                                        <?php $__errorArgs = ['project_id'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                        <?php echo e($message); ?>
+
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </span>
                                 </div>
 
@@ -59,15 +65,23 @@
                                     <label>Category Id</label>
                                     <select name="category_id" class="form-control">
                                         <option value=""> Please Select</option>
-                                        @foreach($category_documents as $category_documents)
-                                        <option value="{{$category_documents->id}}">
+                                        <?php $__currentLoopData = $category_documents; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category_documents): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($category_documents->id); ?>">
                                             <?php echo $category_documents->name;?></option>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                     <span class="text-danger error ">
-                                        @error('category_id')
-                                        {{$message}}
-                                        @enderror
+                                        <?php $__errorArgs = ['category_id'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                        <?php echo e($message); ?>
+
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </span>
                                 </div>
 
@@ -76,15 +90,23 @@
                                     <select name="document_ty" class="form-control">
 
                                         <option value=""> Please Select</option>
-                                        @foreach($document_type as $document_type)
-                                        <option value="{{$document_type->id}}"><?php echo $document_type->name?>
+                                        <?php $__currentLoopData = $document_type; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $document_type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($document_type->id); ?>"><?php echo $document_type->name?>
                                         </option>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                     <span class="text-danger error ">
-                                        @error('document_type_id')
-                                        {{$message}}
-                                        @enderror
+                                        <?php $__errorArgs = ['document_type_id'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                        <?php echo e($message); ?>
+
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </span>
                                 </div>
 
@@ -92,9 +114,17 @@
                                     <label for="name">Title</label>
                                     <input type="text" class="form-control" name="title" id="" placeholder="title">
                                     <span class="text-danger error ">
-                                        @error('title')
-                                        {{$message}}
-                                        @enderror
+                                        <?php $__errorArgs = ['title'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                        <?php echo e($message); ?>
+
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </span>
                                 </div>
 
@@ -104,9 +134,17 @@
                                     <input type="file" class="form-control-file" name="document"
                                         id="exampleFormControlFile1">
                                     <span class="text-danger error ">
-                                        @error('documents')
-                                        {{$message}}
-                                        @enderror
+                                        <?php $__errorArgs = ['documents'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                        <?php echo e($message); ?>
+
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </span>
                                 </div>
 
@@ -117,16 +155,24 @@
                                     <input type="checkbox" name="status" id="status" value="1">
                                     <span class="text-danger error ">
 
-                                        @error('status')
-                                        {{$message}}
-                                        @enderror
+                                        <?php $__errorArgs = ['status'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                        <?php echo e($message); ?>
+
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </span>
 
                                 </div>
                             </div>
                             <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>
-                                <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
+                                <a href="<?php echo e(url('admin/home')); ?>" class="mt-4 btn btn-danger">Cancel</a>
                                 <div>
                         </form>
                     </div>
@@ -160,4 +206,6 @@
         });
         </script>
 
-        @endsection
+        <?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.admin-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp\www\dms\resources\views/admin/document/createdocument.blade.php ENDPATH**/ ?>

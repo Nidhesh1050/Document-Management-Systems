@@ -16,7 +16,7 @@ class DocumentController extends Controller
 
     }
     //Delete function to delete in user body
-    public function delete($id) {
+    public function delete_document($id) {
         DB::delete('delete from file_uploads where id = ?',[$id]);
         return redirect()->back();
     }
@@ -32,7 +32,6 @@ class DocumentController extends Controller
             'category_id'=>'required',
             'document_type_id' =>'required',
             'title' => 'required',
-            'documents' => 'required',
             'status' => 'required',
             ]);
 
@@ -75,7 +74,7 @@ class DocumentController extends Controller
         $project_documents = DB::table('projects')->select('id','project_name')->get();
         $category_documents = DB::table('categories')->select('id','name')->get();
         $document_type= DB::table('document_types')->select('id','name')->get();
-        return view ('admin.documents.createdocument')->with(['project_documents'=>$project_documents,'category_documents'=>$category_documents,'document_type'=>$document_type]);
+        return view ('admin.document.createdocument')->with(['project_documents'=>$project_documents,'category_documents'=>$category_documents,'document_type'=>$document_type]);
        }
 
     public function add_document(Request $request){
@@ -89,7 +88,7 @@ class DocumentController extends Controller
             'title' =>  'required',
             'document' => 'required',
 
-           'status' => 'nullable|boolean', 
+           'status' => 'nullable|boolean',
         ]);
 
         $status = $request->status == 1 ? 1 : 0;
@@ -104,9 +103,9 @@ class DocumentController extends Controller
             $inserData['document_type_id']= $request->document_ty;
             $inserData['title'] = $request->title;
             $inserData['documents'] = $document_name;
-            $inserData['status'] =  $status; 
+            $inserData['status'] =  $status;
 
-           
+
 
             DB::table('file_uploads')->insert($inserData);
             return  redirect('admin/document');
@@ -136,13 +135,13 @@ class DocumentController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'status' => 'nullable|boolean', 
+            'status' => 'nullable|boolean',
             ]
         );
         $status = $request->status == 1 ? 1 : 0;
 
         $insertData['name'] = $request->name;
-        $insertData['status'] =  $status; 
+        $insertData['status'] =  $status;
         DB::table('document_types')->insert($insertData);
         return redirect('admin/view_document');
      }

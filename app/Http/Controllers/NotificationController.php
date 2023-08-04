@@ -1,17 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Http\Request;
 
 class NotificationController extends Controller
 {
-    
+
 
     public function notification(){
- 
+
         return view('admin.notification.Notification');
     }
 
@@ -23,14 +23,14 @@ class NotificationController extends Controller
               'description'=>'required',
               ]
           );
-    
+
             $inserData['title'] = $request->title;
             $inserData['description']= $request->description;
 
             DB::table('notifications')->insert($inserData);
 
             return redirect('admin/show_notification');
-            
+
     }
 
     public function show_notification(){
@@ -47,14 +47,14 @@ class NotificationController extends Controller
      }
 
         //edit code in user body
-        public function edit_notification(Request $request,$id) 
+        public function edit_notification(Request $request,$id)
         {
            $users = DB::table('notifications')->where(['id'=> $id])->first();
            return view('admin.notification.edit_notification')->with(['users'=>$users]);
          }
 
          public function update_notification(Request $request){
-    
+
             DB::table('notifications')
                 ->where('id', $request['id'])
                 ->update([
@@ -62,6 +62,6 @@ class NotificationController extends Controller
                     'description' => $request['description'],
                 ]);
                 return redirect('admin/show_notification');
-                
+
         }
 }

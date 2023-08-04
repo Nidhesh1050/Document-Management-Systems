@@ -8,7 +8,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6 col-lg-4">
-                        <form action="{{ url('admin/update') }}" method="post" id="update" enctype="multipart/form-data">
+                        <form action="{{ url('admin/update_document') }}" method="post" id="update" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="id" value="{{ $users->id }}">
 
@@ -111,10 +111,6 @@
                         required: true,
 
                     },
-                    documents: {
-
-                        required: true,
-                    },
                     status: {
 
                         required: true,
@@ -135,9 +131,6 @@
                     title: {
                         required: "*Update your title",
 
-                    },
-                    documents: {
-                        required: "*Choose documents",
                     },
                     status: {
                         required: "*Update your  status",
