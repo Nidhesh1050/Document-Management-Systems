@@ -52,7 +52,7 @@
                          <div class="form-group col-md-12">
                             <label for="description">Description</label>
                             <textarea class="form-control"  name="description" id="editor"
-                                placeholder="write text" rows="2">
+                                placeholder="write text" style="height:150px">
                                             </textarea>
                                             <span class="text-danger error ">
                                 @error('description')
@@ -124,6 +124,7 @@ $(document).ready(function() {
         .create( document.querySelector( '#editor' ) )
         .catch( error => {
             console.error( error );
+            
         } );
 </script>
 

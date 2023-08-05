@@ -59,7 +59,7 @@
                                 @enderror
                             </span>
 
-                        </div
+</div
 
                         <div class="form-group col-md-6">
                             <label for="description">Description</label>
@@ -79,9 +79,7 @@
                 </form>
         </div>
     </div>
-
 </div>
-
 <script>
 $(document).ready(function() {
 
@@ -92,15 +90,11 @@ $(document).ready(function() {
             parent_id: "required",
             name: "required",
             description: "required",
-            image: "required",
-            status: "required",
         },
         messages: {
             parent_id: "Please select parent_id",
             name: "Please enter your Name",
             description: "Please enter  description",
-            image: "Chose any image",
-            status: "Please enter Status",
 
         }
 

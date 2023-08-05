@@ -63,7 +63,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="mobile">Mobile</label>
                                     <input type="mobile" class="form-control" id="mobile" placeholder="Enter Mobile"
-                                        value="{{ $users->mobile }}" name="mobile">
+                                        value="{{$users->mobile}}" name="mobile">
                                     <span class="text-danger  ">
                                         @error('mobile')
                                         {{$message}}

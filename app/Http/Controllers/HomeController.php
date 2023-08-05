@@ -54,8 +54,8 @@ class HomeController extends Controller
     //List of users
 
     public function userManagement(){
-        $users = DB::table('users')->get();
-        // $users = DB::select('select * from users');
+        $users = DB::table('users')->whereIn('type', [2,0])->get();
+        
         return view('admin.user.userManagement',['users'=>$users]);
     }
     //Delete function to delete in user body
@@ -66,7 +66,8 @@ class HomeController extends Controller
      //edit code in user body
      public function edit(Request $request,$id) {
 
-      $project_manager = DB::table('usertype')->select('id','name')->get();
+      $project_manager = DB::table('usertype')->select('id','name')->whereIn('id', [2,0])->get();
+      
 
         $users = DB::table('users')->where(['id'=> $id])->first();
         return view('admin.user.edit')->with(['users'=>$users,'project_manager'=>    $project_manager]);
@@ -99,8 +100,14 @@ class HomeController extends Controller
       }
       //Insert data Code
       public function adduser(){
-        $project_manager = DB::table('usertype')->select('id','name')->get();
+        $project_manager = DB::table('usertype')->select('id','name')->whereIn('id', [2,0])->get();
+
+   
         return view('admin.user.adduser',['project_manager'=>$project_manager]);
+
+
+
+        
       }
       public function register(Request $request)
     {
@@ -133,15 +140,25 @@ class HomeController extends Controller
      
         $inserData['name'] = $request->name;
         $inserData['email']= $request->email;
+        $details = [
+          'title' => 'Mail from dms.srmtechsol.com',
+          'body' => 'Welcome in Document Manganent Proejct',
+         
+      ];
+      
+      \Mail::to($request->email)->send(new \App\Mail\MyTestMail($details));
+      
+
         $inserData['mobile'] = $request->mobile;
         $inserData['user_type'] = $request->user_type;
         $inserData['username'] = $request->username;
         $inserData['password'] = $request->password;
-        //print_r($inserData);die;
 
         DB::table('users')->insert($inserData);
 
         return redirect('admin/userManagement');
+
+        
 
     }
 
