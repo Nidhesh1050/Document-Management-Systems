@@ -1,6 +1,8 @@
 @extends('layouts.admin-app')
 @section('content')
-
+<?php 
+use app\Models\User;
+?>
 <div class="content">
     <div class="page-inner">
         <div class="page-header">
@@ -61,8 +63,8 @@
 
                         <tr>
                             <td> {{ $users->project_id }}</td>
-                            <td> {{ $users->category_id }}</td>
-                            <td> {{ $users->document_type_id }}</td>
+                            <td> {{ User::getCategoryID($users->category_id) }}</td>
+                            <td> {{ User::getDocumentTypeID($users->document_type_id) }}</td>
                             <td> {{ $users->title }}</td>
                             <td> {{ $users->documents }}</td>
                             <td>{{ $status }}</td>
