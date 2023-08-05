@@ -8,10 +8,15 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Facades\DB;
 
+<<<<<<< HEAD
 
 class User extends Authenticatable
 
+=======
+class User extends Authenticatable 
+>>>>>>> c90d11ca605c2dd7c760bd7ab4590eb37a21c77d
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -52,5 +57,37 @@ class User extends Authenticatable
         return new Attribute(
             get: fn ($value) =>  ["user", "admin", "manager"][$value],
         );
+    }
+
+    public static function getDocumentTypeID($document_id){
+        $document_type = DB::table('document_types')->select('name')->where('id', $document_id)
+        ->first();
+        if(!empty($document_type->name)){
+            return $document_type->name;
+        }else{
+            return '';
+        }
+    }
+
+    public static function getCategoryID($category_id){
+        $category = DB::table('categories')->select('name')->where('id', $category_id)
+        ->first();
+        if(!empty($category->name)){
+            return $category->name;
+        }else{
+            return '';
+        }
+        
+    }
+
+    public static function getUserID($user_id){
+        $user = DB::table('users')->select('name')->where('id', $user_id)
+        ->first();
+        if(!empty($user->name)){
+            return $user->name;
+        }else{
+            return '';
+        }
+        
     }
 }
