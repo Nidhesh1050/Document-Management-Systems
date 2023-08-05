@@ -16,7 +16,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Notification Management</a>
+                    <a href="{{url('admin/show_notification')}}">Notification Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>

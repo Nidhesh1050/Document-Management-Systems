@@ -16,7 +16,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Project Management</a>
+                    <a href="{{url('admin/view_project')}}">Project Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -43,6 +43,7 @@
                                 <label for="name">Project Name</label>
                                 <input type="text" class="form-control" name="project_name"
                                     value="{{$users->project_name}}" placeholder="name">
+
                             </div>
 
 

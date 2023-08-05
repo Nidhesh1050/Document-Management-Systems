@@ -1,7 +1,7 @@
 <?php $__env->startSection('content'); ?>
-    
+
 <div class="content">
-    
+
     <div class="page-inner">
         <div class="page-header">
             <ul class="breadcrumbs">
@@ -14,7 +14,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Settings Management</a>
+                    <a href="<?php echo e(url('admin/view_image')); ?>">Settings Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -52,10 +52,10 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                            </span>  
+                            </span>
                         </div>
-                            
-                       
+
+
 
 
                         <div class="text-right">
@@ -77,15 +77,21 @@ $(document).ready(function() {
     $("#category").validate({
         rules: {
             image: "required",
-           
+
 
         },
         messages: {
+<<<<<<< HEAD
             image: "*Select image",
       
+=======
+            image: "Select Image",
+
+>>>>>>> 005a913af2e2f8b1bc939d48780b54546e443797
         }
     });
 });
 </script>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.admin-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\dms\resources\views/admin/setting/setting.blade.php ENDPATH**/ ?>

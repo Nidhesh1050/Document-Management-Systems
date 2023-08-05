@@ -1,7 +1,7 @@
 @extends('layouts.admin-app')
 
 @section('content')
-    
+
 <div class="content">
     <div class="page-inner">
         <div class="page-header">
@@ -15,7 +15,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Content Management</a>
+                    <a href="{{url('admin/view_content')}}">Content Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -32,7 +32,7 @@
                         <div class="card-title">Add Content</div>
                     </div>
                     <div class="card-body">
-                 
+
              <form action="{{url('admin/add_content')}}" method="post" id="content"
                     enctype="multipart/form-data">
                     @csrf
@@ -45,7 +45,7 @@
                                 {{$message}}
                                 @enderror
                             </span>
-                          
+
                         </div>
                         <div class="form-group col-md-6"></div>
 
@@ -82,17 +82,17 @@
                                 @enderror
                             </span>
                         </div>
-                        
+
                         <div class="text-right">
                              <button type="submit" class="mt-4 btn btn-success">Submit</button>
                              <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
-                    
+
                         </form>
                     </div>
 
                 </div>
             </div>
-        </div>  
+        </div>
     </div>
 </div>
 
@@ -100,18 +100,26 @@
 $(document).ready(function() {
     $("#content").validate({
         rules: {
-            
+
             title: "required",
             description: "required",
             image: "required",
             status: "required",
         },
         messages: {
+<<<<<<< HEAD
            
             title: "*Please enter your title",
             description: "*Please enter  description",
             image: "*Choose any image",
             status: "*Please enter status",
+=======
+
+            title: "Please enter your title",
+            description: "Please enter  description",
+            image: "Choose any image",
+            status: "Please enter Status",
+>>>>>>> 005a913af2e2f8b1bc939d48780b54546e443797
 
         }
 
