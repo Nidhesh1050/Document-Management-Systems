@@ -10,6 +10,7 @@ use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ProjectManagementController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\CMSController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -95,5 +96,17 @@ Route::get('/admin/delete/{id}', [NotificationController::class,'delete']);
 Route::get('/admin/edit_notification/{id}', [NotificationController::class,'edit_notification']);
 Route::post('/admin/update_notification', [NotificationController::class,'update_notification']);
  /* Notification type routes end   */
+
+/* Content management system routes start*/
+Route::get('/admin/addcontent',[CMSController::class,'addcontent']);
+Route::post('/admin/add_content',[CMSController::class,'add_content']);
+Route::get('/admin/view_content',[CMSController::class,'view_content']);
+Route::get('/admin/delete_content/{id}',[CMSController::class,'delete_content']);
+Route::get('/admin/update_content/{id}',[CMSController::class,'update_content']);
+Route::post('/admin/edit_content',[CMSController::class,'edit_content']);
+
+/* Content management system routes end*/
+
+
 
 });

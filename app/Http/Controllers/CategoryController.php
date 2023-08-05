@@ -47,6 +47,7 @@ class CategoryController extends Controller
     }
 
     public function edit_category(Request $request){
+        
             DB::table('categories')
             ->where('id', $request['id'])
             ->update([
