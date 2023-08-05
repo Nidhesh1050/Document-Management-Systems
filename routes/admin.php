@@ -26,7 +26,7 @@ use App\Http\Controllers\CMSController;
 //     return view('welcome');
 // });
 
-Auth::routes(['verify' => true]);
+Auth::routes();
 
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
