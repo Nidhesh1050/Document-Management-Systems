@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
+
 class HomeController extends Controller
 {
     /**
@@ -17,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth', 'verified']);
+        $this->middleware(['auth',]);
     }
     
 
@@ -98,6 +99,10 @@ class HomeController extends Controller
       }
       //Insert data Code
       public function adduser(){
+
+         $total_user = DB::table('users')->count();
+         $total_activeUser = DB::table('users')->where(['status'=> 1])->count();
+         $total_InActiveUser = DB::table('users')->where(['status'=> 0])->count();
         $project_manager = DB::table('usertype')->select('id','name')->get();
         return view('admin.user.adduser',['project_manager'=>$project_manager]);
       }

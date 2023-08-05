@@ -211,7 +211,27 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 								</ul>
 							</div>
 						</li>
-
+                        <li class="nav-item">
+							<a data-toggle="collapse" href="#charts">
+								<i class="far fa-chart-bar"></i>
+								<p>CMS</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="charts">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="<?php echo e(url('admin/view_content')); ?>">
+											<span class="sub-item">View CMS</span>
+										</a>
+									</li>
+									<li>
+										<a href="<?php echo e(url('admin/addcontent')); ?>">
+											<span class="sub-item">Add CMS</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
             </ul>
         </div>
     </div>
