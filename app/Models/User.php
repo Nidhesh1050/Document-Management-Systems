@@ -8,9 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Facades\DB;
 
-
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable 
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -52,4 +52,19 @@ class User extends Authenticatable implements MustVerifyEmail
             get: fn ($value) =>  ["user", "admin", "manager"][$value],
         );
     }
+
+    public static function getDocumentTypeID($document_id){
+        $document_type = DB::table('document_types')->select('name')->where('id', $document_id)
+        ->first();
+        return $document_type->name;
+    }
+
+    public static function getCategoryID($categories_id){
+        $document_type = DB::table('categories')->select('name')->where('id', $categories_id)
+        ->first();
+        return $document_type->name;
+    }
+
+   
+
 }

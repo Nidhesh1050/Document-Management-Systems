@@ -1,5 +1,7 @@
 <?php $__env->startSection('content'); ?>
-
+<?php 
+use app\Models\User;
+?>
 <div class="content">
     <div class="page-inner">
         <div class="page-header">
@@ -60,8 +62,8 @@
 
                         <tr>
                             <td> <?php echo e($users->project_id); ?></td>
-                            <td> <?php echo e($users->category_id); ?></td>
-                            <td> <?php echo e($users->document_type_id); ?></td>
+                            <td> <?php echo e(User::getCategoryID($users->category_id)); ?></td>
+                            <td> <?php echo e(User::getDocumentTypeID($users->document_type_id)); ?></td>
                             <td> <?php echo e($users->title); ?></td>
                             <td> <?php echo e($users->documents); ?></td>
                             <td><?php echo e($status); ?></td>
