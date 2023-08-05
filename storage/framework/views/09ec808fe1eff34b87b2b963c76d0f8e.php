@@ -1,12 +1,11 @@
-@extends('layouts.admin-app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="content">
     <div class="page-inner">
         <div class="page-header">
             <ul class="breadcrumbs">
                 <li class="nav-home">
-                    <a href="{{url('admin/home')}}">
+                    <a href="<?php echo e(url('admin/home')); ?>">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -29,7 +28,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <a href="{{ url('admin/category') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
+                            <a href="<?php echo e(url('admin/category')); ?>"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
                                     data-target="#addRowModal">
                                     <i class="fa fa-plus"></i>
                                     Add Category
@@ -52,18 +51,18 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($users as $users )
+            <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $users): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
            
                 <tr>
-                    <td> {{$users->id}}</td>
-                    <td> {{$users->parent_id}}</td>
-                    <td> {{$users->name}}</td>
-                    <td> {{$users->description}}</td>
-                  
+                    <td> <?php echo e($users->id); ?></td>
+                    <td> <?php echo e($users->parent_id); ?></td>
+                    <td> <?php echo e($users->name); ?></td>
+                    <td> <?php echo e($users->description); ?></td>
+                    </td>
                     <td>
                         <div class="form-button-action">
 
-                            <a href='/admin/update_category/{{ $users->id }}'>
+                            <a href='/admin/update_category/<?php echo e($users->id); ?>'>
                             <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
                                 <i class="fa fa-edit">
                                 </i>
@@ -71,7 +70,7 @@
                              </a>
                         </div>
                         <div class="form-button-action">
-                            <a href="/admin/delete_category/{{ $users->id }}" onclick="return confirm('Are you sure to delete ?')">
+                            <a href="/admin/delete_category/<?php echo e($users->id); ?>" onclick="return confirm('Are you sure to delete ?')">
                                 <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
                                     <i class="fa fa-times"></i>
                                 </button>
@@ -79,11 +78,17 @@
                         </div>
                     </td>
                 </tr>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </tbody>
     </table>
  </div>
-@endsection
 
 
 
+
+<?php $__env->stopSection(); ?>
+
+
+
+
+<?php echo $__env->make('layouts.admin-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\dms\resources\views/admin/category/view_category.blade.php ENDPATH**/ ?>

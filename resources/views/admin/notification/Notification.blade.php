@@ -78,8 +78,8 @@
                     description: "required",
                 },
                 messages: {
-                    title: "Please Enter Title.",
-                    description: "Please Enter Description.",
+                    title: "*Please enter title.",
+                    description: "*Please enter description.",
                 }
             });
         });

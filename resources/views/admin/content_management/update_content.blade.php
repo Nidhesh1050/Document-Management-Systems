@@ -105,9 +105,9 @@ $(document).ready(function() {
         },
         messages: {
            
-            title: "Please enter your title",
-            description: "Please enter  description",
-            status: "Please enter Status",
+            title: "*Please enter your title",
+            description: "*Please enter  description",
+            status: "*Please enter Status",
 
         }
 

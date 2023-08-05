@@ -1,6 +1,4 @@
-@extends('layouts.admin-app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     
 <div class="content">
     
@@ -8,7 +6,7 @@
         <div class="page-header">
             <ul class="breadcrumbs">
                 <li class="nav-home">
-                    <a href="{{url('admin/home')}}">
+                    <a href="<?php echo e(url('admin/home')); ?>">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -34,18 +32,26 @@
                     </div>
                     <div class="card-body">
 
-                    <form action="{{url('/admin/add_image')}}" method="post" id="category"
+                    <form action="<?php echo e(url('/admin/add_image')); ?>" method="post" id="category"
                         enctype="multipart/form-data">
-                        @csrf
+                        <?php echo csrf_field(); ?>
 
 
                         <div class="form-group">
                         <label for="exampleFormControlFile1"> Image</label>
                         <input type="file" class="form-control-file" name="image" id="exampleFormControlFile1">
                             <span class="text-danger error ">
-                                @error('image')
-                                {{$message}}
-                                @enderror
+                                <?php $__errorArgs = ['image'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <?php echo e($message); ?>
+
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </span>  
                         </div>
                             
@@ -54,7 +60,7 @@
 
                         <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>
-                                <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
+                                <a href="<?php echo e(url('admin/home')); ?>" class="mt-4 btn btn-danger">Cancel</a>
                         <div>
 
                     </form>
@@ -81,4 +87,5 @@ $(document).ready(function() {
     });
 });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.admin-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\dms\resources\views/admin/setting/setting.blade.php ENDPATH**/ ?>
