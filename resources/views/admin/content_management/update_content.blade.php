@@ -102,13 +102,14 @@ $(document).ready(function() {
             title: "required",
             description: "required",
             status: "required",
+            image: "required",
         },
         messages: {
            
-            title: "Please enter your title",
+            title: "Please enter  title",
             description: "Please enter  description",
-            status: "Please enter Status",
-
+            status: "Please enter status",
+            image: "Please select image"
         }
 
     });

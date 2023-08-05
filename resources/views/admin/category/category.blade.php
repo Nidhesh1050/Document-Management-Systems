@@ -59,11 +59,11 @@
                                 @enderror
                             </span>
 
-                        </div
+</div
 
                         <div class="form-group col-md-6">
                             <label for="description">Description</label>
-                            <textarea class="form-control" name="description" id="comment" cols="5">
+                            <textarea class="form-control" name="description" id="description" cols="5">
                                             </textarea>
                             <span class="text-danger error ">
                                 @error('description')
@@ -92,19 +92,15 @@ $(document).ready(function() {
             parent_id: "required",
             name: "required",
             description: "required",
-            image: "required",
-            status: "required",
+         
         },
         messages: {
             parent_id: "Please select parent_id",
-            name: "Please enter your Name",
+            name: "Please enter  name",
             description: "Please enter  description",
-            image: "Chose any image",
-            status: "Please enter Status",
+         
 
         }
-
-
     });
 });
 </script>

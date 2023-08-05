@@ -163,9 +163,9 @@ $(document).ready(function() {
         },
         messages: {
             name: {
-                required: "*Please enter your Name",
-                minlength: "*Enter your name atleast 4 letters",
-                maxlength: "*Your name length should not be greater than 20 letters",
+                required: "*Please enter  Name",
+                minlength: "*Enter  name atleast 4 letters",
+                maxlength: "*Name length should not be greater than 20 letters",
             },
             email: {
                 required: "*Enter a valid E-mail address",
@@ -175,7 +175,7 @@ $(document).ready(function() {
                 required: "*Enter a valid username",
             },
             mobile: {
-                required: "*Please enter your Valid Mobile No.",
+                required: "*Please enter  Valid Mobile No.",
                 number: "*Please enter Mobile No. in numeric",
                 minlength: "*Atlest length should be 10",
                 maxlength: "*Length should not be greater than 12",

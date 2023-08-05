@@ -153,7 +153,7 @@ $(document).ready(function() {
         },
         messages: {
             name: {
-                required: "*Please enter your Name",
+                required: "*Please enter  Name",
             },
             email: {
                 required: "*Enter a valid E-mail address",
@@ -162,7 +162,7 @@ $(document).ready(function() {
                 required: "*Enter a valid username",
             },
             mobile: {
-                required: "*Please enter your Valid Mobile No.",
+                required: "*Please enter  Valid Mobile No.",
             },
             designation: {
                 required: "*Enter a valid designation",

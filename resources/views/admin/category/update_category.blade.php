@@ -71,8 +71,7 @@
                                                 @enderror
                                             </span>
                                     </div>
-
-
+                                    
                                 </div>
                                 <div class="text-right">
                                     <button type="submit" class="mt-4 btn btn-success">Update</button>
@@ -97,11 +96,11 @@
                                             status: "required",
                                         },
                                         messages: {
-                                            parent_id: "Update your parent_id",
-                                            name: "Update your your Name",
-                                            description: "Update your  description",
+                                            parent_id: "Update  parent_id",
+                                            name: "Update  Name",
+                                            description: "Update   description",
                                             image: "Choose image",
-                                            status: "Update your Status",
+                                            status: "Update  Status",
 
                                         }
 

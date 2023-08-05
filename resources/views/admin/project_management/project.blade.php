@@ -101,8 +101,8 @@ $(document).ready(function() {
 
         },
         messages: {
-            project_name: "Please enter your Project Name",
-            manager_d: "Please select manager_d",
+            project_name: "Please enter  project Name",
+            manager_d: "Please select manager Name",
             status: "Please select Status",
         }
     });

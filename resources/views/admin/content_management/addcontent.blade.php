@@ -108,10 +108,10 @@ $(document).ready(function() {
         },
         messages: {
            
-            title: "Please enter your title",
+            title: "Please enter  title",
             description: "Please enter  description",
-            image: "Choose any image",
-            status: "Please enter Status",
+            image: "Please  select image",
+            status: "Please enter tatus",
 
         }
 

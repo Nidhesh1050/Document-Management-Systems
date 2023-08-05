@@ -71,11 +71,9 @@ $(document).ready(function() {
     $("#category").validate({
         rules: {
             image: "required",
-           
-
         },
         messages: {
-            image: "Select Image",
+            image: "Please select image",
       
         }
     });

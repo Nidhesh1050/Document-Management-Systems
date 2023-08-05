@@ -149,12 +149,12 @@
                     status: "required",
                 },
                 messages: {
-                    project_id: "Please select project Name",
-                    category_id: "Please select category Name",
+                    project_id: "Please select project name",
+                    category_id: "Please select category name",
                     document_ty: "Please select document type",
-                    title: "Please Enter title",
-                    document: "Choose any documemnts",
-                    status: "Please Enter Status",
+                    title: "Please enter title",
+                    document: "Choose any documents",
+                    status: "Please enter status",
                 }
             });
         });

@@ -136,18 +136,18 @@
                 },
                 messages: {
                     project_id: {
-                        required: "*Update your project_id",
+                        required: "*Update  project_id",
 
                     },
                     category_id: {
-                        required: "*Update your valid category_id",
+                        required: "*Update  valid category_id",
 
                     },
                     document_type_id: {
-                        required: "*Update your document_type_id",
+                        required: "*Update  document_type_id",
                     },
                     title: {
-                        required: "*Update your title",
+                        required: "*Update  title",
 
                     },
 

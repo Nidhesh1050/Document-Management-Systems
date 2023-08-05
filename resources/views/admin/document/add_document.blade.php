@@ -87,7 +87,7 @@
             },
             messages: {
                 name: {
-                    required:"*Please enter your Name",
+                    required:"*Please enter  name",
                 },
             }
         });
