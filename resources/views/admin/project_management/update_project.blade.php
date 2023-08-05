@@ -43,12 +43,6 @@
                                 <label for="name">Project Name</label>
                                 <input type="text" class="form-control" name="project_name"
                                     value="{{$users->project_name}}" placeholder="name">
-                                    <span class="text-danger error ">
-                                        @error('project_name')
-                                        {{$message}}
-                                        @enderror
-                                    </span>
-
                             </div>
 
 
@@ -61,11 +55,6 @@
                                     <option value="{{$users->id}}">{{$users->manager_d}}</option>
                                     @endforeach
                                 </select>
-                                <span class="text-danger error ">
-                                    @error('manager_d')
-                                    {{$message}}
-                                    @enderror
-                            </span>
                             </div>
 
                             <div class="text-right">

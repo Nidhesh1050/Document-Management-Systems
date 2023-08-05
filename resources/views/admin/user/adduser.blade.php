@@ -38,74 +38,87 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="name">Name</label>
-                                    <input type="name" class="form-control" id="name"
-                                        placeholder="Enter Name" name="name">
-                                        <span class="text-danger  ">
-                                            @error('name')
-                                            {{$message}}
-                                            @enderror
-                                        </span>
+                                    <input type="name" class="form-control" id="name" placeholder="Enter Name"
+                                        name="name">
+                                    <span class="text-danger  ">
+                                        @error('name')
+                                        {{$message}}
+                                        @enderror
+                                    </span>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="email">Email Address</label>
-                                    <input type="email" class="form-control" id="email"
-                                        placeholder="Enter Email" name="email">
-                                        <span class="text-danger  ">
-                                            @error('email')
-                                            {{$message}}
-                                            @enderror
-                                        </span>
+                                    <input type="email" class="form-control" id="email" placeholder="Enter Email"
+                                        name="email">
+                                    <span class="text-danger  ">
+                                        @error('email')
+                                        {{$message}}
+                                        @enderror
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="mobile">Mobile</label>
-                                    <input type="mobile" class="form-control" id="mobile"
-                                        placeholder="Enter Mobile" name="mobile">
-                                        <span class="text-danger  ">
-                                            @error('mobile')
-                                            {{$message}}
-                                            @enderror
-                                        </span>
+                                    <input type="mobile" class="form-control" id="mobile" placeholder="Enter Mobile"
+                                        name="mobile">
+                                    <span class="text-danger  ">
+                                        @error('mobile')
+                                        {{$message}}
+                                        @enderror
+                                    </span>
 
                                 </div>
+
+
                                 <div class="form-group col-md-6">
-                                    <label for="designation">Designation</label>
-                                    <input type="text" class="form-control" id="designation"
-                                        placeholder="Enter your designation" name="designation">
-                                        <span class="text-danger  ">
-                                            @error('designation')
-                                            {{$message}}
-                                            @enderror
-                                        </span>
+                                    <label for="designation">User Type</label>
+
+
+
+                                    <select name="user_type" class="form-control">
+                                        <option value=""> Please Select</option>
+                                        @foreach($project_manager as $project_manager)
+                                        <option value="{{$project_manager->id}}"> <?php echo $project_manager->name;?>
+                                        </option>
+                                        @endforeach
+                                    </select>
+
+                                    <span class="text-danger  ">
+                                        @error('user_type')
+                                        {{$message}}
+                                        @enderror
+                                    </span>
                                 </div>
+
+
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="username">Username</label>
                                     <input type="text" class="form-control" id="username"
                                         placeholder="Enter your username" name="username">
-                                        <span class="text-danger  ">
-                                            @error('username')
-                                            {{$message}}
-                                            @enderror
-                                        </span>
+                                    <span class="text-danger  ">
+                                        @error('username')
+                                        {{$message}}
+                                        @enderror
+                                    </span>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="password">Password</label>
                                     <input type="password" class="form-control" id="password"
                                         placeholder="Enter your password" name="password">
-                                        <span class="text-danger  ">
-                                            @error('password')
-                                            {{$message}}
-                                            @enderror
-                                        </span>
+                                    <span class="text-danger  ">
+                                        @error('password')
+                                        {{$message}}
+                                        @enderror
+                                    </span>
                                 </div>
                             </div>
                             <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>
                                 <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
-                            <div>
+                                <div>
                         </form>
                     </div>
                 </div>
@@ -115,69 +128,69 @@
 </div>
 
 <script>
-   $(document).ready(function(){
+$(document).ready(function() {
     // validate  form using jquey
-        $("#validate").validate({
-            rules: {
-                name: {
-                    required:true,
-                    minlength:4,
-                    maxlength:20,
-                },
-                email: {
-                    required: true,
-                    email: true
-                },
-                username:{
-
-                    required:true,
-                },
-                mobile: {
-                    required: true,
-                    number: true,
-                    minlength: 10,
-                    maxlength: 12,
-                },
-                designation:{
-
-                    required:true,
-                },
-                password:{
-
-                    required:true,
-                    minlength: 8
-                },
+    $("#validate").validate({
+        rules: {
+            name: {
+                required: true,
+                minlength: 4,
+                maxlength: 20,
             },
-            messages: {
-                name: {
-                    required:"*Please enter your Name",
-                    minlength:"*Enter your name atleast 4 letters",
-                    maxlength:"*Your name length should not be greater than 20 letters",
-                },
-                email: {
-                    required:"*Enter a valid E-mail address",
-                    email: "*Email should be in @gmail.com",
-                },
-                username:{
-                    required:"*Enter a valid username",
-                },
-                mobile: {
-                    required: "*Please enter your Valid Mobile No.",
-                    number: "*Please enter Mobile No. in numeric",
-                    minlength: "*Atlest length should be 10",
-                    maxlength: "*Length should not be greater than 12",
-                },
-                designation:{
-                    required:"*Enter a valid designation",
-                },
-                password:{
-                    required:"*Enter a valid password",
-                    minlength: "*Password must be atlest 8 characters",
-                },
-            }
+            email: {
+                required: true,
+                email: true
+            },
+            username: {
 
-        });
+                required: true,
+            },
+            mobile: {
+                required: true,
+                number: true,
+                minlength: 10,
+                maxlength: 12,
+            },
+            designation: {
+
+                required: true,
+            },
+            password: {
+
+                required: true,
+                minlength: 8
+            },
+        },
+        messages: {
+            name: {
+                required: "*Please enter your Name",
+                minlength: "*Enter your name atleast 4 letters",
+                maxlength: "*Your name length should not be greater than 20 letters",
+            },
+            email: {
+                required: "*Enter a valid E-mail address",
+                email: "*Email should be in @gmail.com",
+            },
+            username: {
+                required: "*Enter a valid username",
+            },
+            mobile: {
+                required: "*Please enter your Valid Mobile No.",
+                number: "*Please enter Mobile No. in numeric",
+                minlength: "*Atlest length should be 10",
+                maxlength: "*Length should not be greater than 12",
+            },
+            designation: {
+                required: "*Enter a valid designation",
+            },
+            password: {
+                required: "*Enter a valid password",
+                minlength: "*Password must be atlest 8 characters",
+            },
+        }
+
     });
+});
 </script>
 
 @endsection

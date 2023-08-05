@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -18,6 +19,9 @@ class HomeController extends Controller
     {
         $this->middleware(['auth', 'verified']);
     }
+    
+
+    
 
     /**
      * Show the application dashboard.
@@ -61,8 +65,10 @@ class HomeController extends Controller
      //edit code in user body
      public function edit(Request $request,$id) {
 
+      $project_manager = DB::table('usertype')->select('id','name')->get();
+
         $users = DB::table('users')->where(['id'=> $id])->first();
-        return view('admin.user.edit')->with(['users'=>$users]);
+        return view('admin.user.edit')->with(['users'=>$users,'project_manager'=>    $project_manager]);
 
       }
       //Update Code
@@ -72,7 +78,7 @@ class HomeController extends Controller
               'name'=>'required',
               'email'=>'required',
               'mobile' =>'required|max:12',
-              'designation' => 'required',
+              'user_type' => 'required',
               'username' => 'required',
 
               ]
@@ -83,7 +89,7 @@ class HomeController extends Controller
                 'name' => $request['name'],
                 'email' => $request['email'],
                 'mobile' => $request['mobile'],
-                'designation' => $request['designation'],
+                'user_type' => $request['user_type'],
                 'username' => $request['username'],
             ]);
             return redirect('admin/userManagement');
@@ -92,7 +98,8 @@ class HomeController extends Controller
       }
       //Insert data Code
       public function adduser(){
-        return view('admin.user.adduser');
+        $project_manager = DB::table('usertype')->select('id','name')->get();
+        return view('admin.user.adduser',['project_manager'=>$project_manager]);
       }
       public function register(Request $request)
     {
@@ -104,16 +111,29 @@ class HomeController extends Controller
           'name'=>'required|max:50|string',
           'email'=>'required|email|unique:users',
           'mobile' =>'required|max:12',
-          'designation' => 'required',
+          'user_type' => 'required',
           'username' => 'required',
           'password' => 'required|max:8',
           ]
       );
 
+
+     $user_id =  Session::get('user_id');
+     $user_type = Session::get('user_type');
+
+     if($user_type = "admin"){
+      $inserData['admin_id'] = $user_id;
+      $inserData['manager_id'] = $user_id;
+     }
+     else if($user_type = "manager"){
+      $inserData['manager_id'] = $user_id;
+     }
+
+     
         $inserData['name'] = $request->name;
         $inserData['email']= $request->email;
         $inserData['mobile'] = $request->mobile;
-        $inserData['designation'] = $request->designation;
+        $inserData['user_type'] = $request->user_type;
         $inserData['username'] = $request->username;
         $inserData['password'] = $request->password;
         //print_r($inserData);die;
@@ -125,4 +145,3 @@ class HomeController extends Controller
     }
 
 }
-
