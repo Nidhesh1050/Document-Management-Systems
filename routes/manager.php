@@ -18,7 +18,7 @@ use App\Http\Controllers\HomeController;
 //     return view('welcome');
 // });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::middleware(['auth', 'user-access:manager'])->group(function () {
   

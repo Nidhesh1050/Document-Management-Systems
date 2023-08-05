@@ -25,7 +25,7 @@ use App\Http\Controllers\NotificationController;
 //     return view('welcome');
 // });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
