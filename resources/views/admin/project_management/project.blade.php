@@ -1,9 +1,9 @@
 @extends('layouts.admin-app')
 
 @section('content')
-    
+
 <div class="content">
-    
+
     <div class="page-inner">
         <div class="page-header">
             <ul class="breadcrumbs">
@@ -46,7 +46,7 @@
                                 {{$message}}
                                 @enderror
                             </span>
-                           
+
                         </div>
 
 
@@ -54,6 +54,7 @@
                         <label>Manager Name</label>
                         <select name="manager_d" class="form-control">
                         @foreach($project_manager as $project_manager)
+                        <option value=""> Please Select</option>
                             <option value="{{$project_manager->id}}"> <?php echo $project_manager->name;?></option>
                             @endforeach
                         </select>
@@ -66,15 +67,15 @@
 
                         <div class="form-group">
                             <label for="status">Status</label>
-                         
+
                            &nbsp;&nbsp;&nbsp;
                             <input type="checkbox" name="status" id="status" value="1">
                                 <span class="text-danger error ">
                                 @error('status')
                                 {{$message}}
                                 @enderror
-                        </span>
-                                
+                                </span>
+
                         </div>
 
                         <div class="text-right">

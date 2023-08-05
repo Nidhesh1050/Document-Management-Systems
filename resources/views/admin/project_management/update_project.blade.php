@@ -33,7 +33,7 @@
                         <div class="card-title">Edit Project</div>
                     </div>
                     <div class="card-body">
-                        <form action="{{url('admin/edit_project')}}" method="post" enctype="multipart/form-data">
+                        <form action="{{url('admin/edit_project')}}" method="post" id="category_update" enctype="multipart/form-data">
 
                             @csrf
                             <input type="hidden" name="id" value="{{$users->id}}">
@@ -50,8 +50,8 @@
                                 <label for="name">Project Manager</label>
 
                                 <select name="manager_d" class="form-control">
-                                    <option value=""> Please Select</option>
                                     @foreach($project_manager as $parent)
+                                    <option value=""> Please Select</option>
                                     <option value="{{$users->id}}">{{$users->manager_d}}</option>
                                     @endforeach
                                 </select>
@@ -69,5 +69,18 @@
     </div>
 </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $("#category_update").validate({
+            rules: {
+                project_name: "required",
+                manager_d: "required",
 
+            },
+            messages: {
+                project_name: "*Update your Project Name",
+                manager_d: "*Update your Manager Id",
+            }
+        });
+    });
 @endsection

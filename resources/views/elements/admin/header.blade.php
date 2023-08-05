@@ -1,5 +1,5 @@
 
-<?php 
+<?php
 $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 ?>
 <div class="main-header">

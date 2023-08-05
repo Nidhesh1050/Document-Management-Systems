@@ -58,7 +58,7 @@
                         @php
                             $status = $users->status == 1 ? 'Active' : 'InActive';
                         @endphp
-                        
+
                         <tr>
                             <td> {{ $users->project_id }}</td>
                             <td> {{ $users->category_id }}</td>

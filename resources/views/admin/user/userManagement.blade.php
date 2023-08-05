@@ -45,7 +45,7 @@
                                         <th> Name</th>
                                         <th> Email </th>
                                         <th> Mobile </th>
-                                        <th> Designation</th>
+                                        <th> User Type</th>
                                         <th> Username </th>
                                         <th> Status</th>
                                         <th> Action</th>
@@ -61,7 +61,7 @@
                                             <td> {{ $users->name }}</td>
                                             <td> {{ $users->email }}</td>
                                             <td> {{ $users->mobile }}</td>
-                                            <td> {{ $users->designation }}</td>
+                                            <td> {{ $users->name }}</td>
                                             <td> {{ $users->username }}</td>
                                             <td>{{ $status }}</td>
                                             <td>

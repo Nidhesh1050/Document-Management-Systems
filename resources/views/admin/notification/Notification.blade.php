@@ -1,9 +1,9 @@
 @extends('layouts.admin-app')
 
 @section('content')
-    
+
 <div class="content">
-    
+
     <div class="page-inner">
         <div class="page-header">
             <ul class="breadcrumbs">
@@ -32,8 +32,8 @@
                     <div class="card-header">
                         <div class="card-title">Add Notification</div>
                     </div>
-                    <div class="card-body">   
-        
+                    <div class="card-body">
+
         <form action="add_notification" id="form" method="POST">
             @csrf
 
@@ -60,7 +60,7 @@
                     @enderror
                     <Span>
                 </div>
-            
+
                 <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>
                                 <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
@@ -68,7 +68,7 @@
         </form>
 
 
- </div>   
+ </div>
 </div>
 <script>
         $(document).ready(function() {
@@ -83,5 +83,6 @@
                 }
             });
         });
-        </script>
+
+</script>
 @endsection

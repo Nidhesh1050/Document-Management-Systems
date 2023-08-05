@@ -1,9 +1,9 @@
 @extends('layouts.admin-app')
 
 @section('content')
-    
+
 <div class="content">
-    
+
     <div class="page-inner">
         <div class="page-header">
             <ul class="breadcrumbs">
@@ -47,9 +47,9 @@
                                     @enderror
                                 </span>
                             </div>
-                            
 
-                            
+
+
                             <div class="form-group col-md-6">
                                 <label><b>Category Id</b></label>
                                 <input type="text" name="category_id" id="category_id" value="{{ $users->category_id }}"
@@ -60,9 +60,9 @@
                                     @enderror
                                 </span>
                             </div>
-                            
 
-                        
+
+
                             <div class="form-group col-md-6">
                                 <label><b>Document Type Id</b></label>
                                 <input type="text" name="document_type_id" id="document_type_id"
@@ -73,9 +73,9 @@
                                     @enderror
                                 </span>
                             </div>
-                            
 
-                            
+
+
                             <div class="form-group col-md-6">
                                 <label><b>Title</b></label>
                                 <input type="text" name="title" id="title" value="{{ $users->title }}"
@@ -86,7 +86,7 @@
                                     @enderror
                                 </span>
                             </div>
-                            
+
 
                             <div class="form-group  col-md-6">
                                 <label for="exampleFormControlFile1"> Upload document</label>
@@ -107,7 +107,7 @@
                         </form>
 </div>
                     </div>
-          
+
     <script>
         $(document).ready(function() {
             // validate  form using jquey
@@ -129,7 +129,6 @@
                         required: true,
 
                     },
-                  
                     status: {
 
                         required: true,
@@ -151,8 +150,8 @@
                         required: "*Update your title",
 
                     },
-                   
-                   
+
+
                 }
 
             });
