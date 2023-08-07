@@ -102,19 +102,26 @@ $(document).ready(function() {
             title: "required",
             description: "required",
             status: "required",
+            image: "required",
         },
         messages: {
-<<<<<<< HEAD
+
            
+
+            title: "Please enter  title",
+            description: "Please enter  description",
+            status: "Please enter status",
+            image: "Please select image"
+
             title: "*Please enter your title",
             description: "*Please enter  description",
             status: "*Please enter Status",
-=======
+
 
             title: "Please enter your title",
             description: "Please enter  description",
             status: "Please enter Status",
->>>>>>> 005a913af2e2f8b1bc939d48780b54546e443797
+
 
         }
 

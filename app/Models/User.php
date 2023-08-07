@@ -63,6 +63,7 @@ class User extends Authenticatable
         }
     }
 
+
     public static function getCategoryID($category_id){
         $category = DB::table('categories')->select('name')->where('id', $category_id)
         ->first();
@@ -84,4 +85,7 @@ class User extends Authenticatable
         }
         
     }
+
+   
+
 }

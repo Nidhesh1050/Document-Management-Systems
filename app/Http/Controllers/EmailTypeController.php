@@ -1,0 +1,72 @@
+<?php
+
+namespace App\Http\Controllers;
+use DB;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+
+class EmailTypeController extends Controller
+{
+    public function email(){
+        
+        return view('admin.email_management.email');
+    }
+
+    public function add_email(Request $request){
+
+        $request->validate(
+            [
+              'email_type'=>'required',
+              
+              ]
+          );
+    
+            $inserData['email_type'] = $request->email_type;
+            
+
+            DB::table('email_types')->insert($inserData);
+
+            return redirect('/admin/show_email');
+            
+    }
+
+    public function show_email(){
+
+         $users = DB::table('email_types')->get();
+         return view('admin.email_management.show_email',['users'=>$users]);
+        }
+
+
+         //Delete function to delete in user body
+     public function delete($id) {
+        DB::delete('delete from email_types where id ='.$id);
+        return redirect()->back();
+     }
+
+        //edit code in user body
+        public function edit_email(Request $request,$id) 
+        {
+           $users = DB::table('email_types')->where(['id'=> $id])->first();
+           return view('admin.email_management.edit_email')->with(['users'=>$users]);
+        }
+
+        public function update(Request $request)
+        {
+
+            $request->validate(
+                [
+                  'email_type'=>'required',
+                  
+                  ]
+              );
+    
+            DB::table('email_types')
+                ->where('id', $request['id'])
+                ->update([
+                    'email_type' => $request['email_type'],
+                    
+                ]);
+                return redirect('/admin/show_email');                    
+        }
+}
+

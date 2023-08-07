@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 use Illuminate\Http\Request;
 
@@ -10,7 +11,8 @@ class ProjectManagementController extends Controller
 {
 
     public function project_management(){
-        $project_manager = DB::table('users')->select('id','name')->get();
+        // $project_manager = DB::table('users')->select('id','name')->get();
+        $project_manager = DB::table('users')->where(['user_type'=> 2])->get();
         return view('admin.project_management.project',['project_manager'=>$project_manager]);
     }
 
@@ -23,9 +25,19 @@ class ProjectManagementController extends Controller
         ]);
        $status = $request->status == 1 ? 1 : 0;
 
+       $user_id =  Session::get('user_id');
+       $user_type = Session::get('user_type');
+
+     if($user_type = "admin"){
+      $inserData['admin_id'] = $user_id;
+      $inserData['manager_d'] = $request->manager_d;
+     }
+    
+
         $inserData['project_name']= $request->project_name;
-        $inserData['manager_d'] = $request->manager_d;
         $inserData['status'] =  $status;
+
+
         DB::table('projects')->insert($inserData);
         return redirect('/admin/view_project');
 

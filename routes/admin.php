@@ -11,6 +11,8 @@ use App\Http\Controllers\ProjectManagementController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\CMSController;
+use App\Http\Controllers\EmailTypeController;
+use App\Http\Controllers\EmailContentController;
 use App\Http\Controllers\PermissionController;
 /*
 |--------------------------------------------------------------------------
@@ -107,14 +109,26 @@ Route::post('/admin/edit_content',[CMSController::class,'edit_content']);
 
 /* Content management system routes end*/
 
+    //Email management routes start by Nidhi
 
-/* Module Permission route start here*/
-Route::get('/admin/module_permission',[PermissionController::class,'module_permission']);
-Route::post('/admin/module_permission',[PermissionController::class,'permission']);
+    // email-type
+	Route::get('/admin/email',[EmailTypeController::class, 'email'])->name('email');
+	Route::post('/admin/add_email',[EmailTypeController::class, 'add_email']);
+	Route::get('/admin/show_email',[EmailTypeController::class, 'show_email']);
+	Route::get('delete/{id}', [EmailTypeController::class,'delete']);
+
+	Route::get('/admin/edit_email/{id}', [EmailTypeController::class,'edit_email']);
+	Route::post('/admin/update', [EmailTypeController::class,'update']);
 
 
-/* Module Permission route end here*/
+    //email-content
 
+	Route::get('/admin/content',[EmailContentController::class, 'content'])->name('content');
+	Route::post('/admin/add_content',[EmailContentController::class, 'add_content']);
+	Route::get('/admin/show_content',[EmailContentController::class, 'show_content']);
+	Route::get('/admin/delete/{id}', [EmailContentController::class,'delete']);
 
+	Route::get('/admin/edit_content/{id}', [EmailContentController::class,'edit_content']);
+	Route::post('/admin/update', [EmailContentController::class,'update']);
 
 });
