@@ -42,7 +42,7 @@
        <table id="datatables" class="display table table-striped table-hover" >
 		    <thead>
 				<tr>
-					<ht>S.No</th>
+					<th>id</th>
 					<th>Title</th>
 					<th>Description</th>
 					<th>Action</th>
@@ -52,7 +52,7 @@
 		 <tbody>
              @foreach ($users as $user)
 				<tr>
-                <td>{{$loop->iteration}}</td>
+                    <td>{{ $user->id }}</td>
                     <td>{{ $user->title }}</td>
                     <td>{{ $user->description }}</td>
 					<td>

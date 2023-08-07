@@ -1,9 +1,9 @@
 @extends('layouts.admin-app')
 
 @section('content')
-
+    
 <div class="content">
-
+    
     <div class="page-inner">
         <div class="page-header">
             <ul class="breadcrumbs">
@@ -16,7 +16,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="{{url('admin/view_document')}}">Document Type</a>
+                    <a href="#">Document Type</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -39,13 +39,13 @@
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="name" class="form-control"
-                                placeholder="Enter Name" name="name" value="{{ $users->name }}">
+                                placeholder="Enter Name" name="name" value="{{ $users->name }}">    
             <span class="text-danger error ">
                     @error('name')
                      {{$message}}
                     @enderror
-                    <span>
-                            </div>
+                    <span>                         
+                            </div>                        
                             <div class="text-right">
                                 <button type="update" class="mt-4 btn btn-success">Update</button>
                                 <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
@@ -55,7 +55,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>        
 </div>
 
 @endsection

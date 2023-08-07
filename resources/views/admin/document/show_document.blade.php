@@ -44,7 +44,6 @@ use app\Models\User;
             <table id="datatables" class="display table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th>S.No</th>
                         <th> Project Id</th>
                         <th> Category Id </th>
                         <th> Document Type Id </th>
