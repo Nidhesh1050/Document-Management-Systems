@@ -16,7 +16,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Document Management</a>
+                    <a href="{{url('admin/view_document')}}">Document Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -30,6 +30,7 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
+                   
                         <div class="card-title">Add Document Type</div>
                     </div>
                     <div class="card-body">

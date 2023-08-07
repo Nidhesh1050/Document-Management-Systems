@@ -7,6 +7,7 @@ use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Mail;
 
 class HomeController extends Controller
 {
@@ -19,9 +20,9 @@ class HomeController extends Controller
     {
         $this->middleware(['auth']);
     }
-    
 
-    
+
+
 
     /**
      * Show the application dashboard.
@@ -53,7 +54,9 @@ class HomeController extends Controller
     //List of users
 
     public function userManagement(){
-        $users = DB::table('users')->get();
+
+        $users = DB::table('users')->whereIn('type', [2,0])->get();
+
         return view('admin.user.userManagement',['users'=>$users]);
     }
     //Delete function to delete in user body
@@ -65,6 +68,7 @@ class HomeController extends Controller
      public function edit(Request $request,$id) {
 
       $project_manager = DB::table('usertype')->select('id','name')->whereIn('id', [2,0])->get();
+
         $users = DB::table('users')->where(['id'=> $id])->first();
         return view('admin.user.edit')->with(['users'=>$users,'project_manager'=>$project_manager]);
        
@@ -82,13 +86,23 @@ class HomeController extends Controller
                 'user_type' => $request['user_type'],
                 'username' => $request['username'],
             ]);
-     
+
+
+
+
             return redirect('admin/userManagement')->with('success', 'User has been updated successfully.');;
       }
       //Insert data Code
       public function adduser(){
         $project_manager = DB::table('usertype')->select('id','name')->whereIn('id', [2,0])->get();
+
+
+
         return view('admin.user.adduser',['project_manager'=>$project_manager]);
+
+
+
+
       }
       public function register(Request $request)
     {
@@ -116,9 +130,19 @@ class HomeController extends Controller
      else if($user_type = "manager"){
       $inserData['manager_id'] = $user_id;
      }
-     
+
+
         $inserData['name'] = $request->name;
         $inserData['email']= $request->email;
+        $details = [
+          'title' => 'Mail from dms.srmtechsol.com',
+          'body' => 'Welcome in Document Manganent Proejct',
+
+      ];
+
+      \Mail::to($request->email)->send(new \App\Mail\MyTestMail($details));
+
+
         $inserData['mobile'] = $request->mobile;
         $inserData['user_type'] = $request->user_type;
         $inserData['username'] = $request->username;
@@ -129,5 +153,7 @@ class HomeController extends Controller
 
         return redirect('admin/userManagement')->with('success', 'User has been added successfully.');
     }
+
+
 
 }

@@ -29,7 +29,7 @@ class NotificationController extends Controller
 
             DB::table('notifications')->insert($inserData);
 
-            return redirect('admin/show_notification')->with('success', 'Notification has been added successfully.');;
+            return redirect('admin/show_notification')->with('success', 'Notification has been added successfully.');
 
     }
 
@@ -67,7 +67,7 @@ class NotificationController extends Controller
                     'title' => $request['title'],
                     'description' => $request['description'],
                 ]);
-                return redirect('admin/show_notification');
+                return redirect('admin/show_notification')->with('success', 'Notification has been updated successfully.');
 
         }
 }

@@ -80,7 +80,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/add_document', [DocumentController::class,'add_documenttype']);
     Route::post('/admin/register',[DocumentController::class,'register']);
     Route::get('/admin/edit/{id}', [DocumentController::class,'edit']);
-    Route::post('/admin/update/', [DocumentController::class,'update']);
+    Route::post('/admin/documentupdate/', [DocumentController::class,'documentupdate']);
 
     /* Side Setting routes start*/
    Route::get('/admin/setting',[SettingController::class,'setting']);
@@ -102,7 +102,7 @@ Route::post('/admin/update_notification', [NotificationController::class,'update
 
 /* Content management system routes start*/
 Route::get('/admin/addcontent',[CMSController::class,'addcontent']);
-Route::post('/admin/add_content',[CMSController::class,'add_content']);
+Route::post('/admin/add_cms',[CMSController::class,'add_cms']);
 Route::get('/admin/view_content',[CMSController::class,'view_content']);
 Route::get('/admin/delete_content/{id}',[CMSController::class,'delete_content']);
 Route::get('/admin/update_content/{id}',[CMSController::class,'update_content']);
@@ -116,10 +116,10 @@ Route::post('/admin/edit_content',[CMSController::class,'edit_content']);
 	Route::get('/admin/email',[EmailTypeController::class, 'email'])->name('email');
 	Route::post('/admin/add_email',[EmailTypeController::class, 'add_email']);
 	Route::get('/admin/show_email',[EmailTypeController::class, 'show_email']);
-	Route::get('delete/{id}', [EmailTypeController::class,'delete']);
+	Route::get('/admin/emaildelete/{id}', [EmailTypeController::class,'emaildelete']);
 
 	Route::get('/admin/edit_email/{id}', [EmailTypeController::class,'edit_email']);
-	Route::post('/admin/update', [EmailTypeController::class,'update']);
+	Route::post('/admin/emailupdate', [EmailTypeController::class,'emailupdate']);
 
 
     //email-content

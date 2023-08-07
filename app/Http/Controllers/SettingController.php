@@ -32,7 +32,7 @@ class SettingController extends Controller
       
 
         DB::table('side_setting')->insert($inserData);
-        return redirect('/admin/view_image');
+        return redirect('/admin/view_image')->with('success', 'Notification has been updated successfully.');
     }
 
     public function view_image(){

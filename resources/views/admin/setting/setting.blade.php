@@ -16,7 +16,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Settings Management</a>
+                <a href="{{url('admin/view_image')}}">Settings Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -30,6 +30,20 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
+
+                    <div class="flash-message">
+                            @if ($message = Session::get('success'))
+                            <div class="alert alert-success">
+                                <p>{{ $message }}</p>
+                            </div>
+                            @endif
+                            @if ($message = Session::get('error'))
+                            <div class="alert alert-danger">
+                                <p>{{ $message }}</p>
+                            </div>
+                            @endif
+                        </div>
+                        
                         <div class="card-title">Add Logo</div>
                     </div>
                     <div class="card-body">
