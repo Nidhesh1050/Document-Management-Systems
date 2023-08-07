@@ -131,4 +131,11 @@ Route::post('/admin/edit_content',[CMSController::class,'edit_content']);
 	Route::get('/admin/edit_content/{id}', [EmailContentController::class,'edit_content']);
 	Route::post('/admin/update', [EmailContentController::class,'update']);
 
+    /* Module Permission route start here*/
+    Route::get('/admin/module_permission',[PermissionController::class,'module_permission']);
+    Route::post('/admin/module_permission',[PermissionController::class,'permission']);
+
+
+    /* Module Permission route end here*/
+
 });
