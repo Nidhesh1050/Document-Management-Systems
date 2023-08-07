@@ -1,12 +1,11 @@
-@extends('layouts.admin-app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="content">
             <div class="page-inner">
 <div class="page-header">
             <ul class="breadcrumbs">
                 <li class="nav-home">
-                    <a href="{{url('admin/home')}}">
+                    <a href="<?php echo e(url('admin/home')); ?>">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -27,20 +26,20 @@
         <div class="d-flex align-items-center">
         <div class="card-header">
             <div class="flash-message">
-                        @if ($message = Session::get('success'))
+                        <?php if($message = Session::get('success')): ?>
                                     <div class="alert alert-success">
-                                        <p>{{ $message }}</p>
+                                        <p><?php echo e($message); ?></p>
                                     </div>
-                                    @endif  
-                        @if ($message = Session::get('error'))
+                                    <?php endif; ?>  
+                        <?php if($message = Session::get('error')): ?>
                                     <div class="alert alert-danger">
-                                        <p>{{ $message }}</p>
+                                        <p><?php echo e($message); ?></p>
                                     </div>
-                                    @endif  
+                                    <?php endif; ?>  
                         </div>   
                     
 
-            <a href="{{url('admin/add_document')}}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
+            <a href="<?php echo e(url('admin/add_document')); ?>"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
                     data-target="">
                     <i class="fa fa-plus"></i>
                         Add Document Type
@@ -59,24 +58,24 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($users as $users)
-                <!-- @php
+                <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $users): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <!-- <?php
                         // $status = "";
                         $status = $users->status == 1 ? 'Active' : 'InActive';
-                    @endphp -->
+                    ?> -->
               <tr>
-                <td>{{ $users->name }}</td>
-                <td>{{ $status }}</td>
+                <td><?php echo e($users->name); ?></td>
+                <td><?php echo e($status); ?></td>
                 <td>
                              <div class="form-button-action">
-                                <a href="edit/{{ $users->id }}">
+                                <a href="edit/<?php echo e($users->id); ?>">
                                     <button type="button" data-toggle="tooltip" title=""
                                         class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
                                         <i class="fa fa-edit">
                                         </i>
                                     </button>
                                 </a>
-                                <a href="deletedocument/{{ $users->id }}"
+                                <a href="deletedocument/<?php echo e($users->id); ?>"
                                     onclick="return confirm('Are you sure to delete ?')">
                                     <button type="button" data-toggle="tooltip" title=""
                                         class="btn btn-link btn-danger" data-original-title="Remove">
@@ -86,7 +85,7 @@
                             </div>
                         </td>
                     </tr>
-             @endforeach
+             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>
         </table>
     </div>
@@ -95,4 +94,6 @@
 </div>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.admin-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\dms\resources\views/admin/document/view_document.blade.php ENDPATH**/ ?>

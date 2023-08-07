@@ -39,7 +39,7 @@ class ProjectManagementController extends Controller
 
 
         DB::table('projects')->insert($inserData);
-        return redirect('/admin/view_project');
+        return redirect('/admin/view_project')->with('success', 'Project added successfully.');
 
 
     }

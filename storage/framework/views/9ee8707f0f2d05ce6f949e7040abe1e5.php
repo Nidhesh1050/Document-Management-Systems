@@ -1,12 +1,11 @@
-@extends('layouts.admin-app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="content">
     <div class="page-inner">
         <div class="page-header">
             <ul class="breadcrumbs">
                 <li class="nav-home">
-                    <a href="{{url('admin/home')}}">
+                    <a href="<?php echo e(url('admin/home')); ?>">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -28,19 +27,19 @@
             <div class="col-md-12">
                 <div class="card">
                 <div class="flash-message">
-                        @if ($message = Session::get('success'))
+                        <?php if($message = Session::get('success')): ?>
                                     <div class="alert alert-success">
-                                        <p>{{ $message }}</p>
+                                        <p><?php echo e($message); ?></p>
                                     </div>
-                                    @endif  
-                        @if ($message = Session::get('error'))
+                                    <?php endif; ?>  
+                        <?php if($message = Session::get('error')): ?>
                                     <div class="alert alert-danger">
-                                        <p>{{ $message }}</p>
+                                        <p><?php echo e($message); ?></p>
                                     </div>
-                                    @endif  
+                                    <?php endif; ?>  
                         </div>
                         <div class="d-flex align-items-center">
-                            <a href="{{ url('admin/notification') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
+                            <a href="<?php echo e(url('admin/notification')); ?>"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
                                     data-target="#addRowModal">
                                     <i class="fa fa-plus"></i>
                                     Add Notification
@@ -61,20 +60,20 @@
 		    </thead>
 
 		 <tbody>
-             @foreach ($users as $user)
+             <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 				<tr>
-                <td>{{$loop->iteration}}</td>
-                    <td>{{ $user->title }}</td>
-                    <td>{{ $user->description }}</td>
+                <td><?php echo e($loop->iteration); ?></td>
+                    <td><?php echo e($user->title); ?></td>
+                    <td><?php echo e($user->description); ?></td>
 					<td>
 					   <div class="form-button-action">
-                            <a href="edit_notification/{{ $user->id }}"> 
+                            <a href="edit_notification/<?php echo e($user->id); ?>"> 
 									<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
 										<i class="fa fa-edit"></i>
 									</button>
                             </a>
 
-                            <a href='delete/{{$user->id}}' onclick="return confirm('Are you sure to delete ?')">
+                            <a href='delete/<?php echo e($user->id); ?>' onclick="return confirm('Are you sure to delete ?')">
                                 <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
                                     <i class="fa fa-times"></i>
                                 </button>
@@ -82,7 +81,7 @@
                             </a>
 						</div>
 					</td>
-             @endforeach
+             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tr>
 	         </tbody>
 	    </table>
@@ -90,4 +89,5 @@
 </div>
 	</div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.admin-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\dms\resources\views/admin/notification/show_notification.blade.php ENDPATH**/ ?>

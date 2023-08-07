@@ -98,7 +98,7 @@ class HomeController extends Controller
      
             
 
-            return redirect('admin/userManagement');
+            return redirect('admin/userManagement')->with('success', 'User has been updated successfully.');;
 
 
       }
@@ -160,10 +160,7 @@ class HomeController extends Controller
 
         DB::table('users')->insert($inserData);
 
-        return redirect('admin/userManagement');
-
-        
-
+        return redirect('admin/userManagement')->with('success', 'User has been added successfully.');
     }
 
   
