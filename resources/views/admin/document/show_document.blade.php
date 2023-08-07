@@ -75,7 +75,11 @@ use app\Models\User;
                         @endphp
 
                         <tr>
-                            <td> {{ $users->project_id }}</td>
+                        <td>{{$loop->iteration}}</td>
+
+                           
+                            <td>{{ User::getDocumentID($users->project_id) }}</td>
+
                             <td> {{ User::getCategoryID($users->category_id) }}</td>
                             <td> {{ User::getDocumentTypeID($users->document_type_id) }}</td>
                             <td> {{ $users->title }}</td>
