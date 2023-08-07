@@ -31,14 +31,14 @@
                                     <div class="alert alert-success">
                                         <p>{{ $message }}</p>
                                     </div>
-                                    @endif  
+                                    @endif
                         @if ($message = Session::get('error'))
                                     <div class="alert alert-danger">
                                         <p>{{ $message }}</p>
                                     </div>
-                                    @endif  
-                        </div>   
-                    
+                                    @endif
+                        </div>
+
 
             <a href="{{url('admin/add_document')}}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
                     data-target="">

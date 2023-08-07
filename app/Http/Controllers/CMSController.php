@@ -11,7 +11,7 @@ class CMSController extends Controller
         return view('admin.content_management.addcontent');
     }
 
-    public function add_content(Request $request) {
+    public function add_cms(Request $request) {
         $request->validate([
             'title' => 'required|string',
             'description' =>  'required',
@@ -22,15 +22,15 @@ class CMSController extends Controller
 
         $image = $request->file('image');
         $destinationPath = public_path('/cms');
-        $image_name = rand().'.'.$image->getClientOriginalExtension(); 
+        $image_name = rand().'.'.$image->getClientOriginalExtension();
         $image->move($destinationPath, $image_name);
         $insertData['title']= str_replace(' ', '_', $request->title);
 
         $insertData['description'] = strip_tags($request->description);
         $insertData['image'] = $image_name;
-        $insertData['status'] =  $status; 
+        $insertData['status'] =  $status;
         DB::table('cms')->insert($insertData);
-     
+
         return redirect('admin/view_content')->with('success', 'Content has been added successfully.');
     }
     public function view_content(){
@@ -42,12 +42,12 @@ class CMSController extends Controller
         DB::delete('delete from cms where id = ?',[$id]);
         return redirect()->back();
     }
-  
+
     public function update_content(Request $request,$id){
         $users = DB::table('cms')->where(['id'=> $id])->first();
         return view('admin.content_management.update_content')->with(['users'=>$users]);
     }
-    
+
     public function edit_content(Request $request){
         $request->validate([
             'title' => 'required|string',
@@ -58,14 +58,14 @@ class CMSController extends Controller
         if(!empty($request->file('image'))){
             $image = $request->file('image');
             $destinationPath = public_path('/cms');
-            $image_name = rand().'.'.$image->getClientOriginalExtension(); 
+            $image_name = rand().'.'.$image->getClientOriginalExtension();
             $image->move($destinationPath, $image_name);
             DB::table('cms')
             ->where('id', $request['id'])
             ->update([
-               
-                'title' => $request['title'],
-                'description' => $request['description'],
+
+                'title'=> str_replace(' ', '_', $request->title),
+                'description' => strip_tags($request->description),
                 'image' => $image_name,
                 'status' => $request['status'],
             ]);
@@ -74,14 +74,12 @@ class CMSController extends Controller
             DB::table('cms')
             ->where('id', $request['id'])
             ->update([
-               
-                'title' => $request['title'],
-                'description' => $request['description'],
-                'status' => $request['status'],
+           'title'=> str_replace(' ', '_', $request->title),
+           'description' => strip_tags($request->description),
+            'status' => $request['status'],
             ]);
 
         }
-            return redirect('admin/view_content');
-
+            return redirect('admin/view_content')->with('success', 'Content has been updated successfully.');
 }
 }

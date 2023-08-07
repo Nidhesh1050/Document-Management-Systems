@@ -33,12 +33,12 @@
                                     <div class="alert alert-success">
                                         <p>{{ $message }}</p>
                                     </div>
-                                    @endif  
+                                    @endif
                         @if ($message = Session::get('error'))
                                     <div class="alert alert-danger">
                                         <p>{{ $message }}</p>
                                     </div>
-                                    @endif  
+                                    @endif
                         </div>
                         <div class="d-flex align-items-center">
                             <a href="{{ url('admin/adduser') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
