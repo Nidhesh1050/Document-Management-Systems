@@ -16,13 +16,13 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Project Management</a>
+                <a href="{{url('admin/view_project')}}">Project Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Add Project</a>
+                    <a href="{{url('admin/project_management')}}">Add Project</a>
                 </li>
             </ul>
         </div>

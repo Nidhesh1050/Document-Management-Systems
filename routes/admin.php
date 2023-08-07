@@ -39,6 +39,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/delete_user/{id}', [HomeController::class,'delete']);
     Route::get('/admin/edit_user/{id}', [HomeController::class,'edit']);
     Route::post('/admin/update_user', [HomeController::class,'update']);
+    
     Route::get('/admin/adduser',[HomeController::class,'adduser']);
     Route::post('/admin/register_user',[HomeController::class,'register']);
     /* User management routes end*/
