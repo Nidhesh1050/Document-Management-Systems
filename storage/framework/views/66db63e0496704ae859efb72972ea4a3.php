@@ -26,7 +26,18 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
+                <div class="flash-message">
+                        <?php if($message = Session::get('success')): ?>
+                                    <div class="alert alert-success">
+                                        <p><?php echo e($message); ?></p>
+                                    </div>
+                                    <?php endif; ?>  
+                        <?php if($message = Session::get('error')): ?>
+                                    <div class="alert alert-danger">
+                                        <p><?php echo e($message); ?></p>
+                                    </div>
+                                    <?php endif; ?>  
+                        </div>
                         <div class="d-flex align-items-center">
                             <a href="<?php echo e(url('admin/notification')); ?>"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
                                     data-target="#addRowModal">

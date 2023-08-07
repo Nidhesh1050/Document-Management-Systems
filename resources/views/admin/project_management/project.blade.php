@@ -53,8 +53,9 @@
                         <div class="form-group">
                         <label>Manager Name</label>
                         <select name="manager_d" class="form-control">
-                        @foreach($project_manager as $project_manager)
+                     
                         <option value=""> Please Select</option>
+                        @foreach($project_manager as $project_manager)
                             <option value="{{$project_manager->id}}"> <?php echo $project_manager->name;?></option>
                             @endforeach
                         </select>

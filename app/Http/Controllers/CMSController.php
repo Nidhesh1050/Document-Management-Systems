@@ -29,9 +29,9 @@ class CMSController extends Controller
         $insertData['description'] = strip_tags($request->description);
         $insertData['image'] = $image_name;
         $insertData['status'] =  $status; 
-   
         DB::table('cms')->insert($insertData);
-        return redirect('admin/view_content');
+     
+        return redirect('admin/view_content')->with('success', 'Content has been added successfully.');
     }
     public function view_content(){
         $users = DB::table('cms')->get();

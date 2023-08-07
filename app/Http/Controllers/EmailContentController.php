@@ -32,7 +32,7 @@ class EmailContentController extends Controller
 
             DB::table('email_contents')->insert($inserData);
 
-            return redirect('/admin/show_content');
+            return redirect('/admin/show_content')->with('success', 'Email content added successfully.');;
             
     }
 

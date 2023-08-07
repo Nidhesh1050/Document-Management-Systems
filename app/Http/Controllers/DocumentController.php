@@ -105,7 +105,7 @@ class DocumentController extends Controller
 
 
             DB::table('file_uploads')->insert($inserData);
-            return  redirect('admin/document');
+            return  redirect('admin/document')->with('success', 'Document added successfully.');
 
 
     }
@@ -140,7 +140,7 @@ class DocumentController extends Controller
         $insertData['name'] = $request->name;
         $insertData['status'] =  $status;
         DB::table('document_types')->insert($insertData);
-        return redirect('admin/view_document');
+        return redirect('admin/view_document')->with('success', 'Document has been added successfully.');;
      }
 
       //edit code in user body

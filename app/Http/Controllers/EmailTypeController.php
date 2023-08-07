@@ -26,7 +26,7 @@ class EmailTypeController extends Controller
 
             DB::table('email_types')->insert($inserData);
 
-            return redirect('/admin/show_email');
+            return redirect('/admin/show_email')->with('success', 'Email type has been added successfully.');
             
     }
 
