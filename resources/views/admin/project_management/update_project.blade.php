@@ -16,7 +16,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Project Management</a>
+                    <a href="{{url('admin/view_project')}}">Project Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -41,13 +41,9 @@
 
                             <div class="form-group">
                                 <label for="name">Project Name</label>
-                                <input type="text" class="form-control" name="project_name" id="project_name" value="{{$users->project_name}}" placeholder="name">
+                                <input type="text" class="form-control" name="project_name"
+                                    value="{{$users->project_name}}" placeholder="name">
 
-                                    <span class="text-danger ">
-                                        @error('project_name')
-                                        {{$message}}
-                                        @enderror
-                                    </span>
                             </div>
                       
                         
@@ -89,8 +85,8 @@
                 manager_d: "required",
             },
             messages: {
-                project_name: "*Update  project name",
-                manager_d: "*Update your manager_d",
+                project_name: "*Update your project name",
+                manager_d: "*Update your manager id",
             }
         });
     });

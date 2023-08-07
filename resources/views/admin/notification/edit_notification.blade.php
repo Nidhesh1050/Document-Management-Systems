@@ -1,9 +1,9 @@
 @extends('layouts.admin-app')
 
 @section('content')
-    
+
 <div class="content">
-    
+
     <div class="page-inner">
         <div class="page-header">
             <ul class="breadcrumbs">
@@ -16,7 +16,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Notification Management</a>
+                    <a href="{{url('admin/show_notification')}}">Notification Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -32,7 +32,7 @@
                     <div class="card-header">
                         <div class="card-title">Update Notification</div>
                     </div>
-                    <div class="card-body">   
+                    <div class="card-body">
         <form action="{{url('admin/update_notification')}}" id="form" method="POST">
             @csrf
                 <input type="hidden" name="id" value="{{$users->id}}">
@@ -54,13 +54,13 @@
                     @enderror
                     <span>
                 </div>
-              
+
                 <div class="text-right">
                          <button type="submit" class="mt-4 btn btn-success">Submit</button>
                          <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
                 <div>
         </form>
-    </div>   
+    </div>
 </div>
 
 <script>
@@ -71,8 +71,8 @@
                     description: "required",
                 },
                 messages: {
-                    title: "Please enter title.",
-                    description: "Please enter description.",
+                    title: "*Please enter title.",
+                    description: "*Please enter description.",
                 }
             });
         });

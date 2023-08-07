@@ -15,7 +15,7 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Category Management</a>
+                        <a href="{{url('admin/view_category')}}">Category Management</a>
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>

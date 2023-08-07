@@ -1,7 +1,9 @@
 @extends('layouts.admin-app')
 
 @section('content')
-    
+<?php 
+use app\Models\User;
+?>
 <div class="content">
     
     <div class="page-inner">
@@ -56,7 +58,7 @@
                 <tr>
                     <td>{{$loop->iteration}}</td>
                     <td> {{$users->project_name}}</td>
-                    <td> {{$users->manager_d}}</td>
+                    <td> {{ User::getUserID($users->manager_d) }}</td>
                     <td> {{$users->status}}</td>
 
                     <td>

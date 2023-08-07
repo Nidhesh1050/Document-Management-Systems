@@ -16,7 +16,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">User Management</a>
+                    <a href="{{url('admin/userManagement')}}">User Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -163,12 +163,12 @@ $(document).ready(function() {
         },
         messages: {
             name: {
-                required: "*Please enter  Name",
-                minlength: "*Enter  name atleast 4 letters",
-                maxlength: "*Name length should not be greater than 20 letters",
+                required: "*Please enter your Name",
+                minlength: "*Enter your name atleast 4 letters",
+                maxlength: "*Your name length should not be greater than 20 letters",
             },
             email: {
-                required: "*Enter a valid E-mail address",
+                required: "*Enter a valid e-mail address",
                 email: "*Email should be in @gmail.com",
             },
             username: {

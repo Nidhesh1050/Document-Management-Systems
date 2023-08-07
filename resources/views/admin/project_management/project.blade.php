@@ -16,7 +16,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Project Management</a>
+                    <a href="{{url('admin/view_project')}}">Project Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -101,9 +101,9 @@ $(document).ready(function() {
 
         },
         messages: {
-            project_name: "Please enter  project Name",
-            manager_d: "Please select manager Name",
-            status: "Please select Status",
+            project_name: "*Please enter your project name",
+            manager_d: "*Please select manager name",
+            status: "*Please select Status",
         }
     });
 });

@@ -16,7 +16,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">User Management</a>
+                    <a href="{{url('admin/userManagement')}}">User Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -154,18 +154,19 @@ $(document).ready(function() {
         messages: {
             name: {
                 required: "*Please enter  Name",
+                required: "*Please update your name",
             },
             email: {
-                required: "*Enter a valid E-mail address",
+                required: "*Please update a valid e-mail address",
             },
             username: {
-                required: "*Enter a valid username",
+                required: "*Please update a valid username",
             },
             mobile: {
                 required: "*Please enter  Valid Mobile No.",
             },
             designation: {
-                required: "*Enter a valid designation",
+                required: "*Please update a valid designation",
             },
 
         }

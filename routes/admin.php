@@ -13,6 +13,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\CMSController;
 use App\Http\Controllers\EmailTypeController;
 use App\Http\Controllers\EmailContentController;
+use App\Http\Controllers\PermissionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,7 +30,6 @@ use App\Http\Controllers\EmailContentController;
 // });
 
 Auth::routes();
-
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
     Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
