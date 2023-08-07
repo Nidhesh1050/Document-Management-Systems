@@ -89,17 +89,15 @@ $(document).ready(function() {
             parent_id: "required",
             name: "required",
             description: "required",
+         
         },
         messages: {
-            parent_id: "*Please select parent_id",
-            name: "*Please enter your Name",
-            description: "*Please enter  description",
-            image: "*Chose any image",
-            status: "*Please enter status",
-
+            parent_id: "Please select parent_id",
+            name: "Please enter your Name",
+            description: "Please enter  description",
+            image: "Chose any image",
+            status: "Please enter Status",
         }
-
-
     });
 });
 </script>

@@ -153,6 +153,7 @@ $(document).ready(function() {
         },
         messages: {
             name: {
+                required: "*Please enter  Name",
                 required: "*Please update your name",
             },
             email: {
@@ -162,7 +163,7 @@ $(document).ready(function() {
                 required: "*Please update a valid username",
             },
             mobile: {
-                required: "*Please update your valid mobile no.",
+                required: "*Please enter  Valid Mobile No.",
             },
             designation: {
                 required: "*Please update a valid designation",

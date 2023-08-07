@@ -107,7 +107,7 @@ $(document).ready(function() {
             status: "required",
         },
         messages: {
-           
+
             title: "Please enter your title",
             description: "Please enter  description",
             image: "Choose any image",

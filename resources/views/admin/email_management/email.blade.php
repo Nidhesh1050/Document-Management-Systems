@@ -1,9 +1,9 @@
 @extends('layouts.admin-app')
 
 @section('content')
-
+    
 <div class="content">
-
+    
     <div class="page-inner">
         <div class="page-header">
             <ul class="breadcrumbs">
@@ -16,13 +16,13 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="{{url('admin/view_image')}}">Settings Management</a>
+                    <a href="#">Email Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Add Logo</a>
+                    <a href="#">Add Email_Type</a>
                 </li>
             </ul>
         </div>
@@ -30,55 +30,61 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">Add Logo</div>
+                        <div class="card-title">Add Email_Type</div>
                     </div>
-                    <div class="card-body">
+                   <div class="card-body">
+                     <form action="add_email" id="form" method="POST">
+                      @csrf
 
-                    <form action="{{url('/admin/add_image')}}" method="post" id="category"
-                        enctype="multipart/form-data">
-                        @csrf
+                      <div class="form-group">
+                        <label>Email_type</label>
+                        <input type="text" name="email_type" id="email_type" class="form-control" >
+                        <span class="text-danger  ">
+                                        @error('email_type')
+                                        {{$message}}
+                                        @enderror
+                                    </span>
+                      </div>
+                      
 
-
-                        <div class="form-group">
-                        <label for="exampleFormControlFile1"> Image</label>
-                        <input type="file" class="form-control-file" name="image" id="exampleFormControlFile1">
-                            <span class="text-danger error ">
-                                @error('image')
-                                {{$message}}
-                                @enderror
-                            </span>
-                        </div>
-
-
-
-
-                        <div class="text-right">
+            
+                       <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>
                                 <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
-                        <div>
-
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                            <div>
+                     </form>
+                        
+        
+                     </div>
 
 
 
-<script>
+                     <script>
 $(document).ready(function() {
-    $("#category").validate({
+    $("#form").validate({
         rules: {
-            image: "required",
-
-
+            
+            email_type: "required",
+          
+          
         },
         messages: {
-            image: "Select Image",
-      
+           
+            email_type: "Please enter  email_type",
+           
+           
+
         }
+
     });
 });
 </script>
 @endsection
+
+
+
+
+
+
+
+
