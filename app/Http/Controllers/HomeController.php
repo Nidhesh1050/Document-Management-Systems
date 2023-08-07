@@ -95,6 +95,9 @@ class HomeController extends Controller
                 'user_type' => $request['user_type'],
                 'username' => $request['username'],
             ]);
+     
+            
+
             return redirect('admin/userManagement');
 
 
