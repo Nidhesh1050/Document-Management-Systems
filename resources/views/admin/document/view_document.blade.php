@@ -23,7 +23,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="d-flex align-items-center">
+            
                 <div class="card-header">
                     <div class="flash-message">
                         @if ($message = Session::get('success'))
@@ -38,7 +38,7 @@
                         @endif
                     </div>
 
-
+                    <div class="d-flex align-items-center">
                     <a href="{{ url('admin/add_document') }}"><button class="btn btn-primary btn-round ml-auto"
                             data-toggle="modal" data-target="">
                             <i class="fa fa-plus"></i>
