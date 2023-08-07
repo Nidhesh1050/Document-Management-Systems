@@ -131,7 +131,6 @@ class HomeController extends Controller
      else if($user_type = "manager"){
       $inserData['manager_id'] = $user_id;
      }
-
      
         $inserData['name'] = $request->name;
         $inserData['email']= $request->email;
@@ -143,12 +142,7 @@ class HomeController extends Controller
 
         DB::table('users')->insert($inserData);
 
-<<<<<<< HEAD
         return redirect('admin/userManagement')->with('success', 'User has been added successfully.');
-=======
-        return redirect('admin/userManagement');
-
->>>>>>> ccb8e07d921c90842e69099afcf7fc04234650b6
     }
 
 }
