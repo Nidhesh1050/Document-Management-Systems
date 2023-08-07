@@ -1,5 +1,4 @@
-@extends('layouts.admin-app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <?php 
 use app\Models\User;
 ?>
@@ -8,7 +7,7 @@ use app\Models\User;
         <div class="page-header">
             <ul class="breadcrumbs">
                 <li class="nav-home">
-                    <a href="{{url('admin/home')}}">
+                    <a href="<?php echo e(url('admin/home')); ?>">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -31,7 +30,7 @@ use app\Models\User;
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <a href="{{ url('admin/createdocument') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
+                            <a href="<?php echo e(url('admin/createdocument')); ?>"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
                                     data-target="#addRowModal">
                                     <i class="fa fa-plus"></i>
                                     Add Document
@@ -56,33 +55,33 @@ use app\Models\User;
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($users as $users)
+                    <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $users): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
-                        @php
+                        <?php
                             $status = $users->status == 1 ? 'Active' : 'InActive';
-                        @endphp
+                        ?>
 
                         <tr>
-                        <td>{{$loop->iteration}}</td>
+                        <td><?php echo e($loop->iteration); ?></td>
 
                            
-                            <td>{{ User::getDocumentID($users->category_id) }}</td>
+                            <td><?php echo e(User::getDocumentID($users->category_id)); ?></td>
 
-                            <td> {{ User::getCategoryID($users->category_id) }}</td>
-                            <td> {{ User::getDocumentTypeID($users->document_type_id) }}</td>
-                            <td> {{ $users->title }}</td>
-                            <td> {{ $users->documents }}</td>
-                            <td>{{ $status }}</td>
+                            <td> <?php echo e(User::getCategoryID($users->category_id)); ?></td>
+                            <td> <?php echo e(User::getDocumentTypeID($users->document_type_id)); ?></td>
+                            <td> <?php echo e($users->title); ?></td>
+                            <td> <?php echo e($users->documents); ?></td>
+                            <td><?php echo e($status); ?></td>
                             <td>
                                 <div class="form-button-action">
-                                    <a href='edit_document/{{ $users->id }}'>
+                                    <a href='edit_document/<?php echo e($users->id); ?>'>
                                         <button type="button" data-toggle="tooltip" title=""
                                             class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
                                             <i class="fa fa-edit">
                                             </i>
                                         </button>
                                     </a>
-                                    <a href="delete_document/{{ $users->id }}"
+                                    <a href="delete_document/<?php echo e($users->id); ?>"
                                         onclick="return confirm('Are you sure to delete ?')">
                                         <button type="button" data-toggle="tooltip" title=""
                                             class="btn btn-link btn-danger" data-original-title="Remove">
@@ -92,11 +91,13 @@ use app\Models\User;
                                 </div>
                             </td>
                         </tr>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
         </div>
     </div>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.admin-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp\www\dms\resources\views/admin/document/show_document.blade.php ENDPATH**/ ?>

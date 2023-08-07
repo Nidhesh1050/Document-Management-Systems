@@ -1,6 +1,5 @@
-@extends('layouts.admin-app')
   
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="content">
 				<div class="panel-header bg-primary-gradient">
 					<div class="page-inner py-5">
@@ -148,7 +147,7 @@
 														<tr>
 															<td>
 																<div class="flag">
-																	<img src="{{asset('admin/img/flags/id.png')}}" alt="indonesia">
+																	<img src="<?php echo e(asset('admin/img/flags/id.png')); ?>" alt="indonesia">
 																</div>
 															</td>
 															<td>Indonesia</td>
@@ -162,7 +161,7 @@
 														<tr>
 															<td>
 																<div class="flag">
-																	<img src="{{asset('admin/img/flags/us.png')}}" alt="united states">
+																	<img src="<?php echo e(asset('admin/img/flags/us.png')); ?>" alt="united states">
 																</div>
 															</td>
 															<td>USA</td>
@@ -176,7 +175,7 @@
 														<tr>
 															<td>
 																<div class="flag">
-																	<img src="{{asset('admin/img/flags/au.png')}}" alt="australia">
+																	<img src="<?php echo e(asset('admin/img/flags/au.png')); ?>" alt="australia">
 																</div>
 															</td>
 															<td>Australia</td>
@@ -190,7 +189,7 @@
 														<tr>
 															<td>
 																<div class="flag">
-																	<img src="{{asset('admin/img/flags/ru.png')}}" alt="russia">
+																	<img src="<?php echo e(asset('admin/img/flags/ru.png')); ?>" alt="russia">
 																</div>
 															</td>
 															<td>Russia</td>
@@ -204,7 +203,7 @@
 														<tr>
 															<td>
 																<div class="flag">
-																	<img src="{{asset('admin/img/flags/cn.png')}}" alt="china">
+																	<img src="<?php echo e(asset('admin/img/flags/cn.png')); ?>" alt="china">
 																</div>
 															</td>
 															<td>China</td>
@@ -218,7 +217,7 @@
 														<tr>
 															<td>
 																<div class="flag">
-																	<img src="{{asset('admin/img/flags/br.png')}}" alt="brazil">
+																	<img src="<?php echo e(asset('admin/img/flags/br.png')); ?>" alt="brazil">
 																</div>
 															</td>
 															<td>Brasil</td>
@@ -252,7 +251,7 @@
 								<div class="card-body pb-0">
 									<div class="d-flex">
 										<div class="avatar">
-											<img src="{{asset('admin/img/logoproduct.png')}}" alt="..." class="avatar-img rounded-circle">
+											<img src="<?php echo e(asset('admin/img/logoproduct.png')); ?>" alt="..." class="avatar-img rounded-circle">
 										</div>
 										<div class="flex-1 pt-1 ml-2">
 											<h6 class="fw-bold mb-1">CSS</h6>
@@ -265,7 +264,7 @@
 									<div class="separator-dashed"></div>
 									<div class="d-flex">
 										<div class="avatar">
-											<img src="{{asset('admin/img/logoproduct.svg')}}" alt="..." class="avatar-img rounded-circle">
+											<img src="<?php echo e(asset('admin/img/logoproduct.svg')); ?>" alt="..." class="avatar-img rounded-circle">
 										</div>
 										<div class="flex-1 pt-1 ml-2">
 											<h6 class="fw-bold mb-1">J.CO Donuts</h6>
@@ -278,7 +277,7 @@
 									<div class="separator-dashed"></div>
 									<div class="d-flex">
 										<div class="avatar">
-											<img src="{{asset('admin/img/logoproduct3.png')}}" alt="..." class="avatar-img rounded-circle">
+											<img src="<?php echo e(asset('admin/img/logoproduct3.png')); ?>" alt="..." class="avatar-img rounded-circle">
 										</div>
 										<div class="flex-1 pt-1 ml-2">
 											<h6 class="fw-bold mb-1">Ready Pro</h6>
@@ -302,7 +301,7 @@
 									<div class="card-list">
 										<div class="item-list">
 											<div class="avatar">
-												<img src="{{asset('admin/img/jm_denis.jpg')}}" alt="..." class="avatar-img rounded-circle">
+												<img src="<?php echo e(asset('admin/img/jm_denis.jpg')); ?>" alt="..." class="avatar-img rounded-circle">
 											</div>
 											<div class="info-user ml-3">
 												<div class="username">Jimmy Denis</div>
@@ -314,7 +313,7 @@
 										</div>
 										<div class="item-list">
 											<div class="avatar">
-												<img src="{{asset('admin/img/chadengle.jpg')}}" alt="..." class="avatar-img rounded-circle">
+												<img src="<?php echo e(asset('admin/img/chadengle.jpg')); ?>" alt="..." class="avatar-img rounded-circle">
 											</div>
 											<div class="info-user ml-3">
 												<div class="username">Chad</div>
@@ -326,7 +325,7 @@
 										</div>
 										<div class="item-list">
 											<div class="avatar">
-												<img src="{{asset('admin/img/talha.jpg')}}" alt="..." class="avatar-img rounded-circle">
+												<img src="<?php echo e(asset('admin/img/talha.jpg')); ?>" alt="..." class="avatar-img rounded-circle">
 											</div>
 											<div class="info-user ml-3">
 												<div class="username">Talha</div>
@@ -338,7 +337,7 @@
 										</div>
 										<div class="item-list">
 											<div class="avatar">
-												<img src="{{asset('admin/img/mlane.jpg')}}" alt="..." class="avatar-img rounded-circle">
+												<img src="<?php echo e(asset('admin/img/mlane.jpg')); ?>" alt="..." class="avatar-img rounded-circle">
 											</div>
 											<div class="info-user ml-3">
 												<div class="username">John Doe</div>
@@ -350,7 +349,7 @@
 										</div>
 										<div class="item-list">
 											<div class="avatar">
-												<img src="{{asset('admin/img/talha.jpg')}}" alt="..." class="avatar-img rounded-circle">
+												<img src="<?php echo e(asset('admin/img/talha.jpg')); ?>" alt="..." class="avatar-img rounded-circle">
 											</div>
 											<div class="info-user ml-3">
 												<div class="username">Talha</div>
@@ -362,7 +361,7 @@
 										</div>
 										<div class="item-list">
 											<div class="avatar">
-												<img src="{{asset('admin/img/jm_denis.jpg')}}" alt="..." class="avatar-img rounded-circle">
+												<img src="<?php echo e(asset('admin/img/jm_denis.jpg')); ?>" alt="..." class="avatar-img rounded-circle">
 											</div>
 											<div class="info-user ml-3">
 												<div class="username">Jimmy Denis</div>
@@ -519,4 +518,5 @@
 					</div>
 				</div>
 			</div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.admin-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp\www\dms\resources\views/adminHome.blade.php ENDPATH**/ ?>

@@ -56,6 +56,8 @@
                                     <option value="{{$users->id}}">{{$users->manager_d}}</option>
                                     @endforeach
                                 </select>
+                                
+                            </div>
                                 <span class="text-danger  ">
                                         @error('manager_d')
                                         {{$message}}
