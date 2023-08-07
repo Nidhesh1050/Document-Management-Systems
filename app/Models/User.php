@@ -72,7 +72,6 @@ class User extends Authenticatable
         }else{
             return '';
         }
-        
     }
 
     public static function getUserID($user_id){
@@ -86,8 +85,8 @@ class User extends Authenticatable
         
     }
 
-    public static function getDocumentID($user_id){
-        $user = DB::table('projects')->select('project_name')->where('id', $user_id)
+    public static function getDocumentID($project_id){
+        $user = DB::table('projects')->select('project_name')->where('id', $project_id)
         ->first();
         if(!empty($user->project_name)){
             return $user->project_name;
@@ -96,6 +95,17 @@ class User extends Authenticatable
         }
         
     }
+
+    public static function getCategoryParentID($categories_id){
+        $users = DB::table('categories')->select('name')->where('id', $categories_id)
+        ->first();
+        if(!empty($users->name)){
+            return $users->name;
+        }else{
+            return '';
+        }
+    }
+
 
    
 

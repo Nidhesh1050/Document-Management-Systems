@@ -1,5 +1,9 @@
 @extends('layouts.admin-app')
 @section('content')
+<?php 
+use app\Models\User;
+?>
+
 
 <div class="content">
     <div class="page-inner">
@@ -44,7 +48,9 @@
 				<tr>
 					<!-- <th>id</th> -->
                     <th>S.No.</th>
+
 					<th>Email_Type</th>
+
                     <th>Subject</th>
                     <th>Message</th>													
 					<th>Action</th>
@@ -54,9 +60,11 @@
 		 <tbody>
              @foreach ($users as $user)
 				<tr>
-                    <!-- <td>{{ $user->id }}</td> -->
+                   
                     <td>{{$loop->iteration}}</td>
-                    <td>{{ $user->email_type}}</td>
+
+                   
+                    <td>{{ User::getEmailID($user->email_type) }}</td>
 					
                     <td>{{ $user->subject }}</td>
                     <td>{{ $user->message }}</td>

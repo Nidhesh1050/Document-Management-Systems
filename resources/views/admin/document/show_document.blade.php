@@ -66,7 +66,7 @@ use app\Models\User;
                         <td>{{$loop->iteration}}</td>
 
                            
-                            <td>{{ User::getDocumentID($users->category_id) }}</td>
+                            <td>{{ User::getDocumentID($users->project_id) }}</td>
 
                             <td> {{ User::getCategoryID($users->category_id) }}</td>
                             <td> {{ User::getDocumentTypeID($users->document_type_id) }}</td>

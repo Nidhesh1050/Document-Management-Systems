@@ -1,6 +1,10 @@
 @extends('layouts.admin-app')
 @section('content')
 
+<?php 
+use app\Models\User;
+?>
+
 <div class="content">
     <div class="page-inner">
         <div class="page-header">
@@ -43,7 +47,7 @@
         <thead>
             <tr>
             <th> S.No</th>
-                <th> Id</th>
+             
                 <th> Parent ID </th>
                 <th> Name </th>
                 <th> Description</th>
@@ -56,9 +60,10 @@
             @foreach($users as $users )
 
                 <tr>
-                <td>{{$loop->iteration}}</td>
-                    <td> {{$users->id}}</td>
+                <td>{{$loop->iteration}}</td> 
+
                     <td> {{$users->parent_id}}</td>
+
                     <td> {{$users->name}}</td>
                     <td> {{$users->description}}</td>
                   
