@@ -44,11 +44,11 @@
                                             <h2>User:</h2>
                                         </div>
                                         <div>
-                                        <select name="user_type" class="form-control input-solid" >
+                                        <select name="user_id" class="form-control input-solid" >
 
                                             <option value="">Please Select</option>
                                             @foreach ($modules as $modules)
-                                                <option value="{{ $modules->name }}">{{ $modules->name }}</option>
+                                                <option value="{{ $modules->id }}">{{ $modules->name }}</option>
                                             @endforeach
                                         </select>
                                         </div>
@@ -73,16 +73,22 @@
                                                     <td> {{ $users->module_name }}</td>
                                                     <input type="hidden" name="id" value="{{$users->id}}">
                                                     <td>
-                                                        <input class="form-check-input" type="checkbox" name="add_check[]" value="{{ $users->module_name }}" id="" />
+                                                        <input class="form-check-input" type="checkbox" name="add[]" value="{{ $users->module_name }}" id="" />
+
+                                                        {{-- <input type="checkbox" name="users[]" class="" id="users" value="1" {{ $users[] == 1 ? 'checked' : '' }}> --}}
+                                                        {{-- <input type="checkbox"  class="" name="add" id="add" value="1" {{ $users->add == 1 ? 'checked' : '' }}> --}}
+                                                        {{-- <input type="checkbox" name="add" id="add" value="1" --}}
+
+
                                                     </td>
                                                     <td>
-                                                        <input class="form-check-input" type="checkbox" name="edit_check[]" value="{{ $users->module_name }}" id="" />
+                                                        <input class="form-check-input" type="checkbox" name="edit[]" value="{{ $users->module_name }}" id="" />
                                                     </td>
                                                     <td>
-                                                        <input class="form-check-input" type="checkbox" name="delete_check[]" value="{{ $users->module_name }}" id="" />
+                                                        <input class="form-check-input" type="checkbox" name="delete[]" value="{{ $users->module_name }}" id="" />
                                                     </td>
                                                     <td>
-                                                        <input class="form-check-input" type="checkbox" name="view_check[]" value="{{ $users->module_name }}" id="" />
+                                                        <input class="form-check-input" type="checkbox" name="view[]" value="{{ $users->module_name }}" id="" />
                                                     </td>
                                                 </tr>
                                             @endforeach

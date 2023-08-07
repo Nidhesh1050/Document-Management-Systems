@@ -17,13 +17,15 @@ class PermissionController extends Controller
     public function permission(Request $request){
 
     //    echo  count($request->edit_check);die;
-
-            $inserData['user_type'] = $request->user_type;
+            // print_r($request->all());die;
+            // dd($request->all());die;
+            $inserData['user_id'] = $request->user_id;
             $inserData['module_id']= $request->id;
-            // $inserData['add_check'] = $request->add_check;
-            // $inserData['edit_check']= $request->edit_check;
-            // $inserData['delete_check']= $request->delete_check;
-            // $inserData['view_check'] = $request->view_check;
+            // $inserData['add'] = $request->add;
+            // print_r($request->all());die;
+            // $inserData['edit']= $request->edit;
+            // $inserData['delete']= $request->delete;
+            // $inserData['view'] = $request->view;
 
             DB::table('modules_permissions')->insert($inserData);
             return  redirect('admin/module_permission');
