@@ -52,6 +52,7 @@ class ProjectManagementController extends Controller
     }
 
     public function edit_project(Request $request){
+        
         $request->validate([
             'project_name' => 'required|string',
             'manager_d' =>  'required',

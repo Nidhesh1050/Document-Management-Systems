@@ -79,7 +79,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/add_document', [DocumentController::class,'add_documenttype']);
     Route::post('/admin/register',[DocumentController::class,'register']);
     Route::get('/admin/edit/{id}', [DocumentController::class,'edit']);
-    Route::post('/admin/update/', [DocumentController::class,'update']);
+    Route::post('/admin/documentupdate/', [DocumentController::class,'documentupdate']);
 
     /* Side Setting routes start*/
    Route::get('/admin/setting',[SettingController::class,'setting']);

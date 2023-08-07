@@ -16,7 +16,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Document Type</a>
+                <a href="{{url('admin/view_document')}}">Document Type</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -33,7 +33,8 @@
                         <div class="card-title">Edit Document Type</div>
                     </div>
                     <div class="card-body">
-                    <form action="{{url('admin/update')}}" method="post">
+                    
+                    <form action="{{url('admin/documentupdate')}}" method="post">
                         @csrf
                         <input type="hidden" name="id" value="{{ $users->id }}">
                         <div class="form-group">
