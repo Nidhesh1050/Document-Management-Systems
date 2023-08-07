@@ -80,6 +80,9 @@
                 name: "required",
             },
             messages: {
+                name: {
+                    required:"*Please enter  name",
+                },
                 name: "*Please enter your Name",
                 
             }

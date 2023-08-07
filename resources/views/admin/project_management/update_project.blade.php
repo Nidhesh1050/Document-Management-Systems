@@ -33,7 +33,7 @@
                         <div class="card-title">Edit Project</div>
                     </div>
                     <div class="card-body">
-                        <form action="{{url('admin/edit_project')}}" method="post" id="category_update" enctype="multipart/form-data">
+                        <form action="{{url('admin/edit_project')}}" method="post" name="category_update" id="category_update" enctype="multipart/form-data">
 
                             @csrf
                             <input type="hidden" name="id" value="{{$users->id}}">
@@ -45,12 +45,12 @@
                                     value="{{$users->project_name}}" placeholder="name">
 
                             </div>
-
-
+                      
+                        
                             <div class="form-group">
                                 <label for="name">Project Manager</label>
 
-                                <select name="manager_d" class="form-control">
+                                <select name="manager_d" id="manager_d" class="form-control">
                                     @foreach($project_manager as $parent)
                                     <option value=""> Please Select</option>
                                     <option value="{{$users->id}}">{{$users->manager_d}}</option>
@@ -58,7 +58,15 @@
                                 </select>
                                 
                             </div>
+                                <span class="text-danger  ">
+                                        @error('manager_d')
+                                        {{$message}}
+                                        @enderror
+                                    </span>
 
+                              
+                            </div>
+                    
                             <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Update</button>
                                 <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
@@ -70,14 +78,13 @@
         </div>
     </div>
 </div>
-</div>
+
 <script>
     $(document).ready(function() {
         $("#category_update").validate({
             rules: {
                 project_name: "required",
                 manager_d: "required",
-
             },
             messages: {
                 project_name: "*Update your project name",
@@ -85,4 +92,7 @@
             }
         });
     });
+    <script>
+
+
 @endsection

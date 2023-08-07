@@ -14,13 +14,13 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Notification Management</a>
+                    <a href="#">Email Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#"> Notification List</a>
+                    <a href="#">Add Email_Type</a>
                 </li>
             </ul>
         </div>
@@ -29,45 +29,42 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <a href="{{ url('admin/notification') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
+                            <a href="{{ url('admin/email') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
                                     data-target="#addRowModal">
                                     <i class="fa fa-plus"></i>
-                                    Add Notification
+                                    Add Email_Type
                                 </button>
                             </a>
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-       <table id="datatables" class="display table table-striped table-hover" >
+                        <table id="datatables" class="display table table-striped table-hover" >
 		    <thead>
 				<tr>
-					<ht>S.No</th>
-					<th>Title</th>
-					<th>Description</th>
+					<!-- <th>id</th> -->
+                    <th>S.No.</th>
+					<th>Email_Type</th>										
 					<th>Action</th>
 				</tr>
 		    </thead>
-
 		 <tbody>
              @foreach ($users as $user)
 				<tr>
-                <td>{{$loop->iteration}}</td>
-                    <td>{{ $user->title }}</td>
-                    <td>{{ $user->description }}</td>
+                    <!-- <td>{{ $user->id }}</td> -->
+                    <td>{{$loop->iteration}}</td>
+                    <td>{{ $user->email_type }}</td>
 					<td>
 					   <div class="form-button-action">
-                            <a href="edit_notification/{{ $user->id }}"> 
+                            <a href="edit_email/{{ $user->id }}"> 
 									<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
 										<i class="fa fa-edit"></i>
 									</button>
                             </a>
-
-                            <a href='delete/{{$user->id}}' onclick="return confirm('Are you sure to delete ?')">
-                                <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                    <i class="fa fa-times"></i>
-                                </button>
-                            </a>
+                            <a href='delete/{{$user->id}}'> 
+								<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Delete">
+									<i class="fa fa-times"></i>
+								</button>
                             </a>
 						</div>
 					</td>
@@ -76,7 +73,9 @@
 	         </tbody>
 	    </table>
  </div>
-</div>
-	</div>
-</div>
+
 @endsection
+
+
+
+

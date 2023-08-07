@@ -107,19 +107,25 @@ $(document).ready(function() {
             status: "required",
         },
         messages: {
-<<<<<<< HEAD
+
            
+
+            title: "Please enter  title",
+            description: "Please enter  description",
+            image: "Please  select image",
+            status: "Please enter tatus",
+
             title: "*Please enter your title",
             description: "*Please enter  description",
             image: "*Choose any image",
             status: "*Please enter status",
-=======
+
 
             title: "Please enter your title",
             description: "Please enter  description",
             image: "Choose any image",
             status: "Please enter Status",
->>>>>>> 005a913af2e2f8b1bc939d48780b54546e443797
+
 
         }
 

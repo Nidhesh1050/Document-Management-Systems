@@ -46,7 +46,7 @@ use app\Models\User;
     <table id="datatables" class="display table table-striped table-hover">
         <thead>
             <tr>
-                <th> Id</th>
+               <th>S.No</th>
                 <th> Project Name</th>   
                 <th> Manager Id </th>
                 <th> Status</th>
@@ -56,7 +56,7 @@ use app\Models\User;
         <tbody>
             @foreach($users as $users )
                 <tr>
-                    <td> {{$users->id}}</td>
+                    <td>{{$loop->iteration}}</td>
                     <td> {{$users->project_name}}</td>
                     <td> {{ User::getUserID($users->manager_d) }}</td>
                     <td> {{$users->status}}</td>
