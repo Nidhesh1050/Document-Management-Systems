@@ -55,7 +55,7 @@
     <table id="datatables" class="display table table-striped table-hover">
         <thead>
             <tr>
-                <th> Id</th>
+                <th> S.NO</th>
                 <th> Project Name</th>   
                 <th> Manager Id </th>
                 <th> Status</th>
@@ -64,11 +64,14 @@
         </thead>
         <tbody>
             @foreach($users as $users )
+            @php
+                     $status = $users->status == 1 ? 'Active' : 'InActive';
+                                        @endphp
                 <tr>
-                    <td> {{$users->id}}</td>
+                <td>{{$loop->iteration}}</td>
                     <td> {{$users->project_name}}</td>
                     <td> {{$users->manager_d}}</td>
-                    <td> {{$users->status}}</td>
+                    <td> {{$status}}</td>
 
                     <td>
                         <div class="form-button-action">

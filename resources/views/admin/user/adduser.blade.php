@@ -17,7 +17,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">User Management</a>
+                    <a href="{{url('admin/userManagement')}}">User Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -164,29 +164,29 @@ $(document).ready(function() {
         },
         messages: {
             name: {
-                required: "*Please enter your Name",
-                minlength: "*Enter your name atleast 4 letters",
-                maxlength: "*Your name length should not be greater than 20 letters",
+                required: "Please enter your Name",
+                minlength: "Enter your name atleast 4 letters",
+                maxlength: "Your name length should not be greater than 20 letters",
             },
             email: {
-                required: "*Enter a valid E-mail address",
-                email: "*Email should be in @gmail.com",
+                required: "Enter a valid e-mail address",
+                email: "Email should be in @gmail.com",
             },
             username: {
-                required: "*Enter a valid username",
+                required: "Enter a valid username",
             },
             mobile: {
-                required: "*Please enter your Valid Mobile No.",
-                number: "*Please enter Mobile No. in numeric",
-                minlength: "*Atlest length should be 10",
-                maxlength: "*Length should not be greater than 12",
+                required: "Please enter your valid Mobile No.",
+                number: "Please enter Mobile No. in numeric",
+                minlength: "Atlest length should be 10",
+                maxlength: "Length should not be greater than 12",
             },
             designation: {
-                required: "*Enter a valid designation",
+                required: "Enter a valid designation",
             },
             password: {
-                required: "*Enter a valid password",
-                minlength: "*Password must be atlest 8 characters",
+                required: "Enter a valid password",
+                minlength: "Password must be atlest 8 characters",
             },
         }
 

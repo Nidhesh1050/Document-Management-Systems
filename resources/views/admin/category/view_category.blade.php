@@ -32,6 +32,19 @@ use app\Models\User;
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
+                    <div class="card-header">
+<div class="flash-message">
+                        @if ($message = Session::get('success'))
+                                    <div class="alert alert-success">
+                                        <p>{{ $message }}</p>
+                                    </div>
+                                    @endif  
+                        @if ($message = Session::get('error'))
+                                    <div class="alert alert-danger">
+                                        <p>{{ $message }}</p>
+                                    </div>
+                                    @endif  
+                        </div>
                         <div class="d-flex align-items-center">
                             <a href="{{ url('admin/category') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
                                     data-target="#addRowModal">
@@ -46,9 +59,8 @@ use app\Models\User;
     <table id="datatables" class="display table table-striped table-hover">
         <thead>
             <tr>
-            <th> S.No</th>
+                 <th> S.No</th>
              
-                <th> Id</th>
                 <th> Parent ID </th>
                 <th> Name </th>
                 <th> Description</th>
@@ -61,12 +73,11 @@ use app\Models\User;
             @foreach($users as $users )
            
                 <tr>
-                    <td> {{$users->id}}</td>
+                <td>{{$loop->iteration}}</td>
                     <td> {{$users->parent_id}}</td>
-
                     <td> {{$users->name}}</td>
                     <td> {{$users->description}}</td>
-                    </td>
+                    
                     <td>
                         <div class="form-button-action">
 
