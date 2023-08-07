@@ -29,7 +29,21 @@
         <div class="row">
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">
+                <div class="card-header">
+<div class="flash-message">
+                        @if ($message = Session::get('success'))
+                                    <div class="alert alert-success">
+                                        <p>{{ $message }}</p>
+                                    </div>
+                                    @endif  
+                        @if ($message = Session::get('error'))
+                                    <div class="alert alert-danger">
+                                        <p>{{ $message }}</p>
+                                    </div>
+                                    @endif  
+                        </div>
+
+
                         <div class="card-title">Add Category</div>
                     </div>
                     <div class="card-body">
@@ -63,8 +77,7 @@
 
                         <div class="form-group col-md-6">
                             <label for="description">Description</label>
-                            <textarea class="form-control" name="description" id="comment" cols="5">
-                                            </textarea>
+                            <input type="textarea" class="form-control" name="description" id="comment" cols="" row="5" />            
                             <span class="text-danger error ">
                                 @error('description')
                                 {{$message}}
@@ -96,11 +109,11 @@ $(document).ready(function() {
             status: "required",
         },
         messages: {
-            parent_id: "Please select parent_id",
+            parent_id: "Please select parent name",
             name: "Please enter your Name",
             description: "Please enter  description",
             image: "Chose any image",
-            status: "Please enter Status",
+            status: "Please enter status",
 
         }
 

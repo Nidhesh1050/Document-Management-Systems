@@ -54,35 +54,25 @@ class HomeController extends Controller
 
     public function userManagement(){
         $users = DB::table('users')->get();
-        // $users = DB::select('select * from users');
         return view('admin.user.userManagement',['users'=>$users]);
     }
     //Delete function to delete in user body
     public function delete($id) {
-        DB::delete('delete from users where id = ?',[$id]);
+      DB::delete('delete from users where id = ?',[$id]);
         return redirect()->back();
      }
      //edit code in user body
      public function edit(Request $request,$id) {
 
-      $project_manager = DB::table('usertype')->select('id','name')->get();
-
+      $project_manager = DB::table('usertype')->select('id','name')->whereIn('id', [2,0])->get();
         $users = DB::table('users')->where(['id'=> $id])->first();
-        return view('admin.user.edit')->with(['users'=>$users,'project_manager'=>    $project_manager]);
-
+        return view('admin.user.edit')->with(['users'=>$users,'project_manager'=>$project_manager]);
+       
       }
       //Update Code
       public function update(Request $request){
-        $request->validate(
-            [
-              'name'=>'required',
-              'email'=>'required',
-              'mobile' =>'required|max:12',
-              'user_type' => 'required',
-              'username' => 'required',
 
-              ]
-          );
+      
         DB::table('users')
             ->where('id', $request['id'])
             ->update([
@@ -93,21 +83,16 @@ class HomeController extends Controller
                 'username' => $request['username'],
             ]);
      
-            
-
             return redirect('admin/userManagement')->with('success', 'User has been updated successfully.');;
-
-
       }
       //Insert data Code
       public function adduser(){
-        $project_manager = DB::table('usertype')->select('id','name')->get();
+        $project_manager = DB::table('usertype')->select('id','name')->whereIn('id', [2,0])->get();
         return view('admin.user.adduser',['project_manager'=>$project_manager]);
       }
       public function register(Request $request)
     {
-      // echo '<pre>';
-      // print_r($request->all());die;
+      
 
       $request->validate(
         [
@@ -138,7 +123,7 @@ class HomeController extends Controller
         $inserData['user_type'] = $request->user_type;
         $inserData['username'] = $request->username;
         $inserData['password'] = $request->password;
-        //print_r($inserData);die;
+        
 
         DB::table('users')->insert($inserData);
 
