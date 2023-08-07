@@ -75,9 +75,7 @@
                                                     <td>
                                                         <input class="form-check-input" type="checkbox" name="add[]" value="{{ $users->module_name }}" id="" />
 
-                                                        {{-- <input type="checkbox" name="users[]" class="" id="users" value="1" {{ $users[] == 1 ? 'checked' : '' }}> --}}
-                                                        {{-- <input type="checkbox"  class="" name="add" id="add" value="1" {{ $users->add == 1 ? 'checked' : '' }}> --}}
-                                                        {{-- <input type="checkbox" name="add" id="add" value="1" --}}
+                                                     
 
 
                                                     </td>
