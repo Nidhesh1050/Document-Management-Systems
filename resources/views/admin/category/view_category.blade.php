@@ -14,7 +14,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Category Management</a>
+                    <a href="{{url('admin/view_category')}}">Category Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -47,19 +47,19 @@
                 <th> Name </th>
                 <th> Description</th>
                 <th> Action</th>
-                
-                
+
+
             </tr>
         </thead>
         <tbody>
             @foreach($users as $users )
-           
+
                 <tr>
                     <td> {{$users->id}}</td>
                     <td> {{$users->parent_id}}</td>
                     <td> {{$users->name}}</td>
                     <td> {{$users->description}}</td>
-                    </td>
+                  
                     <td>
                         <div class="form-button-action">
 
@@ -83,10 +83,6 @@
         </tbody>
     </table>
  </div>
-
-
-
-
 @endsection
 
 

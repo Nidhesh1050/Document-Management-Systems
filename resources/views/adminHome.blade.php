@@ -30,11 +30,11 @@
 										</div>
 										<div class="px-2 pb-2 pb-md-0 text-center">
 											<div id="circles-2"></div>
-											<h6 class="fw-bold mt-3 mb-0">Active Users</h6>
+											<h6 class="fw-bold mt-3 mb-0">Active</h6>
 										</div>
 										<div class="px-2 pb-2 pb-md-0 text-center">
 											<div id="circles-3"></div>
-											<h6 class="fw-bold mt-3 mb-0">In active Users</h6>
+											<h6 class="fw-bold mt-3 mb-0">In Active</h6>
 										</div>
 									</div>
 								</div>
