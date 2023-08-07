@@ -92,7 +92,10 @@ class HomeController extends Controller
                 'user_type' => $request['user_type'],
                 'username' => $request['username'],
             ]);
-            return redirect('admin/userManagement');
+     
+            
+
+            return redirect('admin/userManagement')->with('success', 'User has been updated successfully.');;
 
 
       }
@@ -128,7 +131,6 @@ class HomeController extends Controller
      else if($user_type = "manager"){
       $inserData['manager_id'] = $user_id;
      }
-
      
         $inserData['name'] = $request->name;
         $inserData['email']= $request->email;
@@ -140,8 +142,7 @@ class HomeController extends Controller
 
         DB::table('users')->insert($inserData);
 
-        return redirect('admin/userManagement');
-
+        return redirect('admin/userManagement')->with('success', 'User has been added successfully.');
     }
 
 }

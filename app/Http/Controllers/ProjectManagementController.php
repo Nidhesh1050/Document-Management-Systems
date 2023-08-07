@@ -27,7 +27,7 @@ class ProjectManagementController extends Controller
         $inserData['manager_d'] = $request->manager_d;
         $inserData['status'] =  $status;
         DB::table('projects')->insert($inserData);
-        return redirect('/admin/view_project');
+        return redirect('/admin/view_project')->with('success', 'Project added successfully.');
 
 
     }
