@@ -15,7 +15,7 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="{{url('admin/view_category')}}">Category Management</a>
+                        <a href="#">Category Management</a>
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>
@@ -71,7 +71,8 @@
                                                 @enderror
                                             </span>
                                     </div>
-                                    
+
+
                                 </div>
                                 <div class="text-right">
                                     <button type="submit" class="mt-4 btn btn-success">Update</button>
@@ -96,11 +97,11 @@
                                             status: "required",
                                         },
                                         messages: {
-                                            parent_id: "Update  parent_id",
-                                            name: "Update  Name",
-                                            description: "Update   description",
+                                            parent_id: "Update your parent_id",
+                                            name: "Update your your Name",
+                                            description: "Update your  description",
                                             image: "Choose image",
-                                            status: "Update  Status",
+                                            status: "Update your Status",
 
                                         }
 
