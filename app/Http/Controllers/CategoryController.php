@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+//use Session;
 
 class CategoryController extends Controller
 {
@@ -27,7 +28,7 @@ class CategoryController extends Controller
         $inserData['category_slag']= str_replace(' ', '_', $request->name);
         $inserData['description'] = $request->description;
         DB::table('categories')->insert($inserData);
-        return redirect('admin/view_category');
+        return redirect('admin/view_category')->with('success', 'Category added successfully.');
     }
 
     public function view_category(){

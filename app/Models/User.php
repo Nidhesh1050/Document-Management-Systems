@@ -86,6 +86,17 @@ class User extends Authenticatable
         
     }
 
+    public static function getDocumentID($user_id){
+        $user = DB::table('projects')->select('project_name')->where('id', $user_id)
+        ->first();
+        if(!empty($user->project_name)){
+            return $user->project_name;
+        }else{
+            return '';
+        }
+        
+    }
+
    
 
 }
