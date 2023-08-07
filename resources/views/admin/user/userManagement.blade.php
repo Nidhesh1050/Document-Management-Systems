@@ -42,7 +42,6 @@
                             <table id="datatables" class="display table table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th>S.No</th>
                                         <th> Name</th>
                                         <th> Email </th>
                                         <th> Mobile </th>
@@ -59,7 +58,6 @@
                                             $status = $users->status == 1 ? 'Active' : 'InActive';
                                         @endphp
                                         <tr>
-                                        <td>{{$loop->iteration}}</td>
                                             <td> {{ $users->name }}</td>
                                             <td> {{ $users->email }}</td>
                                             <td> {{ $users->mobile }}</td>

@@ -16,7 +16,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="{{url('admin/userManagement')}}">User Management</a>
+                    <a href="#">User Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -63,7 +63,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="mobile">Mobile</label>
                                     <input type="mobile" class="form-control" id="mobile" placeholder="Enter Mobile"
-                                        value="{{$users->mobile}}" name="mobile">
+                                        value="{{ $users->mobile }}" name="mobile">
                                     <span class="text-danger  ">
                                         @error('mobile')
                                         {{$message}}
@@ -153,20 +153,19 @@ $(document).ready(function() {
         },
         messages: {
             name: {
-                required: "*Please enter  Name",
-                required: "*Please update your name",
+                required: "*Please enter your Name",
             },
             email: {
-                required: "*Please update a valid e-mail address",
+                required: "*Enter a valid E-mail address",
             },
             username: {
-                required: "*Please update a valid username",
+                required: "*Enter a valid username",
             },
             mobile: {
-                required: "*Please enter  Valid Mobile No.",
+                required: "*Please enter your Valid Mobile No.",
             },
             designation: {
-                required: "*Please update a valid designation",
+                required: "*Enter a valid designation",
             },
 
         }

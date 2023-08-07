@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Facades\DB;
 
-class User extends Authenticatable
+class User extends Authenticatable 
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -63,7 +63,6 @@ class User extends Authenticatable
         }
     }
 
-
     public static function getCategoryID($category_id){
         $category = DB::table('categories')->select('name')->where('id', $category_id)
         ->first();
@@ -74,18 +73,4 @@ class User extends Authenticatable
         }
         
     }
-
-    public static function getUserID($user_id){
-        $user = DB::table('users')->select('name')->where('id', $user_id)
-        ->first();
-        if(!empty($user->name)){
-            return $user->name;
-        }else{
-            return '';
-        }
-        
-    }
-
-   
-
 }

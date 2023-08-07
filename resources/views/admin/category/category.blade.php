@@ -16,7 +16,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="{{url('admin/view_category')}}">Category Management</a>
+                    <a href="#">Category Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -59,12 +59,13 @@
                                 @enderror
                             </span>
 
-                        </div>
+                        </div
 
                         <div class="form-group col-md-6">
                             <label for="description">Description</label>
-                            <input type="textarea" class="form-control" name="description" id="comment" cols="" row="5" />
-                            <span class="text-danger error">
+                            <textarea class="form-control" name="description" id="comment" cols="5">
+                                            </textarea>
+                            <span class="text-danger error ">
                                 @error('description')
                                 {{$message}}
                                 @enderror
@@ -78,7 +79,9 @@
                 </form>
         </div>
     </div>
+
 </div>
+
 <script>
 $(document).ready(function() {
 
@@ -89,7 +92,8 @@ $(document).ready(function() {
             parent_id: "required",
             name: "required",
             description: "required",
-         
+            image: "required",
+            status: "required",
         },
         messages: {
             parent_id: "Please select parent_id",
@@ -97,7 +101,10 @@ $(document).ready(function() {
             description: "Please enter  description",
             image: "Chose any image",
             status: "Please enter Status",
+
         }
+
+
     });
 });
 </script>

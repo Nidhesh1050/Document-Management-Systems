@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
-
 class HomeController extends Controller
 {
     /**
@@ -41,9 +40,8 @@ class HomeController extends Controller
     }
 
 
-    public function adminHome() : View
+    public function adminHome(): View
     {
-
         return view('adminHome');
     }
 
@@ -147,13 +145,14 @@ class HomeController extends Controller
 
       ];
 
-      Mail::to($request->email)->send(new \App\Mail\MyTestMail($details));
+      \Mail::to($request->email)->send(new \App\Mail\MyTestMail($details));
 
 
         $inserData['mobile'] = $request->mobile;
         $inserData['user_type'] = $request->user_type;
         $inserData['username'] = $request->username;
         $inserData['password'] = $request->password;
+        //print_r($inserData);die;
 
         DB::table('users')->insert($inserData);
 

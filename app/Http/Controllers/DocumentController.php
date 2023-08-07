@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 
 class DocumentController extends Controller
 {
@@ -96,24 +95,12 @@ class DocumentController extends Controller
         $document_name = rand().'.'.$document->getClientOriginalExtension();
         $document->move($destinationPath, $document_name);
 
-     $user_id =  Session::get('user_id');
-     $user_type = Session::get('user_type');
-
-     if($user_type = "admin"){
-      $inserData['admin_id'] = $user_id;
-      $inserData['manager_id'] = $user_id;
-     }
-     else if($user_type = "manager"){
-      $inserData['manager_id'] = $user_id;
-     }
-
             $inserData['project_id'] = $request->project_id;
             $inserData['category_id']= $request->category_id;
             $inserData['document_type_id']= $request->document_ty;
             $inserData['title'] = $request->title;
             $inserData['documents'] = $document_name;
             $inserData['status'] =  $status;
-
 
 
 
@@ -178,3 +165,5 @@ class DocumentController extends Controller
     }
     //code by soni end
 }
+
+

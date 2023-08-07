@@ -1,9 +1,9 @@
 @extends('layouts.admin-app')
 
 @section('content')
-
+    
 <div class="content">
-
+    
     <div class="page-inner">
         <div class="page-header">
             <ul class="breadcrumbs">
@@ -16,7 +16,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="{{url('admin/view_image')}}">Settings Management</a>
+                    <a href="#">Settings Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -46,10 +46,10 @@
                                 @error('image')
                                 {{$message}}
                                 @enderror
-                            </span>
+                            </span>  
                         </div>
-
-
+                            
+                       
 
 
                         <div class="text-right">
@@ -71,7 +71,7 @@ $(document).ready(function() {
     $("#category").validate({
         rules: {
             image: "required",
-
+           
 
         },
         messages: {

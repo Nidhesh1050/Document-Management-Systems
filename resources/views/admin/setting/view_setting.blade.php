@@ -44,18 +44,17 @@
     <table id="datatables" class="display table table-striped table-hover">
         <thead>
             <tr>
-                <th>S.No</th>
+                <th> Id</th>
                 <th> Image </th>
+                <th> Edit</th>
                 <th> Action</th>
-          
                 
             </tr>
         </thead>
         <tbody>
             @foreach($users as $users )
                 <tr>
-                <td>{{$loop->iteration}}</td>
-                   
+                    <td> {{$users->id}}</td>
                     <td>  <img src="{{ asset('images/' .$users->image) }}" style="height: 50px;width:100px;"></td>
                   
                     <td>

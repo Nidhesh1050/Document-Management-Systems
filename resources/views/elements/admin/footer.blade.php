@@ -1,8 +1,3 @@
-<?php
- $total_user = DB::table('users')->count();
- $total_activeUser = DB::table('users')->where(['status'=> 1])->count();
- $total_InActiveUser = DB::table('users')->where(['status'=> 0])->count();
-?>
 <footer class="footer">
 				<div class="container-fluid">
 					<nav class="pull-left">
@@ -73,7 +68,7 @@
 			value:60,
 			maxValue:100,
 			width:7,
-			text: {{$total_user }},
+			text: 5,
 			colors:['#f1f1f1', '#FF9E27'],
 			duration:400,
 			wrpClass:'circles-wrp',
@@ -88,7 +83,7 @@
 			value:70,
 			maxValue:100,
 			width:7,
-			text:{{$total_activeUser}},
+			text: 36,
 			colors:['#f1f1f1', '#2BB930'],
 			duration:400,
 			wrpClass:'circles-wrp',
@@ -103,7 +98,7 @@
 			value:40,
 			maxValue:100,
 			width:7,
-			text: {{$total_InActiveUser}},
+			text: 12,
 			colors:['#f1f1f1', '#F25961'],
 			duration:400,
 			wrpClass:'circles-wrp',
