@@ -24,8 +24,22 @@
                 </li>
             </ul>
         </div>
-        <div class="d-flex align-items-center">
+       
+        <div class="card-header">
+            <div class="flash-message">
+                        @if ($message = Session::get('success'))
+                                    <div class="alert alert-success">
+                                        <p>{{ $message }}</p>
+                                    </div>
+                                    @endif
+                        @if ($message = Session::get('error'))
+                                    <div class="alert alert-danger">
+                                        <p>{{ $message }}</p>
+                                    </div>
+                                    @endif
+                        </div>
 
+                        <div class="d-flex align-items-center">
             <a href="{{url('admin/add_document')}}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
                     data-target="">
                     <i class="fa fa-plus"></i>
@@ -46,15 +60,16 @@
             </thead>
             <tbody>
                 @foreach ($users as $users)
-                <!-- @php
-                        // $status = "";
+                @php
+                        
                         $status = $users->status == 1 ? 'Active' : 'InActive';
-                    @endphp -->
+                    @endphp
               <tr>
                 <td>{{ $users->name }}</td>
                 <td>{{ $status }}</td>
                 <td>
                              <div class="form-button-action">
+                             
                                 <a href="edit/{{ $users->id }}">
                                     <button type="button" data-toggle="tooltip" title=""
                                         class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">

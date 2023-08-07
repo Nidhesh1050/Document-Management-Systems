@@ -60,7 +60,7 @@ class DocumentController extends Controller
                 'title' => $request['title'],
             ]);
         }
-        return redirect('admin/document');
+        return redirect('admin/document')->with('success', 'Notification has been updated successfully.');
     }
 
     //code by anurag end
@@ -105,7 +105,7 @@ class DocumentController extends Controller
 
 
             DB::table('file_uploads')->insert($inserData);
-            return  redirect('admin/document');
+            return  redirect('admin/document')->with('success', 'Notification has been updated successfully.');
 
 
     }
@@ -140,16 +140,16 @@ class DocumentController extends Controller
         $insertData['name'] = $request->name;
         $insertData['status'] =  $status;
         DB::table('document_types')->insert($insertData);
-        return redirect('admin/view_document');
+        return redirect('admin/view_document')->with('success', 'Notification has been updated successfully.');
      }
 
       //edit code in user body
-    public function edit(Request $request,$id) {
+      public function edit(Request $request,$id) {
         $users = DB::table('document_types')->where(['id'=> $id])->first();
         return view('admin.document.edit')->with(['users'=>$users]);
     }
       //Update Code
-    public function update(Request $request){
+    public function documentupdate(Request $request){
 
         $request->validate(
          ['name' => 'required',
@@ -161,9 +161,8 @@ class DocumentController extends Controller
             ->update([
                 'name' => $request['name'],
             ]);
-        return redirect('admin/view_document');
+        return redirect('admin/view_document')->with('success', 'Notification has been updated successfully.');
+        ;
     }
     //code by soni end
 }
-
-

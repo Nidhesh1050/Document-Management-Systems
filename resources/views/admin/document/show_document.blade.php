@@ -30,6 +30,20 @@ use app\Models\User;
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
+                        
+                    <div class="flash-message">
+                            @if ($message = Session::get('success'))
+                                        <div class="alert alert-success">
+                                            <p>{{ $message }}</p>
+                                        </div>
+                                        @endif
+                            @if ($message = Session::get('error'))
+                                        <div class="alert alert-danger">
+                                            <p>{{ $message }}</p>
+                                        </div>
+                                        @endif
+                         </div>
+
                         <div class="d-flex align-items-center">
                             <a href="{{ url('admin/createdocument') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
                                     data-target="#addRowModal">
@@ -44,6 +58,7 @@ use app\Models\User;
             <table id="datatables" class="display table table-striped table-hover">
                 <thead>
                     <tr>
+                        <th>S.No.</th>
                         <th> Project Id</th>
                         <th> Category Id </th>
                         <th> Document Type Id </th>
