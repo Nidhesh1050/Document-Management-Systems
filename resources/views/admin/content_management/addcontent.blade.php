@@ -52,7 +52,7 @@
                          <div class="form-group col-md-12">
                             <label for="description">Description</label>
                             <textarea class="form-control"  name="description" id="editor"
-                                placeholder="write text">
+                                placeholder="write text" rows="2">
                                             </textarea>
                                             <span class="text-danger error ">
                                 @error('description')
@@ -107,7 +107,7 @@ $(document).ready(function() {
             status: "required",
         },
         messages: {
-
+           
             title: "Please enter your title",
             description: "Please enter  description",
             image: "Choose any image",
@@ -124,7 +124,6 @@ $(document).ready(function() {
         .create( document.querySelector( '#editor' ) )
         .catch( error => {
             console.error( error );
-            
         } );
 </script>
 

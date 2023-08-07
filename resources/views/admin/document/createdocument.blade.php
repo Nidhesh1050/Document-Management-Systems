@@ -16,7 +16,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="{{url('admin/document')}}">Document Management</a>
+                    <a href="#">Document Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -149,12 +149,12 @@
                     status: "required",
                 },
                 messages: {
-                    project_id: "Please select project name",
-                    category_id: "Please select category name",
+                    project_id: "Please select project Name",
+                    category_id: "Please select category Name",
                     document_ty: "Please select document type",
-                    title: "Please enter title",
-                    document: "Choose any documents",
-                    status: "Please enter status",
+                    title: "Please Enter title",
+                    document: "Choose any documemnts",
+                    status: "Please Enter Status",
                 }
             });
         });

@@ -16,7 +16,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="{{url('admin/document')}}">>Document Management</a>
+                    <a href="#">Document Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -136,18 +136,18 @@
                 },
                 messages: {
                     project_id: {
-                        required: "*Update  project_id",
+                        required: "*Update your project_id",
 
                     },
                     category_id: {
-                        required: "*Update  valid category_id",
+                        required: "*Update your valid category_id",
 
                     },
                     document_type_id: {
-                        required: "*Update  document_type_id",
+                        required: "*Update your document_type_id",
                     },
                     title: {
-                        required: "*Update  title",
+                        required: "*Update your title",
 
                     },
 

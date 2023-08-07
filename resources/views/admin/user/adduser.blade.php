@@ -17,7 +17,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="{{url('admin/userManagement')}}">User Management</a>
+                    <a href="#">User Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -26,7 +26,6 @@
                     <a href="#">Add User</a>
                 </li>
             </ul>
-            
         </div>
         <div class="row">
             <div class="col-md-10">
@@ -170,14 +169,14 @@ $(document).ready(function() {
                 maxlength: "*Your name length should not be greater than 20 letters",
             },
             email: {
-                required: "*Enter a valid e-mail address",
+                required: "*Enter a valid E-mail address",
                 email: "*Email should be in @gmail.com",
             },
             username: {
                 required: "*Enter a valid username",
             },
             mobile: {
-                required: "*Please enter  Valid Mobile No.",
+                required: "*Please enter your Valid Mobile No.",
                 number: "*Please enter Mobile No. in numeric",
                 minlength: "*Atlest length should be 10",
                 maxlength: "*Length should not be greater than 12",

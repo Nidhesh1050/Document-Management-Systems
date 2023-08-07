@@ -1,9 +1,7 @@
 @extends('layouts.admin-app')
 
 @section('content')
-<?php 
-use app\Models\User;
-?>
+    
 <div class="content">
     
     <div class="page-inner">
@@ -57,7 +55,7 @@ use app\Models\User;
     <table id="datatables" class="display table table-striped table-hover">
         <thead>
             <tr>
-               <th>S.No</th>
+                <th> Id</th>
                 <th> Project Name</th>   
                 <th> Manager Id </th>
                 <th> Status</th>
@@ -67,9 +65,9 @@ use app\Models\User;
         <tbody>
             @foreach($users as $users )
                 <tr>
-                    <td>{{$loop->iteration}}</td>
+                    <td> {{$users->id}}</td>
                     <td> {{$users->project_name}}</td>
-                    <td> {{ User::getUserID($users->manager_d) }}</td>
+                    <td> {{$users->manager_d}}</td>
                     <td> {{$users->status}}</td>
 
                     <td>

@@ -16,7 +16,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="{{url('admin/show_notification')}}">Notification Management</a>
+                    <a href="#">Notification Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -78,8 +78,8 @@
                     description: "required",
                 },
                 messages: {
-                    title: "*Please enter title.",
-                    description: "*Please enter description.",
+                    title: "Please Enter Title.",
+                    description: "Please Enter Description.",
                 }
             });
         });

@@ -57,7 +57,6 @@ use app\Models\User;
             <table id="datatables" class="display table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th>S.No</th>
                         <th> Project Id</th>
                         <th> Category Id </th>
                         <th> Document Type Id </th>
@@ -76,11 +75,7 @@ use app\Models\User;
                         @endphp
 
                         <tr>
-                        <td>{{$loop->iteration}}</td>
-
-                           
-                            <td>{{ User::getDocumentID($users->category_id) }}</td>
-
+                            <td> {{ $users->project_id }}</td>
                             <td> {{ User::getCategoryID($users->category_id) }}</td>
                             <td> {{ User::getDocumentTypeID($users->document_type_id) }}</td>
                             <td> {{ $users->title }}</td>

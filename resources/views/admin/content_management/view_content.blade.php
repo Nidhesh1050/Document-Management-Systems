@@ -57,7 +57,6 @@
     <table id="datatables" class="display table table-striped table-hover">
         <thead>
             <tr>
-                <th>S.No</th>
                 <th> Id</th>
                 <th> Title</th>
                 <th> Description</th>
@@ -69,7 +68,6 @@
         <tbody>
             @foreach($users as $users )
                 <tr>
-                <td>{{$loop->iteration}}</td>
                     <td> {{$users->id}}</td>
                     <td> {{$users->title}}</td>
                     <td> {{$users->description}}</td>

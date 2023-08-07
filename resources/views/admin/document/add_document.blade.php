@@ -16,7 +16,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="{{url('admin/view_document')}}">Document Management</a>
+                    <a href="#">Document Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -63,13 +63,14 @@
                         <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>
                                 <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
-                            <div>                    
+                            <div>                    </form>
 
-                            </form>
+
                 </div>
             </div>
         </div>
     </div>
+
 </div>
 
 <script>
@@ -77,14 +78,17 @@
     // validate  form using jquey
         $("#validate").validate({
             rules: {
-                name: "required",
+                name: {
+                    required:true,
+                    minlength:4,
+                    maxlength:20,
+                },
+
             },
             messages: {
                 name: {
-                    required:"*Please enter  name",
+                    required:"*Please enter your Name",
                 },
-                name: "*Please enter your Name",
-                
             }
         });
     });

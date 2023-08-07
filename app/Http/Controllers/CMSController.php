@@ -75,8 +75,8 @@ class CMSController extends Controller
             ->where('id', $request['id'])
             ->update([
                
-                'title'=> str_replace(' ', '_', $request->title),
-               'description' => strip_tags($request->description),
+                'title' => $request['title'],
+                'description' => $request['description'],
                 'status' => $request['status'],
             ]);
 
