@@ -1,5 +1,7 @@
 <?php $__env->startSection('content'); ?>
-    
+<?php 
+use app\Models\User;
+?>
 <div class="content">
     
     <div class="page-inner">
@@ -54,7 +56,7 @@
                 <tr>
                     <td> <?php echo e($users->id); ?></td>
                     <td> <?php echo e($users->project_name); ?></td>
-                    <td> <?php echo e($users->manager_d); ?></td>
+                    <td> <?php echo e(User::getUserID($users->manager_d)); ?></td>
                     <td> <?php echo e($users->status); ?></td>
 
                     <td>

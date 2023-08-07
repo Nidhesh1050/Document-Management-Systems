@@ -13,7 +13,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Category Management</a>
+                    <a href="<?php echo e(url('admin/view_category')); ?>">Category Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -46,19 +46,19 @@
                 <th> Name </th>
                 <th> Description</th>
                 <th> Action</th>
-                
-                
+
+
             </tr>
         </thead>
         <tbody>
             <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $users): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-           
+
                 <tr>
                     <td> <?php echo e($users->id); ?></td>
                     <td> <?php echo e($users->parent_id); ?></td>
                     <td> <?php echo e($users->name); ?></td>
                     <td> <?php echo e($users->description); ?></td>
-                    </td>
+                  
                     <td>
                         <div class="form-button-action">
 
@@ -82,10 +82,6 @@
         </tbody>
     </table>
  </div>
-
-
-
-
 <?php $__env->stopSection(); ?>
 
 

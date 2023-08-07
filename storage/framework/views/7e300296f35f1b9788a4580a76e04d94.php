@@ -232,6 +232,26 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 								</ul>
 							</div>
 						</li>
+<<<<<<< HEAD
+=======
+                        <li class="nav-item">
+							<a data-toggle="collapse" href="#maps">
+								<i class="fas fa-key"></i>
+								<p>Permission</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="maps">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="<?php echo e(url('admin/module_permission')); ?>">
+											<span class="sub-item">Module Permission</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+
+>>>>>>> a52e2fe3afea2d44619b59e912ce7252c65ec178
             </ul>
         </div>
     </div>

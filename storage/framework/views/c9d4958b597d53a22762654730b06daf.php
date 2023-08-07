@@ -14,7 +14,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Category Management</a>
+                    <a href="<?php echo e(url('admin/view_category')); ?>">Category Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -65,13 +65,12 @@ endif;
 unset($__errorArgs, $__bag); ?>
                             </span>
 
-                        </div
+                        </div>
 
                         <div class="form-group col-md-6">
                             <label for="description">Description</label>
-                            <textarea class="form-control" name="description" id="comment" cols="5">
-                                            </textarea>
-                            <span class="text-danger error ">
+                            <input type="textarea" class="form-control" name="description" id="comment" cols="" row="5" />
+                            <span class="text-danger error">
                                 <?php $__errorArgs = ['description'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -110,11 +109,11 @@ $(document).ready(function() {
             status: "required",
         },
         messages: {
-            parent_id: "Please select parent_id",
-            name: "Please enter your Name",
-            description: "Please enter  description",
-            image: "Chose any image",
-            status: "Please enter Status",
+            parent_id: "*Please select parent_id",
+            name: "*Please enter your Name",
+            description: "*Please enter  description",
+            image: "*Chose any image",
+            status: "*Please enter status",
 
         }
 

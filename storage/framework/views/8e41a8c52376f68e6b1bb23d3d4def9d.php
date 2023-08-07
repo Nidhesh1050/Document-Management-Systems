@@ -3,7 +3,6 @@
  $total_activeUser = DB::table('users')->where(['status'=> 1])->count();
  $total_InActiveUser = DB::table('users')->where(['status'=> 0])->count();
 ?>
-
 <footer class="footer">
 				<div class="container-fluid">
 					<nav class="pull-left">

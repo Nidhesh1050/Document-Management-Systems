@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Facades\DB;
 
-class User extends Authenticatable 
+class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -56,13 +56,34 @@ class User extends Authenticatable
     public static function getDocumentTypeID($document_id){
         $document_type = DB::table('document_types')->select('name')->where('id', $document_id)
         ->first();
-        return $document_type->name;
+        if(!empty($document_type->name)){
+            return $document_type->name;
+        }else{
+            return '';
+        }
     }
 
-    public static function getCategoryID($categories_id){
-        $document_type = DB::table('categories')->select('name')->where('id', $categories_id)
+
+    public static function getCategoryID($category_id){
+        $category = DB::table('categories')->select('name')->where('id', $category_id)
         ->first();
-        return $document_type->name;
+        if(!empty($category->name)){
+            return $category->name;
+        }else{
+            return '';
+        }
+        
+    }
+
+    public static function getUserID($user_id){
+        $user = DB::table('users')->select('name')->where('id', $user_id)
+        ->first();
+        if(!empty($user->name)){
+            return $user->name;
+        }else{
+            return '';
+        }
+        
     }
 
    

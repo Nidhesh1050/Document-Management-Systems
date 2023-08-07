@@ -11,6 +11,7 @@ use App\Http\Controllers\ProjectManagementController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\CMSController;
+use App\Http\Controllers\PermissionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +28,6 @@ use App\Http\Controllers\CMSController;
 // });
 
 Auth::routes();
-
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
     Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
@@ -106,6 +106,14 @@ Route::get('/admin/update_content/{id}',[CMSController::class,'update_content'])
 Route::post('/admin/edit_content',[CMSController::class,'edit_content']);
 
 /* Content management system routes end*/
+
+
+/* Module Permission route start here*/
+Route::get('/admin/module_permission',[PermissionController::class,'module_permission']);
+Route::post('/admin/module_permission',[PermissionController::class,'permission']);
+
+
+/* Module Permission route end here*/
 
 
 

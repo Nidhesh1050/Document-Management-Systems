@@ -15,7 +15,7 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Category Management</a>
+                        <a href="{{url('admin/view_category')}}">Category Management</a>
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>
@@ -97,11 +97,11 @@
                                             status: "required",
                                         },
                                         messages: {
-                                            parent_id: "Update your parent_id",
-                                            name: "Update your your Name",
-                                            description: "Update your  description",
-                                            image: "Choose image",
-                                            status: "Update your Status",
+                                            parent_id: "*Update your parent_id",
+                                            name: "*Update your your name",
+                                            description: "*Update your  description",
+                                            image: "*Choose image",
+                                            status: "*Update your status",
 
                                         }
 

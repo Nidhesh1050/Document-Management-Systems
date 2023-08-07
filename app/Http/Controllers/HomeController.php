@@ -41,8 +41,9 @@ class HomeController extends Controller
     }
 
 
-    public function adminHome(): View
-    {
+    public function adminHome() : View
+    { 
+   
         return view('adminHome');
     }
 
@@ -55,7 +56,6 @@ class HomeController extends Controller
 
     public function userManagement(){
         $users = DB::table('users')->get();
-        // $users = DB::select('select * from users');
         return view('admin.user.userManagement',['users'=>$users]);
     }
     //Delete function to delete in user body
@@ -100,9 +100,11 @@ class HomeController extends Controller
       //Insert data Code
       public function adduser(){
 
-         $total_user = DB::table('users')->count();
-         $total_activeUser = DB::table('users')->where(['status'=> 1])->count();
-         $total_InActiveUser = DB::table('users')->where(['status'=> 0])->count();
+        $total_user = DB::table('users')->count();
+        $total_activeUser = DB::table('users')->where(['status'=> 1])->count();
+        $total_InActiveUser = DB::table('users')->where(['status'=> 0])->count();
+
+        
         $project_manager = DB::table('usertype')->select('id','name')->get();
         return view('admin.user.adduser',['project_manager'=>$project_manager]);
       }
@@ -148,5 +150,7 @@ class HomeController extends Controller
         return redirect('admin/userManagement');
 
     }
+
+  
 
 }
