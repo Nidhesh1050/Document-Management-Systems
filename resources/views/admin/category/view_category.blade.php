@@ -1,6 +1,10 @@
 @extends('layouts.admin-app')
 @section('content')
 
+<?php 
+use app\Models\User;
+?>
+
 <div class="content">
     <div class="page-inner">
         <div class="page-header">
@@ -42,6 +46,8 @@
     <table id="datatables" class="display table table-striped table-hover">
         <thead>
             <tr>
+            <th> S.No</th>
+             
                 <th> Id</th>
                 <th> Parent ID </th>
                 <th> Name </th>
@@ -57,6 +63,7 @@
                 <tr>
                     <td> {{$users->id}}</td>
                     <td> {{$users->parent_id}}</td>
+
                     <td> {{$users->name}}</td>
                     <td> {{$users->description}}</td>
                     </td>
