@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin-login')
 
 @section('content')
 <style>
@@ -16,7 +16,7 @@
     font-size: 16px;
     margin-top: 4%;
 }
-.py-4 {
+.py-5 {
     padding-top:none;
     padding-bottom:none;
     background: #eee;
@@ -63,7 +63,7 @@
 
                             <div class="form-group row">
                                 <div class="col-md-6 ">
-                                    <div class="form-check">
+                                    <div class="pl-2">
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember_token') ? 'checked' : '' }}>
 
                                         <label class="form-check-label" for="remember">

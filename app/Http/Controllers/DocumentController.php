@@ -60,7 +60,7 @@ class DocumentController extends Controller
                 'title' => $request['title'],
             ]);
         }
-        return redirect('admin/document')->with('success', 'Notification has been updated successfully.');
+        return redirect('admin/document')->with('success', 'Ducoment has been updated successfully.');
     }
 
     //code by anurag end
@@ -105,7 +105,7 @@ class DocumentController extends Controller
 
 
             DB::table('file_uploads')->insert($inserData);
-            return  redirect('admin/document')->with('success', 'Notification has been updated successfully.');
+            return  redirect('admin/document')->with('success', 'Ducoment has been updated successfully.');
 
 
     }
@@ -140,7 +140,7 @@ class DocumentController extends Controller
         $insertData['name'] = $request->name;
         $insertData['status'] =  $status;
         DB::table('document_types')->insert($insertData);
-        return redirect('admin/view_document')->with('success', 'Notification has been updated successfully.');
+        return redirect('admin/view_document')->with('success', 'Ducoment Type has been save successfully.');
      }
 
       //edit code in user body
@@ -161,7 +161,7 @@ class DocumentController extends Controller
             ->update([
                 'name' => $request['name'],
             ]);
-        return redirect('admin/view_document')->with('success', 'Notification has been updated successfully.');
+        return redirect('admin/view_document')->with('success', 'Document has been updated successfully.');
         ;
     }
     //code by soni end
