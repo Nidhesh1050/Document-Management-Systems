@@ -27,6 +27,18 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
+                            <div class="flash-message">
+                                @if ($message = Session::get('success'))
+                                    <div class="alert alert-success">
+                                        <p>{{ $message }}</p>
+                                    </div>
+                                @endif
+                                @if ($message = Session::get('error'))
+                                    <div class="alert alert-danger">
+                                        <p>{{ $message }}</p>
+                                    </div>
+                                @endif
+                            </div>
                             <div class="d-flex align-items-center">
                                 <a><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
                                         data-target="#addRowModal">
@@ -44,13 +56,13 @@
                                             <h2>User:</h2>
                                         </div>
                                         <div>
-                                        <select name="user_id" class="form-control input-solid" >
+                                            <select name="user_id" class="form-control input-solid">
 
-                                            <option value="">Please Select</option>
-                                            @foreach ($modules as $modules)
-                                                <option value="{{ $modules->id }}">{{ $modules->name }}</option>
-                                            @endforeach
-                                        </select>
+                                                <option value="">Please Select</option>
+                                                @foreach ($modules as $modules)
+                                                    <option value="{{ $modules->id }}">{{ $modules->name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <table id="" class="display table table-striped table-hover">
@@ -71,22 +83,26 @@
 
                                                     <td> {{ $users->id }}</td>
                                                     <td> {{ $users->module_name }}</td>
-                                                    <input type="hidden" name="id" value="{{$users->id}}">
+                                                    <input type="hidden" name="id[]" value="{{ $users->id }}">
                                                     <td>
-                                                        <input class="form-check-input" type="checkbox" name="add[]" value="{{ $users->module_name }}" id="" />
-
-
-
-
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="add[{{ $users->id }}]"
+                                                            value="{{ $users->module_name }}" id="" />
                                                     </td>
                                                     <td>
-                                                        <input class="form-check-input" type="checkbox" name="edit[]" value="{{ $users->module_name }}" id="" />
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="edit[{{ $users->id }}]"
+                                                            value="{{ $users->module_name }}" id="" />
                                                     </td>
                                                     <td>
-                                                        <input class="form-check-input" type="checkbox" name="delete[]" value="{{ $users->module_name }}" id="" />
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="delete[{{ $users->id }}]"
+                                                            value="{{ $users->module_name }}" id="" />
                                                     </td>
                                                     <td>
-                                                        <input class="form-check-input" type="checkbox" name="view[]" value="{{ $users->module_name }}" id="" />
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="view[{{ $users->id }}]"
+                                                            value="{{ $users->module_name }}" id="" />
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -104,5 +120,4 @@
             </div>
         </div>
     </div>
-
 @endsection

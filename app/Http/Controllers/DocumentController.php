@@ -92,7 +92,7 @@ class DocumentController extends Controller
 
         $document = $request->file('document');
         $destinationPath = public_path('/documents');
-        $document_name = rand().'.'.$document->getClientOriginalExtension();
+        $document_name = $request->project_id.'-'.$request->category_id.'-'.$request->document_ty.$document->getClientOriginalExtension();
         $document->move($destinationPath, $document_name);
 
             $inserData['project_id'] = $request->project_id;

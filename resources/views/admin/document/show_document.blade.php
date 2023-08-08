@@ -59,9 +59,9 @@ use app\Models\User;
                 <thead>
                     <tr>
                         <th>S.No.</th>
-                        <th> Project Id</th>
-                        <th> Category Id </th>
-                        <th> Document Type Id </th>
+                        <th> Project Name</th>
+                        <th> Category Name </th>
+                        <th> Document Type </th>
                         <th>Title</th>
                         <th> Documents </th>
                         <th> Status</th>
