@@ -31,7 +31,7 @@
                 <div class="card">
                     <div class="card-header">
                     <div class="card-header">
-<div class="flash-message">
+                   <div class="flash-message">
                         @if ($message = Session::get('success'))
                                     <div class="alert alert-success">
                                         <p>{{ $message }}</p>
