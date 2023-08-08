@@ -69,6 +69,6 @@ class CategoryController extends Controller
                 'description' => $request['description'],
             ]);
         }
-        return redirect('admin/view_category')->with('success', 'Category has been updated successfully.');;
+        return redirect('admin/view_category')->with('success', 'Category has been updated successfully.');
     }
 }

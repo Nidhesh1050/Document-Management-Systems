@@ -20,18 +20,15 @@ class PermissionController extends Controller
             // print_r($request->all());die;
             // dd($request->all());die;
             $inserData['user_id'] = $request->user_id;
-            $inserData['module_id']= $request->id;
-            // $inserData['add'] = $request->add;
-            // print_r($request->all());die;
-            // $inserData['edit']= $request->edit;
-            // $inserData['delete']= $request->delete;
-            // $inserData['view'] = $request->view;
-
-            DB::table('modules_permissions')->insert($inserData);
-            return  redirect('admin/module_permission');
-            // echo "success";
-
-
+            foreach($request->id as $modules){
+                $inserData['module_id']= $modules;
+                $inserData['add'] = isset($request->add[$modules])?1:0;
+                $inserData['edit'] = isset($request->edit[$modules])?1:0;
+                $inserData['delete'] = isset($request->delete[$modules])?1:0;
+                $inserData['view'] = isset($request->view[$modules])?1:0;
+                DB::table('modules_permissions')->insert($inserData);
+            }
+            return  redirect('admin/module_permission')->with('success', 'Permission give successfully.');
     }
 
 }
