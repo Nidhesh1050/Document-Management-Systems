@@ -7,7 +7,6 @@ use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-use Mail;
 
 class HomeController extends Controller
 {
@@ -138,11 +137,14 @@ class HomeController extends Controller
           'title' => 'Mail from dms.srmtechsol.com',
           'body' => 'Welcome in Document Manganent Proejct',
 
-      ];
+          // 'email'=> $request->email,
+          //  'password'=> $request->password 
+          
 
+      ];
       \Mail::to($request->email)->send(new \App\Mail\MyTestMail($details));
 
-
+  
         $inserData['mobile'] = $request->mobile;
         $inserData['user_type'] = $request->user_type;
         $inserData['username'] = $request->username;
