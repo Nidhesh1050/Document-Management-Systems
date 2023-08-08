@@ -40,7 +40,7 @@
                   
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                        <label>Project Id</label>
+                        <label>Project Name</label>
                         <select name="project_id" class="form-control">
                         <option value=""> Please Select</option>
                         @foreach($project_documents as $project_documents)
@@ -55,7 +55,7 @@
                     </div>
                    
                     <div class="form-group col-md-6">
-                        <label>Category Id</label>
+                        <label>Category Name</label>
                         <select name="category_id" class="form-control">
                         <option value=""> Please Select</option>
                         @foreach($category_documents as $category_documents)
@@ -70,7 +70,7 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                        <label>Document Type Id</label>
+                        <label>Document Type </label>
                         <select name="document_ty" class="form-control">
 
                         <option value=""> Please Select</option>

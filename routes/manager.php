@@ -26,3 +26,5 @@ Route::middleware(['auth', 'user-access:manager'])->group(function () {
 
     
 });
+
+
