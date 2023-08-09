@@ -94,7 +94,17 @@
                                 @enderror
                             </span>
                         </div>
-
+                        
+                        <div class="form-group col-md-12">
+                                        <label for="description">Description</label>
+                                        <textarea class="form-control" name="description" id="editor" placeholder="write text" rows="2">
+                                            </textarea>
+                                        <span class="text-danger error ">
+                                            @error('description')
+                                                {{ $message }}
+                                            @enderror
+                                        </span>
+                             </div>
 
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlFile1"> Upload document</label>
@@ -107,17 +117,17 @@
                             </span>
                      </div>
 
-                     <div class="form-group col-md-6">
+                     <div class="form-group">
                             <label for="status">Status</label>
-                            <input type="" class="form-control" name="status" id="status"
-                                placeholder="Status">
+                            <input type="checkbox" class="form-control" name="status" id="status"
+                                placeholder="Status" value="1">
                                 <span class="text-danger error ">
                                 @error('status')
                                 {{$message}}
                                 @enderror
                             </span>
                         </div>
-</div>
+                    </div>
                      <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>
                                 <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
@@ -153,5 +163,11 @@ $(document).ready(function() {
     });
 });
 </script>
-
+<script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 @endsection

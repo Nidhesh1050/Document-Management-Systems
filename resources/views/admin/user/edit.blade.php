@@ -53,8 +53,8 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="name">Name</label>
-                                    <input type="name" class="form-control" id="name" placeholder="Enter Name"
-                                        value="{{$users->name}}" name="name">
+                                    <input type="text" class="form-control" id="name" placeholder="Enter Name"
+                                        value="{{$users->name}}" name="name" onkeypress="return /[A-Za-z/ _-]/i.test(event.key)">
                                     <span class="text-danger  ">
                                         @error('name')
                                         {{$message}}
@@ -75,7 +75,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="mobile">Mobile</label>
-                                    <input type="mobile" class="form-control" id="mobile" placeholder="Enter Mobile"
+                                    <input type="text" class="form-control" id="mobile" placeholder="Enter Mobile"
                                         value="{{ $users->mobile }}" name="mobile">
                                     <span class="text-danger  ">
                                         @error('mobile')
@@ -89,23 +89,14 @@
                                 <div class="form-group col-md-6">
                                     <label for="designation">User Type</label>
 
-                                    <!-- <input type="text" class="form-control" id="designation"
-                                        placeholder="Enter your User Type" value="{{ $users->name }}"
-                                        name="designation"> -->
-
-                                    <select name="designation" class="form-control">
+                                    <select name="user_type" class="form-control">
                                         <option value=""> Please Select</option>
-
-                                        @foreach($project_manager as $project_manager)
-                                        <option value="{{$project_manager->id}}"> <?php echo $project_manager->name;?>
-                                        </option>
-                                        @endforeach
-
+                                        <?php foreach($project_manager as $project_manager){?>
+                                        <option <?php if($users->user_type == $project_manager->id){?>selected <?php } ?> value="{{$project_manager->id}}">{{$project_manager->name}}</option>
+                                        <?php }?>
                                     </select>
-
-
                                     <span class="text-danger  ">
-                                        @error('designation')
+                                        @error('user_type')
                                         {{$message}}
                                         @enderror
                                     </span>
@@ -158,7 +149,7 @@ $(document).ready(function() {
             mobile: {
                 required: true,
             },
-            designation: {
+            user_type: {
 
                 required: true,
             },
@@ -177,8 +168,8 @@ $(document).ready(function() {
             mobile: {
                 required: "*Please enter your Valid Mobile No.",
             },
-            designation: {
-                required: "*Enter a valid designation",
+            user_type: {
+                required: "*Enter a valid user type",
             },
 
         }

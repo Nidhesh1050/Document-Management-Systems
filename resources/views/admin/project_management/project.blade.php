@@ -59,14 +59,10 @@
                                 {{$message}}
                                 @enderror
                             </span>
-
                         </div>
-
-
                         <div class="form-group">
                         <label>Manager Name</label>
                         <select name="manager_d" class="form-control">
-                     
                         <option value=""> Please Select</option>
                         @foreach($project_manager as $project_manager)
                             <option value="{{$project_manager->id}}"> <?php echo $project_manager->name;?></option>
@@ -78,6 +74,17 @@
                                 @enderror
                         </span>
                     </div>
+                    <div class="form-group col-md-12">
+                                        <label for="description"> Project Description</label>
+                                        <textarea class="form-control" name="description" id="editor" placeholder="write text" rows="2">
+                                            </textarea>
+                                        <span class="text-danger error ">
+                                            @error('description')
+                                                {{ $message }}
+                                            @enderror
+                                        </span>
+                         </div>
+
 
                         <div class="form-group">
                             <label for="status">Status</label>
@@ -122,4 +129,11 @@ $(document).ready(function() {
     });
 });
 </script>
+<script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 @endsection

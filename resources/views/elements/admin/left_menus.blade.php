@@ -1,5 +1,6 @@
 <?php
 $users = DB::table('side_setting')->orderBy('id','DESC')->first();
+$currentURL =Route::current()->uri; 
 ?>
 
 <div class="sidebar sidebar-style-2">
@@ -50,7 +51,7 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
                     </span>
                     <h4 class="text-section">Components</h4>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item"  >
                     <a href="{{url('admin/home')}}">
                         <i class="fas fa-layer-group"></i>
                         <p>Dashboard</p>
@@ -63,8 +64,8 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
                     </a>
                     <div class="collapse" id="base">
                         <ul class="nav nav-collapse">
-                            <li>
-                                <a href="{{url('admin/userManagement')}}">
+                            <li class="sidebar-item">
+                                <a <?php if($currentURL =='admin/userManagement' || $currentURL =='admin/edit/{id}'){ echo 'active'; }?> class="sidebar-link" href="{{url('admin/userManagement')}}">
                                     <span class="sub-item">User List</span>
                                 </a>
                             </li>

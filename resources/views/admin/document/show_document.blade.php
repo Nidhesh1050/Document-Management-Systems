@@ -63,6 +63,7 @@ use app\Models\User;
                         <th> Category Name </th>
                         <th> Document Type </th>
                         <th>Title</th>
+                        <th>Description</th>
                         <th> Documents </th>
                         <th> Status</th>
                         <th> Action</th>
@@ -85,6 +86,7 @@ use app\Models\User;
                             <td> {{ User::getCategoryID($users->category_id) }}</td>
                             <td> {{ User::getDocumentTypeID($users->document_type_id) }}</td>
                             <td> {{ $users->title }}</td>
+                            <td> {{ $users->description }}</td>
                             <td> {{ $users->documents }}</td>
                             <td>{{ $status }}</td>
                             <td>

@@ -23,6 +23,8 @@
 			}
 		});
 	</script>
+	<!-- ckeditor library for discription-->
+       <script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
 
 	<!-- CSS Files -->
 	<link rel="stylesheet" href="{{asset('admin/css/bootstrap.min.css')}}">

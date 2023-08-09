@@ -53,7 +53,7 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="name">Parent ID</label>
+                            <label for="name">Parent Name</label>
                              <select name="parent_id" class="form-control">
                             <option value=""> Please Select</option>
                             @foreach($parent_categories as $parent)
@@ -61,9 +61,6 @@
                             @endforeach
                           </select>
                           </div>
-
-
-
                         <div class="form-group col-md-6">
                             <label for="name">Name</label>
                             <input type="text" class="form-control" name="name" id="" placeholder="Name">
@@ -72,23 +69,23 @@
                                 {{$message}}
                                 @enderror
                             </span>
+                            </div>
 
-                        </div
-
-                        <div class="form-group col-md-6">
-                            <label for="description">Description</label>
-                            <input type="textarea" class="form-control" name="description" id="comment" cols="" row="5" />            
-                            <span class="text-danger error ">
-                                @error('description')
-                                {{$message}}
-                                @enderror
-                            </span>
-                        </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="description">Description</label>
+                                        <textarea class="form-control" name="description" id="editor" placeholder="write text" rows="2">
+                                            </textarea>
+                                        <span class="text-danger error ">
+                                            @error('description')
+                                                {{ $message }}
+                                            @enderror
+                                        </span>
+                                    </div>
 
                         <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>
                                 <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
-                            <div>
+                         <div>
                 </form>
         </div>
     </div>
@@ -121,5 +118,11 @@ $(document).ready(function() {
     });
 });
 </script>
-
+<script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 @endsection

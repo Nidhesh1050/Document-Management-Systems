@@ -56,8 +56,9 @@
         <thead>
             <tr>
                 <th> S.NO</th>
-                <th> Project Name</th>   
-                <th> Manager Id </th>
+                <th> Project Name</th>
+                <th> Project Description</th>      
+                <th> Manager Name </th>
                 <th> Status</th>
                 <th> Action</th>
             </tr>
@@ -70,7 +71,8 @@
                 <tr>
                 <td>{{$loop->iteration}}</td>
                     <td> {{$users->project_name}}</td>
-                    <td> {{$users->manager_d}}</td>
+                    <td> {{$users->description}}</td>
+                    <td> {{$users->name}}</td>
                     <td> {{$status}}</td>
 
                     <td>

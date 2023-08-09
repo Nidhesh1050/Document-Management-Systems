@@ -13,6 +13,7 @@ class ProjectManagementController extends Controller
     public function project_management(){
         // $project_manager = DB::table('users')->select('id','name')->get();
         $project_manager = DB::table('users')->where(['user_type'=> 2])->get();
+        //echo $project_manager;die;
         return view('admin.project_management.project',['project_manager'=>$project_manager]);
     }
 
@@ -33,7 +34,7 @@ class ProjectManagementController extends Controller
       $inserData['manager_d'] = $request->manager_d;
      }
     
-
+        $inserData['description']= $request->description;
         $inserData['project_name']= $request->project_name;
         $inserData['status'] =  $status;
 
@@ -46,8 +47,12 @@ class ProjectManagementController extends Controller
 
 
     public function view_project(){
-        $users = DB::table('projects')->orderBy('id','DESC')->get();
-        return view('admin.project_management.view_project',['users'=>$users]);
+        $users = DB::table('projects')->select(
+            "projects.*", 
+            "users.name" )
+        ->leftJoin("users",  "users.id" ,"=", "projects.manager_d"  )
+        ->get();
+       return view('admin.project_management.view_project',['users'=>$users]);
     }
 
 
@@ -58,9 +63,9 @@ class ProjectManagementController extends Controller
 
 
     public function update_project(Request $request,$id) {
-        $users = DB::table('projects')->where(['id'=> $id])->first();
-        $project_manager=DB::table('projects')->select('id','project_name')->get();
-        return view('admin.project_management.update_project')->with(['users'=>$users,'project_manager'=>    $project_manager]);
+        $projects = DB::table('projects')->where(['id'=> $id])->first();
+        $managers=DB::table('users')->select('id','name')->get();
+        return view('admin.project_management.update_project')->with(['projects'=>$projects,'managers'=>    $managers]);
     }
 
     public function edit_project(Request $request){
@@ -72,6 +77,7 @@ class ProjectManagementController extends Controller
         ->where('id', $request['id'])
         ->update([
             'project_name' => $request['project_name'],
+            'description' => $request['description'],
             'manager_d' => $request['manager_d'],
         ]);
           return redirect('/admin/view_project')->with('success', 'Project has been updated successfully.');

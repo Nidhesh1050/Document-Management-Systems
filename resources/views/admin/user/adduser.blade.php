@@ -39,8 +39,8 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="name">Name</label>
-                                    <input type="name" class="form-control" id="name" placeholder="Enter Name"
-                                        name="name">
+                                    <input type="text" class="form-control" id="name" placeholder="Enter Name"
+                                        name="name" onkeypress="return /[A-Za-z/ _-]/i.test(event.key)">
                                     <span class="text-danger  ">
                                         @error('name')
                                         {{$message}}
@@ -61,7 +61,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="mobile">Mobile</label>
-                                    <input type="mobile" class="form-control" id="mobile" placeholder="Enter Mobile"
+                                    <input type="text" class="form-control" id="mobile" placeholder="Enter Mobile"
                                         name="mobile">
                                     <span class="text-danger  ">
                                         @error('mobile')
@@ -74,9 +74,6 @@
 
                                 <div class="form-group col-md-6">
                                     <label for="designation">User Type</label>
-
-
-
                                     <select name="user_type" class="form-control">
                                         <option value=""> Please Select</option>
                                         @foreach($project_manager as $project_manager)

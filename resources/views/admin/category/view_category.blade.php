@@ -61,7 +61,7 @@ use app\Models\User;
             <tr>
                  <th> S.No</th>
              
-                <th> Parent ID </th>
+                <th> Parent Name </th>
                 <th> Name </th>
                 <th> Description</th>
                 <th> Action</th>
@@ -74,7 +74,7 @@ use app\Models\User;
            
                 <tr>
                 <td>{{$loop->iteration}}</td>
-                    <td> {{$users->parent_id}}</td>
+                    <td> {{$users->name}}</td>
                     <td> {{$users->name}}</td>
                     <td> {{$users->description}}</td>
                     

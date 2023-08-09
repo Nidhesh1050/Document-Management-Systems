@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
+
 class EmailContentController extends Controller
 {
     public function content(){
@@ -38,8 +39,12 @@ class EmailContentController extends Controller
 
     public function show_content(){
 
-         $users = DB::table('email_contents')->get();
-
+        $users = DB::table('email_contents')->select(
+            "email_contents.*", 
+            "email_types.email_type"
+        )
+        ->leftJoin("email_types", "email_contents.email_type" ,"=", "email_types.id")
+        ->get();
          return view('admin.email_management.show_content',['users'=>$users]);
         }
 

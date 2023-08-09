@@ -53,7 +53,7 @@ class HomeController extends Controller
     //List of users
 
     public function userManagement(){
-
+       // $project_manager = DB::table('usertype')->select('id','name')->whereIn('id', [2,0])->get();
         $users = DB::table('users')->whereIn('type', [2,0])->get();
 
         return view('admin.user.userManagement',['users'=>$users]);
@@ -94,17 +94,11 @@ class HomeController extends Controller
       //Insert data Code
       public function adduser(){
         $project_manager = DB::table('usertype')->select('id','name')->whereIn('id', [2,0])->get();
-
-
-
         return view('admin.user.adduser',['project_manager'=>$project_manager]);
-
-
-
-
       }
+      
       public function register(Request $request)
-    {
+     {
       
 
       $request->validate(

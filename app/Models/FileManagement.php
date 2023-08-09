@@ -9,5 +9,12 @@ use Illuminate\Support\Facades\DB;
 class FileManagement extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'description',
+        'title',
+        'status',
+        
+    ];
+
     protected $table = 'file_uploads'; 
 }

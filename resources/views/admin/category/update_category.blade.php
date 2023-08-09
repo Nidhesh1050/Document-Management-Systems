@@ -51,18 +51,15 @@
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="name">Parent ID</label>
-                                        <select name="parent_id" class="form-control">
-                                            <option value=""> Please Select</option>
-                                            @foreach ($parent_categories as $parent)
-                                                <option value="{{ $parent->id }}"
-                                                    @if ($parent->id == $users->parent_id) echo 'selected="selected"'; @endif>
-                                                    {{ $parent->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                        <label for="name">Parent Name</label>
 
+                                        <select name="document_type_id" class="form-control">
+                                        <option value=""> Please Select</option>
+                                        <?php foreach($parent_categories as $parent_categories){?>
+                                        <option <?php if($users->parent_id == $parent_categories->id){?>selected <?php } ?> value="{{$parent_categories->id}}">{{$parent_categories->name}}</option>
+                                        <?php }?>
+                                    </select>
+                                    </div>
                                     <div class="form-group  col-md-6">
                                         <label for="name">Name</label>
                                         <input type="text" class="form-control" name="name"
@@ -73,15 +70,16 @@
                                                 @enderror
                                             </span>
                                     </div>
-                                    <div class="form-group  col-md-6">
+                                    <div class="form-group col-md-12">
                                         <label for="description">Description</label>
-                                        <input type="textarea" class="form-control"  value="{{$users->description}}" name="description" id="comment" cols="" row="5" />            
-        
-                                            <span class="text-danger error ">
-                                                @error('description')
-                                                {{$message}}
-                                                @enderror
-                                            </span>
+                                        <textarea class="form-control" name="description" id="editor" placeholder="write text" rows="2">
+                                        {{ $users->description }} 
+                                    </textarea>
+                                        <span class="text-danger error ">
+                                            @error('description')
+                                                {{ $message }}
+                                            @enderror
+                                        </span>
                                     </div>
 
 
@@ -120,4 +118,11 @@
                                     });
                                 });
                             </script>
+                            <script>
+                   ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
                             @endsection

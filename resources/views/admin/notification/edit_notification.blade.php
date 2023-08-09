@@ -57,16 +57,17 @@
                                         @enderror
                                         <span>
                                 </div>
-                                <div class="form-group">
-                                    <label>Description</label>
-                                    <input type="textarea" name="description" value="{{ $users->description }}"
-                                        class="form-control">
-                                    <span class="text-danger error ">
-                                        @error('description')
-                                            {{ $message }}
-                                        @enderror
-                                        <span>
-                                </div>
+                               
+                                <div class="form-group col-md-12">
+                                        <label for="description">Description</label>
+                                        <textarea class="form-control" name="description" id="editor" placeholder="write text" rows="2">{{ $users->description }}
+                                            </textarea>
+                                        <span class="text-danger error ">
+                                            @error('description')
+                                                {{ $message }}
+                                            @enderror
+                                        </span>
+                                    </div>
 
                                 <div class="text-right">
                                     <button type="submit" class="mt-4 btn btn-success">Submit</button>
@@ -90,4 +91,11 @@
                             });
                         });
                     </script>
+                    <script>
+                ClassicEditor
+                    .create(document.querySelector('#editor'))
+                    .catch(error => {
+                        console.error(error);
+                    });
+            </script>
                 @endsection

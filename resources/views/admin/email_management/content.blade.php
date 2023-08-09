@@ -39,7 +39,9 @@
                                     <label>Email_type</label>
 
                                     <select name="email_type" id="email_type" class="form-control">
+                                      <option value=""> Select Type</option>
                                         @foreach ($users as $users)
+                                        
                                             <option value="{{ $users->id }}"> <?php echo $users->email_type; ?></option>
                                         @endforeach
                                     </select>
@@ -87,9 +89,9 @@
                                     },
                                     messages: {
 
-                                        email_type: "*Please enter  email type",
-                                        subject: "*Please enter  subject",
-                                        message: "*Please  enter message",
+                                        email_type: "Please enter  email type",
+                                        subject: "Please enter  subject",
+                                        message: "Please  enter message",
 
 
                                     }

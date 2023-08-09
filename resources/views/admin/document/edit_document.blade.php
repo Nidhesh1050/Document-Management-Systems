@@ -51,9 +51,14 @@
                             <input type="hidden" name="id" value="{{ $users->id }}">
                             <div class="form-row">
                                <div class="form-group col-md-6">
-                                <label><b>Project Id</b></label>
-                                <input type="text" name="project_id" id="project_id" value="{{ $users->project_id }}"
-                                    class="form-control">
+                                <label><b>Project Name</b></label>
+                                <select name="project_id" class="form-control">
+                                        <option value=""> Please Select</option>
+                                        <?php foreach($project_documents as $project_documents){?>
+                                        <option <?php if($users->project_id == $project_documents->id){?>selected <?php } ?> value="{{$project_documents->id}}">{{$project_documents->project_name}}</option>
+                                        <?php }?>
+                                    </select>
+
                                 <span class="text-danger  ">
                                     @error('project_id')
                                         {{ $message }}
@@ -64,9 +69,13 @@
 
 
                             <div class="form-group col-md-6">
-                                <label><b>Category Id</b></label>
-                                <input type="text" name="category_id" id="category_id" value="{{ $users->category_id }}"
-                                    class="form-control">
+                                <label><b>Category Name</b></label>
+                                <select name="category_id" class="form-control">
+                                        <option value=""> Please Select</option>
+                                        <?php foreach($category_documents as $category_documents){?>
+                                        <option <?php if($users->category_id == $category_documents->id){?>selected <?php } ?> value="{{$category_documents->id}}">{{$category_documents->name}}</option>
+                                        <?php }?>
+                                    </select>
                                 <span class="text-danger  ">
                                     @error('category_id')
                                         {{ $message }}
@@ -77,17 +86,31 @@
 
 
                             <div class="form-group col-md-6">
-                                <label><b>Document Type Id</b></label>
-                                <input type="text" name="document_type_id" id="document_type_id"
-                                    value="{{ $users->document_type_id }}" class="form-control">
-                                <span class="text-danger  ">
+                                <label><b>Document Type </b></label>
+
+                                <select name="document_type_id" class="form-control">
+                                        <option value=""> Please Select</option>
+                                        <?php foreach($document_type as $document_type){?>
+                                        <option <?php if($users->document_type_id == $document_type->id){?>selected <?php } ?> value="{{$document_type->id}}">{{$document_type->name}}</option>
+                                        <?php }?>
+                                    </select>
+                                
                                     @error('document_type_id')
                                         {{ $message }}
                                     @enderror
                                 </span>
                             </div>
-
-
+                            <div class="form-group col-md-12">
+                                        <label for="description">Description</label>
+                                        <textarea class="form-control" name="description" id="editor" placeholder="write text" rows="2">
+                                        {{ $users->description }}  </textarea>
+                                        <span class="text-danger error ">
+                                            @error('description')
+                                                {{ $message }}
+                                            @enderror
+                                        </span>
+                             </div>
+                          
 
                             <div class="form-group col-md-6">
                                 <label><b>Title</b></label>
@@ -169,5 +192,12 @@
 
             });
         });
+    </script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
     </script>
 @endsection
