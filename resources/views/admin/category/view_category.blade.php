@@ -32,18 +32,17 @@ use app\Models\User;
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                    <div class="card-header">
-<div class="flash-message">
-                        @if ($message = Session::get('success'))
-                                    <div class="alert alert-success">
-                                        <p>{{ $message }}</p>
-                                    </div>
-                                    @endif  
-                        @if ($message = Session::get('error'))
-                                    <div class="alert alert-danger">
-                                        <p>{{ $message }}</p>
-                                    </div>
-                                    @endif  
+                        <div class="flash-message">
+                            @if ($message = Session::get('success'))
+                                <div class="alert alert-success">
+                                    <p>{{ $message }}</p>
+                                </div>
+                            @endif  
+                            @if ($message = Session::get('error'))
+                                <div class="alert alert-danger">
+                                    <p>{{ $message }}</p>
+                                </div>
+                            @endif  
                         </div>
                         <div class="d-flex align-items-center">
                             <a href="{{ url('admin/category') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
@@ -56,55 +55,57 @@ use app\Models\User;
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-    <table id="datatables" class="display table table-striped table-hover">
-        <thead>
-            <tr>
-                 <th> S.No</th>
-             
-                <th> Parent Name </th>
-                <th> Name </th>
-                <th> Description</th>
-                <th> Action</th>
-                
-                
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($users as $users )
-           
-                <tr>
-                <td>{{$loop->iteration}}</td>
-                    <td> {{$users->name}}</td>
-                    <td> {{$users->name}}</td>
-                    <td> {{$users->description}}</td>
-                    
-                    <td>
-                        <div class="form-button-action">
+                            <table id="datatables" class="display table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                         <th> S.No</th>
+                                     
+                                        <th> Parent Name </th>
+                                        <th> Name </th>
+                                        <th> Description</th>
+                                        <th> Action</th>
+                                        
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($users as $users )
+                                   
+                                        <tr>
+                                        <td>{{$loop->iteration}}</td>
+                                            <td> {{$users->name}}</td>
+                                            <td> {{$users->name}}</td>
+                                            <td> {{$users->description}}</td>
+                                            
+                                            <td>
+                                                <div class="form-button-action">
 
-                            <a href='/admin/update_category/{{ $users->id }}'>
-                            <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                <i class="fa fa-edit">
-                                </i>
-                            </button>
-                             </a>
+                                                    <a href='/admin/update_category/{{ $users->id }}'>
+                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                                        <i class="fa fa-edit">
+                                                        </i>
+                                                    </button>
+                                                     </a>
+                                                </div>
+                                                <div class="form-button-action">
+                                                    <a href="/admin/delete_category/{{ $users->id }}" onclick="return confirm('Are you sure to delete ?')">
+                                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                            <i class="fa fa-times"></i>
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="form-button-action">
-                            <a href="/admin/delete_category/{{ $users->id }}" onclick="return confirm('Are you sure to delete ?')">
-                                <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                    <i class="fa fa-times"></i>
-                                </button>
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
- </div>
-
-
-
-
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 

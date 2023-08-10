@@ -52,7 +52,6 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-
                                 <table id="datatables" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
@@ -105,4 +104,9 @@
                                 </table>
                             </div>
                         </div>
-                    @endsection
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
