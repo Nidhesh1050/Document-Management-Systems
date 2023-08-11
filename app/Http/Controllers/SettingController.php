@@ -10,7 +10,7 @@ class SettingController extends Controller
 {
 
     public function setting(){
-        $company_name = DB::table('users')->select('company_name')->get();
+        $company_name = DB::table('users')->select('company_name')->distinct('company_name')->where('company_name', '!=', '')->get();
         //print_r($company_name);die;
         return view('admin.setting.setting',['company_name'=>$company_name]);  
     }
