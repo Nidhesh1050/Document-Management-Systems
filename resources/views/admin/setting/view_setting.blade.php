@@ -42,6 +42,14 @@
                             </div>
                             @endif
                         </div>
+                        <div class="d-flex align-items-center">
+                            <a href="{{ url('admin/setting') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
+                                    data-target="#addRowModal">
+                                    <i class="fa fa-plus"></i>
+                                    Add Logo
+                                </button>
+                            </a>
+                        </div>
                     </div>
                     <div class="card-body">
 
@@ -50,6 +58,8 @@
                                 <tr>
                                     <th> Id</th>
                                     <th> Image </th>
+                                    <th> Image Type </th>
+                                    <th> Company Name </th>
                                     <th> Edit</th>
 
 
@@ -62,10 +72,14 @@
                                     <td> <img src="{{ asset('images/' .$users->image) }}"
                                             style="height: 50px;width:100px;"></td>
 
+                                           <?php $type = (($users->image_type == 1) ? "Logo" : (($users->image_type == 2)  ? 'Profile' : ''));?>
+                                    <td>{{$type}} </td>
+                                    <td>{{$users->company_name}} </td>
+
                                     <td>
                                         <div class="form-button-action">
 
-                                            <a href="{{url('/admin/edit_image')}}">
+                                            <a href='/admin/edit_image/{{$users->id }}'>
                                                 <button type="button" data-toggle="tooltip" title=""
                                                     class="btn btn-link btn-primary btn-lg"
                                                     data-original-title="Edit Task">

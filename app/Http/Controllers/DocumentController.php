@@ -106,7 +106,7 @@ class DocumentController extends Controller
             $inserData['project_id'] = $request->project_id;
             $inserData['category_id']= $request->category_id;
             $inserData['document_type_id']= $request->document_ty;
-            $insertData['description'] = $request['description'];
+            $inserData['description'] = $request['description'];
             $inserData['title'] = $request->title;
             $inserData['documents'] = $document_name;
             $inserData['status'] =  $status;

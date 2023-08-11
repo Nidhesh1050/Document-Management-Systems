@@ -59,7 +59,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="name">Project Manager</label>
-                                <select name="document_type_id" class="form-control">
+                                <select name="manager_d" class="form-control">
                                         <option value=""> Please Select</option>
                                         <?php foreach($managers as $manager){?>
                                         <option <?php if($manager->id == $projects->manager_d){?>selected <?php } ?> value="{{$manager->id}}">{{$manager->name}}</option>

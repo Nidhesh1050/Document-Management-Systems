@@ -51,6 +51,16 @@
                             @csrf
                             <input type="hidden" name="id" value="{{ $users->id }}">
                             <div class="form-row">
+                            <div class="form-group col-md-6">
+                                    <label for="name">Company Name</label>
+                                    <input type="text" class="form-control" id="company_name" placeholder="Enter Company Name"
+                                        name="company_name"  value="{{$users->company_name}}" onkeypress="return /[A-Za-z/ _-]/i.test(event.key)">
+                                    <span class="text-danger  ">
+                                        @error('name')
+                                        {{$message}}
+                                        @enderror
+                                    </span>
+                                </div>
                                 <div class="form-group col-md-6">
                                     <label for="name">Name</label>
                                     <input type="text" class="form-control" id="name" placeholder="Enter Name"
@@ -138,6 +148,9 @@ $(document).ready(function() {
                 required: true,
 
             },
+            company_name: {
+                required: true,
+            },
             email: {
                 required: true,
 
@@ -158,6 +171,11 @@ $(document).ready(function() {
         messages: {
             name: {
                 required: "*Please enter your Name",
+            },
+            company_name: {
+                required: "Please enter your commpany  Name",
+                minlength: "Enter your commpany name atleast 4 letters",
+                maxlength: "Your commpany name length should not be greater than 20 letters",
             },
             email: {
                 required: "*Enter a valid E-mail address",
