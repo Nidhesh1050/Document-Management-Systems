@@ -37,18 +37,16 @@
                         <form action="{{url('admin/register_user')}}" method="post" id="validate">
                             @csrf
                             <div class="form-row">
-                                <div class="form-group col-md-12">
-                                        <label for="company_name">Company Name</label>
-                                        <input type="company_name" class="form-control" id="company_name"
-                                            placeholder="Enter company name" name="company_name">
-                                        <span class="text-danger  ">
-                                            @error('company_name')
-                                            {{$message}}
-                                            @enderror
-                                        </span>
+                            <div class="form-group col-md-6">
+                                    <label for="name">Company Name</label>
+                                    <input type="text" class="form-control" id="company_name" placeholder="Enter Company Name"
+                                        name="company_name" onkeypress="return /[A-Za-z/ _-]/i.test(event.key)">
+                                    <span class="text-danger  ">
+                                        @error('name')
+                                        {{$message}}
+                                        @enderror
+                                    </span>
                                 </div>
-                            </div>
-                            <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="name">Name</label>
                                     <input type="text" class="form-control" id="name" placeholder="Enter Name"
@@ -148,6 +146,12 @@ $(document).ready(function() {
                 minlength: 4,
                 maxlength: 20,
             },
+            company_name: {
+                required: true,
+                minlength: 4,
+                maxlength: 20,
+            },
+            
             email: {
                 required: true,
                 email: true
@@ -180,6 +184,11 @@ $(document).ready(function() {
                 required: "Please enter your Name",
                 minlength: "Enter your name atleast 4 letters",
                 maxlength: "Your name length should not be greater than 20 letters",
+            },
+            company_name: {
+                required: "Please enter your commpany  Name",
+                minlength: "Enter your commpany name atleast 4 letters",
+                maxlength: "Your commpany name length should not be greater than 20 letters",
             },
             email: {
                 required: "Enter a valid e-mail address",

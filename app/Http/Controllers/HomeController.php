@@ -79,6 +79,7 @@ class HomeController extends Controller
         DB::table('users')
             ->where('id', $request['id'])
             ->update([
+                'company_name' => $request['company_name'],
                 'name' => $request['name'],
                 'email' => $request['email'],
                 'mobile' => $request['mobile'],
@@ -91,6 +92,7 @@ class HomeController extends Controller
       //Insert data Code
       public function adduser(){
         $project_manager = DB::table('usertype')->select('id','name')->whereIn('id', [2,0])->get();
+       // echo $project_manager;die;
         return view('admin.user.adduser',['project_manager'=>$project_manager]);
       }
 
@@ -100,6 +102,7 @@ class HomeController extends Controller
 
       $request->validate(
         [
+          'company_name'=>'required|max:50|string',
           'name'=>'required|max:50|string',
           'email'=>'required|email|unique:users',
           'mobile' =>'required|max:12',
@@ -122,7 +125,7 @@ class HomeController extends Controller
       $inserData['manager_id'] = $user_id;
      }
 
-
+        $inserData['company_name'] = $request->company_name;
         $inserData['name'] = $request->name;
         $inserData['email']= $request->email;
         $details = [

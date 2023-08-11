@@ -53,7 +53,7 @@
                                     <div class="form-group col-md-6">
                                         <label for="name">Parent Name</label>
 
-                                        <select name="document_type_id" class="form-control">
+                                        <select name="parent_id" class="form-control">
                                         <option value=""> Please Select</option>
                                         <?php foreach($parent_categories as $parent_categories){?>
                                         <option <?php if($users->parent_id == $parent_categories->id){?>selected <?php } ?> value="{{$parent_categories->id}}">{{$parent_categories->name}}</option>

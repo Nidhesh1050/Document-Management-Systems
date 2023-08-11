@@ -22,7 +22,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Add Logo</a>
+                    <a href="#">Update Logo</a>
                 </li>
             </ul>
         </div>
@@ -48,37 +48,41 @@
                     </div>
                     <div class="card-body">
 
-                    <form action="{{url('/admin/add_image')}}" method="post" id="category"
+                    <form action="{{url('/admin/update_image')}}" method="post" id="category"
                         enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="id" value="{{ $setting->id }}">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                     <label for="company_name">Company Name</label>
                                     <select name="company_name" class="form-control">
-                                        <option value=""> Please Select</option>
-                                        @foreach($company_name as $company_name)
-                                        <option value="{{$company_name->company_name}}"><?php echo $company_name->company_name;?></option>
-                                        @endforeach
+                                    <option value=""> Please Select</option>
+                                    <?php foreach($company_name as $company_name){?>
+                                        <option <?php if($company_name->company_name == $company_name->company_name){?>selected <?php } ?> value="{{$company_name->company_name}}">{{$company_name->company_name}}</option>
+                                        <?php }?>
+                                       
+                                      
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="name">Image Type</label>
                                     <select name="image_type" class="form-control">
-                                        <option value=""> Please Select</option>
-                                        <option value="2">Profile</option>
-                                        <option value="1">Logo</option>
+                                    <option value=""> Please Select</option>
+                                    <option value="2"@if($setting->image_type=="1") {{'selected'}} @endif >Profile</option>
+                                    <option value="1"@if($setting->image_type=="2") {{'selected'}} @endif >Logo</option>
                                     </select>
                                 </div> 
                         </div>
 
                         <div class="form-group">
-                        <label for="exampleFormControlFile1"> Upload Image</label>
-                        <input type="file" class="form-control-file" name="image" id="exampleFormControlFile1">
-                            <span class="text-danger error ">
-                                @error('image')
-                                {{$message}}
-                                @enderror
-                            </span>  
+                        <label for="exampleFormControlFile1"> Update Image</label>
+                        <input type="file" class="form-control-file" name="image" id="exampleFormControlFile1" value="{{ $setting->image }}">
+                        <span>{{$setting->image}}</span>
+                                <span class="text-danger  ">
+                                    @error('image')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
                         </div>
                         <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>

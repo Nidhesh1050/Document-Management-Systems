@@ -33,6 +33,7 @@ class CategoryController extends Controller
 
     public function view_category(){
         $users = DB::table('categories')->orderBy('id','DESC')->get();
+      
         return view('admin.category.view_category',['users'=>$users]);
     }
 

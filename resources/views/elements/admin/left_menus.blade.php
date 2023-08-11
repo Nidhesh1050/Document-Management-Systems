@@ -177,7 +177,7 @@ $currentURL =Route::current()->uri;
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="{{url('admin/view_image')}}">
-                                    <span class="sub-item">Settings List</span>
+                                    <span class="sub-item">Logos</span>
                                 </a>
                             </li>
                             <li>

@@ -86,7 +86,8 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
    Route::get('/admin/setting',[SettingController::class,'setting']);
    Route::post('/admin/add_image',[SettingController::class,'add_image']);
    Route::get('/admin/view_image',[SettingController::class,'view_image']);
-   Route::get('/admin/edit_image', [SettingController::class,'edit_image']);
+   Route::get('/admin/edit_image/{id}', [SettingController::class,'edit_image']);
+   Route::post('/admin/update_image', [SettingController::class,'update_image']);
    Route::get('/admin/delete_image/{id}',[SettingController::class,'delete_image']);
 /*  Side Setting routes end*/
 
