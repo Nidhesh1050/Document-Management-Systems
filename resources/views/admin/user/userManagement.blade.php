@@ -58,6 +58,7 @@
                                         <th> Name</th>
                                         <th>Company Name</th>
                                         <th> Email </th>
+                                        <th> Company Name </th>
                                         <th> Mobile </th>
                                         <th> User Type</th>
                                         <th> Username </th>
@@ -76,6 +77,7 @@
                                             <td> {{ $users->name }}</td>
                                             <td> {{ $users->company_name }}</td>
                                             <td> {{ $users->email }}</td>
+                                            <td> {{ $users->company_name }}</td>
                                             <td> {{ $users->mobile }}</td>
                                             <td> {{ $users->name }}</td>
                                             <td> {{ $users->username }}</td>

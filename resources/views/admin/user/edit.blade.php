@@ -35,12 +35,12 @@
                                     <div class="alert alert-success">
                                         <p>{{ $message }}</p>
                                     </div>
-                                    @endif  
+                                    @endif
                         @if ($message = Session::get('error'))
                                     <div class="alert alert-danger">
                                         <p>{{ $message }}</p>
                                     </div>
-                                    @endif  
+                                    @endif
                         </div>
 
                         <div class="card-title">Edit User</div>
@@ -127,6 +127,16 @@
                                     </span>
                                 </div>
                             </div>
+                            <div class="form-group col-md-6">
+                                <label for="company_name">Company Name</label>
+                                <input type="company_name" class="form-control" id="company_name"
+                                    placeholder="Enter company name" value="{{ $users->company_name }}" name="company_name">
+                                <span class="text-danger  ">
+                                    @error('company_name')
+                                    {{$message}}
+                                    @enderror
+                                </span>
+                            </div>
                             <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Update</button>
                                 <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
@@ -166,6 +176,9 @@ $(document).ready(function() {
 
                 required: true,
             },
+            company_name:{
+                required: true,
+                },
 
         },
         messages: {
@@ -189,6 +202,10 @@ $(document).ready(function() {
             user_type: {
                 required: "*Enter a valid user type",
             },
+            company_name:{
+                    required: "*Enter a company name",
+                },
+
 
         }
 

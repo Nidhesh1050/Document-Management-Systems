@@ -70,10 +70,12 @@ class HomeController extends Controller
 
         $users = DB::table('users')->where(['id'=> $id])->first();
         return view('admin.user.edit')->with(['users'=>$users,'project_manager'=>$project_manager]);
-       
+
       }
       //Update Code
       public function update(Request $request){
+
+
         DB::table('users')
             ->where('id', $request['id'])
             ->update([
@@ -83,6 +85,7 @@ class HomeController extends Controller
                 'mobile' => $request['mobile'],
                 'user_type' => $request['user_type'],
                 'username' => $request['username'],
+                'company_name' => $request['company_name'],
             ]);
             return redirect('admin/userManagement')->with('success', 'User has been updated successfully.');;
       }
@@ -92,10 +95,10 @@ class HomeController extends Controller
        // echo $project_manager;die;
         return view('admin.user.adduser',['project_manager'=>$project_manager]);
       }
-      
+
       public function register(Request $request)
      {
-      
+
 
       $request->validate(
         [
@@ -106,6 +109,7 @@ class HomeController extends Controller
           'user_type' => 'required',
           'username' => 'required',
           'password' => 'required|max:8',
+          'company_name' => 'required',
           ]
       );
 
@@ -129,18 +133,19 @@ class HomeController extends Controller
           'body' => 'Welcome in Document Manganent Proejct',
 
           // 'email'=> $request->email,
-          //  'password'=> $request->password 
-          
+          //  'password'=> $request->password
+
 
       ];
       \Mail::to($request->email)->send(new \App\Mail\MyTestMail($details));
 
-  
+
         $inserData['mobile'] = $request->mobile;
         $inserData['user_type'] = $request->user_type;
         $inserData['username'] = $request->username;
         $inserData['password'] = $request->password;
-        
+        $inserData['company_name'] = $request->company_name;
+
 
         DB::table('users')->insert($inserData);
 

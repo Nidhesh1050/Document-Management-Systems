@@ -122,6 +122,16 @@
                                         @enderror
                                     </span>
                                 </div>
+                                <div class="form-group col-md-6">
+                                    <label for="company_name">Company Name</label>
+                                    <input type="company_name" class="form-control" id="company_name"
+                                        placeholder="Enter company name" name="company_name">
+                                    <span class="text-danger  ">
+                                        @error('company_name')
+                                        {{$message}}
+                                        @enderror
+                                    </span>
+                                </div>
                             </div>
                             <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>
@@ -174,6 +184,9 @@ $(document).ready(function() {
                 required: true,
                 minlength: 8
             },
+            company_name:{
+                required: true,
+                },
         },
         messages: {
             name: {
@@ -206,6 +219,10 @@ $(document).ready(function() {
                 required: "Enter a valid password",
                 minlength: "Password must be atlest 8 characters",
             },
+            company_name:{
+                    required: "Enter a company name",
+                },
+
         }
 
     });
