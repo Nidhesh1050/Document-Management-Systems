@@ -37,6 +37,18 @@
                         <form action="{{url('admin/register_user')}}" method="post" id="validate">
                             @csrf
                             <div class="form-row">
+                                <div class="form-group col-md-12">
+                                        <label for="company_name">Company Name</label>
+                                        <input type="company_name" class="form-control" id="company_name"
+                                            placeholder="Enter company name" name="company_name">
+                                        <span class="text-danger  ">
+                                            @error('company_name')
+                                            {{$message}}
+                                            @enderror
+                                        </span>
+                                </div>
+                            </div>
+                            <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="name">Name</label>
                                     <input type="text" class="form-control" id="name" placeholder="Enter Name"
@@ -112,16 +124,7 @@
                                         @enderror
                                     </span>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="company_name">Company Name</label>
-                                    <input type="company_name" class="form-control" id="company_name"
-                                        placeholder="Enter company name" name="company_name">
-                                    <span class="text-danger  ">
-                                        @error('company_name')
-                                        {{$message}}
-                                        @enderror
-                                    </span>
-                                </div>
+                                
                             </div>
                             <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>

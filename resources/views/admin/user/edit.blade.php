@@ -116,16 +116,17 @@
                                         @enderror
                                     </span>
                                 </div>
-                            </div>
+                            
                             <div class="form-group col-md-6">
                                 <label for="company_name">Company Name</label>
                                 <input type="company_name" class="form-control" id="company_name"
-                                    placeholder="Enter company name" value="{{ $users->company_name }}" name="company_name">
+                                    placeholder="Enter company name" value="{{ @$users->company_name }}" name="company_name">
                                 <span class="text-danger  ">
                                     @error('company_name')
                                     {{$message}}
                                     @enderror
                                 </span>
+                            </div>
                             </div>
                             <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Update</button>

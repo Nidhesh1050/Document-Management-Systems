@@ -73,13 +73,13 @@
                                         @endphp
                                         <tr>
                                         <td>{{$loop->iteration}}</td>
-                                            <td> {{ $users->name }}</td>
-                                            <td> {{ $users->email }}</td>
-                                            <td> {{ $users->company_name }}</td>
-                                            <td> {{ $users->mobile }}</td>
-                                            <td> {{ $users->name }}</td>
-                                            <td> {{ $users->username }}</td>
-                                            <td>{{ $status }}</td>
+                                            <td> {{ @$users->name }}</td>
+                                            <td> {{ @$users->email }}</td>
+                                            <td> {{ @$users->company_name }}</td>
+                                            <td> {{ @$users->mobile }}</td>
+                                            <td> {{ @$users->name }}</td>
+                                            <td> {{ @$users->username }}</td>
+                                            <td>{{ @$status }}</td>
                                             <td>
                                                 <div class="form-button-action">
                                                     <a href='/admin/edit_user/{{ $users->id }}'>
