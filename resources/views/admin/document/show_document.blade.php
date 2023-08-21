@@ -86,7 +86,7 @@ use app\Models\User;
                             <td> {{ User::getCategoryID($users->category_id) }}</td>
                             <td> {{ User::getDocumentTypeID($users->document_type_id) }}</td>
                             <td> {{ $users->title }}</td>
-                            <td> {{ $users->description }}</td>
+                            <td> <?php echo $users->description ?></td>
                             <td> {{ $users->documents }}</td>
                             <td>{{ $status }}</td>
                             <td>
@@ -99,7 +99,7 @@ use app\Models\User;
                                         </button>
                                     </a>
                                     <a href="delete_document/{{ $users->id }}"
-                                        onclick="return confirm('Are you sure to delete ?')">
+                                        onclick="return confirm('Are you sure you want to delete this document ?')">
                                         <button type="button" data-toggle="tooltip" title=""
                                             class="btn btn-link btn-danger" data-original-title="Remove">
                                             <i class="fa fa-times"></i>

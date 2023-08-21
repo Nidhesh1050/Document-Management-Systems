@@ -52,20 +52,21 @@
                     <table id="datatables" class="display table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th> Document Name</th>
+                                <th> Document Type Name</th>
                                 <th> Status</th>
                                 <th> Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($users as $users)
-                                <!-- @php
-                                    // $status = "";
+                                @php
+                                    $status = "";
                                     $status = $users->status == 1 ? 'Active' : 'InActive';
-                                @endphp -->
+                                @endphp
                                 <tr>
                                     <td>{{ $users->name }}</td>
                                     <td>{{ $status }}</td>
+                                    
                                     <td>
                                         <div class="form-button-action">
                                             <a href="edit/{{ $users->id }}">
@@ -76,7 +77,7 @@
                                                 </button>
                                             </a>
                                             <a href="deletedocument/{{ $users->id }}"
-                                                onclick="return confirm('Are you sure to delete ?')">
+                                                onclick="return confirm('Are you sure you want to delete this document type ?')">
                                                 <button type="button" data-toggle="tooltip" title=""
                                                     class="btn btn-link btn-danger" data-original-title="Remove">
                                                     <i class="fa fa-times"></i>

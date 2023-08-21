@@ -70,12 +70,9 @@
                                 <tr>
                                     <td> {{$users->id}}</td>
                                     <td> <img src="{{ asset('images/' .$users->image) }}"
-                                            style="height: 50px;width:100px;"></td>
-
-                                           <?php $type = (($users->image_type == 1) ? "Logo" : (($users->image_type == 2)  ? 'Profile' : ''));?>
+                                            style="height: 50px;width:100px;"></td><?php $type = (($users->image_type == 1) ? "Logo" : (($users->image_type == 2)  ? 'Profile' : ''));?>
                                     <td>{{$type}} </td>
                                     <td>{{$users->company_name}} </td>
-
                                     <td>
                                         <div class="form-button-action">
 

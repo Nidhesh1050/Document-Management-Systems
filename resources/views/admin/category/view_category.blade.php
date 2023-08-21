@@ -60,13 +60,10 @@ use app\Models\User;
         <thead>
             <tr>
                  <th> S.No</th>
-             
                 <th> Parent Name </th>
                 <th> Name </th>
                 <th> Description</th>
-                <th> Action</th>
-                
-                
+                <th> Action</th> 
             </tr>
         </thead>
         <tbody>
@@ -76,20 +73,16 @@ use app\Models\User;
                 <td>{{$loop->iteration}}</td>
                     <td> {{$users->name}}</td>
                     <td> {{$users->name}}</td>
-                    <td> {{$users->description}}</td>
-                    
+                    <td><?php echo $users->description ?></td>
                     <td>
                         <div class="form-button-action">
-
                             <a href='/admin/update_category/{{ $users->id }}'>
-                            <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                <i class="fa fa-edit">
-                                </i>
+                             <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
+                                <i class="fa fa-edit"> </i>
                             </button>
                              </a>
-                        </div>
-                        <div class="form-button-action">
-                            <a href="/admin/delete_category/{{ $users->id }}" onclick="return confirm('Are you sure to delete ?')">
+                        
+                            <a href="/admin/delete_category/{{ $users->id }}" onclick="return confirm('Are you sure you want to delete this category ?')">
                                 <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
                                     <i class="fa fa-times"></i>
                                 </button>

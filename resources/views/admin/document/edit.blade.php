@@ -38,18 +38,31 @@
                         @csrf
                         <input type="hidden" name="id" value="{{ $users->id }}">
                         <div class="form-group">
-                            <label for="name">Name</label>
+                            <label for="name">Document Type Name</label>
                             <input type="name" class="form-control"
                                 placeholder="Enter Name" name="name" value="{{ $users->name }}">    
-            <span class="text-danger error ">
-                    @error('name')
-                     {{$message}}
-                    @enderror
-                    <span>                         
-                            </div>                        
+                            <span class="text-danger error ">
+                                    @error('name')
+                                    {{$message}}
+                                    @enderror
+                                    <span>                         
+                            </div> 
+                            <div class="form-group">
+                            <label for="status">Status</label>
+                            &nbsp;&nbsp;&nbsp;
+                            <input type="checkbox" name="status" id="status" {{$users->status==1 ? 'checked': '' }}>
+                                <span class="text-danger error ">
+
+                                @error('status')
+                                {{$message}}
+                                @enderror
+                             </span>
+
+                        </div>
+                       
                             <div class="text-right">
                                 <button type="update" class="mt-4 btn btn-success">Update</button>
-                                <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
+                                <a href="{{url('admin/view_document')}}" class="mt-4 btn btn-danger">Cancel</a>
                             <div>
                      </form>
                 </div>

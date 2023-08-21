@@ -71,7 +71,7 @@
 
                                 <div class="text-right">
                                     <button type="submit" class="mt-4 btn btn-success">Submit</button>
-                                    <a href="{{ url('admin/home') }}" class="mt-4 btn btn-danger">Cancel</a>
+                                    <a href="{{ url('admin/show_notification') }}" class="mt-4 btn btn-danger">Cancel</a>
                                     <div>
                             </form>
                         </div>
@@ -82,11 +82,11 @@
                             $("#form").validate({
                                 rules: {
                                     title: "required",
-                                    description: "required",
+                                    // description: "required",
                                 },
                                 messages: {
                                     title: "*Update your title",
-                                    description: "*Update your description",
+                                    // description: "*Update your description",
                                 }
                             });
                         });

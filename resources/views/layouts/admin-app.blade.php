@@ -23,6 +23,16 @@
 			}
 		});
 	</script>
+	<script>
+	setTimeout(function() {
+			$('.alert').fadeOut('fast');
+		}, 5000);
+	</script>
+<style>
+	.action-icons{
+		margin-left: 10px;
+	}
+</style>
 	<!-- ckeditor library for discription-->
        <script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
 

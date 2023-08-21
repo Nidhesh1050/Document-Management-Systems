@@ -84,7 +84,7 @@
 
                         <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>
-                                <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
+                                <a href="{{url('admin/view_category')}}" class="mt-4 btn btn-danger">Cancel</a>
                          <div>
                 </form>
         </div>
@@ -101,14 +101,14 @@ $(document).ready(function() {
         rules: {
             parent_id: "required",
             name: "required",
-            description: "required",
+            // description: "required",
             image: "required",
             status: "required",
         },
         messages: {
             parent_id: "Please select parent name",
             name: "Please enter your Name",
-            description: "Please enter  description",
+            // description: "Please enter  description",
             image: "Chose any image",
             status: "Please enter status",
 

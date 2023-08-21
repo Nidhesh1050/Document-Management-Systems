@@ -134,11 +134,21 @@
                                         {{ $message }}
                                     @enderror
                                 </span>
-                                       </div>
-</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                            <label for="status">Status</label>
+                                            <input type="checkbox" name="status" id="status" {{$users->status==1 ? 'checked': '' }} >
+                                            <span class="text-danger error ">
+                                                @error('status')
+                                                    {{ $message }}
+                                                @enderror
+                                            </span>
+                                        </div>
+
+                         </div>
                             <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Update</button>
-                                <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
+                                <a href="{{url('admin/document')}}" class="mt-4 btn btn-danger">Cancel</a>
 
                         </form>
 </div>
@@ -165,10 +175,10 @@
                         required: true,
 
                     },
-                    status: {
+                    // status: {
 
-                        required: true,
-                    },
+                    //     required: true,
+                    // },
                 },
                 messages: {
                     project_id: {

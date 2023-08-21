@@ -120,7 +120,7 @@
                      <div class="form-group">
                             <label for="status">Status</label>
                             <input type="checkbox" class="form-control" name="status" id="status"
-                                placeholder="Status" value="1">
+                                placeholder="Status" >
                                 <span class="text-danger error ">
                                 @error('status')
                                 {{$message}}
@@ -130,7 +130,7 @@
                     </div>
                      <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>
-                                <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
+                                <a href="{{url('admin/document')}}" class="mt-4 btn btn-danger">Cancel</a>
                     <div>
                 </form>
             </div>

@@ -37,7 +37,7 @@
                     <form action="{{url('admin/register')}}" method="post" id="validate">
                         @csrf
                         <div class="form-group">
-                            <label for="name">Name</label>
+                            <label for="name">Document Type Name</label>
                             <input type="name" class="form-control"
                                 placeholder="Enter Name" name="name">
                                 <span class="text-danger  ">
@@ -48,10 +48,9 @@
                         </div>
 
                         <div class="form-group">
-
                             <label for="status">Status</label>
                             &nbsp;&nbsp;&nbsp;
-                            <input type="checkbox" name="status" id="status" value="1">
+                            <input type="checkbox" name="status" id="status">
                                 <span class="text-danger error ">
 
                                 @error('status')
@@ -63,7 +62,7 @@
 
                         <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>
-                                <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
+                                <a href="{{url('admin/view_document')}}" class="mt-4 btn btn-danger">Cancel</a>
                             <div>                    </form>
 
 

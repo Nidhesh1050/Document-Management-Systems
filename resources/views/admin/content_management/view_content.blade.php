@@ -60,37 +60,35 @@
                                             <th> Title</th>
                                             <th> Description</th>
                                             <th> Image </th>
-                                            <th> Edit </th>
-                                            <th> Delete </th>
+                                            <th> Status </th>
+                                            <th> Action </th>
+                                            <!-- <th> Delete </th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($users as $users)
+                                        @php
+                                            $status = $users->status == 1 ? 'Active' : 'InActive';
+                                        @endphp
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td> {{ $users->title }}</td>
-                                                <td> {{ $users->description }}</td>
-
+                                                <td> <?php echo $users->description ?></td>
                                                 <td> <img src="{{ asset('cms/' . $users->image) }}"
                                                         style="height: 50px;width:100px;">
                                                 </td>
+                                                <td> {{$status}}</td>
                                                 <td>
-                                                    <div class="form-button-action">
-
+                                                 <div class="form-button-action">
                                                         <a href='/admin/update_content/{{ $users->id }}'>
                                                             <button type="button" data-toggle="tooltip" title=""
                                                                 class="btn btn-link btn-primary btn-lg"
                                                                 data-original-title="Edit Task">
-                                                                <i class="fa fa-edit">
-                                                                </i>
+                                                                <i class="fa fa-edit"></i>
                                                             </button>
                                                         </a>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-button-action">
                                                         <a href="/admin/delete_content/{{ $users->id }}"
-                                                            onclick="return confirm('Are you sure to delete ?')">
+                                                            onclick="return confirm('Are you sure you want to delete this content ?')">
                                                             <button type="button" data-toggle="tooltip" title=""
                                                                 class="btn btn-link btn-danger"
                                                                 data-original-title="Remove">

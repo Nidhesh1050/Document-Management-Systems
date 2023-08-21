@@ -61,7 +61,7 @@
 
                                 <div class="text-right">
                                     <button type="submit" class="mt-4 btn btn-success">Update</button>
-                                    <a href="{{ url('admin/home') }}" class="mt-4 btn btn-danger">Cancel</a>
+                                    <a href="{{ url('admin/show_email') }}" class="mt-4 btn btn-danger">Cancel</a>
                                     <div>
                             </form>
 

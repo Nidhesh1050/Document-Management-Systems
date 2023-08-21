@@ -71,27 +71,25 @@
                 <tr>
                 <td>{{$loop->iteration}}</td>
                     <td> {{$users->project_name}}</td>
-                    <td> {{$users->description}}</td>
+                    <td><?php echo $users->description ?></td>
                     <td> {{$users->name}}</td>
                     <td> {{$status}}</td>
 
                     <td>
                         <div class="form-button-action">
-
                             <a href='/admin/update_project/{{ $users->id }}'>
-                            <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                            <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
                                 <i class="fa fa-edit">
                                 </i>
                             </button>
-                        </a>
+                          </a>
                         </div>
-                   
                         <div class="form-button-action">
-                            <a href="/admin/delete_project/{{ $users->id }}" onclick="return confirm('Are you sure to delete ?')">
+                            <a href="/admin/delete_project/{{ $users->id }}" onclick="return confirm('Are you sure you want to delete this project ?')">
                                 <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
                                     <i class="fa fa-times"></i>
                                 </button>
-                        </a>
+                            </a>
                         </div>
                     </td>
 

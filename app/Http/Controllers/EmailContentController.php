@@ -43,7 +43,7 @@ class EmailContentController extends Controller
             "email_contents.*", 
             "email_types.email_type"
         )
-        ->leftJoin("email_types", "email_contents.email_type" ,"=", "email_types.id")
+        ->leftJoin("email_types", "email_contents.email_type" ,"=", "email_types.id")->orderBy('id','DESC')
         ->get();
          return view('admin.email_management.show_content',['users'=>$users]);
         }
@@ -52,20 +52,17 @@ class EmailContentController extends Controller
          //Delete function to delete in user body
      public function delete($id) {
         DB::delete('delete from email_contents where id ='.$id);
-        return redirect()->back();
+        return redirect('/admin/show_content')->with('success', 'email content has been deleted successfully.');
      }
 
         //edit code in user body
         public function edit_content(Request $request,$id)
         {
 
-            $project_manager = DB::table('email_types')->select('id','email_type')->get();
-
+        $project_manager = DB::table('email_types')->select('id','email_type')->get();
         $users = DB::table('email_contents')->where(['id'=> $id])->first();
         return view('admin.email_management.edit_content')->with(['users'=>$users,'project_manager'=>$project_manager]);
-        // $users = DB::table('email_contents')->where(['id'=> $id])->first();
-
-        //    return view('admin.edit_content')->with(['users'=>$users]);
+       
         }
 
         public function update(Request $request)

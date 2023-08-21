@@ -84,24 +84,19 @@
                                             @enderror
                                         </span>
                          </div>
-
-
                         <div class="form-group">
-                            <label for="status">Status</label>
-
+                        <label for="status">Status</label>
                            &nbsp;&nbsp;&nbsp;
-                            <input type="checkbox" name="status" id="status" value="1">
+                            <input type="checkbox" name="status" id="status">
                                 <span class="text-danger error ">
                                 @error('status')
                                 {{$message}}
                                 @enderror
-                                </span>
-
+                            </span>
                         </div>
-
                         <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>
-                                <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
+                                <a href="{{url('admin/view_project')}}" class="mt-4 btn btn-danger">Cancel</a>
                             <div>
                     </form>
                 </div>

@@ -32,7 +32,7 @@ class EmailTypeController extends Controller
 
     public function show_email(){
 
-         $users = DB::table('email_types')->get();
+         $users = DB::table('email_types')->orderBy('id','DESC')->get();
          return view('admin.email_management.show_email',['users'=>$users]);
         }
 
@@ -40,7 +40,7 @@ class EmailTypeController extends Controller
          //Delete function to delete in user body
      public function emaildelete($id) {
         DB::delete('delete from email_types where id ='.$id);
-        return redirect()->back();
+        return redirect('/admin/show_email')->with('success', 'email has been deleted successfully.');
      }
 
         //edit code in user body

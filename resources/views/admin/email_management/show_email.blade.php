@@ -73,7 +73,7 @@
                                                             <i class="fa fa-edit"></i>
                                                         </button>
                                                     </a>
-                                                    <a href='emaildelete/{{ $user->id }}'>
+                                                    <a href="/admin/emaildelete/{{ $user->id }}"  onclick="return confirm('Are you sure you want to delete this email ?')">
                                                         <button type="button" data-toggle="tooltip" title=""
                                                             class="btn btn-link btn-danger" data-original-title="Delete">
                                                             <i class="fa fa-times"></i>

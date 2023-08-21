@@ -72,8 +72,7 @@
                                     <div class="form-group">
                                         <div class="form-group col-md-6">
                                             <label for="status">Status</label>
-                                            <input type="checkbox" name="status" id="status" value="1"
-                                                placeholder="Status">
+                                            <input type="checkbox" name="status" id="status" value="1">
                                             <span class="text-danger error ">
                                                 @error('status')
                                                     {{ $message }}
@@ -83,7 +82,7 @@
 
                                         <div class="text-right">
                                             <button type="submit" class="mt-4 btn btn-success">Submit</button>
-                                            <a href="{{ url('admin/home') }}" class="mt-4 btn btn-danger">Cancel</a>
+                                            <a href="{{ url('admin/view_content') }}" class="mt-4 btn btn-danger">Cancel</a>
 
                             </form>
                         </div>
@@ -100,14 +99,20 @@
                 rules: {
 
                     title: "required",
-                    description: "required",
-                    image: "required",
+                    status: "required",
+                    
+                    // description: "required",
+                //     image: {
+                //    extension: "png|jpeg|jpg|gif"                      
+                //   },
+
                 },
                 messages: {
 
                     title: "*Please enter your title",
-                    description: "*Please enter  description",
-                    image: "*Choose any image",
+                    status: "Please select Status",
+                    // description: "*Please enter  description",
+                    // image:{ extension: "Only PNG , JPEG , JPG, GIF File Allowed",},
 
                 }
 

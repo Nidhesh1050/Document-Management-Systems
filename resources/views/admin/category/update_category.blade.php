@@ -86,7 +86,7 @@
                                 </div>
                                 <div class="text-right">
                                     <button type="submit" class="mt-4 btn btn-success">Update</button>
-                                    <a href="{{ url('admin/home') }}" class="mt-4 btn btn-danger">Cancel</a>
+                                    <a href="{{ url('admin/view_category') }}" class="mt-4 btn btn-danger">Cancel</a>
                                     <div>
 
 
@@ -102,14 +102,14 @@
                                         rules: {
                                             parent_id: "required",
                                             name: "required",
-                                            description: "required",
+                                            // description: "required",
                                             image: "required",
                                             status: "required",
                                         },
                                         messages: {
                                             parent_id: "Update your parent_id",
                                             name: "Update your your Name",
-                                            description: "Update your  description",
+                                            // description: "Update your  description",
                                             image: "Choose image",
                                             status: "Update your Status",
 

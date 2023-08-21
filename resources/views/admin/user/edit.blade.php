@@ -53,10 +53,14 @@
                             <div class="form-row">
                             <div class="form-group col-md-6">
                                     <label for="name">Company Name</label>
-                                    <input type="text" class="form-control" id="company_name" placeholder="Enter Company Name"
-                                        name="company_name"  value="{{$users->company_name}}" onkeypress="return /[A-Za-z/ _-]/i.test(event.key)">
+                                        <select name="company_name" class="form-control">
+                                        <option value=""> Please Select</option>
+                                        <?php foreach($company_name as $company_name){?>
+                                        <option <?php if($users->company_name == $company_name->id){?>selected <?php } ?> value="{{$company_name->id}}">{{$company_name->company_name}}</option>
+                                        <?php }?>
+                                    </select>
                                     <span class="text-danger  ">
-                                        @error('name')
+                                        @error('company_name')
                                         {{$message}}
                                         @enderror
                                     </span>
@@ -71,6 +75,8 @@
                                         @enderror
                                     </span>
                                 </div>
+                            </div>
+                            <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="email">Email Address</label>
                                     <input type="email" class="form-control" id="email" placeholder="Enter Email"
@@ -81,8 +87,7 @@
                                         @enderror
                                     </span>
                                 </div>
-                            </div>
-                            <div class="form-row">
+                          
                                 <div class="form-group col-md-6">
                                     <label for="mobile">Mobile</label>
                                     <input type="text" class="form-control" id="mobile" placeholder="Enter Mobile"
@@ -92,13 +97,11 @@
                                         {{$message}}
                                         @enderror
                                     </span>
-
                                 </div>
-
-
+                            </div>
+                            <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="designation">User Type</label>
-
+                                    <label for="user_type">User Type</label>
                                     <select name="user_type" class="form-control">
                                         <option value=""> Please Select</option>
                                         <?php foreach($project_manager as $project_manager){?>
@@ -112,35 +115,11 @@
                                     </span>
                                 </div>
 
-
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="username">Username</label>
-                                    <input type="text" class="form-control" id="username"
-                                        placeholder="Enter your username" value="{{ $users->username }}"
-                                        name="username">
-                                    <span class="text-danger  ">
-                                        @error('username')
-                                        {{$message}}
-                                        @enderror
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="company_name">Company Name</label>
-                                <input type="company_name" class="form-control" id="company_name"
-                                    placeholder="Enter company name" value="{{ $users->company_name }}" name="company_name">
-                                <span class="text-danger  ">
-                                    @error('company_name')
-                                    {{$message}}
-                                    @enderror
-                                </span>
                             </div>
                             <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Update</button>
-                                <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
-                                <div>
+                                <a href="{{url('admin/userManagement')}}" class="mt-4 btn btn-danger">Cancel</a>
+                            <div>
                         </form>
                     </div>
                 </div>
@@ -156,29 +135,21 @@ $(document).ready(function() {
         rules: {
             name: {
                 required: true,
-
             },
             company_name: {
                 required: true,
             },
             email: {
                 required: true,
-
-            },
-            username: {
-
-                required: true,
             },
             mobile: {
                 required: true,
+                number:true,
             },
-            user_type: {
-
-                required: true,
-            },
-            company_name:{
-                required: true,
-                },
+            // user_type: {
+            //     required: true,
+            // },
+           
 
         },
         messages: {
@@ -187,24 +158,19 @@ $(document).ready(function() {
             },
             company_name: {
                 required: "Please enter your commpany  Name",
-                minlength: "Enter your commpany name atleast 4 letters",
-                maxlength: "Your commpany name length should not be greater than 20 letters",
+                // minlength: "Enter your commpany name atleast 4 letters",
+                // maxlength: "Your commpany name length should not be greater than 20 letters",
             },
             email: {
                 required: "*Enter a valid E-mail address",
             },
-            username: {
-                required: "*Enter a valid username",
-            },
             mobile: {
                 required: "*Please enter your Valid Mobile No.",
+                number :"mobile number should be number only",
             },
-            user_type: {
-                required: "*Enter a valid user type",
-            },
-            company_name:{
-                    required: "*Enter a company name",
-                },
+            // user_type: {
+            //     required: "*Enter a valid user type",
+            // },
 
 
         }

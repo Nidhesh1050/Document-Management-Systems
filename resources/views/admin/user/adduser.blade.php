@@ -39,10 +39,15 @@
                             <div class="form-row">
                             <div class="form-group col-md-6">
                                     <label for="name">Company Name</label>
-                                    <input type="text" class="form-control" id="company_name" placeholder="Enter Company Name"
-                                        name="company_name" onkeypress="return /[A-Za-z/ _-]/i.test(event.key)">
+                                    <select name="company_name" class="form-control">
+                                        <option value=""> Please Select</option>
+                                        @foreach($company_name as $company_name)
+                                        <option value="{{$company_name->id}}"> <?php echo $company_name->company_name;?>
+                                        </option>
+                                        @endforeach
+                                    </select>
                                     <span class="text-danger  ">
-                                        @error('name')
+                                        @error('company_name')
                                         {{$message}}
                                         @enderror
                                     </span>
@@ -57,12 +62,24 @@
                                         @enderror
                                     </span>
                                 </div>
-                                <div class="form-group col-md-6">
+                                </div>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
                                     <label for="email">Email Address</label>
                                     <input type="email" class="form-control" id="email" placeholder="Enter Email"
                                         name="email">
                                     <span class="text-danger  ">
                                         @error('email')
+                                        {{$message}}
+                                        @enderror
+                                    </span>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" id="password"
+                                        placeholder="Enter your password" name="password">
+                                    <span class="text-danger  ">
+                                        @error('password')
                                         {{$message}}
                                         @enderror
                                     </span>
@@ -78,12 +95,9 @@
                                         {{$message}}
                                         @enderror
                                     </span>
-
                                 </div>
-
-
                                 <div class="form-group col-md-6">
-                                    <label for="designation">User Type</label>
+                                    <label for="user_type">User Type</label>
                                     <select name="user_type" class="form-control">
                                         <option value=""> Please Select</option>
                                         @foreach($project_manager as $project_manager)
@@ -91,43 +105,8 @@
                                         </option>
                                         @endforeach
                                     </select>
-
                                     <span class="text-danger  ">
                                         @error('user_type')
-                                        {{$message}}
-                                        @enderror
-                                    </span>
-                                </div>
-
-
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="username">Username</label>
-                                    <input type="text" class="form-control" id="username"
-                                        placeholder="Enter your username" name="username">
-                                    <span class="text-danger  ">
-                                        @error('username')
-                                        {{$message}}
-                                        @enderror
-                                    </span>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password"
-                                        placeholder="Enter your password" name="password">
-                                    <span class="text-danger  ">
-                                        @error('password')
-                                        {{$message}}
-                                        @enderror
-                                    </span>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="company_name">Company Name</label>
-                                    <input type="company_name" class="form-control" id="company_name"
-                                        placeholder="Enter company name" name="company_name">
-                                    <span class="text-danger  ">
-                                        @error('company_name')
                                         {{$message}}
                                         @enderror
                                     </span>
@@ -135,7 +114,7 @@
                             </div>
                             <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>
-                                <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
+                                <a href="{{url('admin/userManagement')}}" class="mt-4 btn btn-danger">Cancel</a>
                                 <div>
                         </form>
                     </div>
@@ -157,36 +136,29 @@ $(document).ready(function() {
             },
             company_name: {
                 required: true,
-                minlength: 4,
-                maxlength: 20,
             },
             
             email: {
                 required: true,
                 email: true
             },
-            username: {
-
-                required: true,
-            },
+            
             mobile: {
                 required: true,
                 number: true,
                 minlength: 10,
                 maxlength: 12,
             },
-            designation: {
+            // designation: {
 
-                required: true,
-            },
+            //     required: true,
+            // },
             password: {
 
                 required: true,
                 minlength: 8
             },
-            company_name:{
-                required: true,
-                },
+           
         },
         messages: {
             name: {
@@ -196,15 +168,10 @@ $(document).ready(function() {
             },
             company_name: {
                 required: "Please enter your commpany  Name",
-                minlength: "Enter your commpany name atleast 4 letters",
-                maxlength: "Your commpany name length should not be greater than 20 letters",
             },
             email: {
-                required: "Enter a valid e-mail address",
+                required: "Enter a e-mail address",
                 email: "Email should be in @gmail.com",
-            },
-            username: {
-                required: "Enter a valid username",
             },
             mobile: {
                 required: "Please enter your valid Mobile No.",
@@ -212,16 +179,13 @@ $(document).ready(function() {
                 minlength: "Atlest length should be 10",
                 maxlength: "Length should not be greater than 12",
             },
-            designation: {
-                required: "Enter a valid designation",
-            },
+            // designation: {
+            //     required: "Enter a valid designation",
+            // },
             password: {
                 required: "Enter a valid password",
                 minlength: "Password must be atlest 8 characters",
             },
-            company_name:{
-                    required: "Enter a company name",
-                },
 
         }
 

@@ -82,8 +82,8 @@
                                     <div class="form-group">
                                         <div class="form-group col-md-6">
                                             <label for="status">Status</label>
-                                            <input type="checkbox" name="status" id="status" value="1"
-                                                value="{{ $users->status }}" placeholder="Status">
+                                            <input type="checkbox" name="status" id="status" 
+                                            {{$users->status==1 ? 'checked': '' }}>
                                             <span class="text-danger error ">
                                                 @error('status')
                                                     {{ $message }}
@@ -93,7 +93,7 @@
 
                                         <div class="text-right">
                                             <button type="submit" class="mt-4 btn btn-success">Update</button>
-                                            <a href="{{ url('admin/home') }}" class="mt-4 btn btn-danger">Cancel</a>
+                                            <a href="{{ url('admin/view_content') }}" class="mt-4 btn btn-danger">Cancel</a>
 
                             </form>
                         </div>
@@ -110,12 +110,19 @@
                 rules: {
 
                     title: "required",
-                    description: "required",
+                   // status: "required",
+                    // description: "required",
+                //     image: {
+                //    extension: "png|jpeg|jpg|gif"                      
+                //   },
                 },
                 messages: {
 
-                    title: "Please enter your title",
-                    description: "Please enter  description",
+                   
+                    title: "*Please enter your title",
+                    //status: "Please select Status",
+                    // description: "Please enter  description",
+                   // image:{ extension: "Only PNG , JPEG , JPG, GIF File Allowed",},
 
                 }
 

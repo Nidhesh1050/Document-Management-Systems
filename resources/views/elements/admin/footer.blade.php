@@ -1,4 +1,11 @@
-<footer class="footer">
+
+<?php
+use App\Models\Projects;
+use App\Models\User;
+$all_users=User::get()->count();
+$all_manager=User::whereIn('user_type', [2])->get()->count();
+$all_project = Projects::get()->count();
+?><footer class="footer">
 				<div class="container-fluid">
 					<nav class="pull-left">
 						<ul class="nav">
@@ -56,7 +63,7 @@
 	<script>
     $(document).ready(function(){
         $('#datatables').DataTable({
-                        "pageLength": 5,
+                        "pageLength": 10,
                     });
     });
 
@@ -65,10 +72,10 @@
 		Circles.create({
 			id:'circles-1',
 			radius:45,
-			value:60,
+			value:<?php echo $all_users;?>,
 			maxValue:100,
 			width:7,
-			text: 5,
+			text: <?php echo $all_users;?>,
 			colors:['#f1f1f1', '#FF9E27'],
 			duration:400,
 			wrpClass:'circles-wrp',
@@ -80,10 +87,10 @@
 		Circles.create({
 			id:'circles-2',
 			radius:45,
-			value:70,
+			value:<?php echo $all_manager?>,
 			maxValue:100,
 			width:7,
-			text: 36,
+			text: <?php echo $all_manager?>,
 			colors:['#f1f1f1', '#2BB930'],
 			duration:400,
 			wrpClass:'circles-wrp',
@@ -95,10 +102,10 @@
 		Circles.create({
 			id:'circles-3',
 			radius:45,
-			value:40,
+			value:<?php echo $all_project;?>,
 			maxValue:100,
 			width:7,
-			text: 12,
+			text: <?php echo $all_project;?>,
 			colors:['#f1f1f1', '#F25961'],
 			duration:400,
 			wrpClass:'circles-wrp',

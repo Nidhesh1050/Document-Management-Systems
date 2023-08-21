@@ -86,7 +86,7 @@
                         </div>
                         <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>
-                                <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
+                                <a href="{{url('admin/view_image')}}" class="mt-4 btn btn-danger">Cancel</a>
                         <div>
 
                     </form>
@@ -102,12 +102,16 @@
 $(document).ready(function() {
     $("#category").validate({
         rules: {
-            image: "required",
-           
+            image: {
+                  required: true,
+                   extension: "png|jpeg|jpg|gif"                      
+                  },
 
         },
         messages: {
-            image: "Select Image",
+            image: {
+             required: "Select Image",
+             extension: "Only PNG , JPEG , JPG, GIF File Allowed",},
       
         }
     });

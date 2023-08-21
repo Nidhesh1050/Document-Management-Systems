@@ -64,7 +64,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $user->title }}</td>
-                                            <td>{{ $user->description }}</td>
+                                            <td><?php echo $user->description ?></td>
                                             <td>
                                                 <div class="form-button-action">
                                                     <a href="edit_notification/{{ $user->id }}">
@@ -76,7 +76,7 @@
                                                     </a>
 
                                                     <a href='delete/{{ $user->id }}'
-                                                        onclick="return confirm('Are you sure to delete ?')">
+                                                        onclick="return confirm('Are you sure you want to delete this notification ?')">
                                                         <button type="button" data-toggle="tooltip" title=""
                                                             class="btn btn-link btn-danger" data-original-title="Remove">
                                                             <i class="fa fa-times"></i>

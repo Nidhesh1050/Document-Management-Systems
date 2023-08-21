@@ -14,11 +14,10 @@ class CMSController extends Controller
     public function add_cms(Request $request) {
         $request->validate([
             'title' => 'required|string',
-            'description' =>  'required',
-            'image' =>  'required','mimes:jpeg,png,jpg,gif,svg',
+             'image' =>  'mimes:jpeg,png,jpg,gif,svg',
             'status' => 'nullable|boolean',
         ]);
-        $status = $request->status == 1 ? 1 : 0;
+        $status = $request->status == 'on' ? 1 : 0;
 
         $image = $request->file('image');
         $destinationPath = public_path('/cms');
@@ -34,13 +33,13 @@ class CMSController extends Controller
         return redirect('admin/view_content')->with('success', 'Content has been added successfully.');
     }
     public function view_content(){
-        $users = DB::table('cms')->get();
+        $users = DB::table('cms')->orderBy('id','DESC')->get();
         return view('admin.content_management.view_content',['users'=>$users]);
     }
 
     public function delete_content($id) {
         DB::delete('delete from cms where id = ?',[$id]);
-        return redirect()->back();
+        return redirect('admin/view_content')->with('success', 'Content has been deleted successfully.');
     }
 
     public function update_content(Request $request,$id){
@@ -49,10 +48,11 @@ class CMSController extends Controller
     }
 
     public function edit_content(Request $request){
+     ///   print_r($request->all());die;
         $request->validate([
             'title' => 'required|string',
-            'description' =>  'required',
-            'status' => 'nullable|boolean',
+            'image' =>  'mimes:jpeg,png,jpg,gif,svg',
+           // 'status' => 'nullable|boolean',
         ]);
 
         if(!empty($request->file('image'))){
@@ -60,6 +60,7 @@ class CMSController extends Controller
             $destinationPath = public_path('/cms');
             $image_name = rand().'.'.$image->getClientOriginalExtension();
             $image->move($destinationPath, $image_name);
+            $status = $request->status == 'on' ? 1 : 0;
             DB::table('cms')
             ->where('id', $request['id'])
             ->update([
@@ -67,16 +68,17 @@ class CMSController extends Controller
                 'title'=> str_replace(' ', '_', $request->title),
                 'description' => strip_tags($request->description),
                 'image' => $image_name,
-                'status' => $request['status'],
+                'status' => $status,
             ]);
         }
         else {
+            $status = $request->status == 'on' ? 1 : 0;
             DB::table('cms')
             ->where('id', $request['id'])
             ->update([
            'title'=> str_replace(' ', '_', $request->title),
            'description' => strip_tags($request->description),
-            'status' => $request['status'],
+           'status' => $status,
             ]);
 
         }
