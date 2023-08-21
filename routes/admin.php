@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DocumentController;
 
-use App\Http\Controllers\ProjectManagementController;
-use App\Http\Controllers\SettingController;
-use App\Http\Controllers\NotificationController;
-use App\Http\Controllers\CMSController;
-use App\Http\Controllers\EmailTypeController;
-use App\Http\Controllers\EmailContentController;
-use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\Admin\ProjectManagementController;
+use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\Admin\CMSController;
+use App\Http\Controllers\Admin\EmailTypeController;
+use App\Http\Controllers\Admin\EmailContentController;
+use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\CompanyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,6 +43,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     
     Route::get('/admin/adduser',[HomeController::class,'adduser']);
     Route::post('/admin/register_user',[HomeController::class,'register']);
+    Route::get('/UserChangeStatus/{id}/{status}',[HomeController::class,'UserChangeStatus']);
     /* User management routes end*/
 
 
