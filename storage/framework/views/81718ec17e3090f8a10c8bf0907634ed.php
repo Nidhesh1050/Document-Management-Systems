@@ -313,4 +313,4 @@ $currentURL =Route::current()->uri;
     </div>
 </div>
 
-<?php /**PATH D:\xampp\htdocs\dms\resources\views/elements/admin/left_menus.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\wamp64\www\dms\resources\views/elements/admin/left_menus.blade.php ENDPATH**/ ?>

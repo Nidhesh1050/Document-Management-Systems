@@ -277,6 +277,6 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 		</div>
 
 		<!-- Sidebar -->
-		<?php echo $__env->make('elements.company.left_menus', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+		<?php echo $__env->make('elements.admin.left_menus', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 		<!-- End Sidebar -->
-<?php /**PATH D:\xampp\htdocs\dms\resources\views/elements/company/header.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\wamp64\www\dms\resources\views/elements/admin/header.blade.php ENDPATH**/ ?>

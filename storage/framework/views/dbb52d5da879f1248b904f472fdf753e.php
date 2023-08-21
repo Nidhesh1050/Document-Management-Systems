@@ -164,4 +164,4 @@ $all_project = Projects::get()->count();
 	</script>
 <script src="<?php echo e(asset('admin/js/bootstrap.min.js')); ?>"></script>
 <script src="<?php echo e(asset('admin/js/validate.min.js')); ?>"></script>
-<?php /**PATH D:\xampp\htdocs\dms\resources\views/elements/admin/footer.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\wamp64\www\dms\resources\views/elements/admin/footer.blade.php ENDPATH**/ ?>

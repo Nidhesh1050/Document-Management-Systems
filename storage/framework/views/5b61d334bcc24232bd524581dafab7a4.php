@@ -50,12 +50,12 @@
 <body>
 	
 	<div class="wrapper">
-		<?php echo $__env->make('elements.company.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+		<?php echo $__env->make('elements.admin.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 		<div class="main-panel">
 			<?php echo $__env->yieldContent('content'); ?>
 		</div>
-		<?php echo $__env->make('elements.company.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+		<?php echo $__env->make('elements.admin.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </div>
 </body>
 </html>
-<?php /**PATH D:\xampp\htdocs\dms\resources\views/layouts/company-app.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\wamp64\www\dms\resources\views/layouts/admin-app.blade.php ENDPATH**/ ?>
