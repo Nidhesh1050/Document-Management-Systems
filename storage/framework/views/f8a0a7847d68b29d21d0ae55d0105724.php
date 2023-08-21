@@ -5,12 +5,12 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 <div class="main-header">
 	<!-- Logo Header -->
 				<head>
-					<script src="{{asset('admin/js/min.js')}}"></script>
+					<script src="<?php echo e(asset('admin/js/min.js')); ?>"></script>
 				</head>
 			<div class="logo-header" data-background-color="blue">
 
 				<a href="index.html" class="logo">
-					<img src="{{asset('admin/img/STPL_Logo_white.png')}}" width="100" alt="navbar brand" class="navbar-brand">
+					<img src="<?php echo e(asset('admin/img/STPL_Logo_white.png')); ?>" width="100" alt="navbar brand" class="navbar-brand">
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
@@ -64,7 +64,7 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 										<div class="notif-center">
 											<a href="#">
 												<div class="notif-img">
-													<img src="{{asset('admin/img/jm_denis.jpg')}}" alt="Img Profile">
+													<img src="<?php echo e(asset('admin/img/jm_denis.jpg')); ?>" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="subject">Jimmy Denis</span>
@@ -76,7 +76,7 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 											</a>
 											<a href="#">
 												<div class="notif-img">
-													<img src="{{asset('admin/img/chadengle.jpg')}}" alt="Img Profile">
+													<img src="<?php echo e(asset('admin/img/chadengle.jpg')); ?>" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="subject">Chad</span>
@@ -88,7 +88,7 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 											</a>
 											<a href="#">
 												<div class="notif-img">
-													<img src="{{asset('admin/img/mlane.jpg')}}" alt="Img Profile">
+													<img src="<?php echo e(asset('admin/img/mlane.jpg')); ?>" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="subject">Jhon Doe</span>
@@ -100,7 +100,7 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 											</a>
 											<a href="#">
 												<div class="notif-img">
-													<img src="{{asset('admin/img/talha.jpg')}}" alt="Img Profile">
+													<img src="<?php echo e(asset('admin/img/talha.jpg')); ?>" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="subject">Talha</span>
@@ -150,7 +150,7 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 											</a>
 											<a href="#">
 												<div class="notif-img">
-													<img src="{{asset('admin/img/profile2.jpg')}}" alt="Img Profile">
+													<img src="<?php echo e(asset('admin/img/profile2.jpg')); ?>" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="block">
@@ -233,7 +233,7 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 
 							<div class="avatar-sm">
-								 <td><img src="{{ asset('images/' .$users->image) }}" alt="..." class="avatar-img rounded-circle" ></td>
+								 <td><img src="<?php echo e(asset('images/' .$users->image)); ?>" alt="..." class="avatar-img rounded-circle" ></td>
 							</div>
 
 							</a>
@@ -241,10 +241,10 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 								<div class="dropdown-user-scroll scrollbar-outer">
 									<li>
 										<div class="user-box">
-											<div class="avatar-lg"><img src="{{asset('admin/img/profile.jpg')}}" alt="image profile" class="avatar-img rounded"></div>
+											<div class="avatar-lg"><img src="<?php echo e(asset('admin/img/profile.jpg')); ?>" alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
-												<h4>{{ Auth::user()->name }} </a></h4>
-												<p class="text-muted">{{ Auth::user()->email }} </a></p>
+												<h4><?php echo e(Auth::user()->name); ?> </a></h4>
+												<p class="text-muted"><?php echo e(Auth::user()->email); ?> </a></p>
 												<a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
 											</div>
 										</div>
@@ -258,11 +258,11 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 										<a class="dropdown-item" href="#">Account Setting</a>
 										<div class="dropdown-divider"></div>
 
-										<a class="dropdown-item" href="{{ route('logout') }}"
+										<a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();" >{{ __('Logout') }}</a>
-										<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
+                                                     document.getElementById('logout-form').submit();" ><?php echo e(__('Logout')); ?></a>
+										<form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" class="d-none">
+                                        <?php echo csrf_field(); ?>
                                     </form>
 
 
@@ -277,5 +277,6 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 		</div>
 
 		<!-- Sidebar -->
-		@include('elements.company.left_menus')
+		<?php echo $__env->make('elements.company.left_menus', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 		<!-- End Sidebar -->
+<?php /**PATH D:\xampp\htdocs\dms\resources\views/elements/company/header.blade.php ENDPATH**/ ?>
