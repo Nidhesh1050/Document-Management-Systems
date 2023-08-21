@@ -16,7 +16,7 @@ $currentURL =Route::current()->uri;
                     <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                         <span>
                             {{ Auth::user()->name }}
-                            <span class="user-level">Administrator</span>
+                            <span class="user-level">Company Name</span>
                             <span class="caret"></span>
                         </span>
                     </a>
@@ -52,7 +52,7 @@ $currentURL =Route::current()->uri;
                     <h4 class="text-section">Components</h4>
                 </li>
                 <li class="nav-item"  >
-                    <a href="{{url('admin/home')}}">
+                    <a href="{{url('company/home')}}">
                         <i class="fas fa-layer-group"></i>
                         <p>Dashboard</p>
                     </a>
@@ -65,12 +65,12 @@ $currentURL =Route::current()->uri;
                     <div class="collapse" id="base">
                         <ul class="nav nav-collapse">
                             <li class="sidebar-item">
-                                <a <?php if($currentURL =='admin/userManagement' || $currentURL =='admin/edit/{id}'){ echo 'active'; }?> class="sidebar-link" href="{{url('admin/userManagement')}}">
+                                <a <?php if($currentURL =='company/userManagement' || $currentURL =='company/edit/{id}'){ echo 'active'; }?> class="sidebar-link" href="{{url('company/userManagement')}}">
                                     <span class="sub-item">User List</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/adduser')}}">
+                                <a href="{{url('company/adduser')}}">
                                     <span class="sub-item">Add User</span>
                                 </a>
                             </li>
@@ -87,12 +87,12 @@ $currentURL =Route::current()->uri;
                     <div class="collapse" id="company">
                         <ul class="nav nav-collapse">
                             <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{url('admin/view_company')}}">
+                                <a class="sidebar-link" href="{{url('company/view_company')}}">
                                     <span class="sub-item">Company List</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/addcompany')}}">
+                                <a href="{{url('company/addcompany')}}">
                                     <span class="sub-item">Add Company</span>
                                 </a>
                             </li>
@@ -109,12 +109,12 @@ $currentURL =Route::current()->uri;
                     <div class="collapse" id="sidebarLayouts">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('admin/view_category')}}">
+                                <a href="{{url('company/view_category')}}">
                                     <span class="sub-item">Category List</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/category')}}">
+                                <a href="{{url('company/category')}}">
                                     <span class="sub-item">Add Category</span>
                                 </a>
                             </li>
@@ -131,12 +131,12 @@ $currentURL =Route::current()->uri;
                     <div class="collapse" id="project">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('admin/view_project')}}">
+                                <a href="{{url('company/view_project')}}">
                                     <span class="sub-item">Project List</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/project_management')}}">
+                                <a href="{{url('company/project_management')}}">
                                     <span class="sub-item">Add Project</span>
                                 </a>
                             </li>
@@ -154,12 +154,12 @@ $currentURL =Route::current()->uri;
                     <div class="collapse" id="forms">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('admin/document')}}">
+                                <a href="{{url('company/document')}}">
                                     <span class="sub-item">View Document</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/createdocument')}}">
+                                <a href="{{url('company/createdocument')}}">
                                         <span class="sub-item">Add Document</span>
                                     </a>
                                 </li>
@@ -176,12 +176,12 @@ $currentURL =Route::current()->uri;
                     <div class="collapse" id="list">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('admin/view_document')}}">
+                                <a href="{{url('company/view_document')}}">
                                     <span class="sub-item">Document List</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/add_document')}}">
+                                <a href="{{url('company/add_document')}}">
                                     <span class="sub-item">Add Document</span>
                                 </a>
                             </li>
@@ -198,12 +198,12 @@ $currentURL =Route::current()->uri;
                     <div class="collapse" id="setting">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('admin/view_image')}}">
+                                <a href="{{url('company/view_image')}}">
                                     <span class="sub-item">Logos</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/setting')}}">
+                                <a href="{{url('company/setting')}}">
                                     <span class="sub-item">Add Settings</span>
                                 </a>
                             </li>
@@ -221,12 +221,12 @@ $currentURL =Route::current()->uri;
 							<div class="collapse" id="tables">
 								<ul class="nav nav-collapse">
 									<li>
-                                    <a href="{{url('admin/show_notification')}}">
+                                    <a href="{{url('company/show_notification')}}">
 											<span class="sub-item">View Notification</span>
 										</a>
 									</li>
 									<li>
-                                    <a href="{{url('admin/notification')}}">
+                                    <a href="{{url('company/notification')}}">
 											<span class="sub-item">Add Notification</span>
 										</a>
 									</li>
@@ -242,12 +242,12 @@ $currentURL =Route::current()->uri;
 							<div class="collapse" id="charts">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="{{url('admin/view_content')}}">
+										<a href="{{url('company/view_content')}}">
 											<span class="sub-item">View CMS</span>
 										</a>
 									</li>
 									<li>
-										<a href="{{url('admin/addcontent')}}">
+										<a href="{{url('company/addcontent')}}">
 											<span class="sub-item">Add CMS</span>
 										</a>
 									</li>
@@ -265,22 +265,22 @@ $currentURL =Route::current()->uri;
 							<div class="collapse" id="email">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="{{url('admin/show_email')}}">
+										<a href="{{url('company/show_email')}}">
 											<span class="sub-item">Email Types</span>
 										</a>
 									</li>
 									<li>
-										<a href="{{url('admin/email')}}">
+										<a href="{{url('company/email')}}">
 											<span class="sub-item">Add Email Type</span>
 										</a>
 									</li>
 									<li>
-										<a href="{{url('admin/show_content')}}">
+										<a href="{{url('company/show_content')}}">
 											<span class="sub-item"> Email Content</span>
 										</a>
 									</li>
 									<li>
-										<a href="{{url('admin/content')}}">
+										<a href="{{url('company/content')}}">
 											<span class="sub-item">Add Email Content</span>
 										</a>
 									</li>
@@ -298,7 +298,7 @@ $currentURL =Route::current()->uri;
 							<div class="collapse" id="maps">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="{{url('admin/module_permission')}}">
+										<a href="{{url('company/module_permission')}}">
 											<span class="sub-item">Module Permission</span>
 										</a>
 									</li>

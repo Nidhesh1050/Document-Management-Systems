@@ -277,5 +277,5 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 		</div>
 
 		<!-- Sidebar -->
-		@include('elements.admin.left_menus')
+		@include('elements.company.left_menus')
 		<!-- End Sidebar -->

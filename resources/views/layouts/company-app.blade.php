@@ -32,12 +32,6 @@
 	.action-icons{
 		margin-left: 10px;
 	}
-	td.action_td {
-    	padding: 0px !important;
-	}
-	td.action_td a{
-		padding: 7px !important;
-	}
 </style>
 	<!-- ckeditor library for discription-->
        <script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
@@ -56,11 +50,11 @@
 <body>
 	
 	<div class="wrapper">
-		@include('elements.admin.header')
+		@include('elements.company.header')
 		<div class="main-panel">
 			@yield('content')
 		</div>
-		@include('elements.admin.footer')
+		@include('elements.company.footer')
     </div>
 </body>
 </html>
