@@ -56,7 +56,7 @@ $currentURL =Route::current()->uri;
                         <i class="fas fa-layer-group"></i>
                         <p>Dashboard</p>
                     </a>
-                <li class="nav-item">
+                <li class="nav-item <?php if($currentURL =='admin/userManagement' || $currentURL =='admin/adduser'|| $currentURL =='admin/edit_user/{id}'){ echo 'active'; }?>">
                     <a data-toggle="collapse" href="#base">
                         <i class="fas fa-users"></i>
                         <p>User Management</p>
@@ -64,8 +64,8 @@ $currentURL =Route::current()->uri;
                     </a>
                     <div class="collapse" id="base">
                         <ul class="nav nav-collapse">
-                            <li class="sidebar-item">
-                                <a <?php if($currentURL =='admin/userManagement' || $currentURL =='admin/edit/{id}'){ echo 'active'; }?> class="sidebar-link" href="{{url('admin/userManagement')}}">
+                            <li class="sidebar-item <?php if($currentURL =='admin/userManagement'){ echo 'active'; }?> ">
+                                <a  class="sidebar-link" href="{{url('admin/userManagement')}}">
                                     <span class="sub-item">User List</span>
                                 </a>
                             </li>
@@ -81,7 +81,7 @@ $currentURL =Route::current()->uri;
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#company">
                      <i class="fas fa-table"></i>
-                        <p>Company</p>
+                        <p>Company Management</p>
 						<span class="caret"></span>
                     </a>
                     <div class="collapse" id="company">
@@ -212,6 +212,7 @@ $currentURL =Route::current()->uri;
                     </div>
                 </li>
 
+                
                 <li class="nav-item">
 							<a data-toggle="collapse" href="#tables">
 								<i class="fas fa-table"></i>

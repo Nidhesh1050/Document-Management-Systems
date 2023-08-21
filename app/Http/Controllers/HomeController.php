@@ -59,12 +59,10 @@ class HomeController extends Controller
       
       $users = DB::table('users')->select(
         "users.*", 
-        "company.company_name" )
-        ->leftJoin("company",  "company.id" ,"=", "users.company_name"  )->whereIn('type', [2,0])
+        "companies.company_name" )
+        ->leftJoin("companies",  "companies.id" ,"=", "users.company_id"  )->whereIn('type', [2,0])
         ->orderBy('id','DESC')->get();
-        // $users = DB::table('users')
-        // ->whereIn('type', [2,0])->orderBy('id','DESC')->get();
-
+        
         return view('admin.user.userManagement',['users'=>$users]);
     }
     //Delete function to delete in user body
@@ -73,10 +71,10 @@ class HomeController extends Controller
         return redirect('admin/userManagement')->with('success', 'User has been deleted successfully.');
      }
      //edit code in user body
-     public function edit(Request $request,$id) {
+     public function edit($id) {
 
       $project_manager = DB::table('usertype')->select('id','name')->whereIn('id', [2,0])->get();
-      $company_name = DB::table('company')->select('id','company_name')->get();
+      $company_name = DB::table('companies')->select('id','company_name')->get();
         $users = DB::table('users')->where(['id'=> $id])->first();
         return view('admin.user.edit')->with(['users'=>$users,'project_manager'=>$project_manager,'company_name'=>$company_name]);
 
@@ -88,7 +86,7 @@ class HomeController extends Controller
         DB::table('users')
             ->where('id', $request['id'])
             ->update([
-                'company_name' => $request['company_name'],
+                'company_id' => $request['company_name'],
                 'name' => $request['name'],
                 'email' => $request['email'],
                 'mobile' => $request['mobile'],
@@ -100,7 +98,7 @@ class HomeController extends Controller
       //Insert data Code
       public function adduser(){
         $project_manager = DB::table('usertype')->select('id','name')->whereIn('id', [2,0])->get();
-        $company_name = DB::table('company')->select('id','company_name')->get();
+        $company_name = DB::table('companies')->select('id','company_name')->get();
         return view('admin.user.adduser',['project_manager'=>$project_manager,'company_name'=>$company_name]);
       }
 
@@ -114,7 +112,7 @@ class HomeController extends Controller
           'name'=>'required|max:50|string',
           'email'=>'required|email|unique:users',
           'mobile' =>'required|max:12',
-          'user_type' => 'required',
+        
           'password' => 'required|max:8',
           ]
       );
@@ -131,7 +129,7 @@ class HomeController extends Controller
       $inserData['manager_id'] = $user_id;
      }
 
-        $inserData['company_name'] = $request->company_name;
+        $inserData['company_id'] = $request->company_name;
         $inserData['name'] = $request->name;
         $inserData['email']= $request->email;
         $details = [
@@ -143,10 +141,17 @@ class HomeController extends Controller
         $inserData['mobile'] = $request->mobile;
         $inserData['user_type'] = $request->user_type;
         $inserData['password'] = $request->password;
-        $inserData['company_name'] = $request->company_name;
+        $inserData['company_id'] = $request->company_name;
+
+
         DB::table('users')->insert($inserData);
         return redirect('admin/userManagement')->with('success', 'User has been added successfully.');
     }
+    public function UserChangeStatus($id=null, $status=null)   {
+   
+      $users = DB::table('users')->where('id',$id)->update(['status'=>$status]);
+      return back()->withInput()->with('success','Status has been changed.');
+  } 
 
 
 
