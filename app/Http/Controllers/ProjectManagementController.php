@@ -24,7 +24,7 @@ class ProjectManagementController extends Controller
             'manager_d' =>  'required',
             'status' => 'nullable|boolean',
         ]);
-       $status = $request->status == 1 ? 1 : 0;
+       $status = $request->status == 'on' ? 1 : 0;
 
        $user_id =  Session::get('user_id');
        $user_type = Session::get('user_type');
@@ -51,14 +51,14 @@ class ProjectManagementController extends Controller
             "projects.*", 
             "users.name" )
         ->leftJoin("users",  "users.id" ,"=", "projects.manager_d"  )
-        ->get();
+        ->orderBy('id','DESC')->get();
        return view('admin.project_management.view_project',['users'=>$users]);
     }
 
 
     public function delete_project($id) {
         DB::delete('delete from projects where id = ?',[$id]);
-        return redirect()->back();
+        return redirect('/admin/view_project')->with('success', 'Project has been deleted successfully.');
     }
 
 
@@ -69,16 +69,19 @@ class ProjectManagementController extends Controller
     }
 
     public function edit_project(Request $request){
+        //print_r($request->all());die;
         $request->validate([
             'project_name' => 'required|string',
             'manager_d' =>  'required',
         ]);
+        $status = $request->status == 'on' ? 1 : 0;
         DB::table('projects')
         ->where('id', $request['id'])
         ->update([
             'project_name' => $request['project_name'],
             'description' => $request['description'],
             'manager_d' => $request['manager_d'],
+            'status' => $status,
         ]);
           return redirect('/admin/view_project')->with('success', 'Project has been updated successfully.');
     

@@ -20,7 +20,7 @@ class CategoryController extends Controller
         $request->validate([
             'parent_id' =>  'required',
             'name' => 'required|string',
-            'description' =>  'required',
+           
         ]);
 
         $inserData['parent_id'] = $request->parent_id;
@@ -39,7 +39,7 @@ class CategoryController extends Controller
 
     public function delete_category($id) {
         DB::delete('delete from categories where id = ?',[$id]);
-        return redirect()->back();
+        return redirect('admin/view_category')->with('success', 'Category has been deleted successfully.');
     }
 
     public function update_category(Request $request,$id) {
@@ -52,7 +52,7 @@ class CategoryController extends Controller
         $request->validate([
             'parent_id' =>  'required',
             'name' => 'required',
-            'description' =>  'required',
+           
         ]);
             DB::table('categories')
             ->where('id', $request['id'])

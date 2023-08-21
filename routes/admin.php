@@ -14,6 +14,7 @@ use App\Http\Controllers\CMSController;
 use App\Http\Controllers\EmailTypeController;
 use App\Http\Controllers\EmailContentController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\CompanyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -136,8 +137,20 @@ Route::post('/admin/edit_content',[CMSController::class,'edit_content']);
     /* Module Permission route start here*/
     Route::get('/admin/module_permission',[PermissionController::class,'module_permission']);
     Route::post('/admin/module_permission',[PermissionController::class,'permission']);
-
-
     /* Module Permission route end here*/
+
+
+
+     /* Module Commpany route start here*/
+     Route::get('/admin/addcompany',[CompanyController::class,'addCompany']);
+     Route::post('/admin/company_add',[CompanyController::class,'Company_add']);
+     Route::get('/admin/view_company',[CompanyController::class,'view_company']);
+     Route::get('/admin/delete_company/{id}',[CompanyController::class,'delete_company']);
+     Route::get('/admin/update_company/{id}',[CompanyController::class,'update_company']);
+     Route::post('/admin/edit_company',[CompanyController::class,'edit_company']);
+     Route::get('/admin/checkCompany', [CompanyController::class, 'checkCompany'])->name('checkCompany');
+
+    /* Module Commpany route end here*/
+
 
 });
