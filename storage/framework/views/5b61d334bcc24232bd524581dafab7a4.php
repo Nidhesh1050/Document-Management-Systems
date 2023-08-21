@@ -32,6 +32,12 @@
 	.action-icons{
 		margin-left: 10px;
 	}
+	td.action_td {
+    	padding: 0px !important;
+	}
+	td.action_td a{
+		padding: 7px !important;
+	}
 </style>
 	<!-- ckeditor library for discription-->
        <script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
