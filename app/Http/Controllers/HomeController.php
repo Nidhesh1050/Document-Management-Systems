@@ -50,7 +50,6 @@ class HomeController extends Controller
 
     public function companyHome(): View
     {
-      echo 111; die;
         return view('companyHome');
     }
 
@@ -139,22 +138,13 @@ class HomeController extends Controller
           'title' => 'Mail from dms.srmtechsol.com',
           'body' => 'Welcome in Document Manganent Proejct',
 
-          // 'email'=> $request->email,
-          //  'password'=> $request->password
-
-
       ];
       \Mail::to($request->email)->send(new \App\Mail\MyTestMail($details));
-
-
         $inserData['mobile'] = $request->mobile;
         $inserData['user_type'] = $request->user_type;
         $inserData['password'] = $request->password;
         $inserData['company_name'] = $request->company_name;
-
-
         DB::table('users')->insert($inserData);
-
         return redirect('admin/userManagement')->with('success', 'User has been added successfully.');
     }
 

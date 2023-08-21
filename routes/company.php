@@ -4,16 +4,16 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\DocumentController;
-use App\Http\Controllers\ProjectManagementController;
-use App\Http\Controllers\SettingController;
-use App\Http\Controllers\NotificationController;
-use App\Http\Controllers\CMSController;
-use App\Http\Controllers\EmailTypeController;
-use App\Http\Controllers\EmailContentController;
-use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\Company\CategoryController;
+use App\Http\Controllers\Company\DocumentController;
+use App\Http\Controllers\Company\ProjectManagementController;
+use App\Http\Controllers\Company\SettingController;
+use App\Http\Controllers\Company\NotificationController;
+use App\Http\Controllers\Company\CMSController;
+use App\Http\Controllers\Company\EmailTypeController;
+use App\Http\Controllers\Company\EmailContentController;
+use App\Http\Controllers\Company\PermissionController;
+use App\Http\Controllers\Company\CompanyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,7 +33,7 @@ Auth::routes();
 
 Route::group(['prefix' => 'company'], function() {
 	Route::middleware(['auth', 'user-access:company'])->group(function () {
-        Route::get('/home', [HomeController::class, 'companyHome']);
+        Route::get('/home', [HomeController::class, 'companyHome'])->name('company.home');
 		/* User management routes start*/
             Route::get('/userManagement',[HomeController::class,'userManagement']);
             Route::get('/delete_user/{id}', [HomeController::class,'delete']);
