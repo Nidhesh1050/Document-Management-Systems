@@ -212,6 +212,7 @@ $currentURL =Route::current()->uri;
                     </div>
                 </li>
 
+                
                 <li class="nav-item">
 							<a data-toggle="collapse" href="#tables">
 								<i class="fas fa-table"></i>
