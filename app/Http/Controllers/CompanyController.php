@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Hash;
+
 
 class CompanyController extends Controller
 {
@@ -57,7 +57,7 @@ class CompanyController extends Controller
         return redirect('admin/view_company')->with('success', 'Company has been deleted successfully.');
     }
 
-    public function update_company(Request $request,$id){
+    public function update_company($id){
       //  print_r($request);die;
         $company_data = DB::table('companies')->where(['id'=> $id])->first();
         return view('admin.company.update_company')->with(['company_data'=>$company_data]);

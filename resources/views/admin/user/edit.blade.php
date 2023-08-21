@@ -101,7 +101,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="user_type">User Type</label>
+                                    <label for="designation">User Type</label>
                                     <select name="user_type" class="form-control">
                                         <option value=""> Please Select</option>
                                         <?php foreach($project_manager as $project_manager){?>

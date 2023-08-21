@@ -48,9 +48,10 @@ class HomeController extends Controller
       return view('adminHome');
     }
 
-    public function managerHome(): View
+    public function companyHome(): View
     {
-        return view('managerHome');
+      echo 111; die;
+        return view('companyHome');
     }
 
     //List of users
@@ -71,7 +72,7 @@ class HomeController extends Controller
         return redirect('admin/userManagement')->with('success', 'User has been deleted successfully.');
      }
      //edit code in user body
-     public function edit(Request $request,$id) {
+     public function edit($id) {
 
       $project_manager = DB::table('usertype')->select('id','name')->whereIn('id', [2,0])->get();
       $company_name = DB::table('companies')->select('id','company_name')->get();
