@@ -4,17 +4,16 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\DocumentController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DocumentController;
 
-use App\Http\Controllers\Admin\ProjectManagementController;
-use App\Http\Controllers\Admin\SettingController;
-use App\Http\Controllers\Admin\NotificationController;
-use App\Http\Controllers\Admin\CMSController;
-use App\Http\Controllers\Admin\EmailTypeController;
-use App\Http\Controllers\Admin\EmailContentController;
-use App\Http\Controllers\Admin\PermissionController;
-use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\ProjectManagementController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\CMSController;
+use App\Http\Controllers\EmailTypeController;
+use App\Http\Controllers\EmailContentController;
+use App\Http\Controllers\PermissionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,10 +39,9 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/delete_user/{id}', [HomeController::class,'delete']);
     Route::get('/admin/edit_user/{id}', [HomeController::class,'edit']);
     Route::post('/admin/update_user', [HomeController::class,'update']);
-    
+
     Route::get('/admin/adduser',[HomeController::class,'adduser']);
     Route::post('/admin/register_user',[HomeController::class,'register']);
-    Route::get('/UserChangeStatus/{id}/{status}',[HomeController::class,'UserChangeStatus']);
     /* User management routes end*/
 
 
@@ -138,20 +136,8 @@ Route::post('/admin/edit_content',[CMSController::class,'edit_content']);
     /* Module Permission route start here*/
     Route::get('/admin/module_permission',[PermissionController::class,'module_permission']);
     Route::post('/admin/module_permission',[PermissionController::class,'permission']);
+
+
     /* Module Permission route end here*/
-
-
-
-     /* Module Commpany route start here*/
-     Route::get('/admin/addcompany',[CompanyController::class,'addCompany']);
-     Route::post('/admin/company_add',[CompanyController::class,'Company_add']);
-     Route::get('/admin/view_company',[CompanyController::class,'view_company']);
-     Route::get('/admin/delete_company/{id}',[CompanyController::class,'delete_company']);
-     Route::get('/admin/update_company/{id}',[CompanyController::class,'update_company']);
-     Route::post('/admin/edit_company',[CompanyController::class,'edit_company']);
-     Route::get('/admin/checkCompany', [CompanyController::class, 'checkCompany'])->name('checkCompany');
-
-    /* Module Commpany route end here*/
-
 
 });
