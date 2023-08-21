@@ -97,7 +97,7 @@
                                     </span>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="designation">User Type</label>
+                                    <label for="user_type">User Type</label>
                                     <select name="user_type" class="form-control">
                                         <option value=""> Please Select</option>
                                         @foreach($project_manager as $project_manager)
@@ -149,10 +149,10 @@ $(document).ready(function() {
                 minlength: 10,
                 maxlength: 12,
             },
-            designation: {
+            // designation: {
 
-                required: true,
-            },
+            //     required: true,
+            // },
             password: {
 
                 required: true,
@@ -179,9 +179,9 @@ $(document).ready(function() {
                 minlength: "Atlest length should be 10",
                 maxlength: "Length should not be greater than 12",
             },
-            designation: {
-                required: "Enter a valid designation",
-            },
+            // designation: {
+            //     required: "Enter a valid designation",
+            // },
             password: {
                 required: "Enter a valid password",
                 minlength: "Password must be atlest 8 characters",

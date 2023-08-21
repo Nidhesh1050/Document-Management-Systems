@@ -63,7 +63,7 @@ $all_project = Projects::get()->count();
 	<script>
     $(document).ready(function(){
         $('#datatables').DataTable({
-                        "pageLength": 5,
+                        "pageLength": 10,
                     });
     });
 

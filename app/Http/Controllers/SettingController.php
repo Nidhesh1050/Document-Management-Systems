@@ -48,7 +48,7 @@ class SettingController extends Controller
 
     public function edit_image(Request $request,$id){
 
-        $company_name = DB::table('users')->select('company_name')->get();
+        $company_name = DB::table('users')->select('company_name')->distinct('company_name')->where('company_name','!=','')->get();
         $setting = DB::table('side_setting')->where(['id'=> $id])->first();
       // print_r($setting);die;
         return view('admin.setting.edit_image')->with(['company_name'=>$company_name,'setting'=>$setting]);  

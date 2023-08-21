@@ -43,6 +43,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     
     Route::get('/admin/adduser',[HomeController::class,'adduser']);
     Route::post('/admin/register_user',[HomeController::class,'register']);
+    Route::get('/UserChangeStatus/{id}/{status}',[HomeController::class,'UserChangeStatus']);
     /* User management routes end*/
 
 

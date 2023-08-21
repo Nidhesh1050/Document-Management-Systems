@@ -80,23 +80,39 @@
                                             <td> {{ $user_type }}</td>
                                             <td>{{ $status }}</td>
                                             <td>
-                                                <div class="form-button-action">
+                                               
                                                     <a href='/admin/edit_user/{{ $users->id }}'>
                                                         <button type="button" data-toggle="tooltip" title=""
                                                             class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
                                                             <i class="fa fa-edit"></i>
                                                        </button>
                                                     </a>
-                                                </div>
-                                                    <div class="form-button-action">
+                                                    @php
+                                                        $status = @$users->status == 1 ? '0' : '1';
+                                                        $statusicon = @$users->status == 1 ? 'btn-danger' : 'btn-success';
+
+                                                        $statustite = @$users->status == 1 ? 'InActive' : 'Active';
+                                                    @endphp 
+                                                                                             
+                                                     <a href="{{url('UserChangeStatus/'. $users->id.'/'. $status) }}"
+                                                        onclick="return confirm('Are you sure to change status?')">
+                                                        <button type="button" data-toggle="tooltip" title=""
+                                                            class="btn btn-link {{$statusicon}}" data-original-title="{{$statustite}}">
+                                                            @if($users->status==0)
+                                                            <i class="fa fa-check"></i>
+                                                            @else
+                                                            <i class="fa fa-times"></i>
+                                                            @endif
+                                                        </button>
+                                                    </a>
                                                     <a href="/admin/delete_user/{{ $users->id }}"
                                                         onclick="return confirm('Are you sure you want to delete this user ?')">
                                                         <button type="button" data-toggle="tooltip" title=""
                                                             class="btn btn-link btn-danger" data-original-title="Remove">
-                                                            <i class="fa fa-times"></i>
+                                                            <i class="fa fa-trash"></i>
                                                      </button>
                                                     </a>
-                                                </div>
+                                             
                                             </td>
                                         </tr>
                                     @endforeach

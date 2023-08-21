@@ -146,9 +146,9 @@ $(document).ready(function() {
                 required: true,
                 number:true,
             },
-            user_type: {
-                required: true,
-            },
+            // user_type: {
+            //     required: true,
+            // },
            
 
         },
@@ -168,9 +168,9 @@ $(document).ready(function() {
                 required: "*Please enter your Valid Mobile No.",
                 number :"mobile number should be number only",
             },
-            user_type: {
-                required: "*Enter a valid user type",
-            },
+            // user_type: {
+            //     required: "*Enter a valid user type",
+            // },
 
 
         }

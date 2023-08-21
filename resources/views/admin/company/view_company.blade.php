@@ -58,26 +58,36 @@
                                         <tr>
                                             <th>S.No.</th>
                                             <th> Company Name</th>
+                                            <th> Owner Name</th>
+                                            <th> Email</th>
+                                            <th> Mobile No </th>
+                                            <th> Logo</th>
+                                            
                                             <th> Action </th>
                                             <!-- <th> Delete </th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($users as $users)
+                                        @foreach ($company_data as $company_data)
                                     
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td> {{ $users->company_name }}</td>
+                                                <td> {{ $company_data->company_name }}</td>
+                                                <td> </td>
+                                                <td> </td>
+                                                <td> </td>
+                                                <td> <img src="{{ asset('images/logo/' . $company_data->logo) }}"
+                                                        style="height: 50px;width:100px;"></td>
                                                 <td>
                                                  <div class="form-button-action">
-                                                        <a href='/admin/update_company/{{ $users->id }}'>
+                                                        <a href='/admin/update_company/{{ $company_data->id }}'>
                                                             <button type="button" data-toggle="tooltip" title=""
                                                                 class="btn btn-link btn-primary btn-lg"
                                                                 data-original-title="Edit Task">
                                                                 <i class="fa fa-edit"></i>
                                                             </button>
                                                         </a>
-                                                        <a href="/admin/delete_company/{{ $users->id }}"
+                                                        <a href="/admin/delete_company/{{ $company_data->id }}"
                                                             onclick="return confirm('Are you sure you want to delete this company ?')">
                                                             <button type="button" data-toggle="tooltip" title=""
                                                                 class="btn btn-link btn-danger"

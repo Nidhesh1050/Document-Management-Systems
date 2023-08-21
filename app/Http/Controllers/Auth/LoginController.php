@@ -52,18 +52,15 @@ class LoginController extends Controller
      
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
+           // echo auth()->user()->type; die;
             if (auth()->user()->type == 'admin') {
-                
                 Session::put('user_type', auth()->user()->type);
                 Session::put('user_id', auth()->user()->id);
-
                 return redirect()->route('admin.home');
-            }else if (auth()->user()->type == 'manager') {
-
+            }else if (auth()->user()->type == 'company') {
                 Session::put('user_type', auth()->user()->type);
                 Session::put('user_id', auth()->user()->id);
-                
-                return redirect()->route('manager.home');
+                return redirect()->route('company.home');
             }else{
                 return redirect()->route('home');
             }
