@@ -27,8 +27,9 @@
             </ul>
         </div>
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <div class="card">
+                <div class="card-header">
                     <div class="flash-message">
                         @if ($message = Session::get('success'))
                         <div class="alert alert-success">
@@ -41,18 +42,20 @@
                         </div>
                         @endif
                     </div>
-                    <div class="d-flex align-items-center">
-                        <a href="{{ url('admin/project') }}"><button
-                                class="btn btn-primary btn-round ml-auto" data-toggle="modal"
-                                data-target="#addRowModal">
-                                <i class="fa fa-plus"></i>
-                                Add Project
-                            </button>
-                        </a>
+
+                <div class="d-flex align-items-center">
+                            <a href="{{ url('admin/project') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
+                                    data-target="#addRowModal">
+                                    <i class="fa fa-plus"></i>
+                                    Add Project
+                                </button>
+                            </a>
+                        </div>
                     </div>
-                </div>
+
                 <div class="card-body">
 
+                <div class="table-responsive">
                     <table id="datatables" class="display table table-striped table-hover">
                         <thead>
                             <tr>
@@ -131,5 +134,6 @@
                             @endforeach
                         </tbody>
                     </table>
+                </div>
                 </div>
                 @endsection
