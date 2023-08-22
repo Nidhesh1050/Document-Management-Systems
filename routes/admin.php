@@ -116,12 +116,13 @@ Route::get('/NotificationChangeStatus/{id}/{status}',[NotificationController::cl
  /* Notification type routes end   */
 
 /* Content management system routes start*/
-Route::get('/admin/addcontent',[CMSController::class,'addcontent']);
-Route::post('/admin/add_cms',[CMSController::class,'add_cms']);
-Route::get('/admin/view_content',[CMSController::class,'view_content']);
-Route::get('/admin/delete_content/{id}',[CMSController::class,'delete_content']);
-Route::get('/admin/update_content/{id}',[CMSController::class,'update_content']);
-Route::post('/admin/edit_content',[CMSController::class,'edit_content']);
+Route::get('/admin/addcontent',[CMSController::class,'addCms']);
+Route::post('/admin/add_cms',[CMSController::class,'addCms']);
+Route::get('/admin/view_content',[CMSController::class,'viewContent']);
+Route::get('/admin/delete_content/{id}',[CMSController::class,'deleteContent']);
+Route::get('/admin/update_content/{id}',[CMSController::class,'updateContent']);
+Route::post('/admin/edit_content',[CMSController::class,'editContent']);
+Route::get('/CMSChangeStatus/{id}/{status}',[CMSController::class,'CMSChangeStatus']);
 
 /* Content management system routes end*/
 
