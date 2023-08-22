@@ -37,7 +37,7 @@ class NotificationController extends Controller
      public function deleteNotification($id) {
         DB::delete('delete from notifications where id ='.$id);
         return redirect('admin/show_notification')->with('success', 'Notification has been deleted successfully.');
-     }
+         }
 
         //edit code in user body
         public function editNotification(Request $request,$id)

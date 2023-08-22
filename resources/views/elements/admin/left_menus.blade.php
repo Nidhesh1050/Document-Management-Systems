@@ -180,12 +180,12 @@ $currentURL =Route::current()->uri;
                     <div class="collapse" id="list">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('admin/view_document')}}">
+                                <a href="{{url('admin/documentType_view')}}">
                                     <span class="sub-item">Document List</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/add_document')}}">
+                                <a href="{{url('admin/documentType_add')}}">
                                     <span class="sub-item">Add Document</span>
                                 </a>
                             </li>

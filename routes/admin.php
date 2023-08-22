@@ -16,6 +16,7 @@ use App\Http\Controllers\EmailTypeController;
 use App\Http\Controllers\EmailContentController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\DocumentTypeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -58,12 +59,13 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     /* Category management routes end*/
 
     /* Document management routes start*/
-    Route::get('/admin/createdocument',[DocumentController::class,'createdocument']);
-    Route::post('/admin/add_document',[DocumentController::class,'add_document']);
-    Route::get('/admin/document',[DocumentController::class,'document']);
-    Route::get('/admin/delete_document/{id}', [DocumentController::class,'delete_document']);
-    Route::get('/admin/edit_document/{id}', [DocumentController::class,'edit_document']);
-    Route::post('/admin/update_document/', [DocumentController::class,'update_document']);
+    Route::get('/admin/createdocument',[DocumentController::class,'addDocument']);
+    Route::post('/admin/createdocument',[DocumentController::class,'addDocument']);
+    Route::get('/admin/document',[DocumentController::class,'documentView']);
+    Route::get('/admin/delete_document/{id}', [DocumentController::class,'documentDelete']);
+    Route::get('/admin/edit_document/{id}', [DocumentController::class,'documentEdit']);
+    Route::post('/admin/update_document/', [DocumentController::class,'documentUpdate']);
+    Route::get('/DocumentChangeStatus/{id}/{status}',[DocumentController::class,'documentChangeStatus']);
     /* Document management routes end*/
 
 
@@ -79,12 +81,19 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
     /* Document type routes start   */
 
-    Route::get('/admin/view_document',[DocumentController::class,'view_document']);
-    Route::get('/admin/deletedocument/{id}', [DocumentController::class,'deletedocument']);
-    Route::get('/admin/add_document', [DocumentController::class,'add_documenttype']);
-    Route::post('/admin/register',[DocumentController::class,'register']);
-    Route::get('/admin/edit/{id}', [DocumentController::class,'edit']);
-    Route::post('/admin/documentupdate/', [DocumentController::class,'documentupdate']);
+    Route::get('/admin/documentType_view',[DocumentTypeController::class,'documentTypeView']);
+    Route::get('/admin/documentType_delete/{id}', [DocumentTypeController::class,'documentTypeDelete']);
+    Route::get('/admin/documentType_add', [DocumentTypeController::class,'documentTypeAdd']);
+    Route::post('/admin/documentType_add', [DocumentTypeController::class,'documentTypeAdd']);
+    Route::get('/admin/documentType_edit/{id}', [DocumentTypeController::class,'documentTypeEdit']);
+    Route::post('/admin/documentType_update/', [DocumentTypeController::class,'documentTypeUpdate']);
+    Route::get('/DocumentTypeChangeStatus/{id}/{status}',[DocumentTypeController::class,'DocumentTypeChangeStatus']);
+
+
+
+
+
+    // Route::get('/ProjectChangeStatus/{id}/{status}',[DocumentTypeController::class,'DocumentTypeChangeStatus']);
 
     /* Side Setting routes start*/
     Route::get('/admin/setting',[SettingController::class,'setting']);

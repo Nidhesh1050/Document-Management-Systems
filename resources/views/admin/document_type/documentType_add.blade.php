@@ -16,7 +16,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="{{url('admin/view_document')}}">Document Management</a>
+                    <a href="{{url('admin/documentType_view')}}">Document Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -30,42 +30,27 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
-                   
+
                         <div class="card-title">Add Document Type</div>
                     </div>
                     <div class="card-body">
-                    <form action="{{url('admin/register')}}" method="post" id="validate">
+                    <form action="{{url('admin/documentType_add')}}" method="post" id="validate">
                         @csrf
                         <div class="form-group">
                             <label for="name">Document Type Name</label>
                             <input type="name" class="form-control"
                                 placeholder="Enter Name" name="name">
-                                <span class="text-danger  ">
+                                <span class="text-danger">
                                     @error('name')
                                     {{$message}}
                                     @enderror
                                 </span>
                         </div>
-
-                        <div class="form-group">
-                            <label for="status">Status</label>
-                            &nbsp;&nbsp;&nbsp;
-                            <input type="checkbox" name="status" id="status">
-                                <span class="text-danger error ">
-
-                                @error('status')
-                                {{$message}}
-                                @enderror
-                             </span>
-
-                        </div>
-
                         <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>
-                                <a href="{{url('admin/view_document')}}" class="mt-4 btn btn-danger">Cancel</a>
-                            <div>                    </form>
-
-
+                                <a href="{{url('admin/documentType_view')}}" class="mt-4 btn btn-danger">Cancel</a>
+                            <div>
+                      </form>
                 </div>
             </div>
         </div>
@@ -75,23 +60,20 @@
 
 <script>
    $(document).ready(function(){
-    // validate  form using jquey
         $("#validate").validate({
             rules: {
                 name: {
                     required:true,
-                    minlength:4,
-                    maxlength:20,
+                
                 },
 
             },
             messages: {
                 name: {
-                    required:"*Please enter your Name",
+                    required:"Please enter name",
                 },
             }
         });
     });
 </script>
 @endsection
-
