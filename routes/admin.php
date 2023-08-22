@@ -85,12 +85,14 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::post('/admin/documentupdate/', [DocumentController::class,'documentupdate']);
 
     /* Side Setting routes start*/
-   Route::get('/admin/setting',[SettingController::class,'setting']);
-   Route::post('/admin/add_image',[SettingController::class,'add_image']);
-   Route::get('/admin/view_image',[SettingController::class,'view_image']);
-   Route::get('/admin/edit_image/{id}', [SettingController::class,'edit_image']);
-   Route::post('/admin/update_image', [SettingController::class,'update_image']);
-   Route::get('/admin/delete_image/{id}',[SettingController::class,'delete_image']);
+    Route::get('/admin/setting',[SettingController::class,'setting']);
+    Route::post('/admin/add_image',[SettingController::class,'add_image']);
+    Route::get('/admin/view_image',[SettingController::class,'view_image']);
+    Route::get('/admin/edit_image/{id}', [SettingController::class,'edit_image']);
+    Route::post('/admin/update_image', [SettingController::class,'update_image']);
+    Route::get('/admin/delete_image/{id}',[SettingController::class,'delete_image']);
+    Route::get('/admin/logos',[App\Http\Controllers\SettingController::class,'setting']);
+    Route::post('/admin/update_logo',[App\Http\Controllers\SettingController::class,'Updateimage']);
 /*  Side Setting routes end*/
 
 /* Notification type routes start   */
@@ -139,7 +141,6 @@ Route::post('/admin/edit_content',[CMSController::class,'edit_content']);
     Route::get('/admin/module_permission',[PermissionController::class,'module_permission']);
     Route::post('/admin/module_permission',[PermissionController::class,'permission']);
     /* Module Permission route end here*/
-
 
 
      /* Module Commpany route start here*/
