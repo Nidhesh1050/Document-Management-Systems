@@ -144,12 +144,12 @@ Route::post('/admin/edit_content',[CMSController::class,'edit_content']);
 
 
      /* Module Commpany route start here*/
-     Route::get('/admin/addcompany',[CompanyController::class,'addCompany']);
-     Route::post('/admin/company_add',[CompanyController::class,'Company_add']);
-     Route::get('/admin/view_company',[CompanyController::class,'view_company']);
+     Route::get('/admin/add_company',[CompanyController::class,'addCompany']);
+     Route::post('/admin/add_company',[CompanyController::class,'addCompany']);
+     Route::get('/admin/view_company',[CompanyController::class,'index']);
      Route::get('/admin/delete_company/{id}',[CompanyController::class,'delete_company']);
-     Route::get('/admin/update_company/{id}',[CompanyController::class,'update_company']);
-     Route::post('/admin/edit_company',[CompanyController::class,'edit_company']);
+     Route::get('/admin/update_company/{id}',[CompanyController::class,'updateCompany']);
+     Route::post('/admin/edit_company',[CompanyController::class,'editCompany']);
      Route::get('/admin/checkCompany', [CompanyController::class, 'checkCompany'])->name('checkCompany');
 
     /* Module Commpany route end here*/
