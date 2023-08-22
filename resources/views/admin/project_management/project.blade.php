@@ -84,16 +84,6 @@
                                             @enderror
                                         </span>
                          </div>
-                        <div class="form-group">
-                        <label for="status">Status</label>
-                           &nbsp;&nbsp;&nbsp;
-                            <input type="checkbox" name="status" id="status">
-                                <span class="text-danger error ">
-                                @error('status')
-                                {{$message}}
-                                @enderror
-                            </span>
-                        </div>
                         <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>
                                 <a href="{{url('admin/view_project')}}" class="mt-4 btn btn-danger">Cancel</a>
@@ -105,21 +95,19 @@
     </div>
 </div>
 
-
-
 <script>
 $(document).ready(function() {
     $("#category").validate({
         rules: {
             project_name: "required",
             manager_d: "required",
-            status: "required",
+           
 
         },
         messages: {
             project_name: "Please enter your Project Name",
             manager_d: "Please select manager_d",
-            status: "Please select Status",
+            
         }
     });
 });

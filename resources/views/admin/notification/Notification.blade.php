@@ -49,15 +49,15 @@
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                        <label for="description">Description</label>
-                                        <textarea class="form-control" name="description" id="editor" placeholder="write text" rows="2">
+                                    <label for="description">Description</label>
+                                    <textarea class="form-control" name="description" id="editor" placeholder="write text" rows="2">
                                             </textarea>
-                                        <span class="text-danger error ">
-                                            @error('description')
-                                                {{ $message }}
-                                            @enderror
-                                        </span>
-                                    </div>
+                                    <span class="text-danger error ">
+                                        @error('description')
+                                            {{ $message }}
+                                        @enderror
+                                    </span>
+                                </div>
 
 
                                 <div class="text-right">
@@ -77,17 +77,17 @@
                                     // description: "required",
                                 },
                                 messages: {
-                                    title: "*Please Enter Title.",
+                                    title: "Please enter  title.",
                                     // description: "*Please Enter Description.",
                                 }
                             });
                         });
                     </script>
                     <script>
-                ClassicEditor
-                    .create(document.querySelector('#editor'))
-                    .catch(error => {
-                        console.error(error);
-                    });
-            </script>
-  @endsection
+                        ClassicEditor
+                            .create(document.querySelector('#editor'))
+                            .catch(error => {
+                                console.error(error);
+                            });
+                    </script>
+                @endsection

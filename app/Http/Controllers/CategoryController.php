@@ -14,13 +14,11 @@ class CategoryController extends Controller
         return view ('admin.category.category')->with(['parent_categories'=> $parent_catogeris]);
     }
 
-
-
     public function add_category(Request $request) {
         $request->validate([
             'parent_id' =>  'required',
             'name' => 'required|string',
-           
+
         ]);
 
         $inserData['parent_id'] = $request->parent_id;
@@ -33,7 +31,6 @@ class CategoryController extends Controller
 
     public function view_category(){
         $users = DB::table('categories')->orderBy('id','DESC')->get();
-      
         return view('admin.category.view_category',['users'=>$users]);
     }
 
@@ -52,7 +49,6 @@ class CategoryController extends Controller
         $request->validate([
             'parent_id' =>  'required',
             'name' => 'required',
-           
         ]);
             DB::table('categories')
             ->where('id', $request['id'])
@@ -61,15 +57,6 @@ class CategoryController extends Controller
                 'name' => $request['name'],
                 'description' => $request['description'],
             ]);
-        {
-            DB::table('categories')
-            ->where('id', $request['id'])
-            ->update([
-                'parent_id' => $request['parent_id'],
-                'name' => $request['name'],
-                'description' => $request['description'],
-            ]);
-        }
         return redirect('admin/view_category')->with('success', 'Category has been updated successfully.');
     }
 }
