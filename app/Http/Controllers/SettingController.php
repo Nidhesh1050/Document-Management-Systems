@@ -8,12 +8,56 @@ use Illuminate\Support\Facades\Storage;
 
 class SettingController extends Controller
 {
-
-    public function setting(){
-        $company_name = DB::table('users')->select('company_name')->distinct('company_name')->where('company_name','!=','')->get();
-        //print_r($company_name);die;
-        return view('admin.setting.setting',['company_name'=>$company_name]);  
+	  public function __construct()
+    {
+        $this->middleware('auth');
     }
+
+
+	 public function setting(){
+		           $logos = DB::table('logos')->first();
+
+			return view('admin.setting.setting')->with(['logos'=>$logos]);   
+	}
+    
+public function Updateimage(Request $request) {
+
+		$data = array();
+        if($request->file('logo')){
+            $image = $request->file('logo');
+                $destinationPath = public_path('/images/logo');
+                $logo_name = rand().'.'.$image->getClientOriginalExtension(); 
+                $image->move($destinationPath, $logo_name);
+                
+                $inserData['logo'] = $logo_name;
+				$update = DB::table('logos')->where('id',$request->id)->update($inserData);
+        
+        }
+
+        if($request->file('profile')){
+				$image = $request->file('profile');
+                $destinationPath = public_path('/images/profile/');
+                $profile_name = rand().'.'.$image->getClientOriginalExtension(); 
+				$image->move($destinationPath, $profile_name);
+				$inserData['profile'] = $profile_name;
+				$update = DB::table('logos')->where('id',$request->id)->update($inserData);
+                
+        }
+        
+
+      
+        if($update){
+            return  redirect()->back()->with('success', ' Image has been updated successfully.');
+
+        }else {
+            return redirect()->back()->with('error', 'Image could not updated .');
+        }
+      
+
+       
+    }
+    
+    
 
     public function add_image(Request $request) {
         // $request->validate([
@@ -48,7 +92,7 @@ class SettingController extends Controller
 
     public function edit_image(Request $request,$id){
 
-        $company_name = DB::table('users')->select('company_name')->distinct('company_name')->where('company_name','!=','')->get();
+        $company_name = DB::table('users')->select('company_name')->get();
         $setting = DB::table('side_setting')->where(['id'=> $id])->first();
       // print_r($setting);die;
         return view('admin.setting.edit_image')->with(['company_name'=>$company_name,'setting'=>$setting]);  

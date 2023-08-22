@@ -85,12 +85,14 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::post('/admin/documentupdate/', [DocumentController::class,'documentupdate']);
 
     /* Side Setting routes start*/
-   Route::get('/admin/setting',[SettingController::class,'setting']);
-   Route::post('/admin/add_image',[SettingController::class,'add_image']);
-   Route::get('/admin/view_image',[SettingController::class,'view_image']);
-   Route::get('/admin/edit_image/{id}', [SettingController::class,'edit_image']);
-   Route::post('/admin/update_image', [SettingController::class,'update_image']);
-   Route::get('/admin/delete_image/{id}',[SettingController::class,'delete_image']);
+    Route::get('/admin/setting',[SettingController::class,'setting']);
+    Route::post('/admin/add_image',[SettingController::class,'add_image']);
+    Route::get('/admin/view_image',[SettingController::class,'view_image']);
+    Route::get('/admin/edit_image/{id}', [SettingController::class,'edit_image']);
+    Route::post('/admin/update_image', [SettingController::class,'update_image']);
+    Route::get('/admin/delete_image/{id}',[SettingController::class,'delete_image']);
+    Route::get('/admin/logos',[App\Http\Controllers\SettingController::class,'setting']);
+    Route::post('/admin/update_logo',[App\Http\Controllers\SettingController::class,'Updateimage']);
 /*  Side Setting routes end*/
 
 /* Notification type routes start   */
@@ -141,14 +143,13 @@ Route::post('/admin/edit_content',[CMSController::class,'edit_content']);
     /* Module Permission route end here*/
 
 
-
      /* Module Commpany route start here*/
-     Route::get('/admin/addcompany',[CompanyController::class,'addCompany']);
-     Route::post('/admin/company_add',[CompanyController::class,'Company_add']);
-     Route::get('/admin/view_company',[CompanyController::class,'view_company']);
+     Route::get('/admin/add_company',[CompanyController::class,'addCompany']);
+     Route::post('/admin/add_company',[CompanyController::class,'addCompany']);
+     Route::get('/admin/view_company',[CompanyController::class,'index']);
      Route::get('/admin/delete_company/{id}',[CompanyController::class,'delete_company']);
-     Route::get('/admin/update_company/{id}',[CompanyController::class,'update_company']);
-     Route::post('/admin/edit_company',[CompanyController::class,'edit_company']);
+     Route::get('/admin/update_company/{id}',[CompanyController::class,'updateCompany']);
+     Route::post('/admin/edit_company',[CompanyController::class,'editCompany']);
      Route::get('/admin/checkCompany', [CompanyController::class, 'checkCompany'])->name('checkCompany');
 
     /* Module Commpany route end here*/

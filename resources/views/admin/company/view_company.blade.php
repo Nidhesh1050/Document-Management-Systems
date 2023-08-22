@@ -42,7 +42,7 @@
                                 @endif
                             </div>
                             <div class="d-flex align-items-center">
-                                <a href="{{ url('admin/addcompany') }}"><button class="btn btn-primary btn-round ml-auto"
+                                <a href="{{ url('admin/add_company') }}"><button class="btn btn-primary btn-round ml-auto"
                                         data-toggle="modal" data-target="#addRowModal">
                                         <i class="fa fa-plus"></i>
                                         Add Company
@@ -73,9 +73,9 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td> {{ $company_data->company_name }}</td>
-                                                <td> </td>
-                                                <td> </td>
-                                                <td> </td>
+                                                <td> {{ $company_data->name }}</td>
+                                                <td> {{ $company_data->email }}</td>
+                                                <td> {{ $company_data->mobile }}</td>
                                                 <td> <img src="{{ asset('images/logo/' . $company_data->logo) }}"
                                                         style="height: 50px;width:100px;"></td>
                                                 <td>
@@ -87,7 +87,7 @@
                                                                 <i class="fa fa-edit"></i>
                                                             </button>
                                                         </a>
-                                                        <a href="/admin/delete_company/{{ $company_data->id }}"
+                                                        <a href="/admin/delete_company/{{ $company_data->user_id }}"
                                                             onclick="return confirm('Are you sure you want to delete this company ?')">
                                                             <button type="button" data-toggle="tooltip" title=""
                                                                 class="btn btn-link btn-danger"
