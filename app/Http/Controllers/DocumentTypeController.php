@@ -34,7 +34,7 @@ class DocumentTypeController extends Controller
     {
         if (!empty($request->all())) {
             $request->validate([
-              
+                
                 'name' => 'required',
             ]
             );

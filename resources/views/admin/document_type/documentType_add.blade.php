@@ -37,7 +37,7 @@
                     <form action="{{url('admin/documentType_add')}}" method="post" id="validate">
                         @csrf
                         <div class="form-group">
-                            <label for="name">Document Type Name</label>
+                            <label for="name">Document Type </label>
                             <input type="name" class="form-control"
                                 placeholder="Enter Name" name="name">
                                 <span class="text-danger">
@@ -70,7 +70,7 @@
             },
             messages: {
                 name: {
-                    required:"Please enter name",
+                    required:"Please enter document type",
                 },
             }
         });

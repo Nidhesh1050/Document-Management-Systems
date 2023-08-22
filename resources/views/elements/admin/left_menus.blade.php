@@ -85,6 +85,8 @@ $currentURL =Route::current()->uri;
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#company">
                      <i class="fas fa-table"></i>
+                     
+                    
                         <p>Company Management</p>
 						<span class="caret"></span>
                     </a>
@@ -174,6 +176,7 @@ $currentURL =Route::current()->uri;
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#list">
                         <i class="fas fa-list"></i>
+                       
                         <p>Document Type</p>
                         <span class="caret"></span>
                     </a>
@@ -206,13 +209,11 @@ $currentURL =Route::current()->uri;
                                         <span class="sub-item">Logo & profile</span>
                                 </a>
                             </li>
-
-
                         </ul>
                     </div>
                 </li>
 
-                
+            
                 <li class="nav-item">
 							<a data-toggle="collapse" href="#tables">
 								<i class="fas fa-table"></i>
