@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DocumentController;
 
@@ -37,24 +38,25 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
 
     /* User management routes start*/
-    Route::get('/admin/userManagement',[HomeController::class,'userManagement']);
-    Route::get('/admin/delete_user/{id}', [HomeController::class,'delete']);
-    Route::get('/admin/edit_user/{id}', [HomeController::class,'edit']);
-    Route::post('/admin/update_user', [HomeController::class,'update']);
+    Route::get('/admin/userManagement',[UserController::class,'userManagement']);
+    Route::get('/admin/delete_user/{id}', [UserController::class,'delete']);
+    Route::get('/admin/edit_user/{id}', [UserController::class,'edit']);
+    Route::post('/admin/update_user', [UserController::class,'update']);
 
-    Route::get('/admin/adduser',[HomeController::class,'adduser']);
-    Route::post('/admin/register_user',[HomeController::class,'register']);
-    Route::get('/UserChangeStatus/{id}/{status}',[HomeController::class,'UserChangeStatus']);
+    Route::get('/admin/adduser',[UserController::class,'adduser']);
+    Route::post('/admin/register_user',[UserController::class,'register']);
+    Route::get('/UserChangeStatus/{id}/{status}',[UserController::class,'UserChangeStatus']);
     /* User management routes end*/
 
 
     /* Category management routes start*/
-    Route::get('/admin/category',[CategoryController::class,'category']);
-    Route::post('/admin/add_category',[CategoryController::class,'add_category']);
-    Route::get('/admin/view_category',[CategoryController::class,'view_category']);
-    Route::get('/admin/delete_category/{id}',[CategoryController::class,'delete_category']);
-    Route::get('/admin/update_category/{id}',[CategoryController::class,'update_category']);
-    Route::post('/admin/edit_category',[CategoryController::class,'edit_category']);
+    Route::get('/admin/category',[CategoryController::class,'categoryAdd']);
+    Route::post('/admin/add_category',[CategoryController::class,'categoryAdd']);
+    Route::get('/admin/view_category',[CategoryController::class,'categoryView']);
+    Route::get('/admin/delete_category/{id}',[CategoryController::class,'categoryDelete']);
+    Route::get('/admin/update_category/{id}',[CategoryController::class,'categoryUpdate']);
+    Route::post('/admin/edit_category',[CategoryController::class,'categoryEdit']);
+    Route::get('/categoryChangeStatus/{id}/{status}',[CategoryController::class,'categoryChangeStatus']);
     /* Category management routes end*/
 
     /* Document management routes start*/
