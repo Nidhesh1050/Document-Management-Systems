@@ -67,12 +67,13 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
 
      /* Project management routes start*/
-     Route::get('/admin/project_management',[ProjectManagementController::class,'project_management']);
-     Route::post('/admin/add_project',[ProjectManagementController::class,'add_project']);
-     Route::get('/admin/view_project',[ProjectManagementController::class,'view_project']);
-     Route::get('/admin/delete_project/{id}',[ProjectManagementController::class,'delete_project']);
-     Route::get('/admin/update_project/{id}',[ProjectManagementController::class,'update_project']);
-     Route::post('/admin/edit_project',[ProjectManagementController::class,'edit_project']);
+     Route::get('/admin/project',[ProjectManagementController::class,'addProject']);
+     Route::post('/admin/add_project',[ProjectManagementController::class,'addProject']);
+     Route::get('/admin/view_project',[ProjectManagementController::class,'viewProject']);
+     Route::get('/admin/delete_project/{id}',[ProjectManagementController::class,'deleteProject']);
+     Route::get('/admin/update_project/{id}',[ProjectManagementController::class,'updateProject']);
+     Route::post('/admin/edit_project',[ProjectManagementController::class,'editProject']);
+     Route::get('/ProjectChangeStatus/{id}/{status}',[ProjectManagementController::class,'ProjectChangeStatus']);
      /* Project management routes end*/
 
     /* Document type routes start   */

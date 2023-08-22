@@ -136,7 +136,7 @@ $currentURL =Route::current()->uri;
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/project_management')}}">
+                                <a href="{{url('admin/project')}}">
                                     <span class="sub-item">Add Project</span>
                                 </a>
                             </li>
