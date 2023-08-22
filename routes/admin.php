@@ -94,13 +94,13 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
 /*  Side Setting routes end*/
 
 /* Notification type routes start   */
-Route::get('/admin/notification',[NotificationController::class, 'Notification'])->name('notification');
-Route::post('/admin/add_notification',[NotificationController::class, 'add_notification']);
-Route::get('/admin/show_notification',[NotificationController::class, 'show_notification']);
-Route::get('/admin/delete/{id}', [NotificationController::class,'delete']);
-
-Route::get('/admin/edit_notification/{id}', [NotificationController::class,'edit_notification']);
-Route::post('/admin/update_notification', [NotificationController::class,'update_notification']);
+Route::get('/admin/notification',[NotificationController::class, 'addNotification'])->name('notification');
+Route::post('/admin/add_notification',[NotificationController::class, 'addNotification']);
+Route::get('/admin/show_notification',[NotificationController::class, 'showNotification']);
+Route::get('/admin/delete_notification/{id}', [NotificationController::class,'deleteNotification']);
+Route::get('/admin/edit_notification/{id}', [NotificationController::class,'editNotification']);
+Route::post('/admin/update_notification', [NotificationController::class,'updateNotification']);
+Route::get('/NotificationChangeStatus/{id}/{status}',[NotificationController::class,'statusNotification']);
  /* Notification type routes end   */
 
 /* Content management system routes start*/
