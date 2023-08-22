@@ -57,12 +57,13 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     /* Category management routes end*/
 
     /* Document management routes start*/
-    Route::get('/admin/createdocument',[DocumentController::class,'createdocument']);
-    Route::post('/admin/add_document',[DocumentController::class,'add_document']);
-    Route::get('/admin/document',[DocumentController::class,'document']);
-    Route::get('/admin/delete_document/{id}', [DocumentController::class,'delete_document']);
-    Route::get('/admin/edit_document/{id}', [DocumentController::class,'edit_document']);
-    Route::post('/admin/update_document/', [DocumentController::class,'update_document']);
+    Route::get('/admin/createdocument',[DocumentController::class,'addDocument']);
+    Route::post('/admin/createdocument',[DocumentController::class,'addDocument']);
+    Route::get('/admin/document',[DocumentController::class,'documentView']);
+    Route::get('/admin/delete_document/{id}', [DocumentController::class,'documentDelete']);
+    Route::get('/admin/edit_document/{id}', [DocumentController::class,'documentEdit']);
+    Route::post('/admin/update_document/', [DocumentController::class,'documentUpdate']);
+    Route::get('/DocumentChangeStatus/{id}/{status}',[DocumentController::class,'documentChangeStatus']);
     /* Document management routes end*/
 
 
