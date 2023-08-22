@@ -32,7 +32,7 @@
                             <div class="card-title">Add Company</div>
                         </div>
                         <div class="card-body">
-                            <form action="company_add" id="company" method="POST" enctype="multipart/form-data">
+                            <form action="{{url('/admin/add_company')}}" id="company" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-row">
                                 <div class="form-group col-md-6">

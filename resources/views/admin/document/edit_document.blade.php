@@ -166,10 +166,7 @@
                         required: true,
 
                     },
-                    // status: {
-
-                    //     required: true,
-                    // },
+                   
                 },
                 messages: {
                     project_id: {

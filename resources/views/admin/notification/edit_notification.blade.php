@@ -57,7 +57,7 @@
                                         @enderror
                                         <span>
                                 </div>
-                               
+
                                 <div class="form-group col-md-12">
                                         <label for="description">Description</label>
                                         <textarea class="form-control" name="description" id="editor" placeholder="write text" rows="2">{{ $users->description }}
@@ -82,11 +82,11 @@
                             $("#form").validate({
                                 rules: {
                                     title: "required",
-                                    // description: "required",
+
                                 },
                                 messages: {
-                                    title: "*Update your title",
-                                    // description: "*Update your description",
+                                    title: "Update title",
+
                                 }
                             });
                         });

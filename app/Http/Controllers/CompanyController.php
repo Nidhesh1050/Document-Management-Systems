@@ -9,73 +9,89 @@ use Hash;
 class CompanyController extends Controller
 {
    // List of all companies
-  public function view_company(){
-    $company_data = DB::table('companies')->orderBy('id','DESC')->get();
+  public function index(){
+    $company_data = db::table('companies')->leftjoin('users', 'users.id', '=', 'companies.user_id')->select('users.name','users.email','users.mobile','companies.*')->orderBy('companies.id','DESC')->get();
     return view('admin.company.view_company',['company_data'=>$company_data]);
   }
 
-  public function addCompany(){
-      return view('admin.company.add_company');
-  }
+  public function addCompany(Request $request) {
 
-  public function Company_add(Request $request) {
-    $request->validate([
+    if(!empty($request->all())){
+      $request->validate([
         'company_name' => 'required|string',
         'name'=>'required|max:50|string',
         'email'=>'required|email|unique:users',
         'mobile' =>'required|max:12',
+      ]);
+
+      $insertData['mobile'] = $request->mobile;
+      $insertData['name'] = $request->name;
+      $insertData['email']= $request->email;
+      $insertData['password']=Hash::make($request->password);
+      $userId = DB::table('users')->insertGetId($insertData);
+        // insert data in companies table
+      if($request->file('logo')){
+        $image = $request->file('logo');
+        $destinationPath = public_path('/images/logo');
+        $logo_name = rand().'.'.$image->getClientOriginalExtension();
+        $image->move($destinationPath, $logo_name);
+        $companyInsertData['logo'] = $logo_name;
+      } 
+      $companyInsertData['slug'] =str_replace(' ', '-',$request->company_name);
+      $companyInsertData['company_name'] =$request->company_name;
+      $companyInsertData['user_id'] =$userId;
+      $companyId = DB::table('companies')->insertGetId($companyInsertData);
+      
+      return redirect('admin/view_company')->with('success', 'Company has been added successfully.');
+    }
+    else{
+      return view('admin.company.add_company');
+    }
+  }
+
+  public function updateCompany($id){
+    $company_data = db::table('companies')->leftjoin('users', 'users.id', '=', 'companies.user_id')->select('users.name','users.email','users.mobile','companies.*')->where(['companies.id'=> $id])->first();
+    return view('admin.company.update_company')->with(['company_data'=>$company_data]);
+  }
+
+  public function editCompany(Request $request){
+
+    $request->validate([
+      'company_name' => 'required|string',
+      'name'=>'required|max:50|string',
+      'mobile' =>'required|max:12',
     ]);
 
-    $insertData['mobile'] = $request->mobile;
-    $insertData['name'] = $request->name;
-    $insertData['email']= $request->email;
-    $insertData['password']=Hash::make($request->password);;
-    $userId = DB::table('users')->insertGetId($insertData);
-    
-      // insert data in companies table
+      // update data in users table
+    $updateData['mobile'] = $request->mobile;
+    $updateData['name'] = $request->name;
+    $updateData['email']= $request->email;
+    $userId = DB::table('users')->where('id', $request->user_id)->update($updateData);
+
+      //update data in users table
     if($request->file('logo')){
       $image = $request->file('logo');
       $destinationPath = public_path('/images/logo');
       $logo_name = rand().'.'.$image->getClientOriginalExtension();
       $image->move($destinationPath, $logo_name);
-      $companyInsertData['logo'] = $logo_name;
+      $companyUpdateData['logo'] = $logo_name;
     } 
-    $companyInsertData['slag'] =str_replace(' ', '-',$request->company_name);
-    $companyInsertData['company_name'] =$request->company_name;
-    $companyInsertData['user_id'] =$userId;
-    $userId = DB::table('companies')->insertGetId($companyInsertData);
+    $companyUpdateData['slug'] =str_replace(' ', '-',$request->company_name);
+    $companyUpdateData['company_name'] =$request->company_name;
+    $userId = DB::table('companies')->where('id', $request['id'])->update($companyUpdateData);
 
-    return redirect('admin/view_company')->with('success', 'Company has been added successfully.');
+    return redirect('admin/view_company')->with('success', 'Company has been updated successfully.');
   }
 
   public function delete_company($id) {
-      DB::delete('delete from companies where id = ?',[$id]);
-      return redirect('admin/view_company')->with('success', 'Company has been deleted successfully.');
-  }
 
-  public function update_company($id){
-    //  print_r($request);die;
-      $company_data = DB::table('companies')->where(['id'=> $id])->first();
-      return view('admin.company.update_company')->with(['company_data'=>$company_data]);
-  }
-
-  public function edit_company(Request $request){
-    $request->validate([
-    'company_name' => 'required|string', 
-      ]);
-    if($request->file('logo')){
-      $image = $request->file('logo');
-      $destinationPath = public_path('/images/logo');
-      $logo_name = rand().'.'.$image->getClientOriginalExtension();
-      $image->move($destinationPath, $logo_name);
-    } 
-    DB::table('companies')
-      ->where('id', $request['id'])
-      ->update([
-          'company_name' => str_replace(' ', '-',$request['company_name']),
-          'logo' =>$logo_name,
-      ]);
-    return redirect('admin/view_company')->with('success', 'Company has been updated successfully.');
+    $image = DB::table('companies')->select('logo')->where('user_id', $id)->first();
+    $imgpath = public_path('/images/logo/'.$image->logo);
+    unlink( $imgpath );
+    $delete_from_companies = DB::table('companies')->where('user_id',$id)->delete();
+    $delete_from_users = DB::table('users')->where('id',$id)->delete();
+  
+    return redirect('admin/view_company')->with('success', 'Company has been deleted successfully.');
   }
 
    // check if company name already exist
