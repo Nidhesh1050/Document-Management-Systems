@@ -49,12 +49,13 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
 
     /* Category management routes start*/
-    Route::get('/admin/category',[CategoryController::class,'category']);
-    Route::post('/admin/add_category',[CategoryController::class,'add_category']);
-    Route::get('/admin/view_category',[CategoryController::class,'view_category']);
-    Route::get('/admin/delete_category/{id}',[CategoryController::class,'delete_category']);
-    Route::get('/admin/update_category/{id}',[CategoryController::class,'update_category']);
-    Route::post('/admin/edit_category',[CategoryController::class,'edit_category']);
+    Route::get('/admin/category',[CategoryController::class,'categoryAdd']);
+    Route::post('/admin/add_category',[CategoryController::class,'categoryAdd']);
+    Route::get('/admin/view_category',[CategoryController::class,'categoryView']);
+    Route::get('/admin/delete_category/{id}',[CategoryController::class,'categoryDelete']);
+    Route::get('/admin/update_category/{id}',[CategoryController::class,'categoryUpdate']);
+    Route::post('/admin/edit_category',[CategoryController::class,'categoryEdit']);
+    Route::get('/categoryChangeStatus/{id}/{status}',[CategoryController::class,'categoryChangeStatus']);
     /* Category management routes end*/
 
     /* Document management routes start*/
