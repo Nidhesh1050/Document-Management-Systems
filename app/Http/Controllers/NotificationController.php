@@ -33,7 +33,7 @@ class NotificationController extends Controller
 
     }
 
-    public function show_notification(){
+        public function show_notification(){
 
          $users = DB::table('notifications')->orderBy('id','DESC')->get();
          return view('admin.notification.show_notification',['users'=>$users]);
@@ -41,10 +41,10 @@ class NotificationController extends Controller
 
 
          //Delete function to delete in user body
-     public function delete($id) {
+        public function delete($id) {
         DB::delete('delete from notifications where id ='.$id);
         return redirect('admin/show_notification')->with('success', 'Notification has been deleted successfully.');
-     }
+         }
 
         //edit code in user body
         public function edit_notification(Request $request,$id)

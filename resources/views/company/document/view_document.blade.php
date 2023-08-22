@@ -19,7 +19,7 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#"> Document List</a>
+                        <a href="#">Document List</a>
                     </li>
                 </ul>
             </div>

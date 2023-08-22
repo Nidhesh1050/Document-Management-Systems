@@ -15,6 +15,7 @@ use App\Http\Controllers\EmailTypeController;
 use App\Http\Controllers\EmailContentController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\DocumentTypeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -77,12 +78,19 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
     /* Document type routes start   */
 
-    Route::get('/admin/view_document',[DocumentController::class,'view_document']);
-    Route::get('/admin/deletedocument/{id}', [DocumentController::class,'deletedocument']);
-    Route::get('/admin/add_document', [DocumentController::class,'add_documenttype']);
-    Route::post('/admin/register',[DocumentController::class,'register']);
-    Route::get('/admin/edit/{id}', [DocumentController::class,'edit']);
-    Route::post('/admin/documentupdate/', [DocumentController::class,'documentupdate']);
+    Route::get('/admin/documentType_view',[DocumentTypeController::class,'documentTypeView']);
+    Route::get('/admin/documentType_delete/{id}', [DocumentTypeController::class,'documentTypeDelete']);
+    Route::get('/admin/documentType_add', [DocumentTypeController::class,'documentTypeAdd']);
+    Route::post('/admin/documentType_add', [DocumentTypeController::class,'documentTypeAdd']);
+    Route::get('/admin/documentType_edit/{id}', [DocumentTypeController::class,'documentTypeEdit']);
+    Route::post('/admin/documentType_update/', [DocumentTypeController::class,'documentTypeUpdate']);
+    Route::get('/DocumentTypeChangeStatus/{id}/{status}',[DocumentTypeController::class,'DocumentTypeChangeStatus']);
+
+
+
+
+
+    // Route::get('/ProjectChangeStatus/{id}/{status}',[DocumentTypeController::class,'DocumentTypeChangeStatus']);
 
     /* Side Setting routes start*/
    Route::get('/admin/setting',[SettingController::class,'setting']);
@@ -101,7 +109,7 @@ Route::get('/admin/delete/{id}', [NotificationController::class,'delete']);
 
 Route::get('/admin/edit_notification/{id}', [NotificationController::class,'edit_notification']);
 Route::post('/admin/update_notification', [NotificationController::class,'update_notification']);
- /* Notification type routes end   */
+/* Notification type routes end   */
 
 /* Content management system routes start*/
 Route::get('/admin/addcontent',[CMSController::class,'addcontent']);
