@@ -40,7 +40,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/delete_user/{id}', [HomeController::class,'delete']);
     Route::get('/admin/edit_user/{id}', [HomeController::class,'edit']);
     Route::post('/admin/update_user', [HomeController::class,'update']);
-    
+
     Route::get('/admin/adduser',[HomeController::class,'adduser']);
     Route::post('/admin/register_user',[HomeController::class,'register']);
     Route::get('/UserChangeStatus/{id}/{status}',[HomeController::class,'UserChangeStatus']);
@@ -86,22 +86,24 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::post('/admin/documentupdate/', [DocumentController::class,'documentupdate']);
 
     /* Side Setting routes start*/
-   Route::get('/admin/setting',[SettingController::class,'setting']);
-   Route::post('/admin/add_image',[SettingController::class,'add_image']);
-   Route::get('/admin/view_image',[SettingController::class,'view_image']);
-   Route::get('/admin/edit_image/{id}', [SettingController::class,'edit_image']);
-   Route::post('/admin/update_image', [SettingController::class,'update_image']);
-   Route::get('/admin/delete_image/{id}',[SettingController::class,'delete_image']);
+    Route::get('/admin/setting',[SettingController::class,'setting']);
+    Route::post('/admin/add_image',[SettingController::class,'add_image']);
+    Route::get('/admin/view_image',[SettingController::class,'view_image']);
+    Route::get('/admin/edit_image/{id}', [SettingController::class,'edit_image']);
+    Route::post('/admin/update_image', [SettingController::class,'update_image']);
+    Route::get('/admin/delete_image/{id}',[SettingController::class,'delete_image']);
+    Route::get('/admin/logos',[App\Http\Controllers\SettingController::class,'setting']);
+    Route::post('/admin/update_logo',[App\Http\Controllers\SettingController::class,'Updateimage']);
 /*  Side Setting routes end*/
 
 /* Notification type routes start   */
-Route::get('/admin/notification',[NotificationController::class, 'Notification'])->name('notification');
-Route::post('/admin/add_notification',[NotificationController::class, 'add_notification']);
-Route::get('/admin/show_notification',[NotificationController::class, 'show_notification']);
-Route::get('/admin/delete/{id}', [NotificationController::class,'delete']);
-
-Route::get('/admin/edit_notification/{id}', [NotificationController::class,'edit_notification']);
-Route::post('/admin/update_notification', [NotificationController::class,'update_notification']);
+Route::get('/admin/notification',[NotificationController::class, 'addNotification'])->name('notification');
+Route::post('/admin/add_notification',[NotificationController::class, 'addNotification']);
+Route::get('/admin/show_notification',[NotificationController::class, 'showNotification']);
+Route::get('/admin/delete_notification/{id}', [NotificationController::class,'deleteNotification']);
+Route::get('/admin/edit_notification/{id}', [NotificationController::class,'editNotification']);
+Route::post('/admin/update_notification', [NotificationController::class,'updateNotification']);
+Route::get('/NotificationChangeStatus/{id}/{status}',[NotificationController::class,'statusNotification']);
  /* Notification type routes end   */
 
 /* Content management system routes start*/
@@ -142,14 +144,13 @@ Route::post('/admin/edit_content',[CMSController::class,'edit_content']);
     /* Module Permission route end here*/
 
 
-
      /* Module Commpany route start here*/
-     Route::get('/admin/addcompany',[CompanyController::class,'addCompany']);
-     Route::post('/admin/company_add',[CompanyController::class,'Company_add']);
-     Route::get('/admin/view_company',[CompanyController::class,'view_company']);
+     Route::get('/admin/add_company',[CompanyController::class,'addCompany']);
+     Route::post('/admin/add_company',[CompanyController::class,'addCompany']);
+     Route::get('/admin/view_company',[CompanyController::class,'index']);
      Route::get('/admin/delete_company/{id}',[CompanyController::class,'delete_company']);
-     Route::get('/admin/update_company/{id}',[CompanyController::class,'update_company']);
-     Route::post('/admin/edit_company',[CompanyController::class,'edit_company']);
+     Route::get('/admin/update_company/{id}',[CompanyController::class,'updateCompany']);
+     Route::post('/admin/edit_company',[CompanyController::class,'editCompany']);
      Route::get('/admin/checkCompany', [CompanyController::class, 'checkCompany'])->name('checkCompany');
 
     /* Module Commpany route end here*/

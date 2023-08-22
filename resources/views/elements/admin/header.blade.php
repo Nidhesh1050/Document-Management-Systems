@@ -1,7 +1,8 @@
 
 <?php
-$users = DB::table('side_setting')->orderBy('id','DESC')->first();
+$logo = DB::table('logos')->first();
 ?>
+
 <div class="main-header">
 	<!-- Logo Header -->
 				<head>
@@ -9,8 +10,13 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 				</head>
 			<div class="logo-header" data-background-color="blue">
 
-				<a href="index.html" class="logo">
+				<a href="{{url('admin/home')}}" class="logo">
+					<?php if($logo->logo){?>
+					<img src="{{asset('/images/logo/'.$logo->logo)}}" width="100" alt="navbar brand" class="navbar-brand">
+					<?php }else{?>
 					<img src="{{asset('admin/img/STPL_Logo_white.png')}}" width="100" alt="navbar brand" class="navbar-brand">
+					<?php }?>
+
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
@@ -233,7 +239,13 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 
 							<div class="avatar-sm">
-								 <td><img src="{{ asset('images/' .$users->image) }}" alt="..." class="avatar-img rounded-circle" ></td>
+								<td>
+								<?php if($logo->profile){?>
+									<img src="{{ asset('images/profile/' .$logo->profile) }}" alt="..." class="avatar-img rounded" >
+									<?php }else{?>
+									<img src="{{ asset('images/profiles/demo-profile.png') }}" alt="..." class="avatar-img rounded" >
+									<?php }?>
+								</td>
 							</div>
 
 							</a>
@@ -241,7 +253,13 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 								<div class="dropdown-user-scroll scrollbar-outer">
 									<li>
 										<div class="user-box">
-											<div class="avatar-lg"><img src="{{asset('admin/img/profile.jpg')}}" alt="image profile" class="avatar-img rounded"></div>
+											<div class="avatar-lg">
+												<?php if($logo->profile){?>
+									 		<img src="{{ asset('images/profile/' .$logo->profile) }}" alt="..." class="avatar-img rounded" >
+									 			<?php }else{?>
+										  	<img src="{{ asset('images/profiles/demo-profile.png') }}" alt="..." class="avatar-img rounded" >
+										 		<?php }?>
+											</div>
 											<div class="u-text">
 												<h4>{{ Auth::user()->name }} </a></h4>
 												<p class="text-muted">{{ Auth::user()->email }} </a></p>

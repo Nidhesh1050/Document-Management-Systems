@@ -1,5 +1,4 @@
 <?php
-$users = DB::table('side_setting')->orderBy('id','DESC')->first();
 $currentURL =Route::current()->uri; 
 ?>
 
@@ -9,8 +8,13 @@ $currentURL =Route::current()->uri;
             <div class="user">
 
                 <div class="avatar-sm float-left mr-2">
-                <img src="{{ asset('images/' .$users->image) }}" alt="..." class="avatar-img rounded-circle" >
+                    <?php if($logo->profile){?>
+                        <img src="{{ asset('images/profile/' .$logo->profile) }}" alt="..." class="avatar-img rounded-circle" >
+                    <?php }else{?>
+                        <img src="{{ asset('images/profiles/demo-profile.png') }}" alt="..." class="avatar-img rounded-circle" >
+                    <?php }?>
                 </div>
+                
 
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
@@ -198,15 +202,11 @@ $currentURL =Route::current()->uri;
                     <div class="collapse" id="setting">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('admin/view_image')}}">
-                                    <span class="sub-item">Logos</span>
+                                <a href="{{url('admin/logos')}}">
+                                        <span class="sub-item">Logo & profile</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{url('admin/setting')}}">
-                                    <span class="sub-item">Add Settings</span>
-                                </a>
-                            </li>
+
 
                         </ul>
                     </div>
