@@ -5,18 +5,21 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DocumentController;
 
-use App\Http\Controllers\ProjectManagementController;
-use App\Http\Controllers\SettingController;
-use App\Http\Controllers\NotificationController;
-use App\Http\Controllers\CMSController;
+
+
 use App\Http\Controllers\Admin\EmailTypeController;
 use App\Http\Controllers\Admin\EmailContentController;
+use App\Http\Controllers\Admin\ProjectManagementController;
+use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\Admin\CMSController;
+
 use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\DocumentTypeController;
+use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\DocumentTypeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -100,8 +103,9 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/edit_image/{id}', [SettingController::class,'edit_image']);
     Route::post('/admin/update_image', [SettingController::class,'update_image']);
     Route::get('/admin/delete_image/{id}',[SettingController::class,'delete_image']);
-    Route::get('/admin/logos',[App\Http\Controllers\SettingController::class,'setting']);
-    Route::post('/admin/update_logo',[App\Http\Controllers\SettingController::class,'Updateimage']);
+    //Route::get('/admin/logos',[App\Http\Controllers\SettingController::class,'setting']);
+    Route::get('/admin/logos',[SettingController::class,'setting']);    
+    Route::post('/admin/update_logo',[SettingController::class,'Updateimage']);
 /*  Side Setting routes end*/
 
 /* Notification type routes start   */
