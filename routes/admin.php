@@ -99,13 +99,6 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     // Route::get('/ProjectChangeStatus/{id}/{status}',[DocumentTypeController::class,'DocumentTypeChangeStatus']);
 
     /* Side Setting routes start*/
-    Route::get('/admin/setting',[SettingController::class,'setting']);
-    Route::post('/admin/add_image',[SettingController::class,'add_image']);
-    Route::get('/admin/view_image',[SettingController::class,'view_image']);
-    Route::get('/admin/edit_image/{id}', [SettingController::class,'edit_image']);
-    Route::post('/admin/update_image', [SettingController::class,'update_image']);
-    Route::get('/admin/delete_image/{id}',[SettingController::class,'delete_image']);
-    //Route::get('/admin/logos',[App\Http\Controllers\SettingController::class,'setting']);
     Route::get('/admin/logos',[SettingController::class,'setting']);    
     Route::post('/admin/update_logo',[SettingController::class,'Updateimage']);
 /*  Side Setting routes end*/
