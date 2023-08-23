@@ -62,36 +62,61 @@
                                         <th>Email Type</th>
                                         <th>Subject</th>
                                         <th>Message</th>
+                                        <th> Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    @foreach ($users as $user)
+                                    @foreach ($emailContents as $emailContent)
+                                    @php
+                                    $status = "";
+                                    $status = $emailContent->status == 1 ? 'Active' : 'InActive';
+                                    @endphp
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $user->email_type }}</td>
-                                            <td>{{ $user->subject }}</td>
-                                            <td>{{ $user->message }}</td>
+                                            <td>{{ $emailContent->email_type }}</td>
+                                            <td>{{ $emailContent->subject }}</td>
+                                            <td>{{ $emailContent->message }}</td>
+                                            <td>{{ $status }}</td>
+                                            <td class="action_td">
+                                
+                           
 
-                                            <td>
-                                                <div class="form-button-action">
-                                                    <a href="edit_content/{{ $user->id }}">
-                                                        <button type="button" data-toggle="tooltip" title=""
-                                                            class="btn btn-link btn-primary btn-lg"
-                                                            data-original-title="Edit">
-                                                            <i class="fa fa-edit"></i>
-                                                        </button>
-                                                    </a>
+                                <a href="{{url('admin/edit_content/'. $emailContent->id) }}" data-toggle="tooltip"
+                                    title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                    <i class="fa fa-edit">
+                                    </i>
+                                </a>
 
-                                                    <a href="/admin/delete/{{ $user->id }}" onclick="return confirm('Are you sure you want to delete this email content ?')">
-                                                        <button type="button" data-toggle="tooltip" title=""
-                                                            class="btn btn-link btn-danger" data-original-title="Delete">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
-                                                    </a>
-                                                </div>
-                                            </td>
+                                @php
+                                $status = @$emailContent->status == 1 ? '0' : '1';
+                                $statusicon = @$emailContent->status == 1 ? 'btn-danger' : 'btn-success';
+
+                                $statustite = @$emailContent->status == 1 ? 'InActive' : 'Active';
+                                @endphp
+
+                                <a href="{{url('EmailContentChangeStatus/'. $emailContent->id.'/'. $status) }}"
+                                    onclick="return confirm('Are you sure to change status?')" data-toggle="tooltip"
+                                    title="" class="btn-link {{$statusicon}}" data-original-title="{{$statustite}}">
+                                    @if($emailContent->status==0)
+                                    <i class="fa fa-check"></i>
+                                    @else
+                                    <i class="fa fa-times"></i>
+                                    @endif
+                                </a>
+
+
+
+                                <a href="{{url('admin/delete/'. $emailContent->id) }}"
+                                    onclick="return confirm('Are you sure you want to delete this document type ?')"
+                                    data-toggle="tooltip" title="" class="btn btn-link btn-danger"
+                                    data-original-title="Remove">
+                                    <i class="fa fa-trash"></i>
+
+                                </a>
+
+                                </td>
                                     @endforeach
                                     </tr>
                                 </tbody>

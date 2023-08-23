@@ -81,7 +81,6 @@
                                         </span>
                               </div>
                                
-
                             <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Update</button>
                                 <a href="{{url('admin/view_project')}}" class="mt-4 btn btn-danger">Cancel</a>

@@ -79,50 +79,47 @@
                                                 style="height: 50px;width:100px;">
                                         </td>
                                         <td> {{$status}}</td>
-                                        <td>
-                                            <div class="form-button-action">
+                                        <td class="action_td">
 
-                                                <a href="{{url('/admin/update_content/' . $cms->id) }}"
-                                                    data-toggle="tooltip" title=""
-                                                    class="btn btn-link btn-primary btn-lg"
-                                                    data-original-title="Edit Task">
-                                                    <i class="fa fa-edit"></i>
-                                                    </button>
-                                                </a>
-                                            </div>
-                                                @php
-                                                $status = @$cms->status == 1 ? '0' : '1';
-                                                $statusicon = @$cms->status == 1 ? 'btn-danger' : 'btn-success';
 
-                                                $statustite = @$cms->status == 1 ? 'InActive' : 'Active';
-                                                @endphp
+                                            <a href="{{url('/admin/update_content/' . $cms->id) }}"
+                                                data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg"
+                                                data-original-title="Edit Task">
+                                                <i class="fa fa-edit"></i>
+                                                </button>
+                                            </a>
 
-                                                <div class="form-button-action">
-                                                    <a href="{{url('/CMSChangeStatus/'. $cms->id.'/'. $status) }}"
-                                                        onclick="return confirm('Are you sure to change status?')"
-                                                        data-toggle="tooltip" title="" class="btn-link {{$statusicon}}"
-                                                        data-original-title="{{$statustite}}">
-                                                        @if($cms->status==0)
-                                                        <i class="fa fa-check"></i>
-                                                        @else
-                                                        <i class="fa fa-times"></i>
-                                                        @endif
-                                                    </a>
-                                                </div>
+                                            @php
+                                            $status = @$cms->status == 1 ? '0' : '1';
+                                            $statusicon = @$cms->status == 1 ? 'btn-danger' : 'btn-success';
 
-                                                <a href="{{ url('/admin/delete_content/' .  $cms->id) }}"
-                                                    onclick="return confirm('Are you sure you want to delete this content ?')"
-                                                    data-toggle="tooltip" title="" class="btn btn-link btn-danger"
-                                                    data-original-title="Remove">
-                                                    <i class="fa fa-trash"></i>
-                                                    </button>
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                            $statustite = @$cms->status == 1 ? 'InActive' : 'Active';
+                                            @endphp
+
+
+                                            <a href="{{url('/CMSChangeStatus/'. $cms->id.'/'. $status) }}"
+                                                onclick="return confirm('Are you sure to change status?')"
+                                                data-toggle="tooltip" title="" class="btn-link {{$statusicon}}"
+                                                data-original-title="{{$statustite}}">
+                                                @if($cms->status==0)
+                                                <i class="fa fa-check"></i>
+                                                @else
+                                                <i class="fa fa-times"></i>
+                                                @endif
+                                            </a>
+                                            <a href="{{ url('/admin/delete_content/' .  $cms->id) }}"
+                                                onclick="return confirm('Are you sure you want to delete this content ?')"
+                                                data-toggle="tooltip" title="" class="btn btn-link btn-danger"
+                                                data-original-title="Remove">
+                                                <i class="fa fa-trash"></i>
+
+                                            </a>
                         </div>
+                        </td>
+                        </tr>
+                        @endforeach
+                        </tbody>
+                        </table>
                     </div>
-                    @endsection
+                </div>
+                @endsection
