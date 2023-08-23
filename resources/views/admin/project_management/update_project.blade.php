@@ -80,16 +80,7 @@
                                             @enderror
                                         </span>
                               </div>
-                                <div class="form-group">
-                        <label for="status">Status</label>
-                           &nbsp;&nbsp;&nbsp;
-                            <input type="checkbox" name="status" id="status"  {{$projects->status==1 ? 'checked': '' }} >
-                                <span class="text-danger error ">
-                                @error('status')
-                                {{$message}}
-                                @enderror
-                            </span>
-                        </div>
+                               
 
                             <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Update</button>

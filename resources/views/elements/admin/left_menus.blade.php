@@ -1,5 +1,5 @@
 <?php
-$currentURL =Route::current()->uri; 
+$currentURL =Route::current()->uri;
 ?>
 
 <div class="sidebar sidebar-style-2">
@@ -14,7 +14,7 @@ $currentURL =Route::current()->uri;
                         <img src="{{ asset('images/profiles/demo-profile.png') }}" alt="..." class="avatar-img rounded-circle" >
                     <?php }?>
                 </div>
-                
+
 
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
@@ -84,7 +84,7 @@ $currentURL =Route::current()->uri;
                 </li>
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#company">
-                     <i class="fas fa-table"></i>
+                     <i class="fa fa-user-plus"></i>
                         <p>Company Management</p>
 						<span class="caret"></span>
                     </a>
@@ -96,7 +96,7 @@ $currentURL =Route::current()->uri;
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/addcompany')}}">
+                                <a href="{{url('admin/add_company')}}">
                                     <span class="sub-item">Add Company</span>
                                 </a>
                             </li>
@@ -128,7 +128,7 @@ $currentURL =Route::current()->uri;
 
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#project">
-                        <i class="fas fa-laptop-code"></i>
+                        <i class="fa fa-industry"></i>
                         <p>Project Management</p>
                         <span class="caret"></span>
                     </a>
@@ -151,7 +151,7 @@ $currentURL =Route::current()->uri;
 
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#forms">
-                        <i class="fas fa-pen-square"></i>
+                        <i class="fas fa-file"></i>
                         <p>Document Management</p>
                         <span class="caret"></span>
                     </a>
@@ -173,7 +173,8 @@ $currentURL =Route::current()->uri;
 
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#list">
-                        <i class="fas fa-list"></i>
+                        <i class="far fa-folder-open"></i>
+
                         <p>Document Type</p>
                         <span class="caret"></span>
                     </a>
@@ -195,7 +196,7 @@ $currentURL =Route::current()->uri;
 
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#setting">
-                        <i class="fas fa-laptop-code"></i>
+                        <i class="fas fa-cog"></i>
                         <p>Setting Management</p>
                         <span class="caret"></span>
                     </a>
@@ -206,16 +207,13 @@ $currentURL =Route::current()->uri;
                                         <span class="sub-item">Logo & profile</span>
                                 </a>
                             </li>
-
-
                         </ul>
                     </div>
                 </li>
 
-                
                 <li class="nav-item">
 							<a data-toggle="collapse" href="#tables">
-								<i class="fas fa-table"></i>
+								<i class="fas fa-bullhorn"></i>
 								<p>Notification</p>
 								<span class="caret"></span>
 							</a>
@@ -236,7 +234,7 @@ $currentURL =Route::current()->uri;
 						</li>
                         <li class="nav-item">
 							<a data-toggle="collapse" href="#charts">
-								<i class="far fa-chart-bar"></i>
+								<i class="fas fa-edit"></i>
 								<p>CMS</p>
 								<span class="caret"></span>
 							</a>
@@ -256,10 +254,10 @@ $currentURL =Route::current()->uri;
 							</div>
 						</li>
 
-                        
+
                         <li class="nav-item">
 							<a data-toggle="collapse" href="#email">
-								<i class="fas fa-table"></i>
+								<i class="fas fa-envelope"></i>
 								<p>Email Management</p>
 								<span class="caret"></span>
 							</a>
@@ -289,7 +287,7 @@ $currentURL =Route::current()->uri;
 							</div>
 						</li>
 
-                        
+
                         <li class="nav-item">
 							<a data-toggle="collapse" href="#maps">
 								<i class="fas fa-key"></i>
