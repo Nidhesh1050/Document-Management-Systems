@@ -118,5 +118,12 @@ class CompanyController extends Controller
     return $company_names;
   }
 
+  //change status
+  public function companyChangeStatus($id = null, $status = null)
+  {
+      $documentTypes = DB::table('users')->where('id', $id)->update(['status' => $status]);
+      return back()->withInput()->with('success', 'Status has been changed.');
+  }
+
 }
 
