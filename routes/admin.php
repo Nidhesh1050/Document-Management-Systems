@@ -5,18 +5,21 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DocumentController;
 
-use App\Http\Controllers\ProjectManagementController;
-use App\Http\Controllers\SettingController;
-use App\Http\Controllers\NotificationController;
-use App\Http\Controllers\CMSController;
-use App\Http\Controllers\EmailTypeController;
-use App\Http\Controllers\EmailContentController;
+
+
+use App\Http\Controllers\Admin\EmailTypeController;
+use App\Http\Controllers\Admin\EmailContentController;
+use App\Http\Controllers\Admin\ProjectManagementController;
+use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\Admin\CMSController;
+
 use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\DocumentTypeController;
+use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\DocumentTypeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -91,9 +94,6 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/DocumentTypeChangeStatus/{id}/{status}',[DocumentTypeController::class,'DocumentTypeChangeStatus']);
 
 
-
-
-
     // Route::get('/ProjectChangeStatus/{id}/{status}',[DocumentTypeController::class,'DocumentTypeChangeStatus']);
 
     /* Side Setting routes start*/
@@ -103,8 +103,9 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/edit_image/{id}', [SettingController::class,'edit_image']);
     Route::post('/admin/update_image', [SettingController::class,'update_image']);
     Route::get('/admin/delete_image/{id}',[SettingController::class,'delete_image']);
-    Route::get('/admin/logos',[App\Http\Controllers\SettingController::class,'setting']);
-    Route::post('/admin/update_logo',[App\Http\Controllers\SettingController::class,'Updateimage']);
+    //Route::get('/admin/logos',[App\Http\Controllers\SettingController::class,'setting']);
+    Route::get('/admin/logos',[SettingController::class,'setting']);    
+    Route::post('/admin/update_logo',[SettingController::class,'Updateimage']);
 /*  Side Setting routes end*/
 
 /* Notification type routes start   */
@@ -131,24 +132,26 @@ Route::get('/CMSChangeStatus/{id}/{status}',[CMSController::class,'CMSChangeStat
     //Email management routes start by Nidhi
 
     // email-type
-	Route::get('/admin/email',[EmailTypeController::class, 'email'])->name('email');
-	Route::post('/admin/add_email',[EmailTypeController::class, 'add_email']);
-	Route::get('/admin/show_email',[EmailTypeController::class, 'show_email']);
-	Route::get('/admin/emaildelete/{id}', [EmailTypeController::class,'emaildelete']);
+	Route::get('/admin/email',[EmailTypeController::class, 'emailTypeAdd']);
+	Route::post('/admin/add_email',[EmailTypeController::class, 'emailTypeAdd']);
+	Route::get('/admin/show_email',[EmailTypeController::class, 'emailTypeShow']);
+	Route::get('/admin/emaildelete/{id}', [EmailTypeController::class,'emailTypeDelete']);
 
-	Route::get('/admin/edit_email/{id}', [EmailTypeController::class,'edit_email']);
-	Route::post('/admin/emailupdate', [EmailTypeController::class,'emailupdate']);
+	Route::get('/admin/edit_email/{id}', [EmailTypeController::class,'emailTypeEdit']);
+	Route::post('/admin/emailupdate', [EmailTypeController::class,'emailTypeUpdate']);
+    Route::get('/EmailTypeChangeStatus/{id}/{status}',[EmailTypeController::class,'EmailTypeChangeStatus']);
 
 
     //email-content
 
-	Route::get('/admin/content',[EmailContentController::class, 'content'])->name('content');
-	Route::post('/admin/add_content',[EmailContentController::class, 'add_content']);
-	Route::get('/admin/show_content',[EmailContentController::class, 'show_content']);
-	Route::get('/admin/delete/{id}', [EmailContentController::class,'delete']);
+	Route::get('/admin/content',[EmailContentController::class, 'emailContentAdd']);
+	Route::post('/admin/add_content',[EmailContentController::class, 'emailContentAdd']);
+	Route::get('/admin/show_content',[EmailContentController::class, 'emailContentShow']);
+	Route::get('/admin/delete/{id}', [EmailContentController::class,'emailContentDelete']);
 
-	Route::get('/admin/edit_content/{id}', [EmailContentController::class,'edit_content']);
-	Route::post('/admin/update', [EmailContentController::class,'update']);
+	Route::get('/admin/edit_content/{id}', [EmailContentController::class,'emailContentEdit']);
+	Route::post('/admin/update', [EmailContentController::class,'emailContentUpdate']);
+    Route::get('/EmailContentChangeStatus/{id}/{status}',[EmailContentController::class,'EmailContentChangeStatus']);
 
     /* Module Permission route start here*/
     Route::get('/admin/module_permission',[PermissionController::class,'module_permission']);
@@ -166,6 +169,5 @@ Route::get('/CMSChangeStatus/{id}/{status}',[CMSController::class,'CMSChangeStat
     Route::get('/admin/checkCompany', [CompanyController::class, 'checkCompany'])->name('checkCompany');
     Route::get('/companyChangeStatus/{id}/{status}',[CompanyController::class,'companyChangeStatus']);
     /* Module Commpany route end here*/
-
 
 });

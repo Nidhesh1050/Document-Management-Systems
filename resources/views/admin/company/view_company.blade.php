@@ -61,8 +61,8 @@
                                             <th> Owner Name</th>
                                             <th> Email</th>
                                             <th> Mobile No </th>
-                                            <th> Logo</th>
                                              <th> Status</th>
+                                             <th> Logo</th>
                                             <th> Action </th>
                                             <!-- <th> Delete </th> -->
                                         </tr>
@@ -84,10 +84,10 @@
                                                 <td> {{ $status }}</td>
                                                 <td> <img src="{{ asset('images/logo/' . $company_data->logo) }}"
                                                         style="height: 50px;width:100px;"></td>
-                                                <td class="action_td">
+                                                 <td class="action_td">
                                                  <div class="form-button-action">
-                                                        <a href='/admin/update_company/{{ $company_data->id }}'  data-toggle="tooltip" title=""
-                                                                class="btn-link btn-primary btn-lg"
+                                                 <a href="{{ url('admin/update_company/'. $company_data->id)}}" data-toggle="tooltip" title=""
+                                                                class="btn btn-link btn-primary btn-lg"
                                                                 data-original-title="Edit Task">
                                                                 <i class="fa fa-edit"></i>
                                                         </a>
@@ -106,12 +106,13 @@
                                     @else
                                     <i class="fa fa-times"></i>
                                     @endif
-                                </a>
-                                                        <a href="/admin/delete_company/{{ $company_data->user_id }}"
-                                                            onclick="return confirm('Are you sure you want to delete this company ?')"  data-toggle="tooltip" title=""
+                                </a>                 
+                                <a href="{{ url('admin/delete_company/'. $company_data->user_id)}}"
+                                                            onclick="return confirm('Are you sure you want to delete this company ?')" data-toggle="tooltip" title=""
                                                                 class="btn btn-link btn-danger"
                                                                 data-original-title="Remove">
                                                                 <i class="fa fa-trash"></i>
+                                                         
                                                         </a>
                                                     </div>
                                                 </td>

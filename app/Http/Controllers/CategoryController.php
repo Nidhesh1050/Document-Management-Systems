@@ -20,7 +20,6 @@ class CategoryController extends Controller
             $request->validate([
                 'parent_id' =>  'required',
                 'name' => 'required|string',
-    
             ]);
     
             $inserData['parent_id'] = $request->parent_id;
