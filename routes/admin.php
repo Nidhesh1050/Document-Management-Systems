@@ -157,14 +157,14 @@ Route::get('/CMSChangeStatus/{id}/{status}',[CMSController::class,'CMSChangeStat
 
 
      /* Module Commpany route start here*/
-     Route::get('/admin/add_company',[CompanyController::class,'addCompany']);
-     Route::post('/admin/add_company',[CompanyController::class,'addCompany']);
-     Route::get('/admin/view_company',[CompanyController::class,'index']);
-     Route::get('/admin/delete_company/{id}',[CompanyController::class,'delete_company']);
-     Route::get('/admin/update_company/{id}',[CompanyController::class,'updateCompany']);
-     Route::post('/admin/edit_company',[CompanyController::class,'editCompany']);
-     Route::get('/admin/checkCompany', [CompanyController::class, 'checkCompany'])->name('checkCompany');
-
+    Route::get('/admin/add_company',[CompanyController::class,'addCompany']);
+    Route::post('/admin/add_company',[CompanyController::class,'addCompany']);
+    Route::get('/admin/view_company',[CompanyController::class,'index']);
+    Route::get('/admin/delete_company/{id}',[CompanyController::class,'delete_company']);
+    Route::get('/admin/update_company/{id}',[CompanyController::class,'updateCompany']);
+    Route::post('/admin/edit_company',[CompanyController::class,'editCompany']);
+    Route::get('/admin/checkCompany', [CompanyController::class, 'checkCompany'])->name('checkCompany');
+    Route::get('/companyChangeStatus/{id}/{status}',[CompanyController::class,'companyChangeStatus']);
     /* Module Commpany route end here*/
 
 
