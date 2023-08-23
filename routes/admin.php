@@ -10,8 +10,8 @@ use App\Http\Controllers\DocumentController;
 
 use App\Http\Controllers\ProjectManagementController;
 use App\Http\Controllers\SettingController;
-use App\Http\Controllers\NotificationController;
-use App\Http\Controllers\CMSController;
+use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\Admin\CMSController;
 use App\Http\Controllers\EmailTypeController;
 use App\Http\Controllers\EmailContentController;
 use App\Http\Controllers\PermissionController;
