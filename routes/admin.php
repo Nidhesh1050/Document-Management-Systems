@@ -80,6 +80,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
      Route::get('/admin/delete_project/{id}',[ProjectManagementController::class,'deleteProject']);
      Route::get('/admin/update_project/{id}',[ProjectManagementController::class,'updateProject']);
      Route::post('/admin/edit_project',[ProjectManagementController::class,'editProject']);
+     Route::get('/admin/checkProject', [ProjectManagementController::class, 'checkProject'])->name('checkProject');
      Route::get('/ProjectChangeStatus/{id}/{status}',[ProjectManagementController::class,'ProjectChangeStatus']);
      /* Project management routes end*/
 
