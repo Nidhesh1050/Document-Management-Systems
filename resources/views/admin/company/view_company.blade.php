@@ -53,7 +53,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
 
-                                <table id="datatables" class="display table table-striped table-hover">
+                            <table id="datatables" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
                                             <th>S.No.</th>
@@ -62,20 +62,26 @@
                                             <th> Email</th>
                                             <th> Mobile No </th>
                                             <th> Logo</th>
-                                            
+                                             <th> Status</th>
                                             <th> Action </th>
                                             <!-- <th> Delete </th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($company_data as $company_data)
-                                    
+										 @php
+                                            $status = @$company_data->user_status == 1 ? 'Active' : 'InActive';
+                                            @endphp
+                                            @php
+                                            $statustite = @$company_data->user_status == 1 ? 'InActive' : 'Active';
+                                            @endphp
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td> {{ $company_data->company_name }}</td>
                                                 <td> {{ $company_data->name }}</td>
                                                 <td> {{ $company_data->email }}</td>
                                                 <td> {{ $company_data->mobile }}</td>
+                                                <td> {{ $status }}</td>
                                                 <td> <img src="{{ asset('images/logo/' . $company_data->logo) }}"
                                                         style="height: 50px;width:100px;"></td>
                                                 <td>
@@ -87,12 +93,28 @@
                                                                 <i class="fa fa-edit"></i>
                                                             </button>
                                                         </a>
+										  @php
+                                $status = @$company_data->user_status == 1 ? '0' : '1';
+                                $statusicon = @$company_data->user_status == 1 ? 'btn-danger' : 'btn-success';
+
+                                $statustite = @$company_data->user_status == 1 ? 'InActive' : 'Active';
+                                @endphp
+
+                                <a href="{{url('companyChangeStatus/'. $company_data->user_id.'/'. $status) }}"
+                                    onclick="return confirm('Are you sure to change status?')" data-toggle="tooltip"
+                                    title="" class="btn-link {{$statusicon}}" data-original-title="{{$statustite}}">
+                                    @if($company_data->user_status==0)
+                                    <i class="fa fa-check"></i>
+                                    @else
+                                    <i class="fa fa-times"></i>
+                                    @endif
+                                </a>
                                                         <a href="/admin/delete_company/{{ $company_data->user_id }}"
                                                             onclick="return confirm('Are you sure you want to delete this company ?')">
                                                             <button type="button" data-toggle="tooltip" title=""
                                                                 class="btn btn-link btn-danger"
                                                                 data-original-title="Remove">
-                                                                <i class="fa fa-times"></i>
+                                                                <i class="fa fa-trash"></i>
                                                             </button>
                                                         </a>
                                                     </div>

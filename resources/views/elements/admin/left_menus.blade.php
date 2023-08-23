@@ -66,14 +66,14 @@ $currentURL =Route::current()->uri;
                         <p>User Management</p>
 						<span class="caret"></span>
                     </a>
-                    <div class="collapse" id="base">
+                    <div class="collapse <?php if(in_array($currentURL,['admin/userManagement','admin/adduser','admin/edit_user/{id}'])){ echo 'show';}?>"" id="base">
                         <ul class="nav nav-collapse">
-                            <li class="sidebar-item <?php if($currentURL =='admin/userManagement'){ echo 'active'; }?> ">
+                            <li class="sidebar-item <?php if($currentURL =='admin/userManagement' || $currentURL =='admin/edit_user/{id}'){ echo 'active'; }?> ">
                                 <a  class="sidebar-link" href="{{url('admin/userManagement')}}">
                                     <span class="sub-item">User List</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="sidebar-item <?php if($currentURL =='admin/adduser'){ echo 'active'; }?> ">
                                 <a href="{{url('admin/adduser')}}">
                                     <span class="sub-item">Add User</span>
                                 </a>
@@ -96,7 +96,7 @@ $currentURL =Route::current()->uri;
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/addcompany')}}">
+                                <a href="{{url('admin/add_company')}}">
                                     <span class="sub-item">Add Company</span>
                                 </a>
                             </li>
