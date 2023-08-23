@@ -38,7 +38,7 @@
                             @csrf
                             <input type="hidden" name="id" value="{{ $documentTypes->id }}">
                             <div class="form-group">
-                                <label for="name">Document Type Name</label>
+                                <label for="name">Document Type</label>
                                 <input type="name" class="form-control" placeholder="Enter Name" name="name"
                                     value="{{ $documentTypes->name }}">
                                 <span class="text-danger error ">
@@ -70,7 +70,7 @@
             },
             messages: {
                 name: {
-                    required:"Please enter name",
+                    required:"Please enter document type",
                 },
             }
         });

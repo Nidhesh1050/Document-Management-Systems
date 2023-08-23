@@ -52,7 +52,7 @@
                 <table id="datatables" class="display table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th> Document Type Name</th>
+                            <th> Document Type</th>
                             <th> Status</th>
                             <th> Action</th>
                         </tr>

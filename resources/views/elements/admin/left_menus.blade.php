@@ -207,12 +207,9 @@ $currentURL =Route::current()->uri;
                                         <span class="sub-item">Logo & profile</span>
                                 </a>
                             </li>
-
-
                         </ul>
                     </div>
                 </li>
-
 
                 <li class="nav-item">
 							<a data-toggle="collapse" href="#tables">

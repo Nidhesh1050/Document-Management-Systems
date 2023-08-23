@@ -97,7 +97,7 @@ use app\Models\User;
                                             </i>
                                      
                                     </a>
-                                    @php
+                                                @php
                                                         $status = @$document->status == 1 ? '0' : '1';
                                                         $statusicon = @$document->status == 1 ? 'btn-danger' : 'btn-success';
 
