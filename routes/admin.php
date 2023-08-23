@@ -49,6 +49,8 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/adduser',[UserController::class,'adduser']);
     Route::post('/admin/register_user',[UserController::class,'register']);
     Route::get('/UserChangeStatus/{id}/{status}',[UserController::class,'UserChangeStatus']);
+    Route::get('/admin/checkUserEmail', [UserController::class, 'checkUserEmail'])->name('checkUserEmail');
+    Route::get('/admin/checkUserMobile', [UserController::class, 'checkUserMobile'])->name('checkUserMobile');
     /* User management routes end*/
 
 
@@ -104,7 +106,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::post('/admin/update_image', [SettingController::class,'update_image']);
     Route::get('/admin/delete_image/{id}',[SettingController::class,'delete_image']);
     //Route::get('/admin/logos',[App\Http\Controllers\SettingController::class,'setting']);
-    Route::get('/admin/logos',[SettingController::class,'setting']);    
+    Route::get('/admin/logos',[SettingController::class,'setting']);
     Route::post('/admin/update_logo',[SettingController::class,'Updateimage']);
 /*  Side Setting routes end*/
 
