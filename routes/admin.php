@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\CMSController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\DocumentTypeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -60,6 +61,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/update_category/{id}',[CategoryController::class,'categoryUpdate']);
     Route::post('/admin/edit_category',[CategoryController::class,'categoryEdit']);
     Route::get('/categoryChangeStatus/{id}/{status}',[CategoryController::class,'categoryChangeStatus']);
+    Route::get('/admin/checkName', [CategoryController::class, 'checkName'])->name('checkName');
     /* Category management routes end*/
 
     /* Document management routes start*/
