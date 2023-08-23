@@ -10,7 +10,7 @@ class CompanyController extends Controller
 {
    // List of all companies
   public function index(){
-    $company_data = db::table('companies')->leftjoin('users', 'users.id', '=', 'companies.user_id')->select('users.name','users.email','users.mobile','companies.*')->orderBy('companies.id','DESC')->get();
+    $company_data = db::table('companies')->leftjoin('users', 'users.id', '=', 'companies.user_id')->select('users.name','users.email','users.mobile','users.status as user_status','companies.*')->orderBy('companies.id','DESC')->get();
     return view('admin.company.view_company',['company_data'=>$company_data]);
   }
 
@@ -120,10 +120,10 @@ class CompanyController extends Controller
 
   //change status
   public function companyChangeStatus($id = null, $status = null)
-  {
-      $documentTypes = DB::table('users')->where('id', $id)->update(['status' => $status]);
-      return back()->withInput()->with('success', 'Status has been changed.');
-  }
+    {
+        $documentTypes = DB::table('users')->where('id', $id)->update(['status' => $status]);
+        return back()->withInput()->with('success', 'Status has been changed.');
+    }
 
 }
 

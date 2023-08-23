@@ -47,10 +47,10 @@
 
                             <form action="{{ url('admin/emailupdate') }}" id="form" method="POST">
                                 @csrf
-                                <input type="hidden" name="id" value="{{ $users->id }}">
+                                <input type="hidden" name="id" value="{{ $emailTypes->id }}">
                                 <div class="form-group">
                                     <label>Email type</label>
-                                    <input type="text" name="email_type" id="email_type" value="{{ $users->email_type }}"
+                                    <input type="text" name="email_type" id="email_type" value="{{ $emailTypes->email_type }}"
                                         class="form-control">
                                     <span class="text-danger  ">
                                         @error('email_type')

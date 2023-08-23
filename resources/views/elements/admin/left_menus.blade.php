@@ -66,7 +66,7 @@ $currentURL =Route::current()->uri;
                         <p>User Management</p>
 						<span class="caret"></span>
                     </a>
-                    <div class="collapse <?php if(in_array($currentURL,['admin/userManagement','admin/adduser','admin/edit_user/{id}'])){ echo 'show';}?>"" id="base">
+                    <div class="collapse <?php if(in_array($currentURL,['admin/userManagement','admin/adduser','admin/edit_user/{id}'])){ echo 'show';}?>" id="base">
                         <ul class="nav nav-collapse">
                             <li class="sidebar-item <?php if($currentURL =='admin/userManagement' || $currentURL =='admin/edit_user/{id}'){ echo 'active'; }?> ">
                                 <a  class="sidebar-link" href="{{url('admin/userManagement')}}">
@@ -82,13 +82,13 @@ $currentURL =Route::current()->uri;
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item <?php if($currentURL =='admin/view_company' || $currentURL =='admin/add_company'|| $currentURL =='admin/update_company/{id}'){ echo 'active'; }?>">
                     <a data-toggle="collapse" href="#company">
                      <i class="fa fa-user-plus"></i>
                         <p>Company Management</p>
 						<span class="caret"></span>
                     </a>
-                    <div class="collapse" id="company">
+                    <div class="collapse <?php if(in_array($currentURL,['admin/view_company','admin/add_company','admin/update_company/{id}'])){ echo 'show';}?>" id="company">
                         <ul class="nav nav-collapse">
                             <li class="sidebar-item">
                                 <a class="sidebar-link" href="{{url('admin/view_company')}}">
@@ -104,13 +104,13 @@ $currentURL =Route::current()->uri;
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item <?php if($currentURL =='admin/view_category' || $currentURL =='admin/category'|| $currentURL =='admin/update_category/{id}'){ echo 'active'; }?>">
                     <a data-toggle="collapse" href="#sidebarLayouts">
                         <i class="fas fa-th-list"></i>
                         <p>Category Management</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="sidebarLayouts">
+                    <div class="collapse <?php if(in_array($currentURL,['admin/view_category','admin/category','admin/update_category/{id}'])){ echo 'show';}?>" id="sidebarLayouts">
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="{{url('admin/view_category')}}">

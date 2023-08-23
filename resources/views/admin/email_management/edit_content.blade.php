@@ -53,7 +53,7 @@
 
                             <form action="{{ url('admin/update') }}" id="form" method="POST">
                                 @csrf
-                                <input type="hidden" name="id" value="{{ $users->id }}">
+                                <input type="hidden" name="id" value="{{ $emailContents->id }}">
                                 <div class="form-group">
 
                                     <label>Email type</label>
@@ -74,7 +74,7 @@
 
                                 <div class="form-group">
                                     <label>Subject</label>
-                                    <input type="text" name="subject" id="subject" value="{{ $users->subject }}"
+                                    <input type="text" name="subject" id="subject" value="{{ $emailContents->subject }}"
                                         class="form-control">
                                     <span class="text-danger  ">
                                         @error('subject')
@@ -85,7 +85,7 @@
 
                                 <div class="form-group">
                                     <label>Message</label>
-                                    <input type="text" name="message" id="message" value="{{ $users->message }}"
+                                    <input type="text" name="message" id="message" value="{{ $emailContents->message }}"
                                         class="form-control">
                                     <span class="text-danger  ">
                                         @error('message')

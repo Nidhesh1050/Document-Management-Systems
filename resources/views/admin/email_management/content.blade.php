@@ -40,9 +40,9 @@
 
                                     <select name="email_type" id="email_type" class="form-control">
                                       <option value=""> Select Type</option>
-                                        @foreach ($users as $users)
+                                        @foreach ($emailContents as $emailContents)
                                         
-                                            <option value="{{ $users->id }}"> <?php echo $users->email_type; ?></option>
+                                            <option value="{{ $emailContents->id }}"> <?php echo $emailContents->email_type; ?></option>
                                         @endforeach
                                     </select>
                                     <span class="text-danger  ">
