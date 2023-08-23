@@ -6,9 +6,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\Admin\DocumentController;
 
-use App\Http\Controllers\ProjectManagementController;
+use App\Http\Controllers\Admin\ProjectManagementController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\CMSController;
