@@ -40,8 +40,8 @@
                             <div class="form-group">
                                 <label for="name">Document Type</label>
                                 <input type="name" class="form-control" placeholder="Enter Name" name="name"
-                                    value="{{ $documentTypes->name }}">
-                                <span class="text-danger error ">
+                                    value="{{ $documentTypes->name }}" id="name">
+                                <span class="text-danger error " id="name_err">
                                     @error('name')
                                     {{$message}}
                                     @enderror
@@ -75,6 +75,34 @@
             }
         });
     });
+
+    $("#name").blur(function(){
+        // alert('aaaa');
+        var name = $(this).val();
+        id = <?php echo $documentTypes->id ?>;
+        console.log(id);
+        $.ajax({
+            type: "GET",
+            url: "/admin/checkDocumentType",
+            data: {'name':name,'id':id},
+            success: function(response) 
+            { 
+                console.log(response);
+                if(response == 1){
+                $('#name_err').text('This company is already exist');
+                $('#submit').attr('disabled','disabled');
+                }
+                else{
+                $('#name_err').text('');
+                $('#submit').removeAttr('disabled');
+                }
+            },
+            error: function(response) 
+            {
+                
+            }
+        });
+  });
 </script>
 
 @endsection

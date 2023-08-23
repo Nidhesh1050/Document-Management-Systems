@@ -126,13 +126,13 @@ $currentURL =Route::current()->uri;
                     </div>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item <?php if($currentURL =='admin/view_project' || $currentURL =='admin/project'|| $currentURL =='admin/update_project/{id}'){ echo 'active'; }?>">
                     <a data-toggle="collapse" href="#project">
                         <i class="fa fa-industry"></i>
                         <p>Project Management</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="project">
+                    <div class="collapse <?php if(in_array($currentURL,['admin/view_project','admin/project','admin/update_project/{id}'])){ echo 'show';}?>" id="project">
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="{{url('admin/view_project')}}">
@@ -149,13 +149,13 @@ $currentURL =Route::current()->uri;
                     </div>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item <?php if($currentURL =='admin/document' || $currentURL =='admin/createdocument'|| $currentURL =='admin/edit_document/{id}'){ echo 'active'; }?>">
                     <a data-toggle="collapse" href="#forms">
                         <i class="fas fa-file"></i>
                         <p>Document Management</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="forms">
+                    <div class="collapse <?php if(in_array($currentURL,['admin/document','admin/createdocument','admin/edit_document/{id}'])){ echo 'show';}?>" id="forms">
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="{{url('admin/document')}}">
@@ -171,14 +171,14 @@ $currentURL =Route::current()->uri;
                     </div>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item <?php if($currentURL =='admin/documentType_view' || $currentURL =='admin/documentType_add'|| $currentURL =='admin/documentType_edit/{id}'){ echo 'active'; }?>">
                     <a data-toggle="collapse" href="#list">
                         <i class="far fa-folder-open"></i>
 
                         <p>Document Type</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="list">
+                    <div class="collapse <?php if(in_array($currentURL,['admin/documentType_view','admin/documentType_add','admin/documentType_edit/{id}'])){ echo 'show';}?>" id="list">
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="{{url('admin/documentType_view')}}">
@@ -194,13 +194,13 @@ $currentURL =Route::current()->uri;
                     </div>
 				</li>
 
-                <li class="nav-item">
+                <li class="nav-item <?php if($currentURL =='admin/logos' || $currentURL =='admin/update_logo'){ echo 'active'; }?>">
                     <a data-toggle="collapse" href="#setting">
                         <i class="fas fa-cog"></i>
                         <p>Setting Management</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="setting">
+                    <div class="collapse <?php if(in_array($currentURL,['admin/documentType_view','admin/documentType_add','admin/documentType_edit/{id}'])){ echo 'show';}?>" id="setting">
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="{{url('admin/logos')}}">
@@ -211,13 +211,13 @@ $currentURL =Route::current()->uri;
                     </div>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item <?php if($currentURL =='admin/show_notification' || $currentURL =='admin/notification'|| $currentURL =='admin/edit_notification/{id}'){ echo 'active'; }?>">
 							<a data-toggle="collapse" href="#tables">
 								<i class="fas fa-bullhorn"></i>
 								<p>Notification</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="tables">
+							<div class="collapse <?php if(in_array($currentURL,['admin/show_notification','admin/notification','admin/edit_notification/{id}'])){ echo 'show';}?>" id="tables">
 								<ul class="nav nav-collapse">
 									<li>
                                     <a href="{{url('admin/show_notification')}}">
@@ -232,13 +232,13 @@ $currentURL =Route::current()->uri;
 								</ul>
 							</div>
 						</li>
-                        <li class="nav-item">
+                        <li class="nav-item <?php if($currentURL =='admin/view_content' || $currentURL =='admin/addcontent'|| $currentURL =='admin/update_content/{id}'){ echo 'active'; }?>">
 							<a data-toggle="collapse" href="#charts">
 								<i class="fas fa-edit"></i>
 								<p>CMS</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="charts">
+							<div class="collapse <?php if(in_array($currentURL,['admin/view_content','admin/addcontent','admin/update_content/{id}'])){ echo 'show';}?>" id="charts">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="{{url('admin/view_content')}}">
@@ -255,13 +255,13 @@ $currentURL =Route::current()->uri;
 						</li>
 
 
-                        <li class="nav-item">
+                        <li class="nav-item <?php if($currentURL =='admin/show_email' || $currentURL =='admin/edit_email/{id}' || $currentURL =='admin/email' || $currentURL =='admin/content' || $currentURL =='admin/show_content' || $currentURL =='admin/edit_content/{id}'){ echo 'active'; }?>">
 							<a data-toggle="collapse" href="#email">
 								<i class="fas fa-envelope"></i>
 								<p>Email Management</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="email">
+							<div class="collapse <?php if(in_array($currentURL,['admin/show_email','admin/email','admin/edit_email/{id}','admin/show_content','admin/content','admin/edit_content/{id}'])){ echo 'show';}?>" id="email">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="{{url('admin/show_email')}}">
@@ -288,13 +288,13 @@ $currentURL =Route::current()->uri;
 						</li>
 
 
-                        <li class="nav-item">
+                        <li class="nav-item <?php if($currentURL =='admin/module_permission' ){ echo 'active'; }?>">
 							<a data-toggle="collapse" href="#maps">
 								<i class="fas fa-key"></i>
 								<p>Permission</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="maps">
+							<div class="collapse <?php if(in_array($currentURL,['admin/module_permission'])){ echo 'show';}?>" id="maps">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="{{url('admin/module_permission')}}">
