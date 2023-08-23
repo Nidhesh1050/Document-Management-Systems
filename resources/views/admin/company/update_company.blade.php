@@ -33,7 +33,7 @@
                     <div class="card-body">
                         <form action="{{ url('admin/edit_company') }}" id="edit_company" method="POST"  enctype="multipart/form-data">
                             @csrf
-                            <input type="hidden" name="id" value="{{ $company_data->id }}">
+                            <input type="hidden" name="id" id="id" value="{{ $company_data->id }}">
                             <input type="hidden" name="user_id" value="{{ $company_data->user_id}}">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -127,28 +127,30 @@
 
     $("#company_name").blur(function(){
         // alert('aaaa');
-    var company_name = $(this).val();
-    $.ajax({
-        type: "GET",
-        url: "/admin/checkCompany?company_name="+company_name,
-        
-        success: function(response) 
-        { 
-            console.log(response);
-            if(response == 1){
-            $('#company_err').text('This company is already exist');
-            $('#submit').attr('disabled','disabled');
+        var company_name = $(this).val();
+        id = <?php echo $company_data->id ?>;
+        console.log(id);
+        $.ajax({
+            type: "GET",
+            url: "/admin/checkCompany",
+            data: {'company_name':company_name,'id':id},
+            success: function(response) 
+            { 
+                console.log(response);
+                if(response == 1){
+                $('#company_err').text('This company is already exist');
+                $('#submit').attr('disabled','disabled');
+                }
+                else{
+                $('#company_err').text('');
+                $('#submit').removeAttr('disabled');
+                }
+            },
+            error: function(response) 
+            {
+                
             }
-            else{
-            $('#company_err').text('');
-            $('#submit').removeAttr('disabled');
-            }
-        },
-        error: function(response) 
-        {
-            
-        }
-    });
+        });
   });
 </script>
 @endsection

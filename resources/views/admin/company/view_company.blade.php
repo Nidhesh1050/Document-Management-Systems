@@ -53,7 +53,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
 
-                            <table id="datatables" class="display table table-striped table-hover">
+                                <table id="datatables" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
                                             <th>S.No.</th>
@@ -84,14 +84,12 @@
                                                 <td> {{ $status }}</td>
                                                 <td> <img src="{{ asset('images/logo/' . $company_data->logo) }}"
                                                         style="height: 50px;width:100px;"></td>
-                                                <td>
+                                                <td class="action_td">
                                                  <div class="form-button-action">
-                                                        <a href='/admin/update_company/{{ $company_data->id }}'>
-                                                            <button type="button" data-toggle="tooltip" title=""
-                                                                class="btn btn-link btn-primary btn-lg"
+                                                        <a href='/admin/update_company/{{ $company_data->id }}'  data-toggle="tooltip" title=""
+                                                                class="btn-link btn-primary btn-lg"
                                                                 data-original-title="Edit Task">
                                                                 <i class="fa fa-edit"></i>
-                                                            </button>
                                                         </a>
 										  @php
                                 $status = @$company_data->user_status == 1 ? '0' : '1';
@@ -110,19 +108,16 @@
                                     @endif
                                 </a>
                                                         <a href="/admin/delete_company/{{ $company_data->user_id }}"
-                                                            onclick="return confirm('Are you sure you want to delete this company ?')">
-                                                            <button type="button" data-toggle="tooltip" title=""
+                                                            onclick="return confirm('Are you sure you want to delete this company ?')"  data-toggle="tooltip" title=""
                                                                 class="btn btn-link btn-danger"
                                                                 data-original-title="Remove">
                                                                 <i class="fa fa-trash"></i>
-                                                            </button>
                                                         </a>
                                                     </div>
                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
-                                </table>
                             </div>
                         </div>
                     @endsection
