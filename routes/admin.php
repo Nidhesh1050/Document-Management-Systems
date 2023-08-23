@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\DocumentController;
 
 use App\Http\Controllers\ProjectManagementController;
@@ -15,7 +15,7 @@ use App\Http\Controllers\CMSController;
 use App\Http\Controllers\EmailTypeController;
 use App\Http\Controllers\EmailContentController;
 use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\DocumentTypeController;
 /*
 |--------------------------------------------------------------------------
