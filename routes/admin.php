@@ -91,6 +91,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::post('/admin/documentType_add', [DocumentTypeController::class,'documentTypeAdd']);
     Route::get('/admin/documentType_edit/{id}', [DocumentTypeController::class,'documentTypeEdit']);
     Route::post('/admin/documentType_update/', [DocumentTypeController::class,'documentTypeUpdate']);
+    Route::get('/admin/checkDocumentType', [DocumentTypeController::class, 'checkDocumentType'])->name('checkDocumentType');
     Route::get('/DocumentTypeChangeStatus/{id}/{status}',[DocumentTypeController::class,'DocumentTypeChangeStatus']);
 
 
