@@ -1,6 +1,4 @@
-@extends('layouts.admin-app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="content">
 
@@ -8,7 +6,7 @@
         <div class="page-header">
             <ul class="breadcrumbs">
                 <li class="nav-home">
-                    <a href="{{url('admin/home')}}">
+                    <a href="<?php echo e(url('admin/home')); ?>">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -16,7 +14,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                <a href="{{url('admin/view_project')}}">Project Management</a>
+                <a href="<?php echo e(url('admin/view_project')); ?>">Project Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -32,35 +30,43 @@
                     <div class="card-header">
                     <div class="card-header">
                    <div class="flash-message">
-                        @if ($message = Session::get('success'))
+                        <?php if($message = Session::get('success')): ?>
                                     <div class="alert alert-success">
-                                        <p>{{ $message }}</p>
+                                        <p><?php echo e($message); ?></p>
                                     </div>
-                                    @endif  
-                        @if ($message = Session::get('error'))
+                                    <?php endif; ?>  
+                        <?php if($message = Session::get('error')): ?>
                                     <div class="alert alert-danger">
-                                        <p>{{ $message }}</p>
+                                        <p><?php echo e($message); ?></p>
                                     </div>
-                                    @endif  
+                                    <?php endif; ?>  
                         </div>
                         <div class="card-title">Edit Project</div>
                     </div>
                     <div class="card-body">
-                        <form action="{{url('admin/edit_project')}}" method="post" enctype="multipart/form-data">
+                        <form action="<?php echo e(url('admin/edit_project')); ?>" method="post" enctype="multipart/form-data">
 
-                            @csrf
-                            <input type="hidden" name="id" value="{{$projects->id}}">
+                            <?php echo csrf_field(); ?>
+                            <input type="hidden" name="id" value="<?php echo e($projects->id); ?>">
 
 
                             <div class="form-group">
                                 <label for="name">Project Name</label>
                                 <input type="text" class="form-control" name="project_name" id="project_name"
-                                    value="{{ $projects->project_name }}" placeholder="name">
+                                    value="<?php echo e($projects->project_name); ?>" placeholder="name">
 
                                     <span class="text-danger error " id="project_err">
-                                            @error('project_name')
-                                            {{$message}}
-                                            @enderror
+                                            <?php $__errorArgs = ['project_name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                            <?php echo e($message); ?>
+
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                         </span>
                             </div>
                             <div class="form-group">
@@ -68,7 +74,7 @@
                                 <select name="manager_d" class="form-control">
                                         <option value=""> Please Select</option>
                                         <?php foreach($managers as $manager){?>
-                                        <option <?php if($manager->id == $projects->manager_d){?>selected <?php } ?> value="{{$manager->id}}">{{$manager->name}}</option>
+                                        <option <?php if($manager->id == $projects->manager_d){?>selected <?php } ?> value="<?php echo e($manager->id); ?>"><?php echo e($manager->name); ?></option>
                                         <?php }?>
                                     </select>
 
@@ -78,18 +84,27 @@
                             <div class="form-group col-md-12">
                                         <label for="description"> Project Description</label>
                                         <textarea class="form-control" name="description" id="editor" placeholder="write text" rows="2">
-                                        {{$projects->description}}
+                                        <?php echo e($projects->description); ?>
+
                                             </textarea>
                                         <span class="text-danger error ">
-                                            @error('description')
-                                                {{ $message }}
-                                            @enderror
+                                            <?php $__errorArgs = ['description'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <?php echo e($message); ?>
+
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                         </span>
                               </div>
                                
                             <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Update</button>
-                                <a href="{{url('admin/view_project')}}" class="mt-4 btn btn-danger">Cancel</a>
+                                <a href="<?php echo e(url('admin/view_project')); ?>" class="mt-4 btn btn-danger">Cancel</a>
                                 <div>
                         </form>
                     </div>
@@ -136,4 +151,5 @@
         });
   });
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.admin-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\dms\resources\views/admin/project_management/update_project.blade.php ENDPATH**/ ?>

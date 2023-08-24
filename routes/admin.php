@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\CMSController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\DocumentTypeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,6 +50,8 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/adduser',[UserController::class,'adduser']);
     Route::post('/admin/register_user',[UserController::class,'register']);
     Route::get('/UserChangeStatus/{id}/{status}',[UserController::class,'UserChangeStatus']);
+    Route::get('/admin/checkUserEmail', [UserController::class, 'checkUserEmail'])->name('checkUserEmail');
+    Route::get('/admin/checkUserMobile', [UserController::class, 'checkUserMobile'])->name('checkUserMobile');
     /* User management routes end*/
 
 
@@ -60,6 +63,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/update_category/{id}',[CategoryController::class,'categoryUpdate']);
     Route::post('/admin/edit_category',[CategoryController::class,'categoryEdit']);
     Route::get('/categoryChangeStatus/{id}/{status}',[CategoryController::class,'categoryChangeStatus']);
+    Route::get('/admin/checkName', [CategoryController::class, 'checkName'])->name('checkName');
     /* Category management routes end*/
 
     /* Document management routes start*/
@@ -80,6 +84,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
      Route::get('/admin/delete_project/{id}',[ProjectManagementController::class,'deleteProject']);
      Route::get('/admin/update_project/{id}',[ProjectManagementController::class,'updateProject']);
      Route::post('/admin/edit_project',[ProjectManagementController::class,'editProject']);
+     Route::get('/admin/checkProject', [ProjectManagementController::class, 'checkProject'])->name('checkProject');
      Route::get('/ProjectChangeStatus/{id}/{status}',[ProjectManagementController::class,'ProjectChangeStatus']);
      /* Project management routes end*/
 
@@ -91,20 +96,14 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::post('/admin/documentType_add', [DocumentTypeController::class,'documentTypeAdd']);
     Route::get('/admin/documentType_edit/{id}', [DocumentTypeController::class,'documentTypeEdit']);
     Route::post('/admin/documentType_update/', [DocumentTypeController::class,'documentTypeUpdate']);
+    Route::get('/admin/checkDocumentType', [DocumentTypeController::class, 'checkDocumentType'])->name('checkDocumentType');
     Route::get('/DocumentTypeChangeStatus/{id}/{status}',[DocumentTypeController::class,'DocumentTypeChangeStatus']);
 
 
     // Route::get('/ProjectChangeStatus/{id}/{status}',[DocumentTypeController::class,'DocumentTypeChangeStatus']);
 
     /* Side Setting routes start*/
-    Route::get('/admin/setting',[SettingController::class,'setting']);
-    Route::post('/admin/add_image',[SettingController::class,'add_image']);
-    Route::get('/admin/view_image',[SettingController::class,'view_image']);
-    Route::get('/admin/edit_image/{id}', [SettingController::class,'edit_image']);
-    Route::post('/admin/update_image', [SettingController::class,'update_image']);
-    Route::get('/admin/delete_image/{id}',[SettingController::class,'delete_image']);
-    //Route::get('/admin/logos',[App\Http\Controllers\SettingController::class,'setting']);
-    Route::get('/admin/logos',[SettingController::class,'setting']);    
+    Route::get('/admin/logos',[SettingController::class,'setting']);
     Route::post('/admin/update_logo',[SettingController::class,'Updateimage']);
 /*  Side Setting routes end*/
 

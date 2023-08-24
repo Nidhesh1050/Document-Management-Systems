@@ -1,13 +1,11 @@
-@extends('layouts.admin-app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="content">
     <div class="page-inner">
         <div class="page-header">
             <ul class="breadcrumbs">
                 <li class="nav-home">
-                    <a href="{{url('admin/home')}}">
+                    <a href="<?php echo e(url('admin/home')); ?>">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -30,20 +28,20 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="flash-message">
-                            @if ($message = Session::get('success'))
+                            <?php if($message = Session::get('success')): ?>
                             <div class="alert alert-success">
-                                <p>{{ $message }}</p>
+                                <p><?php echo e($message); ?></p>
                             </div>
-                            @endif
-                            @if ($message = Session::get('error'))
+                            <?php endif; ?>
+                            <?php if($message = Session::get('error')): ?>
                             <div class="alert alert-danger">
-                                <p>{{ $message }}</p>
+                                <p><?php echo e($message); ?></p>
                             </div>
-                            @endif
+                            <?php endif; ?>
                         </div>
 
                         <div class="d-flex align-items-center">
-                            <a href="{{ url('admin/project') }}"><button class="btn btn-primary btn-round ml-auto"
+                            <a href="<?php echo e(url('admin/project')); ?>"><button class="btn btn-primary btn-round ml-auto"
                                     data-toggle="modal" data-target="#addRowModal">
                                     <i class="fa fa-plus"></i>
                                     Add Project
@@ -67,19 +65,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($projects as $project )
-                                    @php
+                                    <?php $__currentLoopData = $projects; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $project): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php
                                     $status = $project->status == 1 ? 'Active' : 'InActive';
-                                    @endphp
+                                    ?>
+
+
                                     <tr>
-                                        <td>{{$loop->iteration}}</td>
-                                        <td> {{$project->project_name}}</td>
+                                        <td><?php echo e($loop->iteration); ?></td>
+                                        <td> <?php echo e($project->project_name); ?></td>
                                         <td><?php echo $project->description ?></td>
-                                        <td> {{$project->name}}</td>
-                                        <td> {{$status}}</td>
+                                        <td> <?php echo e($project->name); ?></td>
+                                        <td> <?php echo e($status); ?></td>
 
                                         <td class="action_td">
-                                            <a href="{{ url('/admin/update_project/' .$project->id) }}"
+                                            <a href="<?php echo e(url('/admin/update_project/' .$project->id)); ?>"
                                                 data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg"
                                                 data-original-title="Edit">
                                                 <i class="fa fa-edit">
@@ -88,25 +88,29 @@
                                             </a>
 
 
-                                            @php
+                                            <?php
                                             $status = @$project->status == 1 ? '0' : '1';
                                             $statusicon = @$project->status == 1 ? 'btn-danger' : 'btn-success';
 
                                             $statustite = @$project->status == 1 ? 'InActive' : 'Active';
-                                            @endphp
+                                            ?>
 
 
-                                            <a href="{{url('/ProjectChangeStatus/'. $project->id.'/'. $status) }}"
+                                            <a href="<?php echo e(url('/ProjectChangeStatus/'. $project->id.'/'. $status)); ?>"
                                                 onclick="return confirm('Are you sure to change status?')"
-                                                data-toggle="tooltip" title="" class="btn-link {{$statusicon}}"
-                                                data-original-title="{{$statustite}}">
-                                                @if($project->status==0)
+                                                data-toggle="tooltip" title="" class="btn-link <?php echo e($statusicon); ?>"
+                                                data-original-title="<?php echo e($statustite); ?>">
+                                                <?php if($project->status==0): ?>
                                                 <i class="fa fa-check"></i>
-                                                @else
+                                                <?php else: ?>
                                                 <i class="fa fa-times"></i>
-                                                @endif
+                                                <?php endif; ?>
                                             </a>
-                                            <a href="{{ url('admin/delete_project/' .$project->id) }}"
+
+
+
+
+                                            <a href="<?php echo e(url('admin/delete_project/' .$project->id)); ?>"
                                                 onclick="return confirm('Are you sure you want to delete this project ?')"
                                                 data-toggle="tooltip" title="" class="btn btn-link btn-danger"
                                                 data-original-title="Remove">
@@ -118,9 +122,11 @@
                                         </td>
 
                                     </tr>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    @endsection
+                    <?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.admin-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\dms\resources\views/admin/project_management/view_project.blade.php ENDPATH**/ ?>

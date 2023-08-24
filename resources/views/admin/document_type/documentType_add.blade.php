@@ -38,9 +38,9 @@
                         @csrf
                         <div class="form-group">
                             <label for="name">Document Type </label>
-                            <input type="name" class="form-control"
-                                placeholder="Enter Name" name="name">
-                                <span class="text-danger">
+                            <input type="text" class="form-control"
+                                placeholder="Enter document type" name="name" id="name">
+                                <span class="text-danger error" id="name_err">
                                     @error('name')
                                     {{$message}}
                                     @enderror
@@ -75,5 +75,33 @@
             }
         });
     });
+
+    $("#name").blur(function(){
+   // alert('aaaa');
+    var name = $(this).val();
+   
+    $.ajax({
+      type: "GET",
+      url: "/admin/checkDocumentType?name="+name,
+  
+      
+      success: function(response) 
+      { 
+        console.log(response);
+        if(response == 1){
+          $('#name_err').text('This name is already exist');
+          $('#submit').attr('disabled','disabled');
+        }
+        else{
+          $('#name_err').text('');
+          $('#submit').removeAttr('disabled');
+        }
+      },
+      error: function(response) 
+      {
+        
+      }
+    });
+  });
 </script>
 @endsection

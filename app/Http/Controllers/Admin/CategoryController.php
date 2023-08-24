@@ -66,5 +66,30 @@ class CategoryController extends Controller
             ]);
         return redirect('admin/view_category')->with('success', 'Category has been updated successfully.');
     }
+     // check if name already exist
+     public function checkName(Request $request){
+        $name = $request['name'];
+        $id = $request['id'];
+      
+        if($id){ 
+             $name = DB::table('categories')->select('name')->where('id','!=',$id)->where('name',$name)->first();
+            
+              if($name){
+                $name = 1;
+              }else{
+                $name=0;
+              }
+        }
+        else{
+            $name = DB::table('categories')->select('name')->where('name',$name)->first();
+            if($name){
+              $name = 1;
+            }else{
+              $name=0;
+            }
+        }
+       return $name;
+       
+      }
 
 }
