@@ -71,8 +71,6 @@
                                     @php
                                     $status = $project->status == 1 ? 'Active' : 'InActive';
                                     @endphp
-
-
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
                                         <td> {{$project->project_name}}</td>
@@ -108,10 +106,6 @@
                                                 <i class="fa fa-times"></i>
                                                 @endif
                                             </a>
-
-
-
-
                                             <a href="{{ url('admin/delete_project/' .$project->id) }}"
                                                 onclick="return confirm('Are you sure you want to delete this project ?')"
                                                 data-toggle="tooltip" title="" class="btn btn-link btn-danger"

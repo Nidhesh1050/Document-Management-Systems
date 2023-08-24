@@ -35,14 +35,15 @@ class DocumentTypeController extends Controller
     {
         if (!empty($request->all())) {
             $request->validate([
-                
                 'name' => 'required',
             ]
             );
             $status = $request->status == 'on' ? 1 : 0;
-
-            $insertData['name'] = $request->name;
-            DB::table('document_types')->insert($insertData);
+            $inserData['name'] = $request->name;
+            
+            $inserData['slug']= str_replace(' ', '-', trim($request->name));
+      
+            DB::table('document_types')->insert($inserData);
             return redirect('admin/documentType_view')->with('success', 'Document type has been added successfully.');
         } else {
             return view('admin.document_type.documentType_add');
@@ -59,7 +60,6 @@ class DocumentTypeController extends Controller
     //Update Code
     public function documentTypeUpdate(Request $request)
     {
-
         $request->validate(
             ['name' => 'required',
             ]);
@@ -73,6 +73,32 @@ class DocumentTypeController extends Controller
         return redirect('admin/documentType_view')->with('success', 'Document type has been updated successfully.');
 
     }
+
+
+   // check if document type name already exist
+   public function checkDocumentType(Request $request){
+    $name = $request['name'];
+    $id = $request['id'];
+    if($id){ 
+         $name = DB::table('document_types')->select('name')->where('id','!=',$id)->where('name',$name)->first();
+        
+          if($name){
+            $name = 1;
+          }else{
+            $name=0;
+          }
+    }
+    else{
+        $name = DB::table('document_types')->select('name')->where('name',$name)->first();
+        if($name){
+          $name = 1;
+        }else{
+          $name=0;
+        }
+    }
+    return $name;
+  }
+
     public function DocumentTypeChangeStatus($id = null, $status = null)
     {
         $documentTypes = DB::table('document_types')->where('id', $id)->update(['status' => $status]);

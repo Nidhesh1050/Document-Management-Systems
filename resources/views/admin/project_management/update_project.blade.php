@@ -54,8 +54,14 @@
 
                             <div class="form-group">
                                 <label for="name">Project Name</label>
-                                <input type="text" class="form-control" name="project_name"
-                                    value="{{$projects->project_name}}" placeholder="name">
+                                <input type="text" class="form-control" name="project_name" id="project_name"
+                                    value="{{ $projects->project_name }}" placeholder="name">
+
+                                    <span class="text-danger error " id="project_err">
+                                            @error('project_name')
+                                            {{$message}}
+                                            @enderror
+                                        </span>
                             </div>
                             <div class="form-group">
                                 <label for="name">Project Manager</label>
@@ -99,5 +105,35 @@
             .catch(error => {
                 console.error(error);
             });
+
+
+
+        $("#project_name").blur(function(){
+        // alert('aaaa');
+        var project_name = $(this).val();
+        id = <?php echo $projects->id ?>;
+        console.log(id);
+        $.ajax({
+            type: "GET",
+            url: "/admin/checkProject",
+            data: {'project_name':project_name,'id':id},
+            success: function(response) 
+            { 
+                console.log(response);
+                if(response == 1){
+                $('#project_err').text('This project is already exist');
+                $('#submit').attr('disabled','disabled');
+                }
+                else{
+                $('#project_err').text('');
+                $('#submit').removeAttr('disabled');
+                }
+            },
+            error: function(response) 
+            {
+                
+            }
+        });
+  });
     </script>
 @endsection

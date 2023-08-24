@@ -40,6 +40,8 @@ class ProjectManagementController extends Controller
 
             $inserData['description']= $request->description;
             $inserData['project_name']= $request->project_name;
+            // $inserData['slug'] =str_replace(' ', '-',$request->project_name);      
+            $inserData['slug'] =str_replace(' ', '-',trim($request->project_name));      
             $inserData['status'] =  $status;
 
 
@@ -88,6 +90,7 @@ class ProjectManagementController extends Controller
         ->where('id', $request['id'])
         ->update([
             'project_name' => $request['project_name'],
+            'slug' => str_replace(' ', '-',$request['project_name']),
             'description' => $request['description'],
             'manager_d' => $request['manager_d'],
             'status' => $status,
@@ -95,6 +98,32 @@ class ProjectManagementController extends Controller
           return redirect('/admin/view_project')->with('success', 'Project has been updated successfully.');
 
     }
+
+    // check if project name already exist
+    public function checkProject(Request $request){
+        $project_name = $request['project_name'];
+        $project_slug = str_replace(' ', '-',$request['project_name']); 
+        $id = $request['id'];
+        if($id){ 
+             $project_name = DB::table('projects')->select('project_name')->where('id','!=',$id)->where('slug',$project_slug)->first();
+            
+              if($project_name){
+                $project_name = 1;
+              }else{
+                $project_name = 0;
+              }
+        }
+        else{
+            $project_name = DB::table('projects')->select('project_name')->where('project_name',$project_name)->first();
+            if($project_name){
+              $project_name = 1;
+            }else{
+              $project_name = 0;
+            }
+        }
+        return $project_name;
+      }
+    
 
     //ProjectChangeStatus function is use for change for the status
     public function ProjectChangeStatus($id=null, $status=null)   {
