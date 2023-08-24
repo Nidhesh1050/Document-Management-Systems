@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Auth;
+use DB;
 class UserController extends Controller
 {
     //List of users
     public function userManagement(){
-        $users = DB::table('users')->whereIn('type', [0])
+        $users = DB::table('users')->whereIn('type', [0])->where('company_id',Auth::user()->id)
           ->orderBy('id','DESC')->get();
         return view('company.user.userManagement',['users'=>$users]);
     }
