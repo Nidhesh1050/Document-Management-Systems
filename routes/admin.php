@@ -167,6 +167,8 @@ Route::get('/CMSChangeStatus/{id}/{status}',[CMSController::class,'CMSChangeStat
     Route::get('/admin/update_company/{id}',[CompanyController::class,'updateCompany']);
     Route::post('/admin/edit_company',[CompanyController::class,'editCompany']);
     Route::get('/admin/checkCompany', [CompanyController::class, 'checkCompany'])->name('checkCompany');
+    Route::get('/admin/checkMobile', [CompanyController::class, 'checkMobile'])->name('checkMobile');
+    Route::get('/admin/checkEmail', [CompanyController::class, 'checkEmail'])->name('checkEmail');
     Route::get('/companyChangeStatus/{id}/{status}',[CompanyController::class,'companyChangeStatus']);
     /* Module Commpany route end here*/
 
