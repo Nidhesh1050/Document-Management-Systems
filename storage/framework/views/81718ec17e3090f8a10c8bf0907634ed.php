@@ -9,9 +9,9 @@ $currentURL =Route::current()->uri;
 
                 <div class="avatar-sm float-left mr-2">
                     <?php if($logo->profile){?>
-                        <img src="{{ asset('images/profile/' .$logo->profile) }}" alt="..." class="avatar-img rounded-circle" >
+                        <img src="<?php echo e(asset('images/profile/' .$logo->profile)); ?>" alt="..." class="avatar-img rounded-circle" >
                     <?php }else{?>
-                        <img src="{{ asset('images/profiles/demo-profile.png') }}" alt="..." class="avatar-img rounded-circle" >
+                        <img src="<?php echo e(asset('images/profiles/demo-profile.png')); ?>" alt="..." class="avatar-img rounded-circle" >
                     <?php }?>
                 </div>
 
@@ -19,7 +19,8 @@ $currentURL =Route::current()->uri;
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                         <span>
-                            {{ Auth::user()->name }}
+                            <?php echo e(Auth::user()->name); ?>
+
                             <span class="user-level">Administrator</span>
                             <span class="caret"></span>
                         </span>
@@ -56,7 +57,7 @@ $currentURL =Route::current()->uri;
                     <h4 class="text-section">Components</h4>
                 </li>
                 <li class="nav-item <?php if($currentURL =='admin/home'){ echo 'active'; }?>">
-                    <a href="{{url('admin/home')}}">
+                    <a href="<?php echo e(url('admin/home')); ?>">
                         <i class="fas fa-layer-group"></i>
                         <p>Dashboard</p>
                     </a>
@@ -69,12 +70,12 @@ $currentURL =Route::current()->uri;
                     <div class="collapse <?php if(in_array($currentURL,['admin/userManagement','admin/adduser','admin/edit_user/{id}'])){ echo 'show';}?>" id="base">
                         <ul class="nav nav-collapse">
                             <li class="sidebar-item <?php if($currentURL =='admin/userManagement' || $currentURL =='admin/edit_user/{id}'){ echo 'active'; }?> ">
-                                <a  class="sidebar-link" href="{{url('admin/userManagement')}}">
+                                <a  class="sidebar-link" href="<?php echo e(url('admin/userManagement')); ?>">
                                     <span class="sub-item">User List</span>
                                 </a>
                             </li>
                             <li class="sidebar-item <?php if($currentURL =='admin/adduser'){ echo 'active'; }?> ">
-                                <a href="{{url('admin/adduser')}}">
+                                <a href="<?php echo e(url('admin/adduser')); ?>">
                                     <span class="sub-item">Add User</span>
                                 </a>
                             </li>
@@ -91,12 +92,12 @@ $currentURL =Route::current()->uri;
                     <div class="collapse <?php if(in_array($currentURL,['admin/view_company','admin/add_company','admin/update_company/{id}'])){ echo 'show';}?>" id="company">
                         <ul class="nav nav-collapse">
                             <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{url('admin/view_company')}}">
+                                <a class="sidebar-link" href="<?php echo e(url('admin/view_company')); ?>">
                                     <span class="sub-item">Company List</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/add_company')}}">
+                                <a href="<?php echo e(url('admin/add_company')); ?>">
                                     <span class="sub-item">Add Company</span>
                                 </a>
                             </li>
@@ -113,12 +114,12 @@ $currentURL =Route::current()->uri;
                     <div class="collapse <?php if(in_array($currentURL,['admin/view_category','admin/category','admin/update_category/{id}'])){ echo 'show';}?>" id="sidebarLayouts">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('admin/view_category')}}">
+                                <a href="<?php echo e(url('admin/view_category')); ?>">
                                     <span class="sub-item">Category List</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/category')}}">
+                                <a href="<?php echo e(url('admin/category')); ?>">
                                     <span class="sub-item">Add Category</span>
                                 </a>
                             </li>
@@ -135,12 +136,12 @@ $currentURL =Route::current()->uri;
                     <div class="collapse <?php if(in_array($currentURL,['admin/view_project','admin/project','admin/update_project/{id}'])){ echo 'show';}?>" id="project">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('admin/view_project')}}">
+                                <a href="<?php echo e(url('admin/view_project')); ?>">
                                     <span class="sub-item">Project List</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/project')}}">
+                                <a href="<?php echo e(url('admin/project')); ?>">
                                     <span class="sub-item">Add Project</span>
                                 </a>
                             </li>
@@ -158,12 +159,12 @@ $currentURL =Route::current()->uri;
                     <div class="collapse <?php if(in_array($currentURL,['admin/document','admin/createdocument','admin/edit_document/{id}'])){ echo 'show';}?>" id="forms">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('admin/document')}}">
+                                <a href="<?php echo e(url('admin/document')); ?>">
                                     <span class="sub-item">View Document</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/createdocument')}}">
+                                <a href="<?php echo e(url('admin/createdocument')); ?>">
                                         <span class="sub-item">Add Document</span>
                                     </a>
                                 </li>
@@ -181,12 +182,12 @@ $currentURL =Route::current()->uri;
                     <div class="collapse <?php if(in_array($currentURL,['admin/documentType_view','admin/documentType_add','admin/documentType_edit/{id}'])){ echo 'show';}?>" id="list">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('admin/documentType_view')}}">
+                                <a href="<?php echo e(url('admin/documentType_view')); ?>">
                                     <span class="sub-item">Document List</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/documentType_add')}}">
+                                <a href="<?php echo e(url('admin/documentType_add')); ?>">
                                     <span class="sub-item">Add Document</span>
                                 </a>
                             </li>
@@ -203,7 +204,7 @@ $currentURL =Route::current()->uri;
                     <div class="collapse <?php if(in_array($currentURL,['admin/logos','admin/update_logo/{id}'])){ echo 'show';}?>" id="setting">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('admin/logos')}}">
+                                <a href="<?php echo e(url('admin/logos')); ?>">
                                         <span class="sub-item">Logo & profile</span>
                                 </a>
                             </li>
@@ -220,12 +221,12 @@ $currentURL =Route::current()->uri;
 							<div class="collapse <?php if(in_array($currentURL,['admin/show_notification','admin/notification','admin/edit_notification/{id}'])){ echo 'show';}?>" id="tables">
 								<ul class="nav nav-collapse">
 									<li>
-                                    <a href="{{url('admin/show_notification')}}">
+                                    <a href="<?php echo e(url('admin/show_notification')); ?>">
 											<span class="sub-item">View Notification</span>
 										</a>
 									</li>
 									<li>
-                                    <a href="{{url('admin/notification')}}">
+                                    <a href="<?php echo e(url('admin/notification')); ?>">
 											<span class="sub-item">Add Notification</span>
 										</a>
 									</li>
@@ -241,12 +242,12 @@ $currentURL =Route::current()->uri;
 							<div class="collapse <?php if(in_array($currentURL,['admin/view_content','admin/addcontent','admin/update_content/{id}'])){ echo 'show';}?>" id="charts">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="{{url('admin/view_content')}}">
+										<a href="<?php echo e(url('admin/view_content')); ?>">
 											<span class="sub-item">View CMS</span>
 										</a>
 									</li>
 									<li>
-										<a href="{{url('admin/addcontent')}}">
+										<a href="<?php echo e(url('admin/addcontent')); ?>">
 											<span class="sub-item">Add CMS</span>
 										</a>
 									</li>
@@ -264,22 +265,22 @@ $currentURL =Route::current()->uri;
 							<div class="collapse <?php if(in_array($currentURL,['admin/show_email','admin/email','admin/edit_email/{id}','admin/show_content','admin/content','admin/edit_content/{id}'])){ echo 'show';}?>" id="email">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="{{url('admin/show_email')}}">
+										<a href="<?php echo e(url('admin/show_email')); ?>">
 											<span class="sub-item">Email Types</span>
 										</a>
 									</li>
 									<li>
-										<a href="{{url('admin/email')}}">
+										<a href="<?php echo e(url('admin/email')); ?>">
 											<span class="sub-item">Add Email Type</span>
 										</a>
 									</li>
 									<li>
-										<a href="{{url('admin/show_content')}}">
+										<a href="<?php echo e(url('admin/show_content')); ?>">
 											<span class="sub-item"> Email Content</span>
 										</a>
 									</li>
 									<li>
-										<a href="{{url('admin/content')}}">
+										<a href="<?php echo e(url('admin/content')); ?>">
 											<span class="sub-item">Add Email Content</span>
 										</a>
 									</li>
@@ -297,7 +298,7 @@ $currentURL =Route::current()->uri;
 							<div class="collapse <?php if(in_array($currentURL,['admin/module_permission'])){ echo 'show';}?>" id="maps">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="{{url('admin/module_permission')}}">
+										<a href="<?php echo e(url('admin/module_permission')); ?>">
 											<span class="sub-item">Module Permission</span>
 										</a>
 									</li>
@@ -310,3 +311,4 @@ $currentURL =Route::current()->uri;
     </div>
 </div>
 
+<?php /**PATH C:\wamp64\www\dms\resources\views/elements/admin/left_menus.blade.php ENDPATH**/ ?>

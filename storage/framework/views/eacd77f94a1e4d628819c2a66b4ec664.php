@@ -1,11 +1,10 @@
-@extends('layouts.company-app')
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
                 <ul class="breadcrumbs">
                     <li class="nav-home">
-                        <a href="{{ url('admin/home') }}">
+                        <a href="<?php echo e(url('admin/home')); ?>">
                             <i class="flaticon-home"></i>
                         </a>
                     </li>
@@ -28,16 +27,16 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="flash-message">
-                                @if ($message = Session::get('success'))
+                                <?php if($message = Session::get('success')): ?>
                                     <div class="alert alert-success">
-                                        <p>{{ $message }}</p>
+                                        <p><?php echo e($message); ?></p>
                                     </div>
-                                @endif
-                                @if ($message = Session::get('error'))
+                                <?php endif; ?>
+                                <?php if($message = Session::get('error')): ?>
                                     <div class="alert alert-danger">
-                                        <p>{{ $message }}</p>
+                                        <p><?php echo e($message); ?></p>
                                     </div>
-                                @endif
+                                <?php endif; ?>
                             </div>
                             <div class="d-flex align-items-center">
                                 <a><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
@@ -49,8 +48,8 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive ">
-                                <form action="{{ url('/admin/module_permission') }}" method="post">
-                                    @csrf
+                                <form action="<?php echo e(url('/admin/module_permission')); ?>" method="post">
+                                    <?php echo csrf_field(); ?>
                                     <div class="col-md-12">
                                         <div class="col-md-12">
                                             <h2>User:</h2>
@@ -59,9 +58,9 @@
                                             <select name="user_id" class="form-control input-solid">
 
                                                 <option value="">Please Select</option>
-                                                @foreach ($modules as $modules)
-                                                    <option value="{{ $modules->id }}">{{ $modules->name }}</option>
-                                                @endforeach
+                                                <?php $__currentLoopData = $modules; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modules): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <option value="<?php echo e($modules->id); ?>"><?php echo e($modules->name); ?></option>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
                                         </div>
                                     </div>
@@ -75,42 +74,49 @@
                                                 <th>Edit</th>
                                                 <th>Delete</th>
                                                 <th>View</th>
+                                                 <th>Change Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($users as $users)
+                                            <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $users): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <tr>
 
-                                                    <td> {{ $users->id }}</td>
-                                                    <td> {{ $users->module_name }}</td>
-                                                    <input type="hidden" name="id[]" value="{{ $users->id }}">
+                                                    <td> <?php echo e($users->id); ?></td>
+                                                    <td> <?php echo e($users->module_name); ?></td>
+                                                  
                                                     <td>
                                                         <input class="form-check-input" type="checkbox"
-                                                            name="add[{{ $users->id }}]"
-                                                            value="{{ $users->module_name }}" id="" />
+                                                            name="permission[<?php echo e($users->id); ?>][add_permission]"
+                                                             id="" />
                                                     </td>
                                                     <td>
                                                         <input class="form-check-input" type="checkbox"
-                                                            name="edit[{{ $users->id }}]"
-                                                            value="{{ $users->module_name }}" id="" />
+                                                            name="permission[<?php echo e($users->id); ?>][edit_permission]"
+                                                            id="" />
                                                     </td>
                                                     <td>
                                                         <input class="form-check-input" type="checkbox"
-                                                            name="delete[{{ $users->id }}]"
-                                                            value="{{ $users->module_name }}" id="" />
+                                                            name="permission[<?php echo e($users->id); ?>][delete_permission]"
+                                                            id="" />
                                                     </td>
                                                     <td>
                                                         <input class="form-check-input" type="checkbox"
-                                                            name="view[{{ $users->id }}]"
-                                                            value="{{ $users->module_name }}" id="" />
+                                                            name="permission[<?php echo e($users->id); ?>][view_permission]"
+                                                             id="" />
+                                                    </td>
+                                                      <td>
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="permission[<?php echo e($users->id); ?>][status_permission]"
+                                                           id=""/>
                                                     </td>
                                                 </tr>
-                                            @endforeach
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </tbody>
                                     </table>
+                                     <!-- <input type="hidden" name="id[]" value="<?php echo e($users->id); ?>"> -->
                                     <div class="text-right">
                                         <button type="submit" class="mt-4 btn btn-success">Submit</button>
-                                        <a href="{{ url('admin/module_permission') }}" class="mt-4 btn btn-danger">Cancel</a>
+                                        <a href="<?php echo e(url('admin/module_permission')); ?>" class="mt-4 btn btn-danger">Cancel</a>
                                         <div>
                                 </form>
                             </div>
@@ -120,4 +126,32 @@
             </div>
         </div>
     </div>
-@endsection
+
+
+
+    <script>
+                            $(document).ready(function() {
+
+
+
+                                $("input[type='checkbox']").on("click", function() {
+                                    var userId = $(this).attr("id").split("-")[
+                                    2]; 
+                                    if ($("#add-checkbox-" + userId).prop("checked") || $(
+                                            "#edit-checkbox-" + userId).prop("checked") || $(
+                                            "#delete-checkbox-" + userId).prop("checked")) {
+                                        $("#view-checkbox-" + userId).prop("checked", true);
+                                    } else {
+
+                                        $("#view-checkbox-" + userId).prop("checked", true);
+                                    }
+                                });
+
+                                
+                            });
+                            </script>
+<?php $__env->stopSection(); ?>
+
+
+
+<?php echo $__env->make('layouts.admin-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\dms\resources\views/admin/permission/module_permission.blade.php ENDPATH**/ ?>
