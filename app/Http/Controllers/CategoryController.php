@@ -24,7 +24,7 @@ class CategoryController extends Controller
     
             $inserData['parent_id'] = $request->parent_id;
             $inserData['name']= $request->name;
-            $inserData['category_slag']= str_replace(' ', '_', $request->name);
+            $inserData['category_slag'] = str_replace(' ', '_', trim($request->name));
             $inserData['description'] = $request->description;
             DB::table('categories')->insert($inserData);
             return redirect('admin/view_category')->with('success', 'Category has been added successfully.');
@@ -73,7 +73,11 @@ class CategoryController extends Controller
     public function checkName(Request $request){
         $name = $request['name'];
         $id = $request['id'];
-        dd( $name);die;
+
+      
+        $category_slag = str_replace(' ', '-',$request['name']);
+        $name = DB::table('categories')->select('name')->where('id','!=',$id)->where('category_slag',$category_slag)->first();
+
         if($id){ 
              $name = DB::table('categories')->select('name')->where('id','!=',$id)->where('name',$name)->first();
             

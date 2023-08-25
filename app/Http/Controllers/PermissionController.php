@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class PermissionController extends Controller
 {
-    public function module_permission(){
+    public function module_permissioN(){
         $modules = DB::table('users')->select('id','name')->get();
 
         $users = DB::table('modules')->orderBy('id','ASC')->get();
