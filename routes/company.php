@@ -35,6 +35,7 @@ Auth::routes();
 Route::group(['prefix' => 'company'], function() {
 	Route::middleware(['auth', 'user-access:company'])->group(function () {
         Route::get('/home', [HomeController::class, 'companyHome'])->name('company.home');
+
 		/* User management routes start*/
             Route::get('/userManagement',[UserController::class,'userManagement']);
             Route::get('/delete_user/{id}', [UserController::class,'delete']);
@@ -48,21 +49,26 @@ Route::group(['prefix' => 'company'], function() {
     
     
         /* Category management routes start*/
-            Route::get('/category',[CategoryController::class,'category']);
-            Route::post('/add_category',[CategoryController::class,'add_category']);
-            Route::get('/view_category',[CategoryController::class,'view_category']);
-            Route::get('/delete_category/{id}',[CategoryController::class,'delete_category']);
-            Route::get('/update_category/{id}',[CategoryController::class,'update_category']);
-            Route::post('/edit_category',[CategoryController::class,'edit_category']);
+            
+            
+            Route::get('/category',[CategoryController::class,'categoryAdd']);
+            Route::post('/add_category',[CategoryController::class,'categoryAdd']);
+            Route::get('/view_category',[CategoryController::class,'categoryView']);
+            Route::get('/delete_category/{id}',[CategoryController::class,'categoryDelete']);
+            Route::get('/update_category/{id}',[CategoryController::class,'categoryUpdate']);
+            Route::post('/edit_category',[CategoryController::class,'categoryEdit']);
+            Route::get('/categoryChangeStatus/{id}/{status}',[CategoryController::class,'categoryChangeStatus']);
+            Route::get('/checkName', [CategoryController::class, 'checkName'])->name('checkName');
         /* Category management routes end*/
     
         /* Document management routes start*/
-            Route::get('/createdocument',[DocumentController::class,'createdocument']);
-            Route::post('/add_document',[DocumentController::class,'add_document']);
-            Route::get('/document',[DocumentController::class,'document']);
-            Route::get('/delete_document/{id}', [DocumentController::class,'delete_document']);
-            Route::get('/edit_document/{id}', [DocumentController::class,'edit_document']);
-            Route::post('/update_document/', [DocumentController::class,'update_document']);
+            Route::get('/createdocument',[DocumentController::class,'addDocument']);
+            Route::post('/createdocument',[DocumentController::class,'addDocument']);
+            Route::get('/document',[DocumentController::class,'documentView']);
+            Route::get('/delete_document/{id}', [DocumentController::class,'documentDelete']);
+            Route::get('/edit_document/{id}', [DocumentController::class,'documentEdit']);
+            Route::post('/update_document/', [DocumentController::class,'documentUpdate']);
+            Route::get('/DocumentChangeStatus/{id}/{status}',[DocumentController::class,'documentChangeStatus']);
         /* Document management routes end*/
     
     
@@ -83,6 +89,8 @@ Route::group(['prefix' => 'company'], function() {
             Route::post('/register',[DocumentController::class,'register']);
             Route::get('/edit/{id}', [DocumentController::class,'edit']);
             Route::post('/documentupdate/', [DocumentController::class,'documentupdate']);
+
+
     
         /* Side Setting routes start*/
             Route::get('/setting',[SettingController::class,'setting']);

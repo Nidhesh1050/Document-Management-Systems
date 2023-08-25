@@ -78,7 +78,7 @@ $currentURL =Route::current()->uri;
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a data-toggle="collapse" href="#company">
                      <i class="fas fa-table"></i>
                         <p>Company</p>
@@ -99,7 +99,7 @@ $currentURL =Route::current()->uri;
 
                         </ul>
                     </div>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#sidebarLayouts">
                         <i class="fas fa-th-list"></i>
