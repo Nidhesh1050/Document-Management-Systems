@@ -58,8 +58,8 @@
                                 <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label>Email</label>
-                                    <input type="email" name="email" id="email" class="form-control">
-                                    <span class="text-danger" id="company_err">
+                                    <input type="email" name="email" id="company_email" class="form-control">
+                                    <span class="text-danger" id="email_err">
                                         @error('email')
                                             {{ $message }}
                                         @enderror
@@ -68,7 +68,7 @@
                                 <div class="form-group col-md-6">
                                     <label>Mobile No</label>
                                     <input type="text" name="mobile" id="mobile" class="form-control">
-                                    <span class="text-danger" id="company_err">
+                                    <span class="text-danger" id="mobile_err">
                                         @error('mobile')
                                             {{ $message }}
                                         @enderror
@@ -105,7 +105,7 @@
                                     <div>
                             </form>
                         </div>
-                        <script>
+         <script>
                             $(document).ready(function() {
                                 $("#company").validate({
                                     rules: {
@@ -202,6 +202,60 @@ $("#company_name").blur(function(){
       }
     });
   });
+
+
+
+  $("#mobile").blur(function(){
+    var mobile = $(this).val();
+    $.ajax({
+      type: "GET",
+      url: "/admin/checkMobile?mobile="+mobile,
+      
+      success: function(response) 
+      { 
+        console.log(response);
+        if(response == 1){
+          $('#mobile_err').text('This mobile is already exist');
+          $('#submit').attr('disabled','disabled');
+        }
+        else{
+          $('#mobile_err').text('');
+          $('#submit').removeAttr('disabled');
+        }
+      },
+      error: function(response) 
+      {
+        
+      }
+    });
+  });
+
+
+  $("#company_email").blur(function(){
+    var email = $(this).val();
+    $.ajax({
+      type: "GET",
+      url: "/admin/checkEmail?email="+email,
+      
+      success: function(response) 
+      { 
+        console.log(response);
+        if(response == 1){
+          $('#email_err').text('This email is already exist');
+          $('#submit').attr('disabled','disabled');
+        }
+        else{
+          $('#email_err').text('');
+          $('#submit').removeAttr('disabled');
+        }
+      },
+      error: function(response) 
+      {
+        
+      }
+    });
+  });
+
   </script>
 
 @endsection

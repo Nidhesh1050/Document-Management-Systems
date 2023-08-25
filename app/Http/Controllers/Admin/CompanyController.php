@@ -117,7 +117,54 @@ class CompanyController extends Controller
         }
         return $company_names;
       }
+     // check if mobile number already exist
+     public function checkMobile(Request $request){
+      $mobile = $request['mobile'];
+      $id = $request['id'];
+      if($id){ 
+           $mobile = DB::table('users')->select('mobile')->where('id','!=',$id)->where('mobile',$mobile)->first();
+          
+            if($mobile){
+              $mobile = 1;
+            }else{
+              $mobile=0;
+            }
+      }
+      else{
+          $mobile = DB::table('users')->select('mobile')->where('mobile',$mobile)->first();
+          if($mobile){
+            $mobile = 1;
+          }else{
+            $mobile=0;
+          }
+      }
+      return $mobile;
+    }
+
     
+// check if Email already exist
+public function checkEmail(Request $request){
+  $email = $request['email'];
+  $id = $request['id'];
+  if($id){ 
+       $email = DB::table('users')->select('email')->where('id','!=',$id)->where('email',$email)->first();
+      
+        if($email){
+          $email = 1;
+        }else{
+          $email=0;
+        }
+  }
+  else{
+      $email = DB::table('users')->select('email')->where('email',$email)->first();
+      if($email){
+        $email = 1;
+      }else{
+        $email=0;
+      }
+  }
+  return $email;
+}
       //change status
       public function companyChangeStatus($id = null, $status = null)
       {
