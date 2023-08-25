@@ -58,8 +58,8 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label>Email</label>
-                                    <input type="email" name="email" id="email" class="form-control" value="{{$company_data->email}}">
-                                    <span class="text-danger" id="company_err">
+                                    <input type="email" name="email" id="company_email" class="form-control" value="{{$company_data->email}}">
+                                    <span class="text-danger" id="email_err">
                                         @error('email')
                                             {{ $message }}
                                         @enderror
@@ -68,7 +68,7 @@
                                 <div class="form-group col-md-6">
                                     <label>Mobile No</label>
                                     <input type="text" name="mobile" id="mobile" class="form-control" value="{{$company_data->mobile}}">
-                                    <span class="text-danger" id="company_err">
+                                    <span class="text-danger" id="mobile_err">
                                         @error('mobile')
                                             {{ $message }}
                                         @enderror
@@ -126,7 +126,6 @@
     }
 
     $("#company_name").blur(function(){
-        // alert('aaaa');
         var company_name = $(this).val();
         id = <?php echo $company_data->id ?>;
         console.log(id);
@@ -143,6 +142,63 @@
                 }
                 else{
                 $('#company_err').text('');
+                $('#submit').removeAttr('disabled');
+                }
+            },
+            error: function(response) 
+            {
+                
+            }
+        });
+    });
+        
+
+        $("#mobile").blur(function(){
+        var mobile = $(this).val();
+        id = <?php echo $company_data->id ?>;
+        console.log(id);
+        $.ajax({
+            type: "GET",
+            url: "/admin/checkMobile",
+            data: {'mobile':mobile,'id':id},
+            success: function(response) 
+            { 
+                console.log(response);
+                if(response == 1){
+                $('#mobile_err').text('This mobile number is already exist');
+                $('#submit').attr('disabled','disabled');
+                }
+                else{
+                $('#mobile_err').text('');
+                $('#submit').removeAttr('disabled');
+                }
+            },
+            error: function(response) 
+            {
+                
+            }
+        });
+  });
+
+
+  
+  $("#company_email").blur(function(){
+        var email = $(this).val();
+        id = <?php echo $company_data->id ?>;
+        console.log(id);
+        $.ajax({
+            type: "GET",
+            url: "/admin/checkEmail",
+            data: {'email':email,'id':id},
+            success: function(response) 
+            { 
+                console.log(response);
+                if(response == 1){
+                $('#email_err').text('This email is already exist');
+                $('#submit').attr('disabled','disabled');
+                }
+                else{
+                $('#email_err').text('');
                 $('#submit').removeAttr('disabled');
                 }
             },

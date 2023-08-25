@@ -1,4 +1,4 @@
-@extends('layouts.admin-app')
+@extends('layouts.company-app')
 @section('content')
 
 <div class="content">
@@ -56,10 +56,8 @@
                                     <tr>
                                         <th> S. No</th>
                                         <th> Name</th>
-                                        <th>Company Name</th>
                                         <th> Email </th>
                                         <th> Mobile </th>
-                                        <th> User Type</th>
                                         <th> Status</th>
                                         <th> Action</th>
 
@@ -73,30 +71,37 @@
                                         <tr>
                                         <td>{{$loop->iteration}}</td>
                                             <td> {{ $users->name }}</td>
-                                            <td> {{ $users->company_name }}</td>
                                             <td> {{ $users->email }}</td>
                                             <td> {{ $users->mobile }}</td>
-                                            <?php $user_type = (($users->user_type == 0) ? "User" : (($users->user_type == 2)  ? 'Company' : ''));?>
-                                            <td> {{ $user_type }}</td>
                                             <td>{{ $status }}</td>
-                                            <td>
-                                                <div class="form-button-action">
-                                                    <a href='/admin/edit_user/{{ $users->id }}'>
-                                                        <button type="button" data-toggle="tooltip" title=""
-                                                            class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                            <td class="action_td">
+
+                                                    <a href='/company/edit_user/{{ $users->id }}' data-toggle="tooltip" title=""
+                                                            class="btn-link btn-primary" data-original-title="Edit Task">
                                                             <i class="fa fa-edit"></i>
-                                                       </button>
                                                     </a>
-                                                </div>
-                                                    <div class="form-button-action">
-                                                    <a href="/admin/delete_user/{{ $users->id }}"
-                                                        onclick="return confirm('Are you sure you want to delete this user ?')">
-                                                        <button type="button" data-toggle="tooltip" title=""
-                                                            class="btn btn-link btn-danger" data-original-title="Remove">
+                                                    @php
+                                                        $status = @$users->status == 1 ? '0' : '1';
+                                                        $statusicon = @$users->status == 1 ? 'btn-danger' : 'btn-success';
+
+                                                        $statustite = @$users->status == 1 ? 'InActive' : 'Active';
+                                                    @endphp
+
+                                                     <a href="{{url('UserChangeStatus/'. $users->id.'/'. $status) }}"
+                                                        onclick="return confirm('Are you sure to change status?')"   data-toggle="tooltip" title=""
+                                                            class="btn-link {{$statusicon}}" data-original-title="{{$statustite}}">
+                                                            @if($users->status==0)
+                                                            <i class="fa fa-check"></i>
+                                                            @else
                                                             <i class="fa fa-times"></i>
-                                                     </button>
+                                                            @endif
                                                     </a>
-                                                </div>
+                                                    <a href="/company/delete_user/{{ $users->id }}"
+                                                        onclick="return confirm('Are you sure you want to delete this user ?')"  data-toggle="tooltip" title=""
+                                                            class="btn-link btn-danger" data-original-title="Remove">
+                                                            <i class="fa fa-trash"></i>
+                                                    </a>
+
                                             </td>
                                         </tr>
                                     @endforeach

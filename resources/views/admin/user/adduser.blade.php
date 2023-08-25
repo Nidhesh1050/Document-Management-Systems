@@ -66,9 +66,9 @@
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="email">Email Address</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Enter Email"
+                                    <input type="email" class="form-control" id="user_email" placeholder="Enter Email"
                                         name="email">
-                                    <span class="text-danger  ">
+                                    <span class="text-danger error" id="email_err">
                                         @error('email')
                                         {{$message}}
                                         @enderror
@@ -78,7 +78,7 @@
                                     <label for="password">Password</label>
                                     <input type="password" class="form-control" id="password"
                                         placeholder="Enter your password" name="password">
-                                    <span class="text-danger  ">
+                                    <span class="text-danger error">
                                         @error('password')
                                         {{$message}}
                                         @enderror
@@ -88,9 +88,9 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="mobile">Mobile</label>
-                                    <input type="text" class="form-control" id="mobile" placeholder="Enter Mobile"
+                                    <input type="text" class="form-control" id="user_mobile" placeholder="Enter Mobile"
                                         name="mobile">
-                                    <span class="text-danger  ">
+                                    <span class="text-danger error" id="mobile_err">
                                         @error('mobile')
                                         {{$message}}
                                         @enderror
@@ -137,12 +137,12 @@ $(document).ready(function() {
             company_name: {
                 required: true,
             },
-            
+
             email: {
                 required: true,
                 email: true
             },
-            
+
             mobile: {
                 required: true,
                 number: true,
@@ -158,7 +158,7 @@ $(document).ready(function() {
                 required: true,
                 minlength: 8
             },
-           
+
         },
         messages: {
             name: {
@@ -191,6 +191,63 @@ $(document).ready(function() {
 
     });
 });
+
+//check email
+
+  $("#user_email").blur(function(){
+//    alert('aaaa');
+    var email = $(this).val();
+    $.ajax({
+      type: "GET",
+      url: "/admin/checkUserEmail?email="+email,
+
+      success: function(response)
+      {
+        console.log(response);
+        if(response == 1){
+          $('#email_err').text('This email is already exist');
+          $('#submit').attr('disabled','disabled');
+        }
+        else{
+          $('#email_err').text('');
+          $('#submit').removeAttr('disabled');
+        }
+      },
+      error: function(response)
+      {
+
+      }
+    });
+  });
+
+
+//Check mobile
+
+  $("#user_mobile").blur(function(){
+//    alert('aaaa');
+    var mobile = $(this).val();
+    $.ajax({
+      type: "GET",
+      url: "/admin/checkUserMobile?mobile="+mobile,
+
+      success: function(response)
+      {
+        console.log(response);
+        if(response == 1){
+          $('#mobile_err').text('This mobile is already exist');
+          $('#submit').attr('disabled','disabled');
+        }
+        else{
+          $('#mobile_err').text('');
+          $('#submit').removeAttr('disabled');
+        }
+      },
+      error: function(response)
+      {
+
+      }
+    });
+  });
 </script>
 
 @endsection

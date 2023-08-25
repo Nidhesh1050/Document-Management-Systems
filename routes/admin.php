@@ -50,6 +50,8 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/adduser',[UserController::class,'adduser']);
     Route::post('/admin/register_user',[UserController::class,'register']);
     Route::get('/UserChangeStatus/{id}/{status}',[UserController::class,'UserChangeStatus']);
+    Route::get('/admin/checkUserEmail', [UserController::class, 'checkUserEmail'])->name('checkUserEmail');
+    Route::get('/admin/checkUserMobile', [UserController::class, 'checkUserMobile'])->name('checkUserMobile');
     /* User management routes end*/
 
 
@@ -82,6 +84,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
      Route::get('/admin/delete_project/{id}',[ProjectManagementController::class,'deleteProject']);
      Route::get('/admin/update_project/{id}',[ProjectManagementController::class,'updateProject']);
      Route::post('/admin/edit_project',[ProjectManagementController::class,'editProject']);
+     Route::get('/admin/checkProject', [ProjectManagementController::class, 'checkProject'])->name('checkProject');
      Route::get('/ProjectChangeStatus/{id}/{status}',[ProjectManagementController::class,'ProjectChangeStatus']);
      /* Project management routes end*/
 
@@ -100,7 +103,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     // Route::get('/ProjectChangeStatus/{id}/{status}',[DocumentTypeController::class,'DocumentTypeChangeStatus']);
 
     /* Side Setting routes start*/
-    Route::get('/admin/logos',[SettingController::class,'setting']);    
+    Route::get('/admin/logos',[SettingController::class,'setting']);
     Route::post('/admin/update_logo',[SettingController::class,'Updateimage']);
 /*  Side Setting routes end*/
 
@@ -163,6 +166,8 @@ Route::get('/CMSChangeStatus/{id}/{status}',[CMSController::class,'CMSChangeStat
     Route::get('/admin/update_company/{id}',[CompanyController::class,'updateCompany']);
     Route::post('/admin/edit_company',[CompanyController::class,'editCompany']);
     Route::get('/admin/checkCompany', [CompanyController::class, 'checkCompany'])->name('checkCompany');
+    Route::get('/admin/checkMobile', [CompanyController::class, 'checkMobile'])->name('checkMobile');
+    Route::get('/admin/checkEmail', [CompanyController::class, 'checkEmail'])->name('checkEmail');
     Route::get('/companyChangeStatus/{id}/{status}',[CompanyController::class,'companyChangeStatus']);
     /* Module Commpany route end here*/
 
