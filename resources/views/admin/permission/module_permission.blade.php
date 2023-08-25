@@ -84,25 +84,26 @@
                                                     <td> {{ $users->id }}</td>
                                                     <td> {{ $users->module_name }}</td>
                                                     <input type="hidden" name="id[]" value="{{ $users->id }}">
+                                                    
                                                     <td>
                                                         <input class="form-check-input" type="checkbox"
                                                             name="add[{{ $users->id }}]"
-                                                            value="{{ $users->module_name }}" id="" />
+                                                            value="{{ $users->module_name }}"/>
                                                     </td>
                                                     <td>
                                                         <input class="form-check-input" type="checkbox"
                                                             name="edit[{{ $users->id }}]"
-                                                            value="{{ $users->module_name }}" id="" />
+                                                            value="{{ $users->module_name }}"/>
                                                     </td>
                                                     <td>
                                                         <input class="form-check-input" type="checkbox"
                                                             name="delete[{{ $users->id }}]"
-                                                            value="{{ $users->module_name }}" id="" />
+                                                            value="{{ $users->module_name }}"/>
                                                     </td>
                                                     <td>
                                                         <input class="form-check-input" type="checkbox"
                                                             name="view[{{ $users->id }}]"
-                                                            value="{{ $users->module_name }}" id="" />
+                                                            value="{{ $users->module_name }}"/>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -120,4 +121,5 @@
             </div>
         </div>
     </div>
+
 @endsection
