@@ -87,22 +87,22 @@
                                                     <td>
                                                         <input class="form-check-input" type="checkbox"
                                                             name="add[{{ $users->id }}]"
-                                                            value="{{ $users->module_name }}" id="" />
+                                                            value="{{ $users->module_name }}" id="add-checkbox-{{ $users->id }}" />
                                                     </td>
                                                     <td>
                                                         <input class="form-check-input" type="checkbox"
                                                             name="edit[{{ $users->id }}]"
-                                                            value="{{ $users->module_name }}" id="" />
+                                                            value="{{ $users->module_name }}" id="edit-checkbox-{{ $users->id }}" />
                                                     </td>
                                                     <td>
                                                         <input class="form-check-input" type="checkbox"
                                                             name="delete[{{ $users->id }}]"
-                                                            value="{{ $users->module_name }}" id="" />
+                                                            value="{{ $users->module_name }}" id="delete-checkbox-{{ $users->id }}" />
                                                     </td>
                                                     <td>
                                                         <input class="form-check-input" type="checkbox"
                                                             name="view[{{ $users->id }}]"
-                                                            value="{{ $users->module_name }}" id="" />
+                                                            value="{{ $users->module_name }}" id="view-checkbox-{{ $users->id }}" />
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -120,4 +120,30 @@
             </div>
         </div>
     </div>
+
+
+
+    <script>
+                            $(document).ready(function() {
+
+
+
+                                $("input[type='checkbox']").on("click", function() {
+                                    var userId = $(this).attr("id").split("-")[
+                                    2]; 
+                                    if ($("#add-checkbox-" + userId).prop("checked") || $(
+                                            "#edit-checkbox-" + userId).prop("checked") || $(
+                                            "#delete-checkbox-" + userId).prop("checked")) {
+                                        $("#view-checkbox-" + userId).prop("checked", true);
+                                    } else {
+
+                                        $("#view-checkbox-" + userId).prop("checked", true);
+                                    }
+                                });
+
+                                
+                            });
+                            </script>
 @endsection
+
+

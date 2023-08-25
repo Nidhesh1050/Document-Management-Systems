@@ -76,7 +76,7 @@ class CompanyController extends Controller
           $image->move($destinationPath, $logo_name);
           $companyUpdateData['logo'] = $logo_name;
         } 
-        $companyUpdateData['slug'] =str_replace(' ', '-',$request->company_name);
+        $companyUpdateData['slug'] =str_replace(' ', '-',trim($request->company_name));
         $companyUpdateData['company_name'] =$request->company_name;
         $userId = DB::table('companies')->where('id', $request['id'])->update($companyUpdateData);
     
@@ -97,9 +97,11 @@ class CompanyController extends Controller
        // check if company name already exist
       public function checkCompany(Request $request){
         $company_name = $request['company_name'];
+        $slug = str_replace(' ', '-',trim($request['company_name'])); 
+
         $id = $request['id'];
         if($id){ 
-             $company_name = DB::table('companies')->select('company_name')->where('id','!=',$id)->where('company_name',$company_name)->first();
+             $company_name = DB::table('companies')->select('company_name')->where('id','!=',$id)->where('slug',$slug)->first();
             
               if($company_name){
                 $company_names = 1;
