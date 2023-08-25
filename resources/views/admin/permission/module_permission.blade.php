@@ -144,7 +144,6 @@
                 var view = $(".view-"+view).data('subfield');
                      $( "."+view ).prop( "checked", false ); 
             }
-            
         });
   </script>
     
