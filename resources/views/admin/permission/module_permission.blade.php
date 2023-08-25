@@ -86,28 +86,28 @@
                                                     <td> {{ $users->module_name }}</td>
                                                   
                                                     <td>
-                                                        <input class="form-check-input" type="checkbox"
-                                                            name="permission[{{ $users->id }}][add_permission]"
+                                                        <input class="form-check-input permission" type="checkbox" 
+                                                            name="permission[{{ $users->id }}][add_permission]" data-view="add_permission"
                                                              id="" />
                                                     </td>
                                                     <td>
-                                                        <input class="form-check-input" type="checkbox"
-                                                            name="permission[{{ $users->id }}][edit_permission]"
+                                                        <input class="form-check-input permission" type="checkbox" 
+                                                            name="permission[{{ $users->id }}][edit_permission]" data-view="edit_permission"
                                                             id="" />
                                                     </td>
                                                     <td>
-                                                        <input class="form-check-input" type="checkbox"
-                                                            name="permission[{{ $users->id }}][delete_permission]"
+                                                        <input class="form-check-input permission" type="checkbox" 
+                                                            name="permission[{{ $users->id }}][delete_permission]" data-view="delete_permission"
                                                             id="" />
                                                     </td>
                                                     <td>
-                                                        <input class="form-check-input" type="checkbox"
-                                                            name="permission[{{ $users->id }}][view_permission]"
+                                                        <input class="form-check-input view-permission" type="checkbox" 
+                                                            name="permission[{{ $users->id }}][view_permission]"  data-view="view_permission"
                                                              id="" />
                                                     </td>
                                                       <td>
                                                         <input class="form-check-input" type="checkbox"
-                                                            name="permission[{{ $users->id }}][status_permission]"
+                                                            name="permission[{{ $users->id }}][status_permission]" 
                                                            id=""/>
                                                     </td>
                                                 </tr>
@@ -128,29 +128,21 @@
         </div>
     </div>
 
-
-
     <script>
-                            $(document).ready(function() {
+	$('.permission').on('click', function(){
+			var view = $(this).data('view');
+            $( "."+view ).prop( "checked", true );
+ 
+		});
 
-
-
-                                $("input[type='checkbox']").on("click", function() {
-                                    var userId = $(this).attr("id").split("-")[
-                                    2]; 
-                                    if ($("#add-checkbox-" + userId).prop("checked") || $(
-                                            "#edit-checkbox-" + userId).prop("checked") || $(
-                                            "#delete-checkbox-" + userId).prop("checked")) {
-                                        $("#view-checkbox-" + userId).prop("checked", true);
-                                    } else {
-
-                                        $("#view-checkbox-" + userId).prop("checked", true);
-                                    }
-                                });
-
-                                
-                            });
-                            </script>
+	$('.view-permission').on('click', function(){
+			if (!$(this).is(':checked')) {
+				var view = $(this).data('subfield');
+					 $( "."+view ).prop( "checked", false ); 
+			}
+			
+		});
+  </script>
 @endsection
 
 
