@@ -71,34 +71,34 @@ use app\Models\User;
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($users as $users)
+                    @foreach ($documents as $documents )
 
                         @php
-                            $status = $users->status == 1 ? 'Active' : 'InActive';
+                            $status = $documents ->status == 1 ? 'Active' : 'InActive';
                         @endphp
 
                         <tr>
                         <td>{{$loop->iteration}}</td>
 
                            
-                            <td>{{ User::getDocumentID($users->project_id) }}</td>
+                            <td>{{ User::getDocumentID($documents ->project_id) }}</td>
 
-                            <td> {{ User::getCategoryID($users->category_id) }}</td>
-                            <td> {{ User::getDocumentTypeID($users->document_type_id) }}</td>
-                            <td> {{ $users->title }}</td>
-                            <td> <?php echo $users->description ?></td>
-                            <td> {{ $users->documents }}</td>
+                            <td> {{ User::getCategoryID($documents ->category_id) }}</td>
+                            <td> {{ User::getDocumentTypeID($documents ->document_type_id) }}</td>
+                            <td> {{ $documents ->title }}</td>
+                            <td> <?php echo $documents ->description ?></td>
+                            <td> {{ $documents ->documents }}</td>
                             <td>{{ $status }}</td>
                             <td>
                                 <div class="form-button-action">
-                                    <a href='edit_document/{{ $users->id }}'>
+                                    <a href='edit_document/{{ $documents ->id }}'>
                                         <button type="button" data-toggle="tooltip" title=""
                                             class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
                                             <i class="fa fa-edit">
                                             </i>
                                         </button>
                                     </a>
-                                    <a href="delete_document/{{ $users->id }}"
+                                    <a href="delete_document/{{ $documents ->id }}"
                                         onclick="return confirm('Are you sure you want to delete this document ?')">
                                         <button type="button" data-toggle="tooltip" title=""
                                             class="btn btn-link btn-danger" data-original-title="Remove">

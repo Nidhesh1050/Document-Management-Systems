@@ -67,7 +67,7 @@ use app\Models\User;
             </tr>
         </thead>
         <tbody>
-            @foreach($users as $users )
+            @foreach($categories as $users )
            
                 <tr>
                 <td>{{$loop->iteration}}</td>
