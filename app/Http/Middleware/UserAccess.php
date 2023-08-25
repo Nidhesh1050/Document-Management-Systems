@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+use Auth; 
 class UserAccess
 {
     /**
@@ -17,11 +17,11 @@ class UserAccess
     {   
         if(auth()->user()->type == $userType){
             return $next($request);
+        }else{
+            Auth::logout();
+            return redirect()->route('login')
+            ->with('error','You are not eligible, please contact to administrator ');
         }
-        return response()->json(['You do not have permission to access for this page.']);
     }
-    
-    
-
     
 }

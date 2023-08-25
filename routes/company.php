@@ -14,6 +14,7 @@ use App\Http\Controllers\Company\EmailTypeController;
 use App\Http\Controllers\Company\EmailContentController;
 use App\Http\Controllers\Company\PermissionController;
 use App\Http\Controllers\Company\CompanyController;
+use App\Http\Controllers\Company\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,13 +36,14 @@ Route::group(['prefix' => 'company'], function() {
 	Route::middleware(['auth', 'user-access:company'])->group(function () {
         Route::get('/home', [HomeController::class, 'companyHome'])->name('company.home');
 		/* User management routes start*/
-            Route::get('/userManagement',[HomeController::class,'userManagement']);
-            Route::get('/delete_user/{id}', [HomeController::class,'delete']);
-            Route::get('/edit_user/{id}', [HomeController::class,'edit']);
-            Route::post('/update_user', [HomeController::class,'update']);
+            Route::get('/userManagement',[UserController::class,'userManagement']);
+            Route::get('/delete_user/{id}', [UserController::class,'delete']);
+            Route::get('/edit_user/{id}', [UserController::class,'edit']);
+            Route::post('/update_user', [UserController::class,'update']);
             
             Route::get('/adduser',[HomeController::class,'adduser']);
             Route::post('/register_user',[HomeController::class,'register']);
+            Route::get('/UserChangeStatus/{id}/{status}',[UserController::class,'UserChangeStatus']);
         /* User management routes end*/
     
     

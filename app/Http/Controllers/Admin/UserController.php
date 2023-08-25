@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\Models\Projects;
 use App\Models\User;
-
+use App\Mail\MyTestMail;
 
 class UserController extends Controller
 {
@@ -90,7 +90,7 @@ class UserController extends Controller
           'title' => 'Mail from dms.srmtechsol.com',
           'body' => 'Welcome in Document Manganent Proejct',
         ];
-        Mail::to($request->email)->send(new \App\Mail\MyTestMail($details));
+        Mail::to($request->email)->send(new MyTestMail($details));
 
         $inserData['mobile'] = $request->mobile;
         $inserData['user_type'] = $request->user_type;

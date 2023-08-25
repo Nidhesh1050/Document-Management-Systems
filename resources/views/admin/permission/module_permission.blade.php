@@ -75,6 +75,7 @@
                                                 <th>Edit</th>
                                                 <th>Delete</th>
                                                 <th>View</th>
+                                                 <th>Change Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -83,35 +84,37 @@
 
                                                     <td> {{ $users->id }}</td>
                                                     <td> {{ $users->module_name }}</td>
-                                                    <input type="hidden" name="id[]" value="{{ $users->id }}">
+
                                                     <td>
                                                         <input class="form-check-input" type="checkbox"
-                                                            name="add[{{ $users->id }}]"
-                                                            value="{{ $users->module_name }}"
-                                                            id="add-checkbox-{{ $users->id }}" />
+                                                            name="permission[{{ $users->id }}][add_permission]"
+                                                             id="" />
                                                     </td>
                                                     <td>
                                                         <input class="form-check-input" type="checkbox"
-                                                            name="edit[{{ $users->id }}]"
-                                                            value="{{ $users->module_name }}"
-                                                            id="edit-checkbox-{{ $users->id }}" />
+                                                            name="permission[{{ $users->id }}][edit_permission]"
+                                                            id="" />
                                                     </td>
                                                     <td>
                                                         <input class="form-check-input" type="checkbox"
-                                                            name="delete[{{ $users->id }}]"
-                                                            value="{{ $users->module_name }}"
-                                                            id="delete-checkbox-{{ $users->id }}" />
+                                                            name="permission[{{ $users->id }}][delete_permission]"
+                                                            id="" />
                                                     </td>
                                                     <td>
                                                         <input class="form-check-input" type="checkbox"
-                                                            name="view[{{ $users->id }}]"
-                                                            value="{{ $users->module_name }}"
-                                                            id="view-checkbox-{{ $users->id }}" />
+                                                            name="permission[{{ $users->id }}][view_permission]"
+                                                             id="" />
+                                                    </td>
+                                                      <td>
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="permission[{{ $users->id }}][status_permission]"
+                                                           id=""/>
                                                     </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
+                                     <!-- <input type="hidden" name="id[]" value="{{ $users->id }}"> -->
                                     <div class="text-right">
                                         <button type="submit" class="mt-4 btn btn-success">Submit</button>
                                         <a href="{{ url('admin/module_permission') }}"
