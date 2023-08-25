@@ -39,6 +39,14 @@
                             </div>
                             @endif
                         </div>
+<<<<<<< HEAD
+                        <div class="d-flex align-items-center">
+                            <a><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
+                                    data-target="#addRowModal">
+                                    <i class="fa fa-show"></i>
+                                    Module Permission
+                                </button></a>
+=======
                         <div class="card-body">
                             <div class="table-responsive ">
                                 <form action="{{ url('/admin/module_permission') }}" method="post">
@@ -113,6 +121,7 @@
                                         <div>
                                 </form>
                             </div>
+>>>>>>> 51b94052d07b275ad43d85b484c9a867310f6e0e
                         </div>
                     </div>
                     <div class="card-body">
