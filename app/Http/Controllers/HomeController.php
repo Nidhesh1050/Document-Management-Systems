@@ -47,7 +47,7 @@ class HomeController extends Controller
     //List of users
     public function userManagement(){
       $users = DB::table('users')->select(
-        "users.*", 
+        "users.*",
         "companies.company_name" )
         ->leftJoin("companies",  "companies.id" ,"=", "users.company_id"  )->whereIn('type', [0])
         ->orderBy('id','DESC')->get();
@@ -77,7 +77,7 @@ class HomeController extends Controller
               'email' => $request['email'],
               'mobile' => $request['mobile'],
               'user_type' => $request['user_type'],
-              
+
           ]);
       return redirect('admin/userManagement')->with('success', 'User has been updated successfully.');
     }
@@ -127,9 +127,9 @@ class HomeController extends Controller
 
       DB::table('users')->insert($inserData);
       return redirect('admin/userManagement')->with('success', 'User has been added successfully.');
-    }  
+    }
       //change status of user from admin panel
-    public function UserChangeStatus($id=null, $status=null){ 
+    public function UserChangeStatus($id=null, $status=null){
       $users = DB::table('users')->where('id',$id)->update(['status'=>$status]);
       return back()->withInput()->with('success','Status has been changed.');
     }

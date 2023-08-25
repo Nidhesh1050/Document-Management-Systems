@@ -54,9 +54,9 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="name">Project</label>
-                                        <input type="text" class="form-control" name="project_name" id=""
+                                        <input type="text" class="form-control" name="project_name" id="project_name"
                                             placeholder="Name">
-                                        <span class="text-danger error ">
+                                        <span class="text-danger error " id="project_err">
                                             @error('project_name')
                                             {{$message}}
                                             @enderror
@@ -117,12 +117,42 @@
                 }
             });
         });
-        </script>
-        <script>
+      
+        
         ClassicEditor
             .create(document.querySelector('#editor'))
             .catch(error => {
                 console.error(error);
             });
-        </script>
+
+            
+
+
+ $("#project_name").blur(function(){
+
+    var project_name = $(this).val();
+    $.ajax({
+      type: "GET",
+      url: "/admin/checkProject?project_name="+project_name,
+      
+      success: function(response) 
+      { 
+        console.log(response);
+        if(response == 1){
+          $('#project_err').text('This project name is already exist');
+          $('#submit').attr('disabled','disabled');
+        }
+        else{
+          $('#project_err').text('');
+          $('#submit').removeAttr('disabled');
+        }
+      },
+      error: function(response) 
+      {
+        
+      }
+    });
+  });
+  </script>
+        
         @endsection

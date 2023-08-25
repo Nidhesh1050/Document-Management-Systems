@@ -55,7 +55,7 @@ $currentURL =Route::current()->uri;
                     </span>
                     <h4 class="text-section">Components</h4>
                 </li>
-                <li class="nav-item"  >
+                <li class="nav-item <?php if($currentURL =='admin/home'){ echo 'active'; }?>">
                     <a href="{{url('admin/home')}}">
                         <i class="fas fa-layer-group"></i>
                         <p>Dashboard</p>
@@ -200,7 +200,7 @@ $currentURL =Route::current()->uri;
                         <p>Setting Management</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse <?php if(in_array($currentURL,['admin/documentType_view','admin/documentType_add','admin/documentType_edit/{id}'])){ echo 'show';}?>" id="setting">
+                    <div class="collapse <?php if(in_array($currentURL,['admin/logos','admin/update_logo/{id}'])){ echo 'show';}?>" id="setting">
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="{{url('admin/logos')}}">
