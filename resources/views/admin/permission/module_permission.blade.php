@@ -129,21 +129,5 @@
         </div>
     </div>
     //
-    <script>
-        $(document).ready(function() {
-            $("input[type='checkbox']").on("click", function() {
-                var userId = $(this).attr("id").split("-")[
-                    2];
-                if ($("#add-checkbox-" + userId).prop("checked") || $(
-                        "#edit-checkbox-" + userId).prop("checked") || $(
-                        "#delete-checkbox-" + userId).prop("checked")) {
-                    $("#view-checkbox-" + userId).prop("checked", true);
-                } else {
-                    $("#view-checkbox-" + userId).prop("checked", false);
-                }
-            });
-        });
 
-
-    </script>
 @endsection
