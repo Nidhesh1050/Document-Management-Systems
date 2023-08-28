@@ -76,7 +76,7 @@
                                                 <th>Delete</th>
                                                 <th>Change Status</th>
                                                 <th>View</th>
-                                                 
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -85,19 +85,19 @@
                                                 <tr>
                                                     <td> {{ $users->id }}</td>
                                                     <td> {{ $users->module_name }}</td>
-                                                  
+
                                                     <td>
-                                                        <input class="form-check-input permission viewall-{{ $users->id }}" type="checkbox"  data-view="view-{{ $users->id }}"  
+                                                        <input class="form-check-input permission viewall-{{ $users->id }}" type="checkbox"  data-view="view-{{ $users->id }}"
                                                             name="permission[{{ $users->id }}][add_permission]"
                                                              id="" />
                                                     </td>
                                                     <td>
-                                                        <input class="form-check-input permission viewall-{{ $users->id }}" type="checkbox"  data-view="view-{{ $users->id }}" 
+                                                        <input class="form-check-input permission viewall-{{ $users->id }}" type="checkbox"  data-view="view-{{ $users->id }}"
                                                             name="permission[{{ $users->id }}][edit_permission]"
                                                             id="" />
                                                     </td>
                                                     <td>
-                                                        <input class="form-check-input permission viewall-{{ $users->id }} " type="checkbox"  data-view="view-{{ $users->id }}" 
+                                                        <input class="form-check-input permission viewall-{{ $users->id }} " type="checkbox"  data-view="view-{{ $users->id }}"
                                                             name="permission[{{ $users->id }}][delete_permission]"
                                                             id="" />
                                                     </td>
@@ -112,7 +112,7 @@
                                                             name="permission[{{ $users->id }}][view_permission]"
                                                              id="" />
                                                     </td>
-                                                      
+
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -120,7 +120,8 @@
                                      <!-- <input type="hidden" name="id[]" value="{{ $users->id }}"> -->
                                     <div class="text-right">
                                         <button type="submit" class="mt-4 btn btn-success">Submit</button>
-                                        <a href="{{ url('admin/module_permission') }}" class="mt-4 btn btn-danger">Cancel</a>
+                                        <a href="{{ url('admin/module_permission') }}"
+                                            class="mt-4 btn btn-danger">Cancel</a>
                                         <div>
                                 </form>
                             </div>
@@ -142,9 +143,9 @@
         var view = $(this).data('id');
             if (!$(".view-"+view).is(':checked')) {
                 var view = $(".view-"+view).data('subfield');
-                     $( "."+view ).prop( "checked", false ); 
+                     $( "."+view ).prop( "checked", false );
             }
         });
   </script>
-    
+
 @endsection
