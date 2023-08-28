@@ -28,7 +28,7 @@ $currentURL =Route::current()->uri;
                                 <a href="#profile">
                                     <span class="link-collapse">My Profile</span>
                                 </a>
-                            </li>
+                            </li>ile
                             <li>
                                 <a href="#edit">
                                     <span class="link-collapse">Edit Profile</span>
@@ -189,36 +189,31 @@ $currentURL =Route::current()->uri;
                     </div>
 				</li>
 
-                <li class="nav-item">
+               
+                <li class="nav-item <?php if($currentURL =='company/logos' || $currentURL =='company/update_logo'){ echo 'active'; }?>">
                     <a data-toggle="collapse" href="#setting">
-                        <i class="fas fa-laptop-code"></i>
+                        <i class="fas fa-cog"></i>
                         <p>Setting Management</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="setting">
+                    <div class="collapse <?php if(in_array($currentURL,['company/logos','company/update_logo/{id}'])){ echo 'show';}?>" id="setting">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('company/view_image')}}">
-                                    <span class="sub-item">Logos</span>
+                                <a href="{{url('comapny/logos')}}">
+                                        <span class="sub-item">Logo & profile</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{url('company/setting')}}">
-                                    <span class="sub-item">Add Settings</span>
-                                </a>
-                            </li>
-
                         </ul>
                     </div>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item <?php if($currentURL =='company/show_notification' || $currentURL =='company/notification'|| $currentURL =='company/edit_notification/{id}'){ echo 'active'; }?>">
 							<a data-toggle="collapse" href="#tables">
-								<i class="fas fa-table"></i>
+								<i class="fas fa-bullhorn"></i>
 								<p>Notification</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="tables">
+							<div class="collapse <?php if(in_array($currentURL,['company/show_notification','company/notification','company/edit_notification/{id}'])){ echo 'show';}?>" id="tables">
 								<ul class="nav nav-collapse">
 									<li>
                                     <a href="{{url('company/show_notification')}}">

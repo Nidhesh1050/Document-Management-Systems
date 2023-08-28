@@ -8,7 +8,7 @@
         <div class="page-header">
             <ul class="breadcrumbs">
                 <li class="nav-home">
-                    <a href="{{url('admin/home')}}">
+                    <a href="{{url('company/home')}}">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -16,7 +16,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="{{url('admin/view_image')}}">Side Setting</a>
+                    <a href="{{url('company/view_image')}}">Side Setting</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -43,7 +43,7 @@
                             @endif
                         </div>
                         <div class="d-flex align-items-center">
-                            <a href="{{ url('admin/setting') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
+                            <a href="{{ url('company/setting') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
                                     data-target="#addRowModal">
                                     <i class="fa fa-plus"></i>
                                     Add Logo
@@ -76,7 +76,7 @@
                                     <td>
                                         <div class="form-button-action">
 
-                                            <a href='/admin/edit_image/{{$users->id }}'>
+                                            <a href='/company/edit_image/{{$users->id }}'>
                                                 <button type="button" data-toggle="tooltip" title=""
                                                     class="btn btn-link btn-primary btn-lg"
                                                     data-original-title="Edit Task">

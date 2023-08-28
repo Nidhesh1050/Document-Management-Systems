@@ -92,24 +92,20 @@ Route::group(['prefix' => 'company'], function() {
 
 
     
-        /* Side Setting routes start*/
-            Route::get('/setting',[SettingController::class,'setting']);
-            Route::post('/add_image',[SettingController::class,'add_image']);
-            Route::get('/view_image',[SettingController::class,'view_image']);
-            Route::get('/edit_image/{id}', [SettingController::class,'edit_image']);
-            Route::post('/update_image', [SettingController::class,'update_image']);
-            Route::get('/delete_image/{id}',[SettingController::class,'delete_image']);
-        /*  Side Setting routes end*/
+    /* Side Setting routes start*/
+    Route::get('/logos',[SettingController::class,'setting']);
+    Route::post('/update_logo',[SettingController::class,'Updateimage']);
+/*  Side Setting routes end*/
     
-        /* Notification type routes start   */
-            Route::get('/notification',[NotificationController::class, 'Notification'])->name('notification');
-            Route::post('/add_notification',[NotificationController::class, 'add_notification']);
-            Route::get('/show_notification',[NotificationController::class, 'show_notification']);
-            Route::get('/delete/{id}', [NotificationController::class,'delete']);
-            
-            Route::get('/edit_notification/{id}', [NotificationController::class,'edit_notification']);
-            Route::post('/update_notification', [NotificationController::class,'update_notification']);
-        /* Notification type routes end   */
+       /* Notification type routes start   */
+Route::get('/notification',[NotificationController::class, 'addNotification'])->name('notification');
+Route::post('/add_notification',[NotificationController::class, 'addNotification']);
+Route::get('/show_notification',[NotificationController::class, 'showNotification']);
+Route::get('/delete_notification/{id}', [NotificationController::class,'deleteNotification']);
+Route::get('/edit_notification/{id}', [NotificationController::class,'editNotification']);
+Route::post('/update_notification', [NotificationController::class,'updateNotification']);
+Route::get('/NotificationChangeStatus/{id}/{status}',[NotificationController::class,'statusNotification']);
+ /* Notification type routes end   */
         
         /* Content management system routes start*/
             Route::get('/addcontent',[CMSController::class,'addcontent']);
