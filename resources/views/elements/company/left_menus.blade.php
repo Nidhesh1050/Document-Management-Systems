@@ -1,6 +1,5 @@
 <?php
-$users = DB::table('side_setting')->orderBy('id','DESC')->first();
-$currentURL =Route::current()->uri; 
+$currentURL =Route::current()->uri;
 ?>
 
 <div class="sidebar sidebar-style-2">
@@ -9,8 +8,13 @@ $currentURL =Route::current()->uri;
             <div class="user">
 
                 <div class="avatar-sm float-left mr-2">
-                <img src="{{ asset('images/' .$users->image) }}" alt="..." class="avatar-img rounded-circle" >
+                    <?php if($logo->profile){?>
+                        <img src="{{ asset('images/profile/' .$logo->profile) }}" alt="..." class="avatar-img rounded-circle" >
+                    <?php }else{?>
+                        <img src="{{ asset('images/profiles/demo-profile.png') }}" alt="..." class="avatar-img rounded-circle" >
+                    <?php }?>
                 </div>
+
 
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
@@ -78,28 +82,7 @@ $currentURL =Route::current()->uri;
                         </ul>
                     </div>
                 </li>
-                <!-- <li class="nav-item">
-                    <a data-toggle="collapse" href="#company">
-                     <i class="fas fa-table"></i>
-                        <p>Company</p>
-						<span class="caret"></span>
-                    </a>
-                    <div class="collapse" id="company">
-                        <ul class="nav nav-collapse">
-                            <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{url('company/view_company')}}">
-                                    <span class="sub-item">Company List</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{url('company/addcompany')}}">
-                                    <span class="sub-item">Add Company</span>
-                                </a>
-                            </li>
 
-                        </ul>
-                    </div>
-                </li> -->
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#sidebarLayouts">
                         <i class="fas fa-th-list"></i>
@@ -189,25 +172,19 @@ $currentURL =Route::current()->uri;
                     </div>
 				</li>
 
-                <li class="nav-item">
+                <li class="nav-item <?php if($currentURL =='company/logos' || $currentURL =='company/update_logo'){ echo 'active'; }?>">
                     <a data-toggle="collapse" href="#setting">
-                        <i class="fas fa-laptop-code"></i>
+                        <i class="fas fa-cog"></i>
                         <p>Setting Management</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="setting">
+                    <div class="collapse <?php if(in_array($currentURL,['company/logos','company/update_logo/{id}'])){ echo 'show';}?>" id="setting">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('company/view_image')}}">
-                                    <span class="sub-item">Logos</span>
+                                <a href="{{url('company/logos')}}">
+                                        <span class="sub-item">Logo & profile</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{url('company/setting')}}">
-                                    <span class="sub-item">Add Settings</span>
-                                </a>
-                            </li>
-
                         </ul>
                     </div>
                 </li>
@@ -255,7 +232,7 @@ $currentURL =Route::current()->uri;
 							</div>
 						</li>
 
-                        
+
                         <li class="nav-item">
 							<a data-toggle="collapse" href="#email">
 								<i class="fas fa-table"></i>
@@ -288,7 +265,7 @@ $currentURL =Route::current()->uri;
 							</div>
 						</li>
 
-                        
+
                         <li class="nav-item">
 							<a data-toggle="collapse" href="#maps">
 								<i class="fas fa-key"></i>

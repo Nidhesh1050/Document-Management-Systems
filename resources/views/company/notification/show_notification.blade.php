@@ -5,7 +5,7 @@
             <div class="page-header">
                 <ul class="breadcrumbs">
                     <li class="nav-home">
-                        <a href="{{ url('admin/home') }}">
+                        <a href="{{ url('company/home') }}">
                             <i class="flaticon-home"></i>
                         </a>
                     </li>
@@ -39,7 +39,7 @@
                             @endif
                         </div>
                         <div class="d-flex align-items-center">
-                            <a href="{{ url('admin/notification') }}"><button class="btn btn-primary btn-round ml-auto"
+                            <a href="{{ url('company/notification') }}"><button class="btn btn-primary btn-round ml-auto"
                                     data-toggle="modal" data-target="#addRowModal">
                                     <i class="fa fa-plus"></i>
                                     Add Notification

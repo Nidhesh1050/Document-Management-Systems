@@ -1,6 +1,6 @@
 @extends('layouts.company-app')
 @section('content')
-<?php 
+<?php
 use app\Models\User;
 ?>
 <div class="content">
@@ -30,7 +30,7 @@ use app\Models\User;
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        
+
                     <div class="flash-message">
                             @if ($message = Session::get('success'))
                                         <div class="alert alert-success">
@@ -80,7 +80,7 @@ use app\Models\User;
                         <tr>
                         <td>{{$loop->iteration}}</td>
 
-                           
+
                             <td>{{ User::getDocumentID($documents ->project_id) }}</td>
 
                             <td> {{ User::getCategoryID($documents ->category_id) }}</td>
