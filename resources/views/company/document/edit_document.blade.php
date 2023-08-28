@@ -8,7 +8,7 @@
         <div class="page-header">
             <ul class="breadcrumbs">
                 <li class="nav-home">
-                    <a href="{{url('admin/home')}}">
+                    <a href="{{url('company/home')}}">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -16,7 +16,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                <a href="{{url('admin/document')}}">Document Management</a>
+                <a href="{{url('company/document')}}">Document Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -46,7 +46,7 @@
                         <div class="card-title">Edit Document </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ url('admin/update_document') }}" method="post" id="update" enctype="multipart/form-data">
+                        <form action="{{ url('company/update_document') }}" method="post" id="update" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="id" value="{{ $users->id }}">
                             <div class="form-row">
@@ -135,20 +135,11 @@
                                     @enderror
                                 </span>
                             </div>
-                            <div class="form-group col-md-6">
-                                            <label for="status">Status</label>
-                                            <input type="checkbox" name="status" id="status" {{$users->status==1 ? 'checked': '' }} >
-                                            <span class="text-danger error ">
-                                                @error('status')
-                                                    {{ $message }}
-                                                @enderror
-                                            </span>
-                                        </div>
-
+                           
                          </div>
                             <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Update</button>
-                                <a href="{{url('admin/document')}}" class="mt-4 btn btn-danger">Cancel</a>
+                                <a href="{{url('company/document')}}" class="mt-4 btn btn-danger">Cancel</a>
 
                         </form>
 </div>
@@ -175,25 +166,22 @@
                         required: true,
 
                     },
-                    // status: {
-
-                    //     required: true,
-                    // },
+                   
                 },
                 messages: {
                     project_id: {
-                        required: "*Update your project_id",
+                        required: "Update your project",
 
                     },
                     category_id: {
-                        required: "*Update your valid category_id",
+                        required: "Update your valid category",
 
                     },
                     document_type_id: {
-                        required: "*Update your document_type_id",
+                        required: "Update your document type",
                     },
                     title: {
-                        required: "*Update your title",
+                        required: "Update your title",
 
                     },
 

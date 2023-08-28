@@ -1,4 +1,4 @@
-@extends('layouts.admin-app')
+@extends('layouts.company-app')
 
 @section('content')
      <div class="content">
@@ -45,7 +45,7 @@
                                    <div class="card-title">Account Images</div>
                               </div>
                               <div class="card-body">
-                                   <form action="{{url('/admin/update_logo')}}" method="post" id="setting-logo"
+                                   <form action="{{url('/company/update_logo')}}" method="post" id="setting-logo"
                                         enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-row">
@@ -95,7 +95,7 @@
 
                                         <div class="text-right">
                                              <button type="submit" class="mt-4 btn btn-success">Submit</button>
-                                             <a href="{{url('admin/home')}}" class="mt-4 btn btn-danger">Cancel</a>
+                                             <a href="{{url('company/home')}}" class="mt-4 btn btn-danger">Cancel</a>
                                              <div>
 
                                    </form>

@@ -1,16 +1,22 @@
 
 <?php
-$users = DB::table('side_setting')->orderBy('id','DESC')->first();
+$logo = DB::table('logos')->first();
 ?>
+
 <div class="main-header">
 	<!-- Logo Header -->
 				<head>
-					<script src="{{asset('admin/js/min.js')}}"></script>
+					<script src="{{asset('company/js/min.js')}}"></script>
 				</head>
 			<div class="logo-header" data-background-color="blue">
 
-				<a href="index.html" class="logo">
-					<img src="{{asset('admin/img/STPL_Logo_white.png')}}" width="100" alt="navbar brand" class="navbar-brand">
+				<a href="{{url('company/home')}}" class="logo">
+					<?php if($logo->logo){?>
+					<img src="{{asset('/images/logo/'.$logo->logo)}}" width="100" alt="navbar brand" class="navbar-brand">
+					<?php }else{?>
+					<img src="{{asset('company/img/STPL_Logo_white.png')}}" width="100" alt="navbar brand" class="navbar-brand">
+					<?php }?>
+
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
@@ -64,7 +70,7 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 										<div class="notif-center">
 											<a href="#">
 												<div class="notif-img">
-													<img src="{{asset('admin/img/jm_denis.jpg')}}" alt="Img Profile">
+													<img src="{{asset('company/img/jm_denis.jpg')}}" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="subject">Jimmy Denis</span>
@@ -76,7 +82,7 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 											</a>
 											<a href="#">
 												<div class="notif-img">
-													<img src="{{asset('admin/img/chadengle.jpg')}}" alt="Img Profile">
+													<img src="{{asset('company/img/chadengle.jpg')}}" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="subject">Chad</span>
@@ -88,7 +94,7 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 											</a>
 											<a href="#">
 												<div class="notif-img">
-													<img src="{{asset('admin/img/mlane.jpg')}}" alt="Img Profile">
+													<img src="{{asset('company/img/mlane.jpg')}}" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="subject">Jhon Doe</span>
@@ -100,7 +106,7 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 											</a>
 											<a href="#">
 												<div class="notif-img">
-													<img src="{{asset('admin/img/talha.jpg')}}" alt="Img Profile">
+													<img src="{{asset('company/img/talha.jpg')}}" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="subject">Talha</span>
@@ -143,14 +149,14 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 												<div class="notif-icon notif-success"> <i class="fa fa-comment"></i> </div>
 												<div class="notif-content">
 													<span class="block">
-														Rahmad commented on Admin
+														Rahmad commented on company
 													</span>
 													<span class="time">12 minutes ago</span>
 												</div>
 											</a>
 											<a href="#">
 												<div class="notif-img">
-													<img src="{{asset('admin/img/profile2.jpg')}}" alt="Img Profile">
+													<img src="{{asset('company/img/profile2.jpg')}}" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="block">
@@ -163,7 +169,7 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 												<div class="notif-icon notif-danger"> <i class="fa fa-heart"></i> </div>
 												<div class="notif-content">
 													<span class="block">
-														Farrah liked Admin
+														Farrah liked company
 													</span>
 													<span class="time">17 minutes ago</span>
 												</div>
@@ -233,7 +239,13 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 
 							<div class="avatar-sm">
-								 <td><img src="{{ asset('images/' .$users->image) }}" alt="..." class="avatar-img rounded-circle" ></td>
+								<td>
+								<?php if($logo->profile){?>
+									<img src="{{ asset('images/profile/' .$logo->profile) }}" alt="..." class="avatar-img rounded" >
+									<?php }else{?>
+									<img src="{{ asset('images/profiles/demo-profile.png') }}" alt="..." class="avatar-img rounded" >
+									<?php }?>
+								</td>
 							</div>
 
 							</a>
@@ -241,7 +253,13 @@ $users = DB::table('side_setting')->orderBy('id','DESC')->first();
 								<div class="dropdown-user-scroll scrollbar-outer">
 									<li>
 										<div class="user-box">
-											<div class="avatar-lg"><img src="{{asset('admin/img/profile.jpg')}}" alt="image profile" class="avatar-img rounded"></div>
+											<div class="avatar-lg">
+												<?php if($logo->profile){?>
+									 		<img src="{{ asset('images/profile/' .$logo->profile) }}" alt="..." class="avatar-img rounded" >
+									 			<?php }else{?>
+										  	<img src="{{ asset('images/profiles/demo-profile.png') }}" alt="..." class="avatar-img rounded" >
+										 		<?php }?>
+											</div>
 											<div class="u-text">
 												<h4>{{ Auth::user()->name }} </a></h4>
 												<p class="text-muted">{{ Auth::user()->email }} </a></p>

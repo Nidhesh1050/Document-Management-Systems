@@ -20,7 +20,7 @@ class SettingController extends Controller
 			return view('admin.setting.setting')->with(['logos'=>$logos]);   
 	}
     
-public function Updateimage(Request $request) {
+            public function Updateimage(Request $request) {
 
 		$data = array();
         if($request->file('logo')){
