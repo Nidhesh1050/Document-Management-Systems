@@ -69,6 +69,8 @@ class DocumentTypeController extends Controller
             ->where('id', $request['id'])
             ->update([
                 'name' => $request['name'],
+                'slug' => str_replace(' ', '-',trim($request['name'])),
+                // 'name' => $request['name'],
             ]);
         return redirect('admin/documentType_view')->with('success', 'Document type has been updated successfully.');
 
@@ -78,9 +80,10 @@ class DocumentTypeController extends Controller
    // check if document type name already exist
    public function checkDocumentType(Request $request){
     $name = $request['name'];
+    $documenttype_slug = str_replace(' ', '-',$request['name']);
     $id = $request['id'];
     if($id){ 
-         $name = DB::table('document_types')->select('name')->where('id','!=',$id)->where('name',$name)->first();
+         $name = DB::table('document_types')->select('name')->where('id','!=',$id)->where('name',$name,$documenttype_slug)->first();
         
           if($name){
             $name = 1;
