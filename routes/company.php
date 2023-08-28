@@ -116,25 +116,32 @@ Route::group(['prefix' => 'company'], function() {
         //Email management routes start by Nidhi
     
         // email-type
-            Route::get('/email',[EmailTypeController::class, 'email'])->name('email');
-            Route::post('/add_email',[EmailTypeController::class, 'add_email']);
-            Route::get('/show_email',[EmailTypeController::class, 'show_email']);
-            Route::get('/emaildelete/{id}', [EmailTypeController::class,'emaildelete']);
-        
-            Route::get('/edit_email/{id}', [EmailTypeController::class,'edit_email']);
-            Route::post('/emailupdate', [EmailTypeController::class,'emailupdate']);
+          
+    Route::get('/email',[EmailTypeController::class, 'emailTypeAdd']);
+	Route::post('/add_email',[EmailTypeController::class, 'emailTypeAdd']);
+	Route::get('/show_email',[EmailTypeController::class, 'emailTypeShow']);
+	Route::get('/emaildelete/{id}', [EmailTypeController::class,'emailTypeDelete']);
+
+	Route::get('/edit_email/{id}', [EmailTypeController::class,'emailTypeEdit']);
+	Route::post('/emailupdate', [EmailTypeController::class,'emailTypeUpdate']);
+    Route::get('/EmailTypeChangeStatus/{id}/{status}',[EmailTypeController::class,'EmailTypeChangeStatus']);
         
     
         //email-content
     
-            Route::get('/content',[EmailContentController::class, 'content'])->name('content');
-            Route::post('/add_content',[EmailContentController::class, 'add_content']);
-            Route::get('/show_content',[EmailContentController::class, 'show_content']);
-            Route::get('/delete/{id}', [EmailContentController::class,'delete']);
+
+
+    Route::get('/content',[EmailContentController::class, 'emailContentAdd']);
+	Route::post('/add_content',[EmailContentController::class, 'emailContentAdd']);
+	Route::get('/show_content',[EmailContentController::class, 'emailContentShow']);
+	Route::get('/delete/{id}', [EmailContentController::class,'emailContentDelete']);
+
+	Route::get('/edit_content/{id}', [EmailContentController::class,'emailContentEdit']);
+	Route::post('/update', [EmailContentController::class,'emailContentUpdate']);
+    Route::get('/EmailContentChangeStatus/{id}/{status}',[EmailContentController::class,'EmailContentChangeStatus']);
         
-            Route::get('/edit_content/{id}', [EmailContentController::class,'edit_content']);
-            Route::post('/update', [EmailContentController::class,'update']);
-        
+     //Email management routes end
+     
             /* Module Permission route start here*/
             Route::get('/module_permission',[PermissionController::class,'module_permission']);
             Route::post('/module_permission',[PermissionController::class,'permission']);

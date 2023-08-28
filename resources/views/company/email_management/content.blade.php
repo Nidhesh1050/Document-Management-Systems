@@ -7,7 +7,7 @@
             <div class="page-header">
                 <ul class="breadcrumbs">
                     <li class="nav-home">
-                        <a href="{{ url('admin/home') }}">
+                        <a href="{{ url('company/home') }}">
                             <i class="flaticon-home"></i>
                         </a>
                     </li>
@@ -15,7 +15,7 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('admin/show_content') }}">Email Management</a>
+                        <a href="{{ url('company/show_content') }}">Email Management</a>
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>
@@ -40,9 +40,9 @@
 
                                     <select name="email_type" id="email_type" class="form-control">
                                       <option value=""> Select Type</option>
-                                        @foreach ($users as $users)
+                                        @foreach ($emailContents as $emailContents)
                                         
-                                            <option value="{{ $users->id }}"> <?php echo $users->email_type; ?></option>
+                                            <option value="{{ $emailContents->id }}"> <?php echo $emailContents->email_type; ?></option>
                                         @endforeach
                                     </select>
                                     <span class="text-danger  ">
@@ -65,7 +65,7 @@
                                 <div class="form-group">
                                     <label>Message</label>
                                     <input type="text" name="message" id="message" class="form-control">
-                                    <span class="text-danger  ">
+                                    <span class="text-danger">
                                         @error('message')
                                             {{ $message }}
                                         @enderror
@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="text-right">
                                     <button type="submit" class="mt-4 btn btn-success">Submit</button>
-                                    <a href="{{ url('admin/show_content') }}" class="mt-4 btn btn-danger">Cancel</a>
+                                    <a href="{{ url('company/show_content') }}" class="mt-4 btn btn-danger">Cancel</a>
                                     <div>
                             </form>
                         </div>
