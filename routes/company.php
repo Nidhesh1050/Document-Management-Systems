@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Company\CategoryController;
 use App\Http\Controllers\Company\DocumentController;
+
 use App\Http\Controllers\Company\ProjectManagementController;
 use App\Http\Controllers\Company\SettingController;
 use App\Http\Controllers\Company\NotificationController;
@@ -66,14 +67,17 @@ Route::group(['prefix' => 'company'], function() {
         /* Document management routes end*/
     
     
-        /* Project management routes start*/
-            Route::get('/project_management',[ProjectManagementController::class,'project_management']);
-            Route::post('/add_project',[ProjectManagementController::class,'add_project']);
-            Route::get('/view_project',[ProjectManagementController::class,'view_project']);
-            Route::get('/delete_project/{id}',[ProjectManagementController::class,'delete_project']);
-            Route::get('/update_project/{id}',[ProjectManagementController::class,'update_project']);
-            Route::post('/edit_project',[ProjectManagementController::class,'edit_project']);
-        /* Project management routes end*/
+       /* Project management routes start*/
+        Route::get('/project',[ProjectManagementController::class,'addProject']);
+        Route::post('/add_project',[ProjectManagementController::class,'addProject']);
+        Route::get('/view_project',[ProjectManagementController::class,'viewProject']);
+        Route::get('/delete_project/{id}',[ProjectManagementController::class,'deleteProject']);
+        Route::get('/update_project/{id}',[ProjectManagementController::class,'updateProject']);
+        Route::post('/edit_project',[ProjectManagementController::class,'editProject']);
+        Route::get('/checkProject', [ProjectManagementController::class, 'checkProject'])->name('checkProject');
+        Route::get('/ProjectChangeStatus/{id}/{status}',[ProjectManagementController::class,'ProjectChangeStatus']);
+     /* Project management routes end*/
+
     
         /* Document type routes start   */
     
@@ -103,15 +107,16 @@ Route::group(['prefix' => 'company'], function() {
             Route::post('/update_notification', [NotificationController::class,'update_notification']);
         /* Notification type routes end   */
         
-        /* Content management system routes start*/
-            Route::get('/addcontent',[CMSController::class,'addcontent']);
-            Route::post('/add_cms',[CMSController::class,'add_cms']);
-            Route::get('/view_content',[CMSController::class,'view_content']);
-            Route::get('/delete_content/{id}',[CMSController::class,'delete_content']);
-            Route::get('/update_content/{id}',[CMSController::class,'update_content']);
-            Route::post('/edit_content',[CMSController::class,'edit_content']);
-        
-        /* Content management system routes end*/
+       /* Content management system routes start*/
+            Route::get('/addcontent',[CMSController::class,'addCms']);
+            Route::post('/add_cms',[CMSController::class,'addCms']);
+            Route::get('/view_content',[CMSController::class,'viewContent']);
+            Route::get('/delete_content/{id}',[CMSController::class,'deleteContent']);
+            Route::get('/update_content/{id}',[CMSController::class,'updateContent']);
+            Route::post('/edit_content',[CMSController::class,'editContent']);
+            Route::get('/CMSChangeStatus/{id}/{status}',[CMSController::class,'CMSChangeStatus']);
+
+/* Content management system routes end*/
     
         //Email management routes start by Nidhi
     

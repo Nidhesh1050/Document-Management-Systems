@@ -74,37 +74,46 @@
                                                 <th>Add</th>
                                                 <th>Edit</th>
                                                 <th>Delete</th>
+                                                <th>Change Status</th>
                                                 <th>View</th>
+                                                 
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($users as $users)
-                                                <tr>
 
+                                                <tr>
                                                     <td> {{ $users->id }}</td>
                                                     <td> {{ $users->module_name }}</td>
                                                     <input type="hidden" name="id[]" value="{{ $users->id }}">
                                                     
                                                     <td>
-                                                        <input class="form-check-input" type="checkbox"
-                                                            name="add[{{ $users->id }}]"
-                                                            value="{{ $users->module_name }}"/>
+                                                        <input class="form-check-input permission viewall-{{ $users->id }}" type="checkbox"  data-view="view-{{ $users->id }}"  
+                                                            name="permission[{{ $users->id }}][add_permission]"
+                                                             id="" />
                                                     </td>
                                                     <td>
-                                                        <input class="form-check-input" type="checkbox"
-                                                            name="edit[{{ $users->id }}]"
-                                                            value="{{ $users->module_name }}"/>
+                                                        <input class="form-check-input permission viewall-{{ $users->id }}" type="checkbox"  data-view="view-{{ $users->id }}" 
+                                                            name="permission[{{ $users->id }}][edit_permission]"
+                                                            id="" />
                                                     </td>
                                                     <td>
-                                                        <input class="form-check-input" type="checkbox"
-                                                            name="delete[{{ $users->id }}]"
-                                                            value="{{ $users->module_name }}"/>
+                                                        <input class="form-check-input permission viewall-{{ $users->id }} " type="checkbox"  data-view="view-{{ $users->id }}" 
+                                                            name="permission[{{ $users->id }}][delete_permission]"
+                                                            id="" />
                                                     </td>
                                                     <td>
-                                                        <input class="form-check-input" type="checkbox"
-                                                            name="view[{{ $users->id }}]"
-                                                            value="{{ $users->module_name }}"/>
+                                                        <input class="form-check-input permission viewall-{{ $users->id }}" type="checkbox"  data-view="view-{{ $users->id }}"  type="checkbox"
+                                                            name="permission[{{ $users->id }}][status_permission]"
+                                                           id=""/>
                                                     </td>
+                                                    <td>
+                                                        <input class="form-check-input view_assumption view-{{ $users->id }}" type="checkbox" data-subfield="viewall-{{ $users->id }}"
+                                                        data-id="{{ $users->id }}"
+                                                            name="permission[{{ $users->id }}][view_permission]"
+                                                             id="" />
+                                                    </td>
+                                                      
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -122,4 +131,20 @@
         </div>
     </div>
 
+    <script type="text/javascript">
+    $('.permission').on('click', function(){
+            var view = $(this).data('view');
+             $( "."+view ).prop( "checked", true );
+        });
+
+    $('.view_assumption').on('click', function(){
+
+        var view = $(this).data('id');
+            if (!$(".view-"+view).is(':checked')) {
+                var view = $(".view-"+view).data('subfield');
+                     $( "."+view ).prop( "checked", false ); 
+            }
+        });
+  </script>
+    
 @endsection
