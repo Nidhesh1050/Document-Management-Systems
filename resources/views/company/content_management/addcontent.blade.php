@@ -6,7 +6,7 @@
             <div class="page-header">
                 <ul class="breadcrumbs">
                     <li class="nav-home">
-                        <a href="{{ url('admin/home') }}">
+                        <a href="{{ url('company/home') }}">
                             <i class="flaticon-home"></i>
                         </a>
                     </li>
@@ -14,7 +14,7 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('admin/view_content') }}">Content Management</a>
+                        <a href="{{ url('company/view_content') }}">Content Management</a>
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>
@@ -32,7 +32,7 @@
                         </div>
                         <div class="card-body">
 
-                            <form action="{{ url('admin/add_cms') }}" method="post" id="content"
+                            <form action="{{ url('company/add_cms') }}" method="post" id="content"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-row">
@@ -69,20 +69,10 @@
                                             @enderror
                                         </span>
                                     </div>
-                                    <div class="form-group">
-                                        <div class="form-group col-md-6">
-                                            <label for="status">Status</label>
-                                            <input type="checkbox" name="status" id="status" value="1">
-                                            <span class="text-danger error ">
-                                                @error('status')
-                                                    {{ $message }}
-                                                @enderror
-                                            </span>
-                                        </div>
 
                                         <div class="text-right">
                                             <button type="submit" class="mt-4 btn btn-success">Submit</button>
-                                            <a href="{{ url('admin/view_content') }}" class="mt-4 btn btn-danger">Cancel</a>
+                                            <a href="{{ url('company/view_content') }}" class="mt-4 btn btn-danger">Cancel</a>
 
                             </form>
                         </div>
@@ -99,20 +89,16 @@
                 rules: {
 
                     title: "required",
-                    status: "required",
                     
-                    // description: "required",
-                //     image: {
+                //  image: {
                 //    extension: "png|jpeg|jpg|gif"                      
                 //   },
 
                 },
                 messages: {
 
-                    title: "*Please enter your title",
-                    status: "Please select Status",
-                    // description: "*Please enter  description",
-                    // image:{ extension: "Only PNG , JPEG , JPG, GIF File Allowed",},
+                    title: "Please enter your title",
+                  //  image:{ extension: "Only PNG , JPEG , JPG, GIF File Allowed",},
 
                 }
 

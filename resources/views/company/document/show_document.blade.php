@@ -1,6 +1,6 @@
 @extends('layouts.company-app')
 @section('content')
-<?php 
+<?php
 use app\Models\User;
 ?>
 <div class="content">
@@ -8,7 +8,7 @@ use app\Models\User;
         <div class="page-header">
             <ul class="breadcrumbs">
                 <li class="nav-home">
-                    <a href="{{url('admin/home')}}">
+                    <a href="{{url('company/home')}}">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -30,7 +30,7 @@ use app\Models\User;
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        
+
                     <div class="flash-message">
                             @if ($message = Session::get('success'))
                                         <div class="alert alert-success">
@@ -45,7 +45,7 @@ use app\Models\User;
                          </div>
 
                         <div class="d-flex align-items-center">
-                            <a href="{{ url('admin/createdocument') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
+                            <a href="{{ url('company/createdocument') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
                                     data-target="#addRowModal">
                                     <i class="fa fa-plus"></i>
                                     Add Document
@@ -71,39 +71,57 @@ use app\Models\User;
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($users as $users)
+                    @foreach ($documents as $document)
 
                         @php
-                            $status = $users->status == 1 ? 'Active' : 'InActive';
+                            $status = $document->status == 1 ? 'Active' : 'InActive';
                         @endphp
 
                         <tr>
                         <td>{{$loop->iteration}}</td>
 
                            
-                            <td>{{ User::getDocumentID($users->project_id) }}</td>
+                            <td>{{ User::getDocumentID($document->project_id) }}</td>
 
-                            <td> {{ User::getCategoryID($users->category_id) }}</td>
-                            <td> {{ User::getDocumentTypeID($users->document_type_id) }}</td>
-                            <td> {{ $users->title }}</td>
-                            <td> <?php echo $users->description ?></td>
-                            <td> {{ $users->documents }}</td>
+                            <td> {{ User::getCategoryID($document->category_id) }}</td>
+                            <td> {{ User::getDocumentTypeID($document->document_type_id) }}</td>
+                            <td> {{ $document->title }}</td>
+                            <td> <?php echo $document->description ?></td>
+                            <td> {{ $document->documents }}</td>
                             <td>{{ $status }}</td>
-                            <td>
+                            <td class="action_td">
                                 <div class="form-button-action">
-                                    <a href='edit_document/{{ $users->id }}'>
-                                        <button type="button" data-toggle="tooltip" title=""
+                                    <a href="{{ url('company/edit_document/'.$document->id)}}" data-toggle="tooltip" title=""
                                             class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
                                             <i class="fa fa-edit">
                                             </i>
-                                        </button>
+                                     
                                     </a>
-                                    <a href="delete_document/{{ $users->id }}"
-                                        onclick="return confirm('Are you sure you want to delete this document ?')">
-                                        <button type="button" data-toggle="tooltip" title=""
+                                                @php
+                                                        $status = @$document->status == 1 ? '0' : '1';
+                                                        $statusicon = @$document->status == 1 ? 'btn-danger' : 'btn-success';
+
+                                                        $statustite = @$document->status == 1 ? 'InActive' : 'Active';
+                                                    @endphp
+
+                                                    <a href="{{ url('/company/DocumentChangeStatus/' . $document->id . '/' . $status) }}"
+                                                        onclick="return confirm('Are you sure to change status?')"
+                                                        data-toggle="tooltip" title=""
+                                                        class="btn-link {{ $statusicon }}"
+                                                        data-original-title="{{ $statustite }}">
+                                                        @if ($document->status == 0)
+                                                            <i class="fa fa-check"></i>
+                                                        @else
+                                                            <i class="fa fa-times"></i>
+                                                        @endif
+                                                    </a>
+
+
+                                    <a href="{{ url('company/delete_document/'.$document->id)}}"
+                                        onclick="return confirm('Are you sure you want to delete this document ?')" data-toggle="tooltip" title=""
                                             class="btn btn-link btn-danger" data-original-title="Remove">
-                                            <i class="fa fa-times"></i>
-                                        </button>
+                                            <i class="fa fa-trash"></i>
+                                        
                                     </a>
                                 </div>
                             </td>

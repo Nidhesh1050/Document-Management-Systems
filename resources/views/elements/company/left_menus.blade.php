@@ -1,6 +1,5 @@
 <?php
-$users = DB::table('side_setting')->orderBy('id','DESC')->first();
-$currentURL =Route::current()->uri; 
+$currentURL =Route::current()->uri;
 ?>
 
 <div class="sidebar sidebar-style-2">
@@ -9,8 +8,13 @@ $currentURL =Route::current()->uri;
             <div class="user">
 
                 <div class="avatar-sm float-left mr-2">
-                <img src="{{ asset('images/' .$users->image) }}" alt="..." class="avatar-img rounded-circle" >
+                    <?php if($logo->profile){?>
+                        <img src="{{ asset('images/profile/' .$logo->profile) }}" alt="..." class="avatar-img rounded-circle" >
+                    <?php }else{?>
+                        <img src="{{ asset('images/profiles/demo-profile.png') }}" alt="..." class="avatar-img rounded-circle" >
+                    <?php }?>
                 </div>
+
 
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
@@ -28,7 +32,7 @@ $currentURL =Route::current()->uri;
                                 <a href="#profile">
                                     <span class="link-collapse">My Profile</span>
                                 </a>
-                            </li>
+                            </li>ile
                             <li>
                                 <a href="#edit">
                                     <span class="link-collapse">Edit Profile</span>
@@ -78,28 +82,7 @@ $currentURL =Route::current()->uri;
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a data-toggle="collapse" href="#company">
-                     <i class="fas fa-table"></i>
-                        <p>Company</p>
-						<span class="caret"></span>
-                    </a>
-                    <div class="collapse" id="company">
-                        <ul class="nav nav-collapse">
-                            <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{url('company/view_company')}}">
-                                    <span class="sub-item">Company List</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{url('company/addcompany')}}">
-                                    <span class="sub-item">Add Company</span>
-                                </a>
-                            </li>
 
-                        </ul>
-                    </div>
-                </li>
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#sidebarLayouts">
                         <i class="fas fa-th-list"></i>
@@ -136,7 +119,7 @@ $currentURL =Route::current()->uri;
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('company/project_management')}}">
+                                <a href="{{url('company/project')}}">
                                     <span class="sub-item">Add Project</span>
                                 </a>
                             </li>
@@ -145,13 +128,13 @@ $currentURL =Route::current()->uri;
                     </div>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item <?php if($currentURL =='company/document' || $currentURL =='company/createdocument'|| $currentURL =='company/edit_document/{id}'){ echo 'active'; }?>">
                     <a data-toggle="collapse" href="#forms">
-                        <i class="fas fa-pen-square"></i>
+                        <i class="fas fa-file"></i>
                         <p>Document Management</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="forms">
+                    <div class="collapse <?php if(in_array($currentURL,['company/document','company/createdocument','company/edit_document/{id}'])){ echo 'show';}?>" id="forms">
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="{{url('company/document')}}">
@@ -176,12 +159,13 @@ $currentURL =Route::current()->uri;
                     <div class="collapse" id="list">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('company/view_document')}}">
+                             <!-- <a href="{{url('company/view_document')}}"> -->
+                                <a href="{{url('company/documentType_view')}}">
                                     <span class="sub-item">Document List</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('company/add_document')}}">
+                                <a href="{{url('company/documentType_add')}}">
                                     <span class="sub-item">Add Document</span>
                                 </a>
                             </li>
@@ -189,36 +173,31 @@ $currentURL =Route::current()->uri;
                     </div>
 				</li>
 
-                <li class="nav-item">
+               
+                <li class="nav-item <?php if($currentURL =='company/logos' || $currentURL =='company/update_logo'){ echo 'active'; }?>">
                     <a data-toggle="collapse" href="#setting">
-                        <i class="fas fa-laptop-code"></i>
+                        <i class="fas fa-cog"></i>
                         <p>Setting Management</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="setting">
+                    <div class="collapse <?php if(in_array($currentURL,['company/logos','company/update_logo/{id}'])){ echo 'show';}?>" id="setting">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('company/view_image')}}">
-                                    <span class="sub-item">Logos</span>
+                                <a href="{{url('comapny/logos')}}">
+                                        <span class="sub-item">Logo & profile</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{url('company/setting')}}">
-                                    <span class="sub-item">Add Settings</span>
-                                </a>
-                            </li>
-
                         </ul>
                     </div>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item <?php if($currentURL =='company/show_notification' || $currentURL =='company/notification'|| $currentURL =='company/edit_notification/{id}'){ echo 'active'; }?>">
 							<a data-toggle="collapse" href="#tables">
-								<i class="fas fa-table"></i>
+								<i class="fas fa-bullhorn"></i>
 								<p>Notification</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="tables">
+							<div class="collapse <?php if(in_array($currentURL,['company/show_notification','company/notification','company/edit_notification/{id}'])){ echo 'show';}?>" id="tables">
 								<ul class="nav nav-collapse">
 									<li>
                                     <a href="{{url('company/show_notification')}}">
@@ -255,7 +234,7 @@ $currentURL =Route::current()->uri;
 							</div>
 						</li>
 
-                        
+
                         <li class="nav-item">
 							<a data-toggle="collapse" href="#email">
 								<i class="fas fa-table"></i>
@@ -288,7 +267,7 @@ $currentURL =Route::current()->uri;
 							</div>
 						</li>
 
-                        
+
                         <li class="nav-item">
 							<a data-toggle="collapse" href="#maps">
 								<i class="fas fa-key"></i>

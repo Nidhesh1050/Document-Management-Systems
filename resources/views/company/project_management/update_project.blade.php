@@ -8,7 +8,7 @@
         <div class="page-header">
             <ul class="breadcrumbs">
                 <li class="nav-home">
-                    <a href="{{url('admin/home')}}">
+                    <a href="{{url('company/home')}}">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -16,7 +16,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                <a href="{{url('admin/view_project')}}">Project Management</a>
+                <a href="{{url('company/view_project')}}">Project Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -46,7 +46,7 @@
                         <div class="card-title">Edit Project</div>
                     </div>
                     <div class="card-body">
-                        <form action="{{url('admin/edit_project')}}" method="post" enctype="multipart/form-data">
+                        <form action="{{url('company/edit_project')}}" method="post" enctype="multipart/form-data">
 
                             @csrf
                             <input type="hidden" name="id" value="{{$projects->id}}">
@@ -54,8 +54,14 @@
 
                             <div class="form-group">
                                 <label for="name">Project Name</label>
-                                <input type="text" class="form-control" name="project_name"
-                                    value="{{$projects->project_name}}" placeholder="name">
+                                <input type="text" class="form-control" name="project_name" id="project_name"
+                                    value="{{ $projects->project_name }}" placeholder="name">
+
+                                    <span class="text-danger error " id="project_err">
+                                            @error('project_name')
+                                            {{$message}}
+                                            @enderror
+                                        </span>
                             </div>
                             <div class="form-group">
                                 <label for="name">Project Manager</label>
@@ -80,20 +86,10 @@
                                             @enderror
                                         </span>
                               </div>
-                                <div class="form-group">
-                        <label for="status">Status</label>
-                           &nbsp;&nbsp;&nbsp;
-                            <input type="checkbox" name="status" id="status"  {{$projects->status==1 ? 'checked': '' }} >
-                                <span class="text-danger error ">
-                                @error('status')
-                                {{$message}}
-                                @enderror
-                            </span>
-                        </div>
-
+                               
                             <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Update</button>
-                                <a href="{{url('admin/view_project')}}" class="mt-4 btn btn-danger">Cancel</a>
+                                <a href="{{url('company/view_project')}}" class="mt-4 btn btn-danger">Cancel</a>
                                 <div>
                         </form>
                     </div>
@@ -109,5 +105,35 @@
             .catch(error => {
                 console.error(error);
             });
+
+
+
+        $("#project_name").blur(function(){
+        // alert('aaaa');
+        var project_name = $(this).val();
+        id = <?php echo $projects->id ?>;
+        console.log(id);
+        $.ajax({
+            type: "GET",
+            url: "/company/checkProject",
+            data: {'project_name':project_name,'id':id},
+            success: function(response) 
+            { 
+                console.log(response);
+                if(response == 1){
+                $('#project_err').text('This project is already exist');
+                $('#submit').attr('disabled','disabled');
+                }
+                else{
+                $('#project_err').text('');
+                $('#submit').removeAttr('disabled');
+                }
+            },
+            error: function(response) 
+            {
+                
+            }
+        });
+  });
     </script>
 @endsection
