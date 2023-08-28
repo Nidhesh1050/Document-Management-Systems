@@ -104,5 +104,6 @@ class DocumentTypeController extends Controller
         $documentTypes = DB::table('document_types')->where('id', $id)->update(['status' => $status]);
         return back()->withInput()->with('success', 'Status has been changed.');
     }
+    
     //code by soni end
 }
