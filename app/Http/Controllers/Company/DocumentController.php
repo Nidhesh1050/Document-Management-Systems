@@ -116,4 +116,6 @@ class DocumentController extends Controller
         $users = DB::table('file_uploads')->where('id',$id)->update(['status'=>$status]);
         return back()->withInput()->with('success','Status has been changed.');
     }
+
 }
+

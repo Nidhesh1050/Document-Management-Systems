@@ -57,9 +57,9 @@
                                                   </div>
                                                   <div class="clear"></div>
                                                   <div id="previewimage">
-                                                       <?php 
-                                            
-									 
+                                                       <?php
+
+
                                             if(@$logos->logo){?>
                                                        <img src="{{asset('images/logo/'.@$logos->logo)}}"
                                                             width="100px" />
@@ -78,7 +78,7 @@
                                                   </div>
                                                   <div class="clear"></div>
                                                   <div id="previewprofile">
-                                                       <?php   
+                                                       <?php
                                            	 if(@$logos->profile){?>
                                                        <img src="{{asset('images/profile/'.@$logos->profile)}}"
                                                             width="100px" />
@@ -107,7 +107,7 @@
 
          
 <script>
- 
+
  function filePreview(input) {
  if (input.files && input.files[0]) {
 	var reader = new FileReader();
@@ -123,7 +123,7 @@
 
 $("#file").change(function () {
 filePreview(this);
- 
+
 });
 
 
@@ -141,7 +141,6 @@ filePreview(this);
 
 $("#profile").change(function () {
 filePreviewProfile(this);
- 
 });
 
 </script>
