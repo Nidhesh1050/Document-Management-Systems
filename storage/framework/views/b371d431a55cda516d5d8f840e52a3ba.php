@@ -1,13 +1,11 @@
-@extends('layouts.company-app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="content">
 
         <div class="page-inner">
             <div class="page-header">
                 <ul class="breadcrumbs">
                     <li class="nav-home">
-                        <a href="{{ url('company/notification') }}">
+                        <a href="<?php echo e(url('company/notification')); ?>">
                             <i class="flaticon-home"></i>
                         </a>
                     </li>
@@ -15,7 +13,7 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('company/show_notification') }}">Notification Management</a>
+                        <a href="<?php echo e(url('company/show_notification')); ?>">Notification Management</a>
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>
@@ -34,7 +32,7 @@
                         <div class="card-body">
 
                             <form action="add_notification" id="form" method="POST">
-                                @csrf
+                                <?php echo csrf_field(); ?>
 
                                 <div class="form-group col-md-6">
                                     <label>Title</label>
@@ -42,9 +40,17 @@
                                 </div>
                                 <div>
                                     <span class="text-danger error ">
-                                        @error('title')
-                                            {{ $message }}
-                                        @enderror
+                                        <?php $__errorArgs = ['title'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                            <?php echo e($message); ?>
+
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                         <span>
                                 </div>
 
@@ -53,16 +59,24 @@
                                         <textarea class="form-control" name="description" id="editor" placeholder="write text" rows="2">
                                             </textarea>
                                         <span class="text-danger error ">
-                                            @error('description')
-                                                {{ $message }}
-                                            @enderror
+                                            <?php $__errorArgs = ['description'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <?php echo e($message); ?>
+
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                         </span>
                                     </div>
 
 
                                 <div class="text-right">
                                     <button type="submit" class="mt-4 btn btn-success">Submit</button>
-                                    <a href="{{ url('company/show_notification') }}" class="mt-4 btn btn-danger">Cancel</a>
+                                    <a href="<?php echo e(url('company/show_notification')); ?>" class="mt-4 btn btn-danger">Cancel</a>
                                     <div>
                             </form>
 
@@ -90,4 +104,6 @@
                         console.error(error);
                     });
             </script>
-  @endsection
+  <?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.company-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp\www\dms\resources\views/company/notification/Notification.blade.php ENDPATH**/ ?>

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Company\CategoryController;
 use App\Http\Controllers\Company\DocumentController;
+use App\Http\Controllers\Company\DocumentTypeController;
 use App\Http\Controllers\Company\ProjectManagementController;
 use App\Http\Controllers\Company\SettingController;
 use App\Http\Controllers\Company\NotificationController;
@@ -49,8 +50,6 @@ Route::group(['prefix' => 'company'], function() {
     
     
         /* Category management routes start*/
-            
-            
             Route::get('/category',[CategoryController::class,'categoryAdd']);
             Route::post('/add_category',[CategoryController::class,'categoryAdd']);
             Route::get('/view_category',[CategoryController::class,'categoryView']);
@@ -61,15 +60,17 @@ Route::group(['prefix' => 'company'], function() {
             Route::get('/checkName', [CategoryController::class, 'checkName'])->name('checkName');
         /* Category management routes end*/
     
-        /* Document management routes start*/
-            Route::get('/createdocument',[DocumentController::class,'addDocument']);
-            Route::post('/createdocument',[DocumentController::class,'addDocument']);
-            Route::get('/document',[DocumentController::class,'documentView']);
-            Route::get('/delete_document/{id}', [DocumentController::class,'documentDelete']);
-            Route::get('/edit_document/{id}', [DocumentController::class,'documentEdit']);
-            Route::post('/update_document/', [DocumentController::class,'documentUpdate']);
-            Route::get('/DocumentChangeStatus/{id}/{status}',[DocumentController::class,'documentChangeStatus']);
-        /* Document management routes end*/
+    
+        
+    /* Document management routes start*/
+    Route::get('/createdocument',[DocumentController::class,'addDocument']);
+    Route::post('/createdocument',[DocumentController::class,'addDocument']);
+    Route::get('/document',[DocumentController::class,'documentView']);
+    Route::get('/delete_document/{id}', [DocumentController::class,'documentDelete']);
+    Route::get('/edit_document/{id}', [DocumentController::class,'documentEdit']);
+    Route::post('/update_document/', [DocumentController::class,'documentUpdate']);
+    Route::get('/DocumentChangeStatus/{id}/{status}',[DocumentController::class,'documentChangeStatus']);
+    /* Document management routes end*/
     
     
         /* Project management routes start*/
@@ -82,13 +83,14 @@ Route::group(['prefix' => 'company'], function() {
         /* Project management routes end*/
     
         /* Document type routes start   */
-    
-            Route::get('/view_document',[DocumentController::class,'view_document']);
-            Route::get('/deletedocument/{id}', [DocumentController::class,'deletedocument']);
-            Route::get('/add_document', [DocumentController::class,'add_documenttype']);
-            Route::post('/register',[DocumentController::class,'register']);
-            Route::get('/edit/{id}', [DocumentController::class,'edit']);
-            Route::post('/documentupdate/', [DocumentController::class,'documentupdate']);
+        Route::get('/documentType_view',[DocumentTypeController::class,'documentTypeView']);
+        Route::get('/documentType_delete/{id}', [DocumentTypeController::class,'documentTypeDelete']);
+        Route::get('/documentType_add', [DocumentTypeController::class,'documentTypeAdd']);
+        Route::post('/documentType_add', [DocumentTypeController::class,'documentTypeAdd']);
+        Route::get('/documentType_edit/{id}', [DocumentTypeController::class,'documentTypeEdit']);
+        Route::post('/documentType_update/', [DocumentTypeController::class,'documentTypeUpdate']);
+        Route::get('/checkDocumentType', [DocumentTypeController::class, 'checkDocumentType'])->name('checkDocumentType');
+        Route::get('/DocumentTypeChangeStatus/{id}/{status}',[DocumentTypeController::class,'DocumentTypeChangeStatus']);
 
 
     
@@ -102,13 +104,13 @@ Route::group(['prefix' => 'company'], function() {
         /*  Side Setting routes end*/
     
         /* Notification type routes start   */
-            Route::get('/notification',[NotificationController::class, 'Notification'])->name('notification');
-            Route::post('/add_notification',[NotificationController::class, 'add_notification']);
-            Route::get('/show_notification',[NotificationController::class, 'show_notification']);
-            Route::get('/delete/{id}', [NotificationController::class,'delete']);
-            
-            Route::get('/edit_notification/{id}', [NotificationController::class,'edit_notification']);
-            Route::post('/update_notification', [NotificationController::class,'update_notification']);
+            Route::get('/notification',[NotificationController::class, 'addNotification'])->name('notification');
+            Route::post('/add_notification',[NotificationController::class, 'addNotification']);
+            Route::get('/show_notification',[NotificationController::class, 'showNotification']);
+            Route::get('/delete_notification/{id}', [NotificationController::class,'deleteNotification']);
+            Route::get('/edit_notification/{id}', [NotificationController::class,'editNotification']);
+            Route::post('/update_notification', [NotificationController::class,'updateNotification']);
+            Route::get('/NotificationChangeStatus/{id}/{status}',[NotificationController::class,'statusNotification']);
         /* Notification type routes end   */
         
         /* Content management system routes start*/

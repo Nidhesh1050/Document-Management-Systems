@@ -1,11 +1,10 @@
-@extends('layouts.company-app')
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
                 <ul class="breadcrumbs">
                     <li class="nav-home">
-                        <a href="{{ url('company/home') }}">
+                        <a href="<?php echo e(url('company/home')); ?>">
                             <i class="flaticon-home"></i>
                         </a>
                     </li>
@@ -27,19 +26,19 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="flash-message">
-                            @if ($message = Session::get('success'))
+                            <?php if($message = Session::get('success')): ?>
                                 <div class="alert alert-success">
-                                    <p>{{ $message }}</p>
+                                    <p><?php echo e($message); ?></p>
                                 </div>
-                            @endif
-                            @if ($message = Session::get('error'))
+                            <?php endif; ?>
+                            <?php if($message = Session::get('error')): ?>
                                 <div class="alert alert-danger">
-                                    <p>{{ $message }}</p>
+                                    <p><?php echo e($message); ?></p>
                                 </div>
-                            @endif
+                            <?php endif; ?>
                         </div>
                         <div class="d-flex align-items-center">
-                            <a href="{{ url('company/notification') }}"><button class="btn btn-primary btn-round ml-auto"
+                            <a href="<?php echo e(url('company/notification')); ?>"><button class="btn btn-primary btn-round ml-auto"
                                     data-toggle="modal" data-target="#addRowModal">
                                     <i class="fa fa-plus"></i>
                                     Add Notification
@@ -60,14 +59,14 @@
                                 </thead>
 
                                 <tbody>
-                                    @foreach ($notifications as $notification)
+                                    <?php $__currentLoopData = $notifications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $notification->title }}</td>
+                                            <td><?php echo e($loop->iteration); ?></td>
+                                            <td><?php echo e($notification->title); ?></td>
                                             <td><?php echo $notification->description ?></td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href="edit_notification/{{ $notification->id }}">
+                                                    <a href="edit_notification/<?php echo e($notification->id); ?>">
                                                         <button type="button" data-toggle="tooltip" title=""
                                                             class="btn btn-link btn-primary btn-lg"
                                                             data-original-title="Edit">
@@ -75,7 +74,7 @@
                                                         </button>
                                                     </a>
 
-                                                    <a href='delete_notification/{{ $notification->id }}'
+                                                    <a href='delete_notification/<?php echo e($notification->id); ?>'
                                                         onclick="return confirm('Are you sure you want to delete this notification ?')">
                                                         <button type="button" data-toggle="tooltip" title=""
                                                             class="btn btn-link btn-danger" data-original-title="Remove">
@@ -85,7 +84,7 @@
                                                     </a>
                                                 </div>
                                             </td>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </tr>
                                 </tbody>
                             </table>
@@ -93,4 +92,6 @@
                     </div>
                 </div>
             </div>
-        @endsection
+        <?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.company-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp\www\dms\resources\views/company/notification/show_notification.blade.php ENDPATH**/ ?>

@@ -1,13 +1,11 @@
-@extends('layouts.company-app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="content">
 
     <div class="page-inner">
         <div class="page-header">
             <ul class="breadcrumbs">
                 <li class="nav-home">
-                    <a href="{{ url('company/home') }}">
+                    <a href="<?php echo e(url('company/home')); ?>">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -30,25 +28,25 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="flash-message">
-                            @if ($message = Session::get('success'))
+                            <?php if($message = Session::get('success')): ?>
                             <div class="alert alert-success">
-                                <p>{{ $message }}</p>
+                                <p><?php echo e($message); ?></p>
                             </div>
-                            @endif
-                            @if ($message = Session::get('error'))
+                            <?php endif; ?>
+                            <?php if($message = Session::get('error')): ?>
                             <div class="alert alert-danger">
-                                <p>{{ $message }}</p>
+                                <p><?php echo e($message); ?></p>
                             </div>
-                            @endif
+                            <?php endif; ?>
                         </div>
                         <div class="card-title">Edit Category</div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ url('company/edit_category') }}" id="category_edit" method="post"
+                        <form action="<?php echo e(url('company/edit_category')); ?>" id="category_edit" method="post"
                             enctype="multipart/form-data">
 
-                            @csrf
-                            <input type="hidden" name="id" value="{{ $users->id }}">
+                            <?php echo csrf_field(); ?>
+                            <input type="hidden" name="id" value="<?php echo e($users->id); ?>">
 
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -58,31 +56,48 @@
                                         <option value=""> Please Select</option>
                                         <?php foreach($parent_categories as $parent_categories){?>
                                         <option <?php if($users->parent_id == $parent_categories->id){?>selected
-                                            <?php } ?> value="{{$parent_categories->id}}">{{$parent_categories->name}}
+                                            <?php } ?> value="<?php echo e($parent_categories->id); ?>"><?php echo e($parent_categories->name); ?>
+
                                         </option>
                                         <?php }?>
                                     </select>
                                 </div>
                                 <div class="form-group  col-md-6">
                                     <label for="name">Name</label>
-                                    <input type="text" class="form-control" name="name" value="{{ $users->name }}"
+                                    <input type="text" class="form-control" name="name" value="<?php echo e($users->name); ?>"
                                         id="name" placeholder="name">
                                     <span class="text-danger error " id="name_err">
-                                        @error('name')
-                                        {{$message}}
-                                        @enderror
+                                        <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                        <?php echo e($message); ?>
+
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </span>
                                 </div>
                                 <div class="form-group col-md-12">
                                     <label for="description">Description</label>
                                     <textarea class="form-control" name="description" id="editor"
                                         placeholder="write text" rows="2">
-                                        {{ $users->description }} 
+                                        <?php echo e($users->description); ?> 
                                     </textarea>
                                     <span class="text-danger error ">
-                                        @error('description')
-                                        {{ $message }}
-                                        @enderror
+                                        <?php $__errorArgs = ['description'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                        <?php echo e($message); ?>
+
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </span>
                                 </div>
 
@@ -90,7 +105,7 @@
                             </div>
                             <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Update</button>
-                                <a href="{{ url('company/view_category') }}" class="mt-4 btn btn-danger">Cancel</a>
+                                <a href="<?php echo e(url('company/view_category')); ?>" class="mt-4 btn btn-danger">Cancel</a>
                                 <div>
 
 
@@ -159,4 +174,5 @@
                                 });
                             });
                             </script>
-                            @endsection
+                            <?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.company-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp\www\dms\resources\views/company/category/update_category.blade.php ENDPATH**/ ?>

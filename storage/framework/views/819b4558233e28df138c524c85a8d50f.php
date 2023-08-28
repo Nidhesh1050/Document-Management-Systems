@@ -1,6 +1,4 @@
-@extends('layouts.company-app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="content">
 
@@ -8,7 +6,7 @@
         <div class="page-header">
             <ul class="breadcrumbs">
                 <li class="nav-home">
-                    <a href="{{url('company/home')}}">
+                    <a href="<?php echo e(url('company/home')); ?>">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -16,7 +14,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('company/view_category') }}">Category Management</a>
+                    <a href="<?php echo e(url('company/view_category')); ?>">Category Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -31,34 +29,34 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="flash-message">
-                            @if ($message = Session::get('success'))
+                            <?php if($message = Session::get('success')): ?>
                             <div class="alert alert-success">
-                                <p>{{ $message }}</p>
+                                <p><?php echo e($message); ?></p>
                             </div>
-                            @endif
-                            @if ($message = Session::get('error'))
+                            <?php endif; ?>
+                            <?php if($message = Session::get('error')): ?>
                             <div class="alert alert-danger">
-                                <p>{{ $message }}</p>
+                                <p><?php echo e($message); ?></p>
                             </div>
-                            @endif
+                            <?php endif; ?>
                         </div>
 
 
                         <div class="card-title">Add Category</div>
                     </div>
                     <div class="card-body">
-                        <form action="{{url('company/add_category')}}" method="post" id="category"
+                        <form action="<?php echo e(url('company/add_category')); ?>" method="post" id="category"
                             enctype="multipart/form-data">
-                            @csrf
+                            <?php echo csrf_field(); ?>
 
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="name">Parent Name</label>
                                     <select name="parent_id" class="form-control">
                                         <option value=""> Please Select</option>
-                                        @foreach($parent_categories as $parent)
-                                        <option value="{{$parent->id}}">{{$parent->name}}</option>
-                                        @endforeach
+                                        <?php $__currentLoopData = $parent_categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $parent): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($parent->id); ?>"><?php echo e($parent->name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>
 
@@ -67,9 +65,17 @@
                                     <input type="text" class="form-control" name="name" id="name" placeholder="Name">
 
                                     <span class="text-danger error " id="name_err">
-                                        @error('name')
-                                        {{$message}}
-                                        @enderror
+                                        <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                        <?php echo e($message); ?>
+
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </span>
                                 </div>
 
@@ -79,15 +85,23 @@
                                         placeholder="write text" rows="2">
                                             </textarea>
                                     <span class="text-danger error ">
-                                        @error('description')
-                                        {{ $message }}
-                                        @enderror
+                                        <?php $__errorArgs = ['description'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                        <?php echo e($message); ?>
+
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </span>
                                 </div>
 
                                 <div class="text-right">
                                     <button type="submit" class="mt-4 btn btn-success">Submit</button>
-                                    <a href="{{url('company/view_category')}}" class="mt-4 btn btn-danger">Cancel</a>
+                                    <a href="<?php echo e(url('company/view_category')); ?>" class="mt-4 btn btn-danger">Cancel</a>
                                     <div>
                         </form>
                     </div>
@@ -151,4 +165,5 @@
                     console.error(error);
                 });
             </script>
-            @endsection
+            <?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.company-app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp\www\dms\resources\views/company/category/category.blade.php ENDPATH**/ ?>
