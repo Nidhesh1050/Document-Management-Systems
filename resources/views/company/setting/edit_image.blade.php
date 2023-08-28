@@ -22,7 +22,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Update Logo</a>
+                    <a href="#">Edit Company</a>
                 </li>
             </ul>
         </div>
@@ -95,9 +95,6 @@
         </div>
     </div>
 </div>
-
-
-
 <script>
 $(document).ready(function() {
     $("#category").validate({
@@ -115,6 +112,99 @@ $(document).ready(function() {
 
         }
     });
-});
+    function filePreview(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#company_name + img').remove();
+                $('#previewimage').after('<img src="'+e.target.result+'" width="100" height="100"/>');
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#company_name").blur(function(){
+        var company_name = $(this).val();
+        id = <?php echo $company_data->id ?>;
+        console.log(id);
+        $.ajax({
+            type: "GET",
+            url: "/company/checkCompany",
+            data: {'company_name':company_name,'id':id},
+            success: function(response) 
+            { 
+                console.log(response);
+                if(response == 1){
+                $('#company_err').text('This company is already exist');
+                $('#submit').attr('disabled','disabled');
+                }
+                else{
+                $('#company_err').text('');
+                $('#submit').removeAttr('disabled');
+                }
+            },
+            error: function(response) 
+            {
+                
+            }
+        });
+    });
+        
+
+        $("#mobile").blur(function(){
+        var mobile = $(this).val();
+        id = <?php echo $company_data->id ?>;
+        console.log(id);
+        $.ajax({
+            type: "GET",
+            url: "/company/checkMobile",
+            data: {'mobile':mobile,'id':id},
+            success: function(response) 
+            { 
+                console.log(response);
+                if(response == 1){
+                $('#mobile_err').text('This mobile number is already exist');
+                $('#submit').attr('disabled','disabled');
+                }
+                else{
+                $('#mobile_err').text('');
+                $('#submit').removeAttr('disabled');
+                }
+            },
+            error: function(response) 
+            {
+                
+            }
+        });
+  });
+
+
+  
+  $("#company_email").blur(function(){
+        var email = $(this).val();
+        id = <?php echo $company_data->id ?>;
+        console.log(id);
+        $.ajax({
+            type: "GET",
+            url: "/company/checkEmail",
+            data: {'email':email,'id':id},
+            success: function(response) 
+            { 
+                console.log(response);
+                if(response == 1){
+                $('#email_err').text('This email is already exist');
+                $('#submit').attr('disabled','disabled');
+                }
+                else{
+                $('#email_err').text('');
+                $('#submit').removeAttr('disabled');
+                }
+            },
+            error: function(response) 
+            {
+                
+            }
+        });
+  });
 </script>
 @endsection

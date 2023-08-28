@@ -89,7 +89,7 @@
             { 
                 console.log(response);
                 if(response == 1){
-                $('#name_err').text('This company is already exist');
+                $('#name_err').text('This name is already exist');
                 $('#submit').attr('disabled','disabled');
                 }
                 else{

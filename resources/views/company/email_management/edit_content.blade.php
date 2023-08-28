@@ -1,6 +1,5 @@
 
 @extends('layouts.company-app')
-
 @section('content')
     <div class="content">
 
@@ -9,7 +8,7 @@
                 <ul class="breadcrumbs">
 
                     <li class="nav-home">
-                        <a href="{{ url('admin/home') }}">
+                        <a href="{{ url('company/home') }}">
                             <i class="flaticon-home"></i>
                         </a>
                     </li>
@@ -52,9 +51,9 @@
                         </div>
                         <div class="card-body">
 
-                            <form action="{{ url('admin/update') }}" id="form" method="POST">
+                            <form action="{{ url('company/update') }}" id="form" method="POST">
                                 @csrf
-                                <input type="hidden" name="id" value="{{ $users->id }}">
+                                <input type="hidden" name="id" value="{{ $emailContents->id }}">
                                 <div class="form-group">
 
                                     <label>Email type</label>
@@ -75,7 +74,7 @@
 
                                 <div class="form-group">
                                     <label>Subject</label>
-                                    <input type="text" name="subject" id="subject" value="{{ $users->subject }}"
+                                    <input type="text" name="subject" id="subject" value="{{ $emailContents->subject }}"
                                         class="form-control">
                                     <span class="text-danger  ">
                                         @error('subject')
@@ -86,7 +85,7 @@
 
                                 <div class="form-group">
                                     <label>Message</label>
-                                    <input type="text" name="message" id="message" value="{{ $users->message }}"
+                                    <input type="text" name="message" id="message" value="{{ $emailContents->message }}"
                                         class="form-control">
                                     <span class="text-danger  ">
                                         @error('message')
@@ -96,7 +95,7 @@
                                 </div>
                                 <div class="text-right">
                                     <button type="submit" class="mt-4 btn btn-success">Update</button>
-                                    <a href="{{ url('admin/show_content') }}" class="mt-4 btn btn-danger">Cancel</a>
+                                    <a href="{{ url('company/show_content') }}" class="mt-4 btn btn-danger">Cancel</a>
                                     <div>
                             </form>
 

@@ -37,7 +37,7 @@ class CategoryController extends Controller
         $categories = DB::table('categories')->orderBy('id','DESC')->get();
         return view('company.category.view_category',['categories'=>$categories]);
     }
-    public function categoryChangeStatus($id=null, $status=null)   {
+    public function categoryChangeStatus($id=null, $status=null){
         $categories = DB::table('categories')->where('id',$id)->update(['status'=>$status]);
         return back()->withInput()->with('success','Status has been changed.');
     } 

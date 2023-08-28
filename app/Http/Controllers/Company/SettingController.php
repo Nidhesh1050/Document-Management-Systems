@@ -81,7 +81,6 @@ public function Updateimage(Request $request) {
             return redirect()->back()->with('error', 'Image already exists.');
         }
 
-
         DB::table('side_setting')->insert($inserData);
         return redirect('/company/view_image')->with('success', 'Profile Image has been updated successfully.');
     }
@@ -111,7 +110,6 @@ public function Updateimage(Request $request) {
             $destinationPath = public_path('/images');
             $image_name = rand().'.'.$image->getClientOriginalExtension();
             $image->move($destinationPath, $image_name);
-
             DB::table('side_setting')
             ->where('id', $request['id'])
             ->update([

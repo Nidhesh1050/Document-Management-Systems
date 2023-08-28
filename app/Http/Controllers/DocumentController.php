@@ -113,7 +113,7 @@ class DocumentController extends Controller
 
     }
     public function documentChangeStatus($id=null, $status=null)   {
-        $users = DB::table('file_uploads')->where('id',$id)->update(['status'=>$status]);
+        $documents = DB::table('file_uploads')->where('id',$id)->update(['status'=>$status]);
         return back()->withInput()->with('success','Status has been changed.');
     } 
 
