@@ -105,7 +105,7 @@
                </div>
 
 
-
+         
 <script>
 
  function filePreview(input) {
@@ -141,7 +141,6 @@ filePreview(this);
 
 $("#profile").change(function () {
 filePreviewProfile(this);
-
 });
 
 </script>

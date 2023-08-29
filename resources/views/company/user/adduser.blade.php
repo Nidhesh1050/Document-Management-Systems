@@ -9,7 +9,7 @@
         <div class="page-header">
             <ul class="breadcrumbs">
                 <li class="nav-home">
-                    <a href="{{url('admin/home')}}">
+                    <a href="{{url('company/home')}}">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -17,7 +17,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="{{url('admin/userManagement')}}">User Management</a>
+                    <a href="{{url('company/userManagement')}}">User Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -34,7 +34,7 @@
                         <div class="card-title">Add User</div>
                     </div>
                     <div class="card-body">
-                        <form action="{{url('admin/register_user')}}" method="post" id="validate">
+                        <form action="{{url('company/register_user')}}" method="post" id="validate">
                             @csrf
                             <div class="form-row">
                             <div class="form-group col-md-6">
@@ -114,7 +114,7 @@
                             </div>
                             <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>
-                                <a href="{{url('admin/userManagement')}}" class="mt-4 btn btn-danger">Cancel</a>
+                                <a href="{{url('company/userManagement')}}" class="mt-4 btn btn-danger">Cancel</a>
                                 <div>
                         </form>
                     </div>
@@ -137,12 +137,12 @@ $(document).ready(function() {
             company_name: {
                 required: true,
             },
-            
+
             email: {
                 required: true,
                 email: true
             },
-            
+
             mobile: {
                 required: true,
                 number: true,
@@ -158,7 +158,7 @@ $(document).ready(function() {
                 required: true,
                 minlength: 8
             },
-           
+
         },
         messages: {
             name: {

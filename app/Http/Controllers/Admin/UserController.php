@@ -20,14 +20,14 @@ class UserController extends Controller
     public function userManagement(){
         $users = DB::table('users')->select(
           "users.*",
-          "companies.company_name" )
+          "companies.company_name")
           ->leftJoin("companies",  "companies.id" ,"=", "users.company_id"  )->whereIn('type', [0])
           ->orderBy('id','DESC')->get();
         return view('admin.user.userManagement',['users'=>$users]);
     }
 
       //Delete function to delete in user body
-    public function delete($id) {
+    public function delete($id){
         DB::delete('delete from users where id = ?',[$id]);
           return redirect('admin/userManagement')->with('success', 'User has been deleted successfully.');
     }

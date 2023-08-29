@@ -82,11 +82,11 @@
                             $("#form").validate({
                                 rules: {
                                     title: "required",
-                                    // description: "required",
+
                                 },
                                 messages: {
-                                    title: "*Update your title",
-                                    // description: "*Update your description",
+                                    title: "Update title",
+
                                 }
                             });
                         });

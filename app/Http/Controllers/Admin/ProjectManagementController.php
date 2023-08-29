@@ -40,7 +40,7 @@ class ProjectManagementController extends Controller
 
             $inserData['description']= $request->description;
             $inserData['project_name']= $request->project_name;
-            // $inserData['slug'] =str_replace(' ', '-',$request->project_name);      
+            // $inserData['slug'] =str_replace(' ', '-',$request->project_name);       
             $inserData['slug'] =str_replace(' ', '-',trim($request->project_name));      
             $inserData['status'] =  $status;
 

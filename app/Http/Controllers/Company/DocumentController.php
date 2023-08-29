@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Company;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class DocumentController extends Controller
 {
@@ -13,7 +14,8 @@ class DocumentController extends Controller
         $this->middleware(['auth']);
     }
     public function documentView(){
-        $documents = DB::table('file_uploads')->orderBy('id','DESC')->get();
+        $companyId=Auth::user()->id;
+        $documents = DB::table('file_uploads')->where('company_id',$companyId)->orderBy('id','DESC')->get();
       //  echo $users;die;
         return view('company.document.show_document',['documents'=>$documents]);
 
@@ -92,12 +94,21 @@ class DocumentController extends Controller
         $document_name = $request->project_id.'-'.$request->category_id.'-'.$request->document_type_id.$document->getClientOriginalExtension();
         $document->move($destinationPath, $document_name);
 
+            if(Auth::user()->type=="company"){
+                $inserData['company_id']= Auth::user()->id;
+                $inserData['created_at']= Auth::user()->id;
+            }
+            if(Auth::user()->type=="user"){
+                $inserData['company_id']= Auth::user()->company_id;
+            }
+
             $inserData['project_id'] = $request->project_id;
             $inserData['category_id']= $request->category_id;
             $inserData['document_type_id']= $request->document_type_id;
             $inserData['description'] = $request['description'];
             $inserData['title'] = $request->title;
             $inserData['documents'] = $document_name;
+
 
             DB::table('file_uploads')->insert($inserData);
             return  redirect('company/document')->with('success', 'Document has been added successfully.');
