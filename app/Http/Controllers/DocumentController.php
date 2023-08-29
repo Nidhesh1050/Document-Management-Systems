@@ -72,11 +72,11 @@ class DocumentController extends Controller
         return redirect('admin/document')->with('success', 'Ducoment has been updated successfully.');
     }
 
-   
+
 
     public function addDocument(Request $request){
         if(!empty($request->all())){
-            
+
         $request->validate([
             'project_id' =>  'required',
             'category_id' => 'required',
@@ -85,7 +85,7 @@ class DocumentController extends Controller
             'document' =>  'required|mimes:pdf,xlsx,docx,ppt',
         ]);
 
-       
+
 
         $document = $request->file('document');
         $destinationPath = public_path('/documents');
@@ -115,6 +115,6 @@ class DocumentController extends Controller
     public function documentChangeStatus($id=null, $status=null)   {
         $documents = DB::table('file_uploads')->where('id',$id)->update(['status'=>$status]);
         return back()->withInput()->with('success','Status has been changed.');
-    } 
+    }
 
 }

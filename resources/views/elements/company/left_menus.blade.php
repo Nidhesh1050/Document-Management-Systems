@@ -173,7 +173,7 @@ $currentURL =Route::current()->uri;
                     </div>
 				</li>
 
-               
+
                 <li class="nav-item <?php if($currentURL =='company/logos' || $currentURL =='company/update_logo'){ echo 'active'; }?>">
                     <a data-toggle="collapse" href="#setting">
                         <i class="fas fa-cog"></i>

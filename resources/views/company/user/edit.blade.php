@@ -8,7 +8,7 @@
         <div class="page-header">
             <ul class="breadcrumbs">
                 <li class="nav-home">
-                    <a href="{{url('admin/home')}}">
+                    <a href="{{url('company/home')}}">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -16,7 +16,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="{{url('admin/userManagement')}}">User Management</a>
+                    <a href="{{url('company/userManagement')}}">User Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -46,7 +46,7 @@
                         <div class="card-title">Edit User</div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ url('admin/update_user') }}" method="post" id="form">
+                        <form action="{{ url('company/update_user') }}" method="post" id="form">
 
                             @csrf
                             <input type="hidden" name="id" value="{{ $users->id }}">
@@ -87,7 +87,7 @@
                                         @enderror
                                     </span>
                                 </div>
-                          
+
                                 <div class="form-group col-md-6">
                                     <label for="mobile">Mobile</label>
                                     <input type="text" class="form-control" id="mobile" placeholder="Enter Mobile"
@@ -118,7 +118,7 @@
                             </div>
                             <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Update</button>
-                                <a href="{{url('admin/userManagement')}}" class="mt-4 btn btn-danger">Cancel</a>
+                                <a href="{{url('company/userManagement')}}" class="mt-4 btn btn-danger">Cancel</a>
                             <div>
                         </form>
                     </div>
@@ -149,7 +149,7 @@ $(document).ready(function() {
             user_type: {
                 required: true,
             },
-           
+
 
         },
         messages: {

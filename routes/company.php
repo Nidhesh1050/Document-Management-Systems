@@ -59,9 +59,9 @@ Route::group(['prefix' => 'company'], function () {
             Route::get('/categoryChangeStatus/{id}/{status}',[CategoryController::class,'categoryChangeStatus']);
             Route::get('/checkName', [CategoryController::class, 'checkName'])->name('checkName');
         /* Category management routes end*/
-    
-    
-        
+
+
+
     /* Document management routes start*/
     Route::get('/createdocument',[DocumentController::class,'addDocument']);
     Route::post('/createdocument',[DocumentController::class,'addDocument']);
@@ -71,8 +71,8 @@ Route::group(['prefix' => 'company'], function () {
     Route::post('/update_document/', [DocumentController::class,'documentUpdate']);
     Route::get('/DocumentChangeStatus/{id}/{status}',[DocumentController::class,'documentChangeStatus']);
     /* Document management routes end*/
-    
-    
+
+
        /* Project management routes start*/
         Route::get('/project',[ProjectManagementController::class,'addProject']);
         Route::post('/add_project',[ProjectManagementController::class,'addProject']);
@@ -84,7 +84,7 @@ Route::group(['prefix' => 'company'], function () {
         Route::get('/ProjectChangeStatus/{id}/{status}',[ProjectManagementController::class,'ProjectChangeStatus']);
      /* Project management routes end*/
 
-    
+
         /* Document type routes start   */
         Route::get('/documentType_view',[DocumentTypeController::class,'documentTypeView']);
         Route::get('/documentType_delete/{id}', [DocumentTypeController::class,'documentTypeDelete']);
@@ -96,22 +96,22 @@ Route::group(['prefix' => 'company'], function () {
         Route::get('/DocumentTypeChangeStatus/{id}/{status}',[DocumentTypeController::class,'DocumentTypeChangeStatus']);
 
 
-    
-    /* Side Setting routes start*/
-    Route::get('/logos',[SettingController::class,'setting']);
-    Route::post('/update_logo',[SettingController::class,'Updateimage']);
-/*  Side Setting routes end*/
-    
+
+        /* Side Setting routes start*/
+        Route::get('/logos',[SettingController::class,'setting']);
+        Route::post('/update_logo',[SettingController::class,'Updateimage']);
+        /*  Side Setting routes end*/
+
        /* Notification type routes start   */
-Route::get('/notification',[NotificationController::class, 'addNotification'])->name('notification');
-Route::post('/add_notification',[NotificationController::class, 'addNotification']);
-Route::get('/show_notification',[NotificationController::class, 'showNotification']);
-Route::get('/delete_notification/{id}', [NotificationController::class,'deleteNotification']);
-Route::get('/edit_notification/{id}', [NotificationController::class,'editNotification']);
-Route::post('/update_notification', [NotificationController::class,'updateNotification']);
-Route::get('/NotificationChangeStatus/{id}/{status}',[NotificationController::class,'statusNotification']);
+        Route::get('/notification',[NotificationController::class, 'addNotification'])->name('notification');
+        Route::post('/add_notification',[NotificationController::class, 'addNotification']);
+        Route::get('/show_notification',[NotificationController::class, 'showNotification']);
+        Route::get('/delete_notification/{id}', [NotificationController::class,'deleteNotification']);
+        Route::get('/edit_notification/{id}', [NotificationController::class,'editNotification']);
+        Route::post('/update_notification', [NotificationController::class,'updateNotification']);
+        Route::get('/NotificationChangeStatus/{id}/{status}',[NotificationController::class,'statusNotification']);
  /* Notification type routes end   */
-        
+
        /* Content management system routes start*/
             Route::get('/addcontent',[CMSController::class,'addCms']);
             Route::post('/add_cms',[CMSController::class,'addCms']);
@@ -122,11 +122,11 @@ Route::get('/NotificationChangeStatus/{id}/{status}',[NotificationController::cl
             Route::get('/CMSChangeStatus/{id}/{status}',[CMSController::class,'CMSChangeStatus']);
 
 /* Content management system routes end*/
-    
+
         //Email management routes start by Nidhi
 
         // email-type
-          
+
     Route::get('/email',[EmailTypeController::class, 'emailTypeAdd']);
 	Route::post('/add_email',[EmailTypeController::class, 'emailTypeAdd']);
 	Route::get('/show_email',[EmailTypeController::class, 'emailTypeShow']);
@@ -135,10 +135,10 @@ Route::get('/NotificationChangeStatus/{id}/{status}',[NotificationController::cl
 	Route::get('/edit_email/{id}', [EmailTypeController::class,'emailTypeEdit']);
 	Route::post('/emailupdate', [EmailTypeController::class,'emailTypeUpdate']);
     Route::get('/EmailTypeChangeStatus/{id}/{status}',[EmailTypeController::class,'EmailTypeChangeStatus']);
-        
-    
+
+
         //email-content
-    
+
 
 
     Route::get('/content',[EmailContentController::class, 'emailContentAdd']);
@@ -149,9 +149,9 @@ Route::get('/NotificationChangeStatus/{id}/{status}',[NotificationController::cl
 	Route::get('/edit_content/{id}', [EmailContentController::class,'emailContentEdit']);
 	Route::post('/update', [EmailContentController::class,'emailContentUpdate']);
     Route::get('/EmailContentChangeStatus/{id}/{status}',[EmailContentController::class,'EmailContentChangeStatus']);
-        
+
      //Email management routes end
-     
+
             /* Module Permission route start here*/
             Route::get('/module_permission',[PermissionController::class,'module_permission']);
             Route::post('/module_permission',[PermissionController::class,'permission']);
