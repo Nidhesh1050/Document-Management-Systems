@@ -47,10 +47,10 @@
                         <div class="card-body">
                             <form action="{{ url('company/update_notification') }}" id="form" method="POST">
                                 @csrf
-                                <input type="hidden" name="id" value="{{ $users->id }}">
+                                <input type="hidden" name="id" value="{{ $notifications->id }}">
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input type="text" name="title" value="{{ $users->title }}" class="form-control">
+                                    <input type="text" name="title" value="{{ $notifications->title }}" class="form-control">
                                     <span class="text-danger error ">
                                         @error('title')
                                             {{ $message }}
@@ -60,7 +60,7 @@
 
                                 <div class="form-group col-md-12">
                                         <label for="description">Description</label>
-                                        <textarea class="form-control" name="description" id="editor" placeholder="write text" rows="2">{{ $users->description }}
+                                        <textarea class="form-control" name="description" id="editor" placeholder="write text" rows="2">{{ $notifications->description }}
                                             </textarea>
                                         <span class="text-danger error ">
                                             @error('description')

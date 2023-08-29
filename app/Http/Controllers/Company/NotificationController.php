@@ -25,7 +25,7 @@ class NotificationController extends Controller
                 //$inserData['company_id']= $companyID[0]->id;
             if(Auth::user()->type=="company"){
 				$inserData['company_id']= Auth::user()->id;
-				$inserData['created_at']= Auth::user()->id;
+				$inserData['created_by']= Auth::user()->id;
 			}
 			if(Auth::user()->type=="user"){
 				$inserData['company_id']= Auth::user()->company_id;
@@ -51,15 +51,18 @@ class NotificationController extends Controller
     
              //Delete function to delete in user body
          public function deleteNotification($id) {
-            DB::delete('delete from notifications where id ='.$id);
+            $authID= auth()->user()->id;
+            DB::table('notifications')->where('company_id',$authID)->delete($id);
             return redirect('company/show_notification')->with('success', 'Notification has been deleted successfully.');
              }
     
             //edit code in user body
             public function editNotification(Request $request,$id)
             {
-               $users = DB::table('notifications')->where(['id'=> $id])->first();
-               return view('company.notification.edit_notification')->with(['users'=>$users]);
+              $authId= auth()->user()->id;
+
+               $notifications = DB::table('notifications')->where(['id'=> $id])->where('company_id',$authId)->first();
+               return view('company.notification.edit_notification')->with(['notifications'=>$notifications]);
              }
     
              public function updateNotification(Request $request){
