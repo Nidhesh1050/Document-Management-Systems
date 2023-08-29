@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Session;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class NotificationController extends Controller
 {
@@ -25,13 +25,13 @@ class NotificationController extends Controller
                 //$inserData['company_id']= $companyID[0]->id;
             if(Auth::user()->type=="company"){
 				$inserData['company_id']= Auth::user()->id;
-				$inserData['created_at']= Auth::user()->id;
+				$inserData['created_by']= Auth::user()->id;
 			}
 			if(Auth::user()->type=="user"){
 				$inserData['company_id']= Auth::user()->company_id;
 			}
-			
-                
+
+
                 DB::table('notifications')->insert($inserData);
                 return redirect('company/show_notification')->with('success', 'Notification has been added successfully.');
             }
@@ -42,33 +42,36 @@ class NotificationController extends Controller
         public function showNotification(){
 
           $companyId= auth()->user()->id;
-         
+
              $notifications = DB::table('notifications')->where('company_id',$companyId)->orderBy('id','DESC')->get();
-             
+
              return view('company.notification.show_notification',['notifications'=>$notifications]);
             }
-    
-    
+
+
              //Delete function to delete in user body
          public function deleteNotification($id) {
-            DB::delete('delete from notifications where id ='.$id);
+            $authID= auth()->user()->id;
+            DB::table('notifications')->where('company_id',$authID)->delete($id);
             return redirect('company/show_notification')->with('success', 'Notification has been deleted successfully.');
              }
-    
+
             //edit code in user body
             public function editNotification(Request $request,$id)
             {
-               $users = DB::table('notifications')->where(['id'=> $id])->first();
-               return view('company.notification.edit_notification')->with(['users'=>$users]);
+              $authId= auth()->user()->id;
+
+               $notifications = DB::table('notifications')->where(['id'=> $id])->where('company_id',$authId)->first();
+               return view('company.notification.edit_notification')->with(['notifications'=>$notifications]);
              }
-    
+
              public function updateNotification(Request $request){
                 $request->validate(
                     [
                       'title'=>'required',
                       ]
                   );
-    
+
                 DB::table('notifications')
                     ->where('id', $request['id'])
                     ->update([
@@ -76,7 +79,7 @@ class NotificationController extends Controller
                         'description' => $request['description'],
                     ]);
                     return redirect('company/show_notification')->with('success', 'Notification has been updated successfully.');
-    
+
             }
             public function statusNotification($id=null, $status=null)   {
                 $notifications = DB::table('notifications')->where('id',$id)->update(['status'=>$status]);
