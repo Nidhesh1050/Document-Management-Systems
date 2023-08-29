@@ -56,6 +56,7 @@
                                     <tr>
                                         <th> S. No</th>
                                         <th> Name</th>
+                                        <th>Company Name</th>
                                         <th> Email </th>
                                         <th> Mobile </th>
                                         <th> Status</th>
@@ -71,6 +72,7 @@
                                         <tr>
                                         <td>{{$loop->iteration}}</td>
                                             <td> {{ $users->name }}</td>
+                                            <td> {{ $users->company_name }}</td>
                                             <td> {{ $users->email }}</td>
                                             <td> {{ $users->mobile }}</td>
                                             <td>{{ $status }}</td>
@@ -87,7 +89,7 @@
                                                         $statustite = @$users->status == 1 ? 'InActive' : 'Active';
                                                     @endphp
 
-                                                     <a href="{{url('UserChangeStatus/'. $users->id.'/'. $status) }}"
+                                                     <a href="{{url('company/UserChangeStatus/'. $users->id.'/'. $status) }}"
                                                         onclick="return confirm('Are you sure to change status?')"   data-toggle="tooltip" title=""
                                                             class="btn-link {{$statusicon}}" data-original-title="{{$statustite}}">
                                                             @if($users->status==0)

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Company;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 
 class DocumentTypeController extends Controller
 {
@@ -18,14 +19,16 @@ class DocumentTypeController extends Controller
     //Show data
     public function documentTypeView()
     {
-        $documentTypes = DB::table('document_types')->orderBy('id', 'DESC')->get();
+        $companyId= auth()->user()->id;
+        $documentTypes = DB::table('document_types')->where('company_id',$companyId)->orderBy('id', 'DESC')->get();
         return view('company.document_type.documentType_view', ['documentTypes' => $documentTypes]);
     }
 
     //Delete data
     public function documentTypeDelete($id)
-    {
-        DB::delete('delete from document_types where id = ?', [$id]);
+    { 
+        $authId = auth()->user()->id;
+        DB::table('document_types')->where('company_id',$authId)->delete($id);
         return redirect('company/documentType_view')->with('success', 'Document type has been deleted successfully.');
     }
 
@@ -42,6 +45,16 @@ class DocumentTypeController extends Controller
             $inserData['name'] = $request->name;
             
             $inserData['slug']= str_replace(' ', '-', trim($request->name));
+
+            if(Auth::user()->type=="company"){
+				$inserData['company_id']= Auth::user()->id;
+				$inserData['created_by']= Auth::user()->id;
+			}
+			if(Auth::user()->type=="user"){
+				$inserData['company_id']= Auth::user()->company_id;
+			}
+			
+
       
             DB::table('document_types')->insert($inserData);
             return redirect('company/documentType_view')->with('success', 'Document type has been added successfully.');
@@ -54,7 +67,8 @@ class DocumentTypeController extends Controller
     //edit code in user body
     public function documentTypeEdit(Request $request, $id)
     {
-        $documentTypes = DB::table('document_types')->where(['id' => $id])->first();
+        $companyId= auth()->user()->id;
+        $documentTypes = DB::table('document_types')->where('company_id',$companyId)->where(['id' => $id])->first();
         return view('company.document_type.documentType_edit')->with(['documentTypes' => $documentTypes]);
     }
     //Update Code

@@ -56,7 +56,7 @@
                                         <select name="company_name" class="form-control">
                                         <option value=""> Please Select</option>
                                         <?php foreach($company_name as $company_name){?>
-                                        <option <?php if($users->company_name == $company_name->id){?>selected <?php } ?> value="{{$company_name->id}}">{{$company_name->company_name}}</option>
+                                        <option <?php if(@$users->company_name == $company_name->id){?>selected <?php } ?> value="{{$company_name->id}}">{{@$company_name->company_name}}</option>
                                         <?php }?>
                                     </select>
                                     <span class="text-danger  ">
@@ -79,9 +79,9 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="email">Email Address</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Enter Email"
+                                    <input type="email" class="form-control" id="user_email" placeholder="Enter Email"
                                         value="{{$users->email}}" name="email">
-                                    <span class="text-danger  ">
+                                    <span class="text-danger  " id="email_err">
                                         @error('email')
                                         {{$message}}
                                         @enderror
@@ -90,9 +90,9 @@
 
                                 <div class="form-group col-md-6">
                                     <label for="mobile">Mobile</label>
-                                    <input type="text" class="form-control" id="mobile" placeholder="Enter Mobile"
+                                    <input type="text" class="form-control" id="user_mobile" placeholder="Enter Mobile"
                                         value="{{ $users->mobile }}" name="mobile">
-                                    <span class="text-danger  ">
+                                    <span class="text-danger  " id="mobile_err">
                                         @error('mobile')
                                         {{$message}}
                                         @enderror
@@ -146,9 +146,9 @@ $(document).ready(function() {
                 required: true,
                 number:true,
             },
-            user_type: {
-                required: true,
-            },
+            // user_type: {
+            //     required: true,
+            // },
 
 
         },
@@ -168,15 +168,76 @@ $(document).ready(function() {
                 required: "*Please enter your Valid Mobile No.",
                 number :"mobile number should be number only",
             },
-            user_type: {
-                required: "*Enter a valid user type",
-            },
+            // user_type: {
+            //     required: "*Enter a valid user type",
+            // },
 
 
         }
 
     });
 });
+
+//check email
+
+$("#user_email").blur(function(){
+    // alert('aaaa');
+        var email = $(this).val();
+        id = <?php echo $users->id ?>;
+        console.log(id);
+        $.ajax({
+            type: "GET",
+            url: "/company/checkUserEmail",
+            data: {'email':email,'id':id},
+            success: function(response)
+            {
+                console.log(response);
+                if(response == 1){
+                $('#email_err').text('This email is already exist');
+                $('#submit').attr('disabled','disabled');
+                }
+                else{
+                $('#email_err').text('');
+                $('#submit').removeAttr('disabled');
+                }
+            },
+            error: function(response)
+            {
+
+            }
+        });
+  });
+
+  //check mobile
+
+
+$("#user_mobile").blur(function(){
+    // alert('aaaa');
+        var mobile = $(this).val();
+        id = <?php echo $users->id ?>;
+        console.log(id);
+        $.ajax({
+            type: "GET",
+            url: "/company/checkUserMobile",
+            data: {'mobile':mobile,'id':id},
+            success: function(response)
+            {
+                console.log(response);
+                if(response == 1){
+                $('#mobile_err').text('This mobile is already exist');
+                $('#submit').attr('disabled','disabled');
+                }
+                else{
+                $('#mobile_err').text('');
+                $('#submit').removeAttr('disabled');
+                }
+            },
+            error: function(response)
+            {
+
+            }
+        });
+  });
 </script>
 
 @endsection
