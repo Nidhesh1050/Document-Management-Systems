@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Company;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class CMSController extends Controller
 {
@@ -13,7 +14,7 @@ class CMSController extends Controller
         if(!empty($request->all())){
             $request->validate([
                 'title' => 'required|string',
-                 'image' =>  'mimes:jpeg,png,jpg,gif,svg',
+                'image' =>  'mimes:jpeg,png,jpg,gif,svg',
                 'status' => 'nullable|boolean',
             ]);
             $status = $request->status == 'on' ? 1 : 0;
@@ -23,10 +24,22 @@ class CMSController extends Controller
             $image_name = rand().'.'.$image->getClientOriginalExtension();
             $image->move($destinationPath, $image_name);
             $insertData['title']= str_replace(' ', '_', $request->title);
-    
+       
+            if(Auth::user()->type=="company"){
+				$insertData['company_id']= Auth::user()->id;
+				$insertData['created_by']= Auth::user()->id;
+			}
+			if(Auth::user()->type=="user"){
+				$insertData['company_id']= Auth::user()->company_id;
+			}
+			
+
             $insertData['description'] = strip_tags($request->description);
             $insertData['image'] = $image_name;
             $insertData['status'] =  $status;
+           
+
+         
             DB::table('cms')->insert($insertData);
     
             return redirect('company/view_content')->with('success', 'Content has been added successfully.');
@@ -36,7 +49,8 @@ class CMSController extends Controller
         
     }
     public function viewContent(){
-        $cms = DB::table('cms')->orderBy('id','DESC')->get();
+        $companyId= auth()->user()->id;
+        $cms = DB::table('cms')->where('company_id',$companyId)->orderBy('id','DESC')->get();
         return view('company.content_management.view_content',['cms'=>$cms]);
     }
 

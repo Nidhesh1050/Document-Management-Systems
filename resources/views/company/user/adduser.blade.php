@@ -66,9 +66,9 @@
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="email">Email Address</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Enter Email"
+                                    <input type="email" class="form-control" id="user_email" placeholder="Enter Email"
                                         name="email">
-                                    <span class="text-danger  ">
+                                    <span class="text-danger error" id="email_err">
                                         @error('email')
                                         {{$message}}
                                         @enderror
@@ -78,7 +78,7 @@
                                     <label for="password">Password</label>
                                     <input type="password" class="form-control" id="password"
                                         placeholder="Enter your password" name="password">
-                                    <span class="text-danger  ">
+                                    <span class="text-danger error">
                                         @error('password')
                                         {{$message}}
                                         @enderror
@@ -88,16 +88,16 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="mobile">Mobile</label>
-                                    <input type="text" class="form-control" id="mobile" placeholder="Enter Mobile"
+                                    <input type="text" class="form-control" id="user_mobile" placeholder="Enter Mobile"
                                         name="mobile">
-                                    <span class="text-danger  ">
+                                    <span class="text-danger error" id="mobile_err">
                                         @error('mobile')
                                         {{$message}}
                                         @enderror
                                     </span>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="designation">User Type</label>
+                                    <label for="user_type">User Type</label>
                                     <select name="user_type" class="form-control">
                                         <option value=""> Please Select</option>
                                         @foreach($project_manager as $project_manager)
@@ -149,10 +149,10 @@ $(document).ready(function() {
                 minlength: 10,
                 maxlength: 12,
             },
-            designation: {
+            // designation: {
 
-                required: true,
-            },
+            //     required: true,
+            // },
             password: {
 
                 required: true,
@@ -179,9 +179,9 @@ $(document).ready(function() {
                 minlength: "Atlest length should be 10",
                 maxlength: "Length should not be greater than 12",
             },
-            designation: {
-                required: "Enter a valid designation",
-            },
+            // designation: {
+            //     required: "Enter a valid designation",
+            // },
             password: {
                 required: "Enter a valid password",
                 minlength: "Password must be atlest 8 characters",
@@ -191,6 +191,63 @@ $(document).ready(function() {
 
     });
 });
+
+//check email
+
+  $("#user_email").blur(function(){
+//    alert('aaaa');
+    var email = $(this).val();
+    $.ajax({
+      type: "GET",
+      url: "/company/checkUserEmail?email="+email,
+
+      success: function(response)
+      {
+        console.log(response);
+        if(response == 1){
+          $('#email_err').text('This email is already exist');
+          $('#submit').attr('disabled','disabled');
+        }
+        else{
+          $('#email_err').text('');
+          $('#submit').removeAttr('disabled');
+        }
+      },
+      error: function(response)
+      {
+
+      }
+    });
+  });
+
+
+//Check mobile
+
+  $("#user_mobile").blur(function(){
+//    alert('aaaa');
+    var mobile = $(this).val();
+    $.ajax({
+      type: "GET",
+      url: "/company/checkUserMobile?mobile="+mobile,
+
+      success: function(response)
+      {
+        console.log(response);
+        if(response == 1){
+          $('#mobile_err').text('This mobile is already exist');
+          $('#submit').attr('disabled','disabled');
+        }
+        else{
+          $('#mobile_err').text('');
+          $('#submit').removeAttr('disabled');
+        }
+      },
+      error: function(response)
+      {
+
+      }
+    });
+  });
 </script>
 
 @endsection

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectManagementController extends Controller
 {
@@ -44,6 +45,13 @@ class ProjectManagementController extends Controller
                 // $inserData['slug'] =str_replace(' ', '-',$request->project_name);       
                 $inserData['slug'] =str_replace(' ', '-',trim($request->project_name));      
                 $inserData['status'] =  $status;
+                if(Auth::user()->type=="company"){
+                    $inserData['company_id']= Auth::user()->id;
+                    $inserData['created_by']= Auth::user()->id;
+                }
+                if(Auth::user()->type=="user"){
+                    $inserData['company_id']= Auth::user()->company_id;
+                }
     
     
                 DB::table('projects')->insert($inserData);
@@ -59,23 +67,27 @@ class ProjectManagementController extends Controller
     
     
         public function viewProject(){
+            $companyId= auth()->user()->id;
             $projects = DB::table('projects')->select(
                 "projects.*",
                 "users.name" )
-            ->leftJoin("users",  "users.id" ,"=", "projects.manager_d"  )
-            ->orderBy('id','DESC')->get();
+            ->leftJoin("users",  "users.id" ,"=", "projects.manager_d")
+            ->orderBy('id','DESC')
+           ->where('projects.company_id',$companyId)->get();
            return view('company.project_management.view_project',['projects'=>$projects]);
         }
     
     
         public function deleteProject($id) {
-            DB::delete('delete from projects where id = ?',[$id]);
+            $authId= auth()->user()->id;
+            DB::table('projects')->where('company_id',$authId)->delete($id);
             return redirect('/company/view_project')->with('success', 'Project has been deleted successfully.');
         }
     
     
         public function updateProject(Request $request,$id) {
-            $projects = DB::table('projects')->where(['id'=> $id])->first();
+            $authId= auth()->user()->id;
+            $projects = DB::table('projects')->where(['id'=> $id])->where('company_id',$authId)->first();
             $managers=DB::table('users')->select('id','name')->get();
             return view('company.project_management.update_project')->with(['projects'=>$projects,'managers'=>    $managers]);
         }
