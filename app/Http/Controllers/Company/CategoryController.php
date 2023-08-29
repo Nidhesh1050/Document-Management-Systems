@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Company;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class CategoryController extends Controller
 {
@@ -25,6 +26,16 @@ class CategoryController extends Controller
             $inserData['name']= $request->name;
             $inserData['category_slag']= str_replace(' ', '_', $request->name);
             $inserData['description'] = $request->description;
+
+          //  echo"<pre>"; dd( Auth::user()->type);die;
+            if(Auth::user()->type=="company"){
+				$inserData['company_id']= Auth::user()->id;
+                $inserData['created_at']= Auth::user()->id;
+			}
+			if(Auth::user()->type==0){
+				$inserData['company_id']= Auth::user()->company_id;
+			}
+
             DB::table('categories')->insert($inserData);
             return redirect('company/view_category')->with('success', 'Category has been added successfully.');
         }else{
@@ -34,7 +45,8 @@ class CategoryController extends Controller
         }
 
     public function categoryView(){
-        $categories = DB::table('categories')->orderBy('id','DESC')->get();
+        $companyId=Auth::user()->id;
+        $categories = DB::table('categories')->where('company_id',$companyId)->orderBy('id','DESC')->get();
         return view('company.category.view_category',['categories'=>$categories]);
     }
     public function categoryChangeStatus($id=null, $status=null){
@@ -90,7 +102,6 @@ class CategoryController extends Controller
             }
         }
        return $name;
-       
       }
 
 }
