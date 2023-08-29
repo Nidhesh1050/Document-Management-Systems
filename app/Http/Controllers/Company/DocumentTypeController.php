@@ -26,8 +26,9 @@ class DocumentTypeController extends Controller
 
     //Delete data
     public function documentTypeDelete($id)
-    {
-        DB::delete('delete from document_types where id = ?', [$id]);
+    { 
+        $authId = auth()->user()->id;
+        DB::table('document_types')->where('company_id',$authId)->delete($id);
         return redirect('company/documentType_view')->with('success', 'Document type has been deleted successfully.');
     }
 
@@ -66,7 +67,8 @@ class DocumentTypeController extends Controller
     //edit code in user body
     public function documentTypeEdit(Request $request, $id)
     {
-        $documentTypes = DB::table('document_types')->where(['id' => $id])->first();
+        $companyId= auth()->user()->id;
+        $documentTypes = DB::table('document_types')->where('company_id',$companyId)->where(['id' => $id])->first();
         return view('company.document_type.documentType_edit')->with(['documentTypes' => $documentTypes]);
     }
     //Update Code
