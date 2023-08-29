@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
@@ -25,6 +26,15 @@ class EmailContentController extends Controller
             $inserData['subject'] = $request->subject;
             $inserData['message'] = $request->message;
 
+            if(Auth::user()->type=="company"){
+				$inserData['company_id']= Auth::user()->id;
+				$inserData['created_by']= Auth::user()->id;
+			}
+			if(Auth::user()->type=="user"){
+				$inserData['company_id']= Auth::user()->company_id;
+              
+			}
+
 
             DB::table('email_contents')->insert($inserData);
 
@@ -40,11 +50,14 @@ class EmailContentController extends Controller
 }
 
     public function emailContentShow(){
+       $companyId=Auth::user()->id;
+        
+        
         $emailContents = DB::table('email_contents')->select(
             "email_contents.*", 
             "email_types.email_type"
         )
-        ->leftJoin("email_types", "email_contents.email_type" ,"=", "email_types.id")->orderBy('id','DESC')
+        ->leftJoin("email_types", "email_contents.email_type" ,"=", "email_types.id")->where('email_contents.company_id',$companyId)->orderBy('id','DESC')
         ->get();
          return view('company.email_management.show_content',['emailContents'=>$emailContents]);
       
