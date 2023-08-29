@@ -173,7 +173,7 @@ $currentURL =Route::current()->uri;
                     </div>
 				</li>
 
-               
+
                 <li class="nav-item <?php if($currentURL =='company/logos' || $currentURL =='company/update_logo'){ echo 'active'; }?>">
                     <a data-toggle="collapse" href="#setting">
                         <i class="fas fa-cog"></i>
@@ -183,7 +183,7 @@ $currentURL =Route::current()->uri;
                     <div class="collapse <?php if(in_array($currentURL,['company/logos','company/update_logo/{id}'])){ echo 'show';}?>" id="setting">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{url('comapny/logos')}}">
+                                <a href="{{url('company/logos')}}">
                                         <span class="sub-item">Logo & profile</span>
                                 </a>
                             </li>
