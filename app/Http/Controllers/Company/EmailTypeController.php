@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,15 @@ class EmailTypeController extends Controller
           );
 
             $inserData['email_type'] = $request->email_type;
-
+            // $inserData['company_id'] = $request->company_id;
+            if(Auth::user()->type=="company"){
+				$inserData['company_id']= Auth::user()->id;
+				$inserData['created_by']= Auth::user()->id;
+			}
+			if(Auth::user()->type=="user"){
+				$inserData['company_id']= Auth::user()->company_id;
+              
+			}
 
             DB::table('email_types')->insert($inserData);
 
@@ -33,7 +42,8 @@ class EmailTypeController extends Controller
 
     public function emailTypeShow(){
 
-         $emailTypes = DB::table('email_types')->orderBy('id','DESC')->get();
+        $companyId=Auth::user()->id;
+         $emailTypes = DB::table('email_types')->where('company_id',$companyId)->orderBy('id','DESC')->get();
          return view('company.email_management.show_email',['emailTypes'=>$emailTypes]);
         }
 
