@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class PermissionController extends Controller
 {
     public function module_permissioN(){
-        $modules = DB::table('users')->select('id','name')->get();
+        $modules = DB::table('users')->select('id','name')->where('type',2)->get();
         $users = DB::table('modules')->orderBy('id','ASC')->get();
         return view('admin.permission.module_permission')->with(['users'=>$users,'modules'=>    $modules]);
     }
