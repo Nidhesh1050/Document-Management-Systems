@@ -14,7 +14,9 @@ class PermissionController extends Controller
     }
 
     public function permission(Request $request){
+         
         foreach($request->permission as $key=>$modules){
+            $inserData['user_id'] = @$request['user_id'];
             $inserData['module_id']= $key;
             $inserData['add_permission'] = @$modules['add_permission']   == 'on' ? 1 : 0;
             $inserData['edit_permission'] = @$modules['edit_permission'] == 'on' ? 1 : 0;
