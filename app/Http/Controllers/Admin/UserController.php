@@ -44,6 +44,15 @@ class UserController extends Controller
     }
         //Update Code
     public function update(Request $request){
+      $request->validate(
+        [
+          'company_name'=>'required|max:50|string',
+          'name'=>'required|max:50|string',
+          'email'=>'required|email|',
+          'mobile' =>'required|max:12',
+          ]
+      );
+
         DB::table('users')
             ->where('id', $request['id'])
             ->update([
