@@ -13,15 +13,20 @@ class CMSController extends Controller
         if(!empty($request->all())){
             $request->validate([
                 'title' => 'required|string',
-                 'image' =>  'mimes:jpeg,png,jpg,gif,svg',
+               'image' =>  'mimes:jpeg,png,jpg,gif,svg',
                 'status' => 'nullable|boolean',
             ]);
             $status = $request->status == 'on' ? 1 : 0;
-    
-            $image = $request->file('image');
-            $destinationPath = public_path('/cms');
-            $image_name =  rand().'.'.$image->getClientOriginalExtension();
-            $image->move($destinationPath, $image_name);
+
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $image = $request->file('image');
+                $destinationPath = public_path('/cms');
+                $image_name =  rand().'.'.$image->getClientOriginalExtension();
+                $image->move($destinationPath, $image_name);
+            } else {
+                $image_name= public_path('images/9187739.jpg');
+            }
             $insertData['title']= str_replace(' ', '_', $request->title);
     
             $insertData['description'] = strip_tags($request->description);

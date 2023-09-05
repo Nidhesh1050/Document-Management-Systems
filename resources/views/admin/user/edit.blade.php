@@ -51,7 +51,7 @@
                             @csrf
                             <input type="hidden" name="id" value="{{ $users->id }}">
                             <div class="form-row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-6">   
                                     <label for="name">Company Name *</label>
                                     <select name="company_name" class="form-control">
                                         <option value=""> Please Select</option>
