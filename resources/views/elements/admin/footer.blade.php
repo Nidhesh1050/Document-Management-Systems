@@ -3,7 +3,7 @@
 use App\Models\Projects;
 use App\Models\User;
 $all_users=User::get()->count();
-$all_manager=User::whereIn('user_type', [2])->get()->count();
+$all_manager=User::whereIn('type', [2])->get()->count();
 $all_project = Projects::get()->count();
 ?><footer class="footer">
 				<div class="container-fluid">

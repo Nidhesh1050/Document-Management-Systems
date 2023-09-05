@@ -50,14 +50,20 @@ class EmailTypeController extends Controller
 
          //Delete function to delete in user body
      public function emailTypeDelete($id) {
-        DB::delete('delete from email_types where id ='.$id);
+        $authId = Auth::user()->id;
+
+        // DB::delete('delete from email_types where id ='.$id);
+        DB::table('email_types')->where('company_id',$authId)->delete($id);
         return redirect('/company/show_email')->with('success', 'email type has been deleted successfully.');
      }
 
         //edit code in user body
         public function emailTypeEdit(Request $request,$id)
         {
-           $emailTypes = DB::table('email_types')->where(['id'=> $id])->first();
+            $companyId=Auth::user()->id;
+
+           $emailTypes = DB::table('email_types')->where(['id'=> $id])->where('company_id',$companyId)
+           ->first();
            return view('company.email_management.edit_email')->with(['emailTypes'=>$emailTypes]);
         }
 

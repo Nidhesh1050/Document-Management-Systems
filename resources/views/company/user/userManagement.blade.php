@@ -78,7 +78,7 @@
                                             <td>{{ $status }}</td>
                                             <td class="action_td">
 
-                                                    <a href='/company/edit_user/{{ $users->id }}' data-toggle="tooltip" title=""
+                                                    <a href="{{ url('company/edit_user/'.  $users->id)}}" data-toggle="tooltip" title=""
                                                             class="btn-link btn-primary" data-original-title="Edit Task">
                                                             <i class="fa fa-edit"></i>
                                                     </a>

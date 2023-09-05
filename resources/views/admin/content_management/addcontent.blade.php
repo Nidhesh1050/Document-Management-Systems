@@ -89,16 +89,11 @@
                 rules: {
 
                     title: "required",
-                    
-                //  image: {
-                //    extension: "png|jpeg|jpg|gif"                      
-                //   },
-
+                
                 },
                 messages: {
 
                     title: "Please enter your title",
-                  //  image:{ extension: "Only PNG , JPEG , JPG, GIF File Allowed",},
 
                 }
 
