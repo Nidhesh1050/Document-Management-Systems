@@ -55,25 +55,26 @@ $currentURL =Route::current()->uri;
                     </span>
                     <h4 class="text-section">Components</h4>
                 </li>
-                <li class="nav-item"  >
+                <li class="nav-item <?php if($currentURL =='company/home'){ echo ' '; }?>">
                     <a href="{{url('company/home')}}">
                         <i class="fas fa-layer-group"></i>
                         <p>Dashboard</p>
                     </a>
-                <li class="nav-item">
+                </li>
+                    <li class="nav-item <?php if($currentURL =='company/userManagement' || $currentURL =='company/adduser'|| $currentURL =='company/edit_user/{id}'){ echo ' active'; }?>">
                     <a data-toggle="collapse" href="#base">
                         <i class="fas fa-users"></i>
                         <p>User Management</p>
 						<span class="caret"></span>
                     </a>
-                    <div class="collapse" id="base">
+                    <div class="collapse <?php if(in_array($currentURL,['company/userManagement','company/adduser','company/edit_user/{id}'])){ echo 'show';}?>" id="base">
                         <ul class="nav nav-collapse">
-                            <li class="sidebar-item">
-                                <a <?php if($currentURL =='company/userManagement' || $currentURL =='company/edit/{id}'){ echo 'active'; }?> class="sidebar-link" href="{{url('company/userManagement')}}">
+                            <li class="sidebar-item <?php if($currentURL =='company/userManagement' || $currentURL =='company/edit_user/{id}'){ echo 'active '; }?> ">
+                                <a  class="sidebar-link" href="{{url('company/userManagement')}}">
                                     <span class="sub-item">User List</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="sidebar-item <?php if($currentURL =='company/adduser'){ echo 'active '; }?> ">
                                 <a href="{{url('company/adduser')}}">
                                     <span class="sub-item">Add User</span>
                                 </a>
@@ -81,6 +82,8 @@ $currentURL =Route::current()->uri;
 
                         </ul>
                     </div>
+
+
                 </li>
 
 
