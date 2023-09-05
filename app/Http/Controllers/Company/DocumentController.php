@@ -14,22 +14,25 @@ class DocumentController extends Controller
         $this->middleware(['auth']);
     }
     public function documentView(){
-        $companyId=Auth::user()->id;
-        $documents = DB::table('file_uploads')->where('company_id',$companyId)->orderBy('id','DESC')->get();
+       // $companyId=Auth::user()->id;->where('company_id',$companyId)
+        $documents = DB::table('file_uploads')->orderBy('id','DESC')->get();
       //  echo $users;die;
         return view('company.document.show_document',['documents'=>$documents]);
 
     }
     //Delete function to delete in user body
     public function documentDelete($id) {
-        DB::delete('delete from file_uploads where id = ?',[$id]);
+        $companyId=Auth::user()->id;
+        DB::table('file_uploads')->where('company_id',$companyId)->delete($id);
+        // DB::delete('delete from file_uploads where id = ?',[$id]);
         return redirect('company/document')->with('success', 'Document has been deleted successfully.');
     }
     public function documentEdit(Request $request,$id) {
+        $companyId=Auth::user()->id;
         $project_documents = DB::table('projects')->select('id','project_name')->get();
         $category_documents = DB::table('categories')->select('id','name')->get();
         $document_type= DB::table('document_types')->select('id','name')->get();
-        $users = DB::table('file_uploads')->where(['id'=> $id])->first();
+        $users = DB::table('file_uploads')->where('company_id',$companyId)->where(['id'=> $id])->first();
         return view('company.document.edit_document')->with(['users'=>$users,'project_documents'=>$project_documents,'category_documents'=>$category_documents,'document_type'=>$document_type]);
 
     }
@@ -96,7 +99,7 @@ class DocumentController extends Controller
 
             if(Auth::user()->type=="company"){
                 $inserData['company_id']= Auth::user()->id;
-                $inserData['created_at']= Auth::user()->id;
+                $inserData['created_by']= Auth::user()->id;
             }
             if(Auth::user()->type=="user"){
                 $inserData['company_id']= Auth::user()->company_id;

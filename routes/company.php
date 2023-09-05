@@ -38,15 +38,17 @@ Route::group(['prefix' => 'company'], function () {
         Route::get('/home', [HomeController::class, 'companyHome'])->name('company.home');
 
         /* User management routes start*/
-        Route::get('/userManagement', [UserController::class, 'userManagement']);
-        Route::get('/delete_user/{id}', [UserController::class, 'delete']);
-        Route::get('/edit_user/{id}', [UserController::class, 'edit']);
-        Route::post('/update_user', [UserController::class, 'update']);
+            Route::get('/userManagement',[UserController::class,'userManagement']);
+            Route::get('/delete_user/{id}', [UserController::class,'delete']);
+            Route::get('/edit_user/{id}', [UserController::class,'edit']);
+            Route::post('/update_user', [UserController::class,'update']);
 
-        Route::get('/adduser', [HomeController::class, 'adduser']);
-        Route::post('/register_user', [HomeController::class, 'register']);
-        Route::get('/UserChangeStatus/{id}/{status}', [UserController::class, 'UserChangeStatus']);
-        /* User management routes end*/
+            Route::get('/adduser',[UserController::class,'adduser']);
+            Route::post('/register_user',[UserController::class,'register']);
+            Route::get('/UserChangeStatus/{id}/{status}',[UserController::class,'UserChangeStatus']);
+            Route::get('/checkUserEmail', [UserController::class, 'checkUserEmail'])->name('checkUserEmail');
+            Route::get('/checkUserMobile', [UserController::class, 'checkUserMobile'])->name('checkUserMobile');
+    /* User management routes end*/
 
 
         /* Category management routes start*/

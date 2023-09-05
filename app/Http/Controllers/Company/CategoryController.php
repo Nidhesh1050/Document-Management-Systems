@@ -30,9 +30,9 @@ class CategoryController extends Controller
           //  echo"<pre>"; dd( Auth::user()->type);die;
             if(Auth::user()->type=="company"){
 				$inserData['company_id']= Auth::user()->id;
-                $inserData['created_at']= Auth::user()->id;
+                $inserData['created_by']= Auth::user()->id;
 			}
-			if(Auth::user()->type==0){
+			if(Auth::user()->type=="user"){
 				$inserData['company_id']= Auth::user()->company_id;
 			}
 
@@ -55,12 +55,14 @@ class CategoryController extends Controller
     } 
 
     public function categoryDelete($id) {
-        DB::delete('delete from categories where id = ?',[$id]);
+        $companyId=Auth::user()->id;
+        DB::table('categories')->where('company_id',$companyId)->delete($id);
         return redirect('company/view_category')->with('success', 'Category has been deleted successfully.');
     }
 
     public function categoryUpdate(Request $request,$id) {
-        $users = DB::table('categories')->where(['id'=> $id])->first();
+        $companyId=Auth::user()->id;
+        $users = DB::table('categories')->where(['id'=> $id])->where('company_id',$companyId)->first();
         $parent_catogeris=DB::table('categories')->select('id','name')->get();
         return view('company.category.update_category')->with(['users'=>$users,'parent_categories'=> $parent_catogeris]);
     }

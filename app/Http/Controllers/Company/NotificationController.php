@@ -5,11 +5,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Session;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use Common;
 
 class NotificationController extends Controller
 {
         public function addNotification(Request $request){
+          $permission = Common::addPermission(Auth::user()->id, 7);
+          if($permission->add_permission == 1){
             if(!empty($request->all())){
                 $request->validate(
                 [
@@ -19,43 +22,43 @@ class NotificationController extends Controller
                 $inserData['title'] = $request->title;
                 $inserData['description']= $request->description;
 
-              // $userId = auth()->user()->id;
-               // $companyID = DB::table('companies')->Select('id')->where(['user_id' => //$userId])->get();
-                //echo"<pre>".$companyID[0]->id; die;//print_r($companyID[0]->id);die;
-                //$inserData['company_id']= $companyID[0]->id;
-            if(Auth::user()->type=="company"){
-				$inserData['company_id']= Auth::user()->id;
-				$inserData['created_by']= Auth::user()->id;
-			}
-			if(Auth::user()->type=="user"){
-				$inserData['company_id']= Auth::user()->company_id;
-			}
-			
-                
+                if(Auth::user()->type=="company"){
+                  $inserData['company_id']= Auth::user()->id;
+                  $inserData['created_by']= Auth::user()->id;
+                }
+                if(Auth::user()->type=="user"){
+                  $inserData['company_id']= Auth::user()->company_id;
+                }
+
+
                 DB::table('notifications')->insert($inserData);
                 return redirect('company/show_notification')->with('success', 'Notification has been added successfully.');
             }
             else{
                 return view('company.notification.Notification');
             }
+          }else{
+            return redirect()->back()->with('error', 'you have not permission');
+          }
+        
         }
         public function showNotification(){
 
           $companyId= auth()->user()->id;
-         
+
              $notifications = DB::table('notifications')->where('company_id',$companyId)->orderBy('id','DESC')->get();
-             
+
              return view('company.notification.show_notification',['notifications'=>$notifications]);
             }
-    
-    
+
+
              //Delete function to delete in user body
          public function deleteNotification($id) {
             $authID= auth()->user()->id;
             DB::table('notifications')->where('company_id',$authID)->delete($id);
             return redirect('company/show_notification')->with('success', 'Notification has been deleted successfully.');
              }
-    
+
             //edit code in user body
             public function editNotification(Request $request,$id)
             {
@@ -64,14 +67,14 @@ class NotificationController extends Controller
                $notifications = DB::table('notifications')->where(['id'=> $id])->where('company_id',$authId)->first();
                return view('company.notification.edit_notification')->with(['notifications'=>$notifications]);
              }
-    
+
              public function updateNotification(Request $request){
                 $request->validate(
                     [
                       'title'=>'required',
                       ]
                   );
-    
+
                 DB::table('notifications')
                     ->where('id', $request['id'])
                     ->update([
@@ -79,7 +82,7 @@ class NotificationController extends Controller
                         'description' => $request['description'],
                     ]);
                     return redirect('company/show_notification')->with('success', 'Notification has been updated successfully.');
-    
+
             }
             public function statusNotification($id=null, $status=null)   {
                 $notifications = DB::table('notifications')->where('id',$id)->update(['status'=>$status]);
