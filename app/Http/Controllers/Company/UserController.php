@@ -23,7 +23,7 @@ class UserController extends Controller
         "companies.company_name")
         ->leftJoin("companies",  "companies.id" ,"=", "users.company_id"  )->whereIn('type', [0])
         ->orderBy('id','DESC')->get();
-      return view('admin.user.userManagement',['users'=>$users]);
+      return view('company.user.userManagement',['users'=>$users]);
     }
 
       //Delete function to delete in user body
