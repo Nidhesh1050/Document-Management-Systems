@@ -18,9 +18,12 @@ class UserController extends Controller
 {
     //List of users
     public function userManagement(){
-        $users = DB::table('users')->whereIn('type',[0])->where('company_id',Auth::user()->id)
-          ->orderBy('id','DESC')->get();
-        return view('company.user.userManagement',['users'=>$users]);
+      $users = DB::table('users')->select(
+        "users.*",
+        "companies.company_name")
+        ->leftJoin("companies",  "companies.id" ,"=", "users.company_id"  )->whereIn('type', [0])
+        ->orderBy('id','DESC')->get();
+      return view('admin.user.userManagement',['users'=>$users]);
     }
 
       //Delete function to delete in user body

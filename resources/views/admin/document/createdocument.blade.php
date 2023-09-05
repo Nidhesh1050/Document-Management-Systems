@@ -33,7 +33,7 @@
                         <div class="card-title">Add Document</div>
                     </div>
                     <div class="card-body">
-                <form action="{{url('admin/createdocument')}}" method="post" id="files"
+                <form action="{{url('admin/createdocument')}}" method="POST" id="files"
                     enctype="multipart/form-data">
                     @csrf
                 
