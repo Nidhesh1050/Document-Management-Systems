@@ -12,7 +12,7 @@ class NotificationController extends Controller
 {
     
     public function addNotification(Request $request){
-        if(Common::addPermission(Auth::user()->id, 7)){
+       
             if(!empty($request->all())){
                 $request->validate(
                 [
@@ -28,9 +28,6 @@ class NotificationController extends Controller
             else{
                 return view('admin.notification.Notification');
             }
-        }else{
-            return redirect()->back()->with('error', 'you have not permission');
-        }
         
     }
     public function showNotification(){
