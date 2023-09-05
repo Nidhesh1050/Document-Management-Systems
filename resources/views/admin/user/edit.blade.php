@@ -53,7 +53,7 @@
                             
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="name">Company Name</label>
+                                    <label for="name">Company Name *</label>
                                     <select name="company_name" class="form-control">
                                         <option value=""> Please Select</option>
                                         {{}}
@@ -73,7 +73,7 @@
                                     </span>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="name">Name</label>
+                                    <label for="name">Name *</label>
                                     <input type="text" class="form-control" id="name" placeholder="Enter Name"
                                         value="{{$users->name}}" name="name"
                                         onkeypress="return /[A-Za-z/ _-]/i.test(event.key)">
@@ -97,7 +97,7 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="mobile">Mobile</label>
+                                    <label for="mobile">Mobile *</label>
                                     <input type="text" class="form-control" id="user_mobile" placeholder="Enter Mobile"
                                         value="{{ $users->mobile }}" name="mobile">
                                     <span class="text-danger  " id="mobile_err">

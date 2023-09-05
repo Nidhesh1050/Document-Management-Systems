@@ -17,23 +17,23 @@ class CMSController extends Controller
                 'status' => 'nullable|boolean',
             ]);
             $status = $request->status == 'on' ? 1 : 0;
-    
+
             $image = $request->file('image');
             $destinationPath = public_path('/cms');
             $image_name =  rand().'.'.$image->getClientOriginalExtension();
             $image->move($destinationPath, $image_name);
             $insertData['title']= str_replace(' ', '_', $request->title);
-    
+
             $insertData['description'] = strip_tags($request->description);
             $insertData['image'] = $image_name;
             $insertData['status'] =  $status;
             DB::table('cms')->insert($insertData);
-    
+
             return redirect('admin/view_content')->with('success', 'Content has been added successfully.');
         }else{
             return view('admin.content_management.addcontent');
         }
-        
+
     }
     public function viewContent(){
         $cms = DB::table('cms')->orderBy('id','DESC')->get();
@@ -91,6 +91,6 @@ class CMSController extends Controller
 public function CMSChangeStatus($id=null, $status=null){
     $cms = DB::table('cms')->where('id',$id)->update(['status'=>$status]);
     return back()->withInput()->with('success','Status has been changed.');
-} 
+}
 
 }
