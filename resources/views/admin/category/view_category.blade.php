@@ -1,7 +1,7 @@
 @extends('layouts.admin-app')
 @section('content')
 
-<?php 
+<?php
 use app\Models\User;
 ?>
 
@@ -38,12 +38,12 @@ use app\Models\User;
                                     <div class="alert alert-success">
                                         <p>{{ $message }}</p>
                                     </div>
-                                    @endif  
+                                    @endif
                         @if ($message = Session::get('error'))
                                     <div class="alert alert-danger">
                                         <p>{{ $message }}</p>
                                     </div>
-                                    @endif  
+                                    @endif
                         </div>
                         <div class="d-flex align-items-center">
                             <a href="{{ url('admin/category') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
@@ -63,8 +63,8 @@ use app\Models\User;
                 <th> Parent Name </th>
                 <th> Name </th>
                 <th> Description</th>
-                <th> status</th>
-                <th> Action</th> 
+                <th> Status</th>
+                <th> Action</th>
             </tr>
         </thead>
         <tbody>
@@ -75,7 +75,8 @@ use app\Models\User;
 
                 <tr>
                 <td>{{$loop->iteration}}</td>
-                    <td> {{$category ->name}}</td>
+                    {{-- <td> {{$category ->parent_id}}</td> --}}
+                    <td> {{ User::getCategoryID($category->parent_id) }}</td>
                     <td> {{$category ->name}}</td>
                     <td><?php echo $category ->description ?></td>
                     <td> {{$status}}</td>
