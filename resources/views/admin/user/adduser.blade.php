@@ -144,8 +144,8 @@ $(document).ready(function() {
             },
 
             mobile: {
-                required: true,
-                number: true,
+                required:true,
+                number:true,
                 minlength: 10,
                 maxlength: 12,
             },

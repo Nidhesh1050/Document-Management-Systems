@@ -20,7 +20,7 @@ class CMSController extends Controller
     
             $image = $request->file('image');
             $destinationPath = public_path('/cms');
-            $image_name = rand().'.'.$image->getClientOriginalExtension();
+            $image_name =  rand().'.'.$image->getClientOriginalExtension();
             $image->move($destinationPath, $image_name);
             $insertData['title']= str_replace(' ', '_', $request->title);
     
