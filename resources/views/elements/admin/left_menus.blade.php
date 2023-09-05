@@ -61,7 +61,7 @@ $currentURL =Route::current()->uri;
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="nav-item <?php if($currentURL =='admin/userManagement' || $currentURL =='admin/adduser'|| $currentURL =='admin/edit_user/{id}'){ echo ' active'; }?>">
+                <li class="nav-item <?php if($currentURL =='admin/userManagement' || $currentURL =='admin/adduser'|| $currentURL =='admin/edit_user/{id}'){ echo ' '; }?>">
                     <a data-toggle="collapse" href="#base">
                         <i class="fas fa-users"></i>
                         <p>User Management</p>
@@ -134,7 +134,7 @@ $currentURL =Route::current()->uri;
                 </li>
 
 
-                <li class="nav-item <?php if($currentURL =='admin/view_project' || $currentURL =='admin/project'|| $currentURL =='admin/update_project/{id}'){ echo 'active'; }?>">
+                <li class="nav-item <?php if($currentURL =='admin/view_project' || $currentURL =='admin/project'|| $currentURL =='admin/update_project/{id}'){ echo ''; }?>">
                     <a data-toggle="collapse" href="#project">
                     <i class="fa fa-industry"></i>
                         <p>Project Management</p>
