@@ -32,7 +32,7 @@
                             <div class="card-title">Add Company</div>
                         </div>
                         <div class="card-body">
-                            <form action="{{url('/admin/add_company')}}" id="company" method="POST" enctype="multipart/form-data">
+                            <form action="{{url('/admin/add_company')}}" id="validate" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -105,59 +105,76 @@
                                     <div>
                             </form>
                         </div>
-         <script>
-                            $(document).ready(function() {
-                                $("#company").validate({
-                                    rules: {
+                  <script>
+                          
+ // validate  form using jquey
+    $(document).ready(function() {
+      $("#validate").validate({
+        rules: {
+            name: {
+                required: true,
+                minlength: 4,
+                maxlength: 20,
+            },
+            company_name: {
+                required: true,
+            },
 
-                                        company_name: "required",
-                                        
-                                        name: {
-                                            required: true,
-                                        },
-                                        
-                                        email: {
-                                            required: true,
-                                            email: true
-                                        },
-                                        
-                                        mobile: {
-                                            required: true,
-                                            number: true,
-                                            minlength: 10,
-                                            maxlength: 12,
-                                        },
-                                        password: {
+            email: {
+                required: true,
+                email: true
+            },
 
-                                        required: true,
-                                        minlength: 8
-                                        },
-                                    },
-                                    messages: {
-                                        company_name: "Please enter company name",
+            mobile: {
+                required:true,
+                number:true,
+                minlength: 10,
+                maxlength: 12,
+            },
+            // designation: {
 
-                                        name: {
-                                            required: "Please enter your  Owner Name",
-                                        },
-                                        email: {
-                                            required: "Enter a e-mail address",
-                                            email: "Email should be in @gmail.com",
-                                        },
-                                        mobile: {
-                                            required: "Please enter your valid Mobile No.",
-                                            number: "Please enter Mobile No. in numeric",
-                                            minlength: "Atlest length should be 10",
-                                            maxlength: "Length should not be greater than 12",
-                                        },
-                                        password: {
-                                            required: "Enter a valid password",
-                                            minlength: "Password must be atlest 8 characters",
-                                        },
+            //     required: true,
+            // },
+            password: {
 
-                                    }
+                required: true,
+                minlength: 8
+            },
 
-                                });
-                            });
+        },
+        messages: {
+            name: {
+                required: "Please enter your Name",
+                minlength: "Enter your name at least 4 letters",
+                maxlength: "Your name length should not be greater than 20 letters",
+            },
+            company_name: {
+                required: "Please enter your company Name",
+            },
+            email: {
+                required: "Enter a e-mail address",
+                email: "Email should be in @gmail.com",
+            },
+            mobile: {
+                required: "Please enter your valid Mobile No.",
+                number: "Please enter Mobile No. in numeric",
+                minlength: "At least length should be 10",
+                maxlength: "Length should not be greater than 12",
+            },
+            // designation: {
+            //     required: "Enter a valid designation",
+            // },
+            password: {
+                required: "Enter a valid password",
+                minlength: "Password must be at least 8 characters",
+            },
+
+        }
+
+    });
+});
+
+
 function filePreview(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
