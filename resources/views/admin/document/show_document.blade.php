@@ -117,12 +117,24 @@ use app\Models\User;
                                                     </a>
 
 
+
+                                     
+                                    <!-- <a href="{{ url('admin/view_document/'.$document->id)}}"
+                                                        onclick="return confirm('Are you sure you want to view this document ?')" data-toggle="tooltip" title=""
+                                                            class="btn btn-link btn-success" data-original-title="Remove">
+                                                            <i class="fa fa-eye"></i>
+
+                                  </a>                -->
+
                                     <a href="{{ url('admin/delete_document/'.$document->id)}}"
                                         onclick="return confirm('Are you sure you want to delete this document ?')" data-toggle="tooltip" title=""
                                             class="btn btn-link btn-danger" data-original-title="Remove">
                                             <i class="fa fa-trash"></i>
                                         
                                     </a>
+                                    
+
+
                                 </div>
                             </td>
                         </tr>
