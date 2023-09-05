@@ -76,7 +76,7 @@
                                         <option <?php if($users->category_id == $category_documents->id){?>selected <?php } ?> value="{{$category_documents->id}}">{{$category_documents->name}}</option>
                                         <?php }?>
                                     </select>
-                                <span class="text-danger  ">
+                                <span class="text-danger">
                                     @error('category_id')
                                         {{ $message }}
                                     @enderror
