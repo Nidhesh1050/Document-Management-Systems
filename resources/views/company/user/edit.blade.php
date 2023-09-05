@@ -241,7 +241,7 @@ $("#user_mobile").blur(function(){
             {
                 console.log(response);
                 if(response == 1){
-                $('#mobile_err').text('This mobile is already exist');
+                // $('#mobile_err').text('This mobile is already exist');
                 $('#submit').attr('disabled','disabled');
                 }
                 else{

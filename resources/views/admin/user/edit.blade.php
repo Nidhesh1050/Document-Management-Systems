@@ -174,21 +174,19 @@ $(document).ready(function() {
         },
         messages: {
             name: {
-                required: "Please enter your Name",
-                minlength: "Enter your name at least 4 letters",
-                maxlength: "Your name length should not be greater than 20 letters",
+                required: "Please enter your name",
             },
             company_name: {
                 required: "Please enter your company  name",
+                // minlength: "Enter your commpany name atleast 4 letters",
+                // maxlength: "Your commpany name length should not be greater than 20 letters",
             },
             email: {
-                required: "Enter a e-mail address",
+                required: "Enter a valid email address",
             },
             mobile: {
                 required: "Please enter your valid mobile no.",
-                number: "Please enter mobile no. in numeric",
-                minlength: "At least length should be 10",
-                maxlength: "Length should not be greater than 12",
+                number :"Mobile number should be number only",
             },
             // user_type: {
             //     required: "*Enter a valid user type",

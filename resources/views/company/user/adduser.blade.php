@@ -169,7 +169,7 @@ $.validator.addMethod("indianMobile", function(value, element) {
         },
         messages: {
             name: {
-                required: "Please enter your Name",
+                required: "Please enter your name",
                 minlength: "Enter your name at least 4 letters",
                 maxlength: "Your name length should not be greater than 20 letters",
             },
@@ -240,7 +240,7 @@ $.validator.addMethod("indianMobile", function(value, element) {
       {
         console.log(response);
         if(response == 1){
-          $('#mobile_err').text('This mobile is already exist');
+        //   $('#mobile_err').text('This mobile is already exist');
           $('#submit').attr('disabled','disabled');
         }
         else{

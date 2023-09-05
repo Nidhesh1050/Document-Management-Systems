@@ -152,8 +152,8 @@ $(document).ready(function() {
             },
 
             mobile: {
-                required: true,
-                number: true,
+                required:true,
+                number:true,
                 minlength: 10,
                 maxlength: 12,
                 indianMobile: true,
@@ -192,7 +192,7 @@ $(document).ready(function() {
             // },
             password: {
                 required: "Enter a valid password",
-                minlength: "Password must be at least 8 characters", 
+                minlength: "Password must be at least 8 characters",
             },
 
         }
@@ -242,7 +242,7 @@ $(document).ready(function() {
       {
         console.log(response);
         if(response == 1){
-          $('#mobile_err').text('This mobile is already exist');
+        //   $('#mobile_err').text('This mobile is already exist');
           $('#submit').attr('disabled','disabled');
         }
         else{
