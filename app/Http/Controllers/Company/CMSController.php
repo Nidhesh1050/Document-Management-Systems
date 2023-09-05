@@ -55,12 +55,15 @@ class CMSController extends Controller
     }
 
     public function deleteContent($id) {
-        DB::delete('delete from cms where id = ?',[$id]);
+       
+        $authId = auth()->user()->id;     
+        DB::table('cms')->where('company_id',$authId)->delete($id);
         return redirect('company/view_content')->with('success', 'Content has been deleted successfully.');
     }
 
     public function updateContent(Request $request,$id){
-        $cms = DB::table('cms')->where(['id'=> $id])->first();
+        $companyId= auth()->user()->id;
+        $cms = DB::table('cms')->where(['id'=> $id])->where('company_id',$companyId)->first();
         return view('company.content_management.update_content')->with(['cms'=>$cms]);
     }
 

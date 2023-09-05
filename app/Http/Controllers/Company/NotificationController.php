@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Session;
 use Illuminate\Support\Facades\Auth;
+use Common;
 
 class NotificationController extends Controller
 {
         public function addNotification(Request $request){
+          $permission = Common::addPermission(Auth::user()->id, 7);
+          if($permission->add_permission == 1){
             if(!empty($request->all())){
                 $request->validate(
                 [
@@ -19,17 +22,13 @@ class NotificationController extends Controller
                 $inserData['title'] = $request->title;
                 $inserData['description']= $request->description;
 
-              // $userId = auth()->user()->id;
-               // $companyID = DB::table('companies')->Select('id')->where(['user_id' => //$userId])->get();
-                //echo"<pre>".$companyID[0]->id; die;//print_r($companyID[0]->id);die;
-                //$inserData['company_id']= $companyID[0]->id;
-            if(Auth::user()->type=="company"){
-				$inserData['company_id']= Auth::user()->id;
-				$inserData['created_by']= Auth::user()->id;
-			}
-			if(Auth::user()->type=="user"){
-				$inserData['company_id']= Auth::user()->company_id;
-			}
+                if(Auth::user()->type=="company"){
+                  $inserData['company_id']= Auth::user()->id;
+                  $inserData['created_by']= Auth::user()->id;
+                }
+                if(Auth::user()->type=="user"){
+                  $inserData['company_id']= Auth::user()->company_id;
+                }
 
 
                 DB::table('notifications')->insert($inserData);
@@ -38,6 +37,10 @@ class NotificationController extends Controller
             else{
                 return view('company.notification.Notification');
             }
+          }else{
+            return redirect()->back()->with('error', 'you have not permission');
+          }
+        
         }
         public function showNotification(){
 

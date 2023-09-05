@@ -89,7 +89,7 @@ class EmailContentController extends Controller
                     'subject' => $request['subject'],
                     'message' => $request['message'],
                 ]);
-                return redirect('/admin/show_content')->with('success', 'Email content has beenupdated successfully.');
+                return redirect('/admin/show_content')->with('success', 'Email content has been updated successfully.');
         }
         public function EmailContentChangeStatus($id = null, $status = null)
     {

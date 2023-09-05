@@ -82,7 +82,7 @@ class DocumentController extends Controller
             'category_id' => 'required',
             'document_type_id' =>  'required',
             'title' =>  'required',
-            'document' =>  'required|mimes:pdf,xlsx,docx,ppt',
+           'document' =>  'required|mimes:pdf,xlsx,docx,ppt',
         ]);
 
 

@@ -112,7 +112,7 @@
                         parent_id: "Please select parent name",
                         name: "Please enter your Name",
                         // description: "Please enter  description",
-                        image: "Chose any image",
+                        image: "Choose any image",
                         status: "Please enter status",
 
                     }

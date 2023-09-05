@@ -69,7 +69,7 @@ $currentURL =Route::current()->uri;
                     <div class="collapse" id="base">
                         <ul class="nav nav-collapse">
                             <li class="sidebar-item">
-                                <a <?php if($currentURL =='company/userManagement' || $currentURL =='company/edit/{id}'){ echo 'active'; }?> class="sidebar-link" href="{{url('company/userManagement')}}">
+                                <a <?php if($currentURL =='company/userManagement' || $currentURL =='company/edit/{id}'){ echo '  '; }?> class="sidebar-link" href="{{url('company/userManagement')}}">
                                     <span class="sub-item">User List</span>
                                 </a>
                             </li>
@@ -128,7 +128,7 @@ $currentURL =Route::current()->uri;
                     </div>
                 </li>
 
-                <li class="nav-item <?php if($currentURL =='company/document' || $currentURL =='company/createdocument'|| $currentURL =='company/edit_document/{id}'){ echo 'active'; }?>">
+                <li class="nav-item <?php if($currentURL =='company/document' || $currentURL =='company/createdocument'|| $currentURL =='company/edit_document/{id}'){ echo '  '; }?>">
                     <a data-toggle="collapse" href="#forms">
                         <i class="fas fa-file"></i>
                         <p>Document Management</p>
@@ -174,7 +174,7 @@ $currentURL =Route::current()->uri;
 				</li>
 
 
-                <li class="nav-item <?php if($currentURL =='company/logos' || $currentURL =='company/update_logo'){ echo 'active'; }?>">
+                <li class="nav-item <?php if($currentURL =='company/logos' || $currentURL =='company/update_logo'){ echo '  '; }?>">
                     <a data-toggle="collapse" href="#setting">
                         <i class="fas fa-cog"></i>
                         <p>Setting Management</p>
@@ -191,7 +191,7 @@ $currentURL =Route::current()->uri;
                     </div>
                 </li>
 
-                <li class="nav-item <?php if($currentURL =='company/show_notification' || $currentURL =='company/notification'|| $currentURL =='company/edit_notification/{id}'){ echo 'active'; }?>">
+                <li class="nav-item <?php if($currentURL =='company/show_notification' || $currentURL =='company/notification'|| $currentURL =='company/edit_notification/{id}'){ echo '  '; }?>">
 							<a data-toggle="collapse" href="#tables">
 								<i class="fas fa-bullhorn"></i>
 								<p>Notification</p>

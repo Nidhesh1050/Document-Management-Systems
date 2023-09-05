@@ -154,7 +154,7 @@ $(document).ready(function() {
         },
         messages: {
             name: {
-                required: "*Please enter your Name",
+                required: "Please enter your Name",
             },
             company_name: {
                 required: "Please enter your commpany  Name",
@@ -162,15 +162,15 @@ $(document).ready(function() {
                 // maxlength: "Your commpany name length should not be greater than 20 letters",
             },
             email: {
-                required: "*Enter a valid E-mail address",
+                required: "Enter a valid E-mail address",
             },
             mobile: {
-                required: "*Please enter your Valid Mobile No.",
+                required: "Please enter your valid mobile no.",
                 number :"mobile number should be number only",
             },
-            // user_type: {
-            //     required: "*Enter a valid user type",
-            // },
+            user_type: {
+                required: "Enter a valid user type",
+            },
 
 
         }

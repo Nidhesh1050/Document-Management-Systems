@@ -167,7 +167,7 @@ $(document).ready(function() {
                 maxlength: "Your name length should not be greater than 20 letters",
             },
             company_name: {
-                required: "Please enter your commpany  name",
+                required: "Please select company name",
             },
             email: {
                 required: "Enter a e-mail address",
@@ -175,8 +175,8 @@ $(document).ready(function() {
             },
             mobile: {
                 required: "Please enter your valid mobile no.",
-                number: "Please enter mobile no. in numeric",
-                minlength: "At least length should be 10",
+                number: "Please enter mobile no.",
+                minlength: "Mobile number less than 10 digit",
                 maxlength: "Length should not be greater than 12",
             },
             // designation: {
