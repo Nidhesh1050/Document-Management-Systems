@@ -61,7 +61,7 @@ $currentURL =Route::current()->uri;
                         <p>Dashboard</p>
                     </a>
                 </li>
-                    <li class="nav-item <?php if($currentURL =='company/userManagement' || $currentURL =='company/adduser'|| $currentURL =='company/edit_user/{id}'){ echo ' active'; }?>">
+                    <li class="nav-item <?php if($currentURL =='company/userManagement' || $currentURL =='company/adduser'|| $currentURL =='company/edit_user/{id}'){ echo ' '; }?>">
                     <a data-toggle="collapse" href="#base">
                         <i class="fas fa-users"></i>
                         <p>User Management</p>
