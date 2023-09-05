@@ -168,9 +168,9 @@ $(document).ready(function() {
                 required: "Please enter your valid mobile no.",
                 number :"Mobile number should be number only",
             },
-            // user_type: {
-            //     required: "*Enter a valid user type",
-            // },
+            user_type: {
+                required: "Enter a valid user type",
+            },
 
 
         }

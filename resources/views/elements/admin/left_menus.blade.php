@@ -55,12 +55,12 @@ $currentURL =Route::current()->uri;
                     </span>
                     <h4 class="text-section">Components</h4>
                 </li>
-                <li class="nav-item <?php if($currentURL =='admin/home'){ echo 'active'; }?>">
+                <li class="nav-item <?php if($currentURL =='admin/home'){ echo ' '; }?>">
                     <a href="{{url('admin/home')}}">
                         <i class="fas fa-layer-group"></i>
                         <p>Dashboard</p>
                     </a>
-                <li class="nav-item <?php if($currentURL =='admin/userManagement' || $currentURL =='admin/adduser'|| $currentURL =='admin/edit_user/{id}'){ echo 'active'; }?>">
+                <li class="nav-item <?php if($currentURL =='admin/userManagement' || $currentURL =='admin/adduser'|| $currentURL =='admin/edit_user/{id}'){ echo ' '; }?>">
                     <a data-toggle="collapse" href="#base">
                         <i class="fas fa-users"></i>
                         <p>User Management</p>
@@ -68,12 +68,12 @@ $currentURL =Route::current()->uri;
                     </a>
                     <div class="collapse <?php if(in_array($currentURL,['admin/userManagement','admin/adduser','admin/edit_user/{id}'])){ echo 'show';}?>" id="base">
                         <ul class="nav nav-collapse">
-                            <li class="sidebar-item <?php if($currentURL =='admin/userManagement' || $currentURL =='admin/edit_user/{id}'){ echo 'active'; }?> ">
+                            <li class="sidebar-item <?php if($currentURL =='admin/userManagement' || $currentURL =='admin/edit_user/{id}'){ echo ' '; }?> ">
                                 <a  class="sidebar-link" href="{{url('admin/userManagement')}}">
                                     <span class="sub-item">User List</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item <?php if($currentURL =='admin/adduser'){ echo 'active'; }?> ">
+                            <li class="sidebar-item <?php if($currentURL =='admin/adduser'){ echo ' '; }?> ">
                                 <a href="{{url('admin/adduser')}}">
                                     <span class="sub-item">Add User</span>
                                 </a>
@@ -84,7 +84,7 @@ $currentURL =Route::current()->uri;
 
 
                 </li>
-                <li class="nav-item <?php if($currentURL =='admin/view_company' || $currentURL =='admin/add_company'|| $currentURL =='admin/update_company/{id}'){ echo 'active'; }?>">
+                <li class="nav-item <?php if($currentURL =='admin/view_company' || $currentURL =='admin/add_company'|| $currentURL =='admin/update_company/{id}'){ echo ' '; }?>">
                     <a data-toggle="collapse" href="#company">
                      <i class="fa fa-user-plus"></i>
                         <p>Company Management</p>
@@ -92,12 +92,12 @@ $currentURL =Route::current()->uri;
                     </a>
                     <div class="collapse <?php if(in_array($currentURL,['admin/view_company','admin/add_company','admin/update_company/{id}'])){ echo 'show';}?>" id="company">
                         <ul class="nav nav-collapse">
-                            <li class="sidebar-item">
+                            <li class="sidebar-item <?php if($currentURL =='admin/view_company' || $currentURL =='admin/update_company/{id}'){ echo 'active'; }?> ">
                                 <a class="sidebar-link" href="{{url('admin/view_company')}}">
                                     <span class="sub-item">Company List</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="sidebar-item <?php if($currentURL =='admin/add_company'){ echo 'active'; }?> ">
                                 <a href="{{url('admin/add_company')}}">
                                     <span class="sub-item">Add Company</span>
                                 </a>
@@ -208,7 +208,7 @@ $currentURL =Route::current()->uri;
 
                
 
-                <li class="nav-item <?php if($currentURL =='admin/logos' || $currentURL =='admin/update_logo'){ echo 'active'; }?>">
+                <li class="nav-item <?php if($currentURL =='admin/logos' || $currentURL =='admin/update_logo'){ echo ' '; }?>">
                     <a data-toggle="collapse" href="#setting">
                     <i class="fas fa-cog"></i>
                         <p>Setting Management</p>

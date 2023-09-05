@@ -144,7 +144,7 @@
                                             email: "Email should be in @gmail.com",
                                         },
                                         mobile: {
-                                            required: "Please enter your valid Mobile No.",
+                                            required: "Please enter your valid mobile No.",
                                             number: "Please enter Mobile No. in numeric",
                                             minlength: "Atlest length should be 10",
                                             maxlength: "Length should not be greater than 12",
