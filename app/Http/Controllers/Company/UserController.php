@@ -18,7 +18,7 @@ class UserController extends Controller
 {
     //List of users
     public function userManagement(){
-        $users = DB::table('users')->whereIn('type', [0])->where('company_id',Auth::user()->id)
+        $users = DB::table('users')->whereIn('type',[0])->where('company_id',Auth::user()->id)
           ->orderBy('id','DESC')->get();
         return view('company.user.userManagement',['users'=>$users]);
     }
