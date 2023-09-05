@@ -60,7 +60,8 @@ $currentURL =Route::current()->uri;
                         <i class="fas fa-layer-group"></i>
                         <p>Dashboard</p>
                     </a>
-                <li class="nav-item <?php if($currentURL =='admin/userManagement' || $currentURL =='admin/adduser'|| $currentURL =='admin/edit_user/{id}'){ echo ' '; }?>">
+                </li>
+                <li class="nav-item <?php if($currentURL =='admin/userManagement' || $currentURL =='admin/adduser'|| $currentURL =='admin/edit_user/{id}'){ echo ' active'; }?>">
                     <a data-toggle="collapse" href="#base">
                         <i class="fas fa-users"></i>
                         <p>User Management</p>
@@ -68,12 +69,12 @@ $currentURL =Route::current()->uri;
                     </a>
                     <div class="collapse <?php if(in_array($currentURL,['admin/userManagement','admin/adduser','admin/edit_user/{id}'])){ echo 'show';}?>" id="base">
                         <ul class="nav nav-collapse">
-                            <li class="sidebar-item <?php if($currentURL =='admin/userManagement' || $currentURL =='admin/edit_user/{id}'){ echo ' '; }?> ">
+                            <li class="sidebar-item <?php if($currentURL =='admin/userManagement' || $currentURL =='admin/edit_user/{id}'){ echo 'active '; }?> ">
                                 <a  class="sidebar-link" href="{{url('admin/userManagement')}}">
                                     <span class="sub-item">User List</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item <?php if($currentURL =='admin/adduser'){ echo ' '; }?> ">
+                            <li class="sidebar-item <?php if($currentURL =='admin/adduser'){ echo 'active '; }?> ">
                                 <a href="{{url('admin/adduser')}}">
                                     <span class="sub-item">Add User</span>
                                 </a>
