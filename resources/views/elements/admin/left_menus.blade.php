@@ -90,12 +90,12 @@ $currentURL =Route::current()->uri;
                     </a>
                     <div class="collapse <?php if(in_array($currentURL,['admin/view_company','admin/add_company','admin/update_company/{id}'])){ echo 'show';}?>" id="company">
                         <ul class="nav nav-collapse">
-                            <li class="sidebar-item">
+                            <li class="sidebar-item <?php if($currentURL =='admin/view_company' || $currentURL =='admin/update_company/{id}'){ echo 'active'; }?> ">
                                 <a class="sidebar-link" href="{{url('admin/view_company')}}">
                                     <span class="sub-item">Company List</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="sidebar-item <?php if($currentURL =='admin/add_company'){ echo 'active'; }?> ">
                                 <a href="{{url('admin/add_company')}}">
                                     <span class="sub-item">Add Company</span>
                                 </a>

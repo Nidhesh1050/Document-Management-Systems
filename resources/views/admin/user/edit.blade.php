@@ -154,19 +154,19 @@ $(document).ready(function() {
         },
         messages: {
             name: {
-                required: "*Please enter your Name",
+                required: "Please enter your Name",
             },
             company_name: {
-                required: "Please enter your commpany  Name",
+                required: "Please select company  Name",
                 // minlength: "Enter your commpany name atleast 4 letters",
                 // maxlength: "Your commpany name length should not be greater than 20 letters",
             },
             email: {
-                required: "*Enter a valid E-mail address",
+                required: "Enter a valid E-mail address",
             },
             mobile: {
-                required: "*Please enter your Valid Mobile No.",
-                number :"mobile number should be number only",
+                required: "Please enter your Valid mobile No.",
+                number :"Mobile number should be number only",
             },
             // user_type: {
             //     required: "*Enter a valid user type",

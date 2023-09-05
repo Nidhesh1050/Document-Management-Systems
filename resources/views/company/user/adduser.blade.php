@@ -163,7 +163,7 @@ $(document).ready(function() {
         messages: {
             name: {
                 required: "Please enter your Name",
-                minlength: "Enter your name atleast 4 letters",
+                minlength: "Enter your name at least 4 letters",
                 maxlength: "Your name length should not be greater than 20 letters",
             },
             company_name: {
@@ -174,7 +174,7 @@ $(document).ready(function() {
                 email: "Email should be in @gmail.com",
             },
             mobile: {
-                required: "Please enter your valid Mobile No.",
+                required: "Please enter your valid mobile No.",
                 number: "Please enter Mobile No. in numeric",
                 minlength: "Atlest length should be 10",
                 maxlength: "Length should not be greater than 12",
@@ -184,7 +184,7 @@ $(document).ready(function() {
             },
             password: {
                 required: "Enter a valid password",
-                minlength: "Password must be atlest 8 characters",
+                minlength: "Password must be at least 8 characters",
             },
 
         }

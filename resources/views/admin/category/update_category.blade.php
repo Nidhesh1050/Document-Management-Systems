@@ -106,14 +106,12 @@
                                     rules: {
                                         parent_id: "required",
                                         name: "required",
-                                        // description: "required",
                                         image: "required",
                                         status: "required",
                                     },
                                     messages: {
                                         parent_id: "Update your parent_id",
-                                        name: "Update your your Name",
-                                        // description: "Update your  description",
+                                        name: "Update your  Name",
                                         image: "Choose image",
                                         status: "Update your Status",
 
