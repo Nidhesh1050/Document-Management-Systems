@@ -162,21 +162,21 @@ $(document).ready(function() {
         },
         messages: {
             name: {
-                required: "Please enter your Name",
-                minlength: "Enter your name atleast 4 letters",
+                required: "Please enter your name",
+                minlength: "Enter your name at least 4 letters",
                 maxlength: "Your name length should not be greater than 20 letters",
             },
             company_name: {
-                required: "Please enter your commpany  Name",
+                required: "Please enter your company  name",
             },
             email: {
                 required: "Enter a e-mail address",
                 email: "Email should be in @gmail.com",
             },
             mobile: {
-                required: "Please enter your valid Mobile No.",
-                number: "Please enter Mobile No. in numeric",
-                minlength: "Atlest length should be 10",
+                required: "Please enter your valid mobile no.",
+                number: "Please enter mobile no. in numeric",
+                minlength: "At least length should be 10",
                 maxlength: "Length should not be greater than 12",
             },
             // designation: {
@@ -184,7 +184,7 @@ $(document).ready(function() {
             // },
             password: {
                 required: "Enter a valid password",
-                minlength: "Password must be atlest 8 characters",
+                minlength: "Password must be at least 8 characters",
             },
 
         }
@@ -234,7 +234,7 @@ $(document).ready(function() {
       {
         console.log(response);
         if(response == 1){
-          $('#mobile_err').text('This mobile is already exist');
+        //   $('#mobile_err').text('This mobile is already exist');
           $('#submit').attr('disabled','disabled');
         }
         else{

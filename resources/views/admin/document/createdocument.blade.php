@@ -33,7 +33,7 @@
                         <div class="card-title">Add Document</div>
                     </div>
                     <div class="card-body">
-                <form action="{{url('admin/createdocument')}}" method="post" id="files"
+                <form action="{{url('admin/createdocument')}}" method="POST" id="files"
                     enctype="multipart/form-data">
                     @csrf
                 
@@ -111,7 +111,7 @@
                             <input type="file" class="form-control-file" name="document"
                                 id="exampleFormControlFile1">
                                 <span class="text-danger error ">
-                                @error('documents')
+                                @error('document')
                                 {{$message}}
                                 @enderror
                             </span>

@@ -111,7 +111,7 @@
                             <input type="file" class="form-control-file" name="document"
                                 id="exampleFormControlFile1">
                                 <span class="text-danger error ">
-                                @error('documents')
+                                @error('document')
                                 {{$message}}
                                 @enderror
                             </span>
@@ -148,7 +148,7 @@ $(document).ready(function() {
             category_id: "Please select category ",
             document_type_id: "Please select document type",
             title:  "Please enter title",
-            document: "Choose any documemnt",
+            document: "Choose any document",
         }
     });
 });
