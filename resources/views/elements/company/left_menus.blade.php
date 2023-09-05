@@ -61,7 +61,7 @@ $currentURL =Route::current()->uri;
                         <p>Dashboard</p>
                     </a>
                 </li>
-                    <li class="nav-item <?php if($currentURL =='company/userManagement' || $currentURL =='company/adduser'|| $currentURL =='company/edit_user/{id}'){ echo ' active'; }?>">
+                    <li class="nav-item <?php if($currentURL =='company/userManagement' || $currentURL =='company/adduser'|| $currentURL =='company/edit_user/{id}'){ echo ' '; }?>">
                     <a data-toggle="collapse" href="#base">
                         <i class="fas fa-users"></i>
                         <p>User Management</p>
@@ -87,9 +87,9 @@ $currentURL =Route::current()->uri;
                 </li>
 
 
-                <li class="nav-item <?php if($currentURL =='company/view_category' || $currentURL =='company/category'|| $currentURL =='company/update_category/{id}'){ echo 'active'; }?>">
+                <li class="nav-item <?php if($currentURL =='company/view_category' || $currentURL =='company/category'|| $currentURL =='company/update_category/{id}'){ echo ''; }?>">
                     <a data-toggle="collapse" href="#sidebarLayouts">
-                    <i class="fas fa-th-list"></i> 
+                    <i class="fas fa-th-list"></i>
                         <p>Category Management</p>
 						<span class="caret"></span>
                     </a>
@@ -110,9 +110,9 @@ $currentURL =Route::current()->uri;
                     </div>
                 </li>
 
-           
 
-                <li class="nav-item <?php if($currentURL =='company/view_project' || $currentURL =='company/project'|| $currentURL =='company/update_project/{id}'){ echo 'active'; }?>">
+
+                <li class="nav-item <?php if($currentURL =='company/view_project' || $currentURL =='company/project'|| $currentURL =='company/update_project/{id}'){ echo ''; }?>">
                     <a data-toggle="collapse" href="#project">
                     <i class="fa fa-industry"></i>
                         <p>Project Management</p>
@@ -135,8 +135,8 @@ $currentURL =Route::current()->uri;
                     </div>
                 </li>
 
-               
-                <li class="nav-item <?php if($currentURL =='company/document' || $currentURL =='company/createdocument'|| $currentURL =='company/edit_document/{id}'){ echo 'active'; }?>">
+
+                <li class="nav-item <?php if($currentURL =='company/document' || $currentURL =='company/createdocument'|| $currentURL =='company/edit_document/{id}'){ echo ''; }?>">
                     <a data-toggle="collapse" href="#forms">
                     <i class="fas fa-file"></i>
                         <p>Document Management</p>
@@ -149,7 +149,7 @@ $currentURL =Route::current()->uri;
                                     <span class="sub-item">View Document</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item <?php if($currentURL =='company/createdocument'){ echo 'active'; }?> ">
+                            <li class="sidebar-item <?php if($currentURL =='company/createdocument'){ echo ''; }?> ">
                                 <a href="{{url('company/createdocument')}}">
                                     <span class="sub-item">Add Document</span>
                                 </a>
@@ -159,7 +159,7 @@ $currentURL =Route::current()->uri;
                     </div>
                 </li>
 
-                <li class="nav-item <?php if($currentURL =='company/documentType_view' || $currentURL =='company/documentType_add'|| $currentURL =='company/documentType_edit/{id}'){ echo 'active'; }?>">
+                <li class="nav-item <?php if($currentURL =='company/documentType_view' || $currentURL =='company/documentType_add'|| $currentURL =='company/documentType_edit/{id}'){ echo ''; }?>">
                     <a data-toggle="collapse" href="#list">
                     <i class="far fa-folder-open"></i>
                         <p>Document Type</p>
@@ -183,7 +183,7 @@ $currentURL =Route::current()->uri;
                 </li>
 
 
-                <li class="nav-item <?php if($currentURL =='company/logos' || $currentURL =='company/update_logo'){ echo 'active'; }?>">
+                <li class="nav-item <?php if($currentURL =='company/logos' || $currentURL =='company/update_logo'){ echo ''; }?>">
                     <a data-toggle="collapse" href="#setting">
                     <i class="fas fa-cog"></i>
                         <p>Setting Management</p>
@@ -201,9 +201,9 @@ $currentURL =Route::current()->uri;
                 </li>
 
 
-             
 
-                <li class="nav-item <?php if($currentURL =='company/show_notification' || $currentURL =='company/notification'|| $currentURL =='company/edit_notification/{id}'){ echo 'active'; }?>">
+
+                <li class="nav-item <?php if($currentURL =='company/show_notification' || $currentURL =='company/notification'|| $currentURL =='company/edit_notification/{id}'){ echo ''; }?>">
                     <a data-toggle="collapse" href="#tables">
                     <i class="fas fa-bullhorn"></i>
                         <p>Notification</p>
@@ -225,8 +225,8 @@ $currentURL =Route::current()->uri;
                         </ul>
                     </div>
                 </li>
-                       
-                <li class="nav-item <?php if($currentURL =='company/view_content' || $currentURL =='company/addcontent'|| $currentURL =='company/update_content/{id}'){ echo 'active'; }?>">
+
+                <li class="nav-item <?php if($currentURL =='company/view_content' || $currentURL =='company/addcontent'|| $currentURL =='company/update_content/{id}'){ echo ''; }?>">
                     <a data-toggle="collapse" href="#charts">
                     <i class="fas fa-edit"></i>
                         <p>CMS</p>
@@ -249,7 +249,7 @@ $currentURL =Route::current()->uri;
                     </div>
                 </li>
 
-                    <li class="nav-item <?php if($currentURL =='company/show_email' || $currentURL =='company/edit_email/{id}' || $currentURL =='company/email' || $currentURL =='company/content' || $currentURL =='company/show_content' || $currentURL =='company/edit_content/{id}'){ echo 'active'; }?>">
+                    <li class="nav-item <?php if($currentURL =='company/show_email' || $currentURL =='company/edit_email/{id}' || $currentURL =='company/email' || $currentURL =='company/content' || $currentURL =='company/show_content' || $currentURL =='company/edit_content/{id}'){ echo ''; }?>">
                     <a data-toggle="collapse" href="#email">
                     <i class="fas fa-envelope"></i>
                         <p>Email Management</p>
@@ -284,7 +284,7 @@ $currentURL =Route::current()->uri;
                 </li>
 
 
-                        <li class="nav-item <?php if($currentURL =='company/module_permission'){ echo 'active'; }?>">
+                        <li class="nav-item <?php if($currentURL =='company/module_permission'){ echo ''; }?>">
                     <a data-toggle="collapse" href="#maps">
                     <i class="fas fa-key"></i>
                         <p>Permission</p>

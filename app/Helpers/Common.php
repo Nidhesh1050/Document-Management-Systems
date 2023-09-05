@@ -21,12 +21,12 @@ class Common {
 	
 	}
 
-	static function addPermission($user_id, $module_id){
-		$add_permission = DB::table('modules_permissions')->where(['module_id'=> $module_id,'user_id'=> $user_id ])->first();
-		if($add_permission){
-			return $add_permission;
-		}else{
-			return false;
-		}
-	}
+	// static function addPermission($user_id, $module_id){
+	// 	$add_permission = DB::table('modules_permissions')->where(['module_id'=> $module_id,'user_id'=> $user_id ])->first();
+	// 	if($add_permission){
+	// 		return $add_permission;
+	// 	}else{
+	// 		return false;
+	// 	}
+	// }
 }

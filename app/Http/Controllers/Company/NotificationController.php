@@ -11,8 +11,7 @@ use Common;
 class NotificationController extends Controller
 {
         public function addNotification(Request $request){
-          $permission = Common::addPermission(Auth::user()->id, 7);
-          if($permission->add_permission == 1){
+         
             if(!empty($request->all())){
                 $request->validate(
                 [
@@ -37,9 +36,7 @@ class NotificationController extends Controller
             else{
                 return view('company.notification.Notification');
             }
-          }else{
-            return redirect()->back()->with('error', 'you have not permission');
-          }
+        
         
         }
         public function showNotification(){

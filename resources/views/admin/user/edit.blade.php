@@ -49,17 +49,22 @@
                         <form action="{{ url('admin/update_user') }}" method="post" id="form">
 
                             @csrf
-                            <input type="hidden" name="id" value="{{ $users->id }}">
+                            <input type="hidden" name="id" value="{{$users->id }}">
+                            
                             <div class="form-row">
                                 <div class="form-group col-md-6">   
                                     <label for="name">Company Name *</label>
                                     <select name="company_name" class="form-control">
                                         <option value=""> Please Select</option>
+                                        {{}}
                                         <?php foreach($company_name as $company_name){?>
-                                        <option <?php if(@$users->company_name == $company_name->id){?>selected
+
+                                            
+                                        <option <?php if(@$users->company_id == $company_name->id){?>selected
                                             <?php } ?> value="{{$company_name->id}}">{{@$company_name->company_name}}
                                         </option>
                                         <?php }?>
+
                                     </select>
                                     <span class="text-danger  ">
                                         @error('company_name')

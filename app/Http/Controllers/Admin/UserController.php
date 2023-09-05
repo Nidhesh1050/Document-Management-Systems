@@ -37,6 +37,9 @@ class UserController extends Controller
         $project_manager = DB::table('usertype')->select('id','name')->whereIn('id', [2,0])->get();
         $company_name = DB::table('companies')->select('id','company_name')->get();
           $users = DB::table('users')->where(['id'=> $id])->first();
+          $company_name = DB::table('companies')->select('id','company_name')->get();
+
+     
           return view('admin.user.edit')->with(['users'=>$users,'project_manager'=>$project_manager,'company_name'=>$company_name]);
     }
         //Update Code
