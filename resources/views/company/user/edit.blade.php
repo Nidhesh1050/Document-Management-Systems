@@ -56,7 +56,7 @@
                                         <select name="company_name" class="form-control">
                                         <option value=""> Please Select</option>
                                         <?php foreach($company_name as $company_name){?>
-                                        <option <?php if(@$users->company_name == $company_name->id){?>selected <?php } ?> value="{{$company_name->id}}">{{@$company_name->company_name}}</option>
+                                        <option <?php if(@$users->company_id == $company_name->id){?>selected <?php } ?> value="{{$company_name->id}}">{{@$company_name->company_name}}</option>
                                         <?php }?>
                                     </select>
                                     <span class="text-danger  ">
