@@ -10,6 +10,7 @@ class NotificationController extends Controller
 {
 
     public function addNotification(Request $request){
+        
         if(!empty($request->all())){
             $request->validate(
             [

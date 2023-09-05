@@ -27,6 +27,8 @@ class CompanyController extends Controller
           $insertData['mobile'] = $request->mobile;
           $insertData['name'] = $request->name;
           $insertData['email']= $request->email;
+          $insertData['type']= 2;
+          $insertData['user_type']= 2;
           $insertData['password']=Hash::make($request->password);
           $userId = DB::table('users')->insertGetId($insertData);
             // insert data in companies table

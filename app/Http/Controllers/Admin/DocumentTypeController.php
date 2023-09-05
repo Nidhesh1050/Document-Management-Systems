@@ -53,7 +53,8 @@ class DocumentTypeController extends Controller
 
     //edit code in user body
     public function documentTypeEdit(Request $request, $id)
-    {
+    {    
+        
         $documentTypes = DB::table('document_types')->where(['id' => $id])->first();
         return view('admin.document_type.documentType_edit')->with(['documentTypes' => $documentTypes]);
     }

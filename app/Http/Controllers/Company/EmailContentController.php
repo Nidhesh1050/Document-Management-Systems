@@ -66,16 +66,19 @@ class EmailContentController extends Controller
 
          //Delete function to delete in user body
      public function emailContentDelete($id) {
-        DB::delete('delete from email_contents where id ='.$id);
+        $authId = Auth::user()->id;
+       
+        // DB::delete('delete from email_contents where id ='.$id);
+        DB::table('email_contents')->where('company_id',$authId)->delete($id);
         return redirect('/company/show_content')->with('success', 'email content has been deleted successfully.');
      }
 
         //edit code in user body
         public function emailContentEdit(Request $request,$id)
         {
-
+        $companyId=Auth::user()->id;
         $project_manager = DB::table('email_types')->select('id','email_type')->get();
-        $emailContents = DB::table('email_contents')->where(['id'=> $id])->first();
+        $emailContents = DB::table('email_contents')->where(['id'=> $id])->where('company_id',$companyId)->first();
         return view('company.email_management.edit_content')->with(['emailContents'=>$emailContents,'project_manager'=>$project_manager]);
        
         }
