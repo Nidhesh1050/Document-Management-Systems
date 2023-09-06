@@ -58,7 +58,7 @@
                                         company_name: "required",
                                     },
                                     messages: {
-                                        company_name: "*Update  company name",
+                                        company_name: "Update  company name",
                                     }
 
                                 });
