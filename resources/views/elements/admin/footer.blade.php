@@ -3,7 +3,7 @@
 use App\Models\Projects;
 use App\Models\User;
 $all_users=User::get()->count();
-$all_manager=User::whereIn('type', [2])->get()->count();
+$all_company=User::whereIn('user_type', [2])->get()->count();
 $all_project = Projects::get()->count();
 ?><footer class="footer">
 				<div class="container-fluid">
@@ -87,10 +87,10 @@ $all_project = Projects::get()->count();
 		Circles.create({
 			id:'circles-2',
 			radius:45,
-			value:<?php echo $all_manager?>,
+			value:<?php echo $all_company?>,
 			maxValue:100,
 			width:7,
-			text: <?php echo $all_manager?>,
+			text: <?php echo $all_company?>,
 			colors:['#f1f1f1', '#2BB930'],
 			duration:400,
 			wrpClass:'circles-wrp',
