@@ -139,7 +139,7 @@ $.validator.addMethod("customEmail", function(value, element) {
     return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
 }, "Please enter a valid email address");
 
-m $("#form").validate({
+$("#form").validate({
     rules: {
         name: {
             required: true,
@@ -177,7 +177,7 @@ m $("#form").validate({
             required: "Please enter your company  name",
         },
         email: {
-            required: "Enter a e-mail address",
+            required: "Please enter your email address",
         },
         mobile: {
             required: "Please enter your valid mobile no.",

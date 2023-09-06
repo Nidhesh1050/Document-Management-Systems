@@ -149,7 +149,7 @@ $(document).ready(function() {
         return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
     }, "Please enter a valid email address");
 
-   m $("#form").validate({
+    $("#form").validate({
         rules: {
             name: {
                 required: true,
@@ -251,7 +251,7 @@ $("#user_mobile").blur(function() {
         success: function(response) {
             console.log(response);
             if (response == 1) {
-                $('#mobile_err').text('This mobile is already exist');
+            
                 $('#submit').attr('disabled', 'disabled');
             } else {
                 $('#mobile_err').text('');
