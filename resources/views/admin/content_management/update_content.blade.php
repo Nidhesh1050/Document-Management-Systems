@@ -43,7 +43,6 @@
                         <div class="card-title">Edit Content</div>
                     </div>
                     <div class="card-body">
-
                         <form action="{{ url('admin/edit_content') }}" method="post" id="content"
                             enctype="multipart/form-data">
                             @csrf

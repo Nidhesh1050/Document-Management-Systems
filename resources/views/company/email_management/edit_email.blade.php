@@ -7,7 +7,7 @@
             <div class="page-header">
                 <ul class="breadcrumbs">
                     <li class="nav-home">
-                        <a href="{{ url('admin/home') }}">
+                        <a href="{{ url('company/home') }}">
                             <i class="flaticon-home"></i>
                         </a>
                     </li>
@@ -45,12 +45,12 @@
                         </div>
                         <div class="card-body">
 
-                            <form action="{{ url('admin/emailupdate') }}" id="form" method="POST">
+                            <form action="{{ url('company/emailupdate') }}" id="form" method="POST">
                                 @csrf
-                                <input type="hidden" name="id" value="{{ $users->id }}">
+                                <input type="hidden" name="id" value="{{ $emailTypes->id }}">
                                 <div class="form-group">
                                     <label>Email type</label>
-                                    <input type="text" name="email_type" id="email_type" value="{{ $users->email_type }}"
+                                    <input type="text" name="email_type" id="email_type" value="{{ $emailTypes->email_type }}"
                                         class="form-control">
                                     <span class="text-danger  ">
                                         @error('email_type')
@@ -61,7 +61,7 @@
 
                                 <div class="text-right">
                                     <button type="submit" class="mt-4 btn btn-success">Update</button>
-                                    <a href="{{ url('admin/show_email') }}" class="mt-4 btn btn-danger">Cancel</a>
+                                    <a href="{{ url('company/show_email') }}" class="mt-4 btn btn-danger">Cancel</a>
                                     <div>
                             </form>
 

@@ -20,14 +20,14 @@ class UserController extends Controller
     public function userManagement(){
         $users = DB::table('users')->select(
           "users.*",
-          "companies.company_name" )
+          "companies.company_name")
           ->leftJoin("companies",  "companies.id" ,"=", "users.company_id"  )->whereIn('type', [0])
           ->orderBy('id','DESC')->get();
         return view('admin.user.userManagement',['users'=>$users]);
     }
 
       //Delete function to delete in user body
-    public function delete($id) {
+    public function delete($id){
         DB::delete('delete from users where id = ?',[$id]);
           return redirect('admin/userManagement')->with('success', 'User has been deleted successfully.');
     }
@@ -37,10 +37,22 @@ class UserController extends Controller
         $project_manager = DB::table('usertype')->select('id','name')->whereIn('id', [2,0])->get();
         $company_name = DB::table('companies')->select('id','company_name')->get();
           $users = DB::table('users')->where(['id'=> $id])->first();
+          $company_name = DB::table('companies')->select('id','company_name')->get();
+
+     
           return view('admin.user.edit')->with(['users'=>$users,'project_manager'=>$project_manager,'company_name'=>$company_name]);
     }
         //Update Code
     public function update(Request $request){
+      $request->validate(
+        [
+          'company_name'=>'required|max:50|string',
+          'name'=>'required|max:50|string',
+          'email'=>'required|email|',
+          'mobile' =>'required|max:12',
+          ]
+      );
+
         DB::table('users')
             ->where('id', $request['id'])
             ->update([

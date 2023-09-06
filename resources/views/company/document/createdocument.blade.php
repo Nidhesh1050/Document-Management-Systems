@@ -8,7 +8,7 @@
         <div class="page-header">
             <ul class="breadcrumbs">
                 <li class="nav-home">
-                    <a href="{{url('admin/home')}}">
+                    <a href="{{url('company/home')}}">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -16,7 +16,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="{{url('admin/document')}}">Document Management</a>
+                    <a href="{{url('company/document')}}">Document Management</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -33,7 +33,7 @@
                         <div class="card-title">Add Document</div>
                     </div>
                     <div class="card-body">
-                <form action="{{url('admin/add_document')}}" method="post" id="files"
+                <form action="{{url('company/createdocument')}}" method="post" id="files"
                     enctype="multipart/form-data">
                     @csrf
                 
@@ -71,7 +71,7 @@
 
                         <div class="form-group col-md-6">
                         <label>Document Type </label>
-                        <select name="document_ty" class="form-control">
+                        <select name="document_type_id" class="form-control">
 
                         <option value=""> Please Select</option>
                         @foreach($document_type as $document_type)
@@ -111,26 +111,17 @@
                             <input type="file" class="form-control-file" name="document"
                                 id="exampleFormControlFile1">
                                 <span class="text-danger error ">
-                                @error('documents')
+                                @error('document')
                                 {{$message}}
                                 @enderror
                             </span>
                      </div>
 
-                     <div class="form-group">
-                            <label for="status">Status</label>
-                            <input type="checkbox" class="form-control" name="status" id="status"
-                                placeholder="Status" >
-                                <span class="text-danger error ">
-                                @error('status')
-                                {{$message}}
-                                @enderror
-                            </span>
-                        </div>
+                    
                     </div>
                      <div class="text-right">
                                 <button type="submit" class="mt-4 btn btn-success">Submit</button>
-                                <a href="{{url('admin/document')}}" class="mt-4 btn btn-danger">Cancel</a>
+                                <a href="{{url('company/document')}}" class="mt-4 btn btn-danger">Cancel</a>
                     <div>
                 </form>
             </div>
@@ -147,18 +138,17 @@ $(document).ready(function() {
         rules: {
             project_id :"required",
             category_id:"required",
-            document_ty: "required",
+            document_type_id: "required",
             title: "required",
             document: "required",
             status: "required",
         },
         messages: {
-            project_id: "Please select project Name",
-            category_id: "Please select category Name",
-            document_ty: "Please select document type",
-            title:  "Please Enter title",
-            document: "Choose any documemnts",
-            status: "Please Enter Status",
+            project_id: "Please select project ",
+            category_id: "Please select category ",
+            document_type_id: "Please select document type",
+            title:  "Please enter title",
+            document: "Choose any document",
         }
     });
 });

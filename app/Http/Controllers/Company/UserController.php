@@ -4,21 +4,33 @@ namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Auth;
-use DB;
+use Illuminate\View\View;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use App\Models\Projects;
+use App\Models\User;
+use App\Mail\MyTestMail;
+
 class UserController extends Controller
 {
     //List of users
     public function userManagement(){
-        $users = DB::table('users')->whereIn('type', [0])->where('company_id',Auth::user()->id)
-          ->orderBy('id','DESC')->get();
-        return view('company.user.userManagement',['users'=>$users]);
+      $companyId= auth()->user()->id;
+      $users = DB::table('users')->select(
+        "users.*",
+        "companies.company_name")
+        ->leftJoin("companies",  "companies.id" ,"=", "users.company_id"  )->whereIn('type', [0])
+        ->orderBy('id','DESC')->where('users.manager_id',$companyId)->get();
+      return view('company.user.userManagement',['users'=>$users]);
     }
 
       //Delete function to delete in user body
     public function delete($id) {
         DB::delete('delete from users where id = ?',[$id]);
-          return redirect('admin/userManagement')->with('success', 'User has been deleted successfully.');
+          return redirect('company/userManagement')->with('success', 'User has been deleted successfully.');
     }
 
         //edit code in user body
@@ -26,10 +38,18 @@ class UserController extends Controller
         $project_manager = DB::table('usertype')->select('id','name')->whereIn('id', [2,0])->get();
         $company_name = DB::table('companies')->select('id','company_name')->get();
           $users = DB::table('users')->where(['id'=> $id])->first();
-          return view('admin.user.edit')->with(['users'=>$users,'project_manager'=>$project_manager,'company_name'=>$company_name]);
+          return view('company.user.edit')->with(['users'=>$users,'project_manager'=>$project_manager,'company_name'=>$company_name]);
     }
         //Update Code
     public function update(Request $request){
+      $request->validate(
+        [
+          'company_name'=>'required|max:50|string',
+          'name'=>'required|max:50|string',
+          'email'=>'required|email|',
+          'mobile' =>'required|max:12',
+          ]
+      );
         DB::table('users')
             ->where('id', $request['id'])
             ->update([
@@ -40,16 +60,17 @@ class UserController extends Controller
                 'user_type' => $request['user_type'],
 
             ]);
-        return redirect('admin/userManagement')->with('success', 'User has been updated successfully.');
+        return redirect('company/userManagement')->with('success', 'User has been updated successfully.');
     }
 
         //Insert data Code
     public function adduser(){
+     
         $project_manager = DB::table('usertype')->select('id','name')->whereIn('id', [2,0])->get();
         $company_name = DB::table('companies')->select('id','company_name')->get();
-        return view('admin.user.adduser',['project_manager'=>$project_manager,'company_name'=>$company_name]);
+        return view('company.user.adduser',['project_manager'=>$project_manager,'company_name'=>$company_name]);
     }
-        //Save user data from the admin panel
+        //Save user data from the company panel
     public function register(Request $request)
     {
         $request->validate(
@@ -64,8 +85,8 @@ class UserController extends Controller
         $user_id =  Session::get('user_id');
         $user_type = Session::get('user_type');
 
-        if($user_type = "admin"){
-          $inserData['admin_id'] = $user_id;
+        if($user_type = "company"){
+          $inserData['company_id'] = $user_id;
           $inserData['manager_id'] = $user_id;
         }
         else if($user_type = "company"){
@@ -87,9 +108,9 @@ class UserController extends Controller
         $inserData['company_id'] = $request->company_name;
 
         DB::table('users')->insert($inserData);
-        return redirect('admin/userManagement')->with('success', 'User has been added successfully.');
+        return redirect('company/userManagement')->with('success', 'User has been added successfully.');
     }
-        //change status of user from admin panel
+        //change status of user from company panel
     public function UserChangeStatus($id=null, $status=null){
         $users = DB::table('users')->where('id',$id)->update(['status'=>$status]);
         return back()->withInput()->with('success','Status has been changed.');
@@ -139,3 +160,4 @@ class UserController extends Controller
         return $mobile;
       }
 }
+

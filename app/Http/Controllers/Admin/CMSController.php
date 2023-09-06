@@ -13,27 +13,32 @@ class CMSController extends Controller
         if(!empty($request->all())){
             $request->validate([
                 'title' => 'required|string',
-                 'image' =>  'mimes:jpeg,png,jpg,gif,svg',
+               'image' =>  'mimes:jpeg,png,jpg,gif,svg',
                 'status' => 'nullable|boolean',
             ]);
             $status = $request->status == 'on' ? 1 : 0;
-    
-            $image = $request->file('image');
-            $destinationPath = public_path('/cms');
-            $image_name = rand().'.'.$image->getClientOriginalExtension();
-            $image->move($destinationPath, $image_name);
+
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $image = $request->file('image');
+                $destinationPath = public_path('/cms');
+                $image_name =  rand().'.'.$image->getClientOriginalExtension();
+                $image->move($destinationPath, $image_name);
+            } else {
+                $image_name= public_path('images/9187739.jpg');
+            }
             $insertData['title']= str_replace(' ', '_', $request->title);
-    
+
             $insertData['description'] = strip_tags($request->description);
             $insertData['image'] = $image_name;
             $insertData['status'] =  $status;
             DB::table('cms')->insert($insertData);
-    
+
             return redirect('admin/view_content')->with('success', 'Content has been added successfully.');
         }else{
             return view('admin.content_management.addcontent');
         }
-        
+
     }
     public function viewContent(){
         $cms = DB::table('cms')->orderBy('id','DESC')->get();
@@ -91,6 +96,6 @@ class CMSController extends Controller
 public function CMSChangeStatus($id=null, $status=null){
     $cms = DB::table('cms')->where('id',$id)->update(['status'=>$status]);
     return back()->withInput()->with('success','Status has been changed.');
-} 
+}
 
 }

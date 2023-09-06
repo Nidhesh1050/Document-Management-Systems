@@ -6,7 +6,7 @@
         <div class="page-header">
             <ul class="breadcrumbs">
                 <li class="nav-home">
-                    <a href="{{url('admin/home')}}">
+                    <a href="{{url('company/home')}}">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -41,7 +41,7 @@
                                     @endif
                         </div>
                         <div class="d-flex align-items-center">
-                            <a href="{{ url('admin/adduser') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
+                            <a href="{{ url('company/adduser') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
                                     data-target="#addRowModal">
                                     <i class="fa fa-plus"></i>
                                     Add User
@@ -56,6 +56,7 @@
                                     <tr>
                                         <th> S. No</th>
                                         <th> Name</th>
+                                        <th>Company Name</th>
                                         <th> Email </th>
                                         <th> Mobile </th>
                                         <th> Status</th>
@@ -71,12 +72,13 @@
                                         <tr>
                                         <td>{{$loop->iteration}}</td>
                                             <td> {{ $users->name }}</td>
+                                            <td> {{ $users->company_name }}</td>
                                             <td> {{ $users->email }}</td>
                                             <td> {{ $users->mobile }}</td>
                                             <td>{{ $status }}</td>
                                             <td class="action_td">
 
-                                                    <a href='/company/edit_user/{{ $users->id }}' data-toggle="tooltip" title=""
+                                                    <a href="{{ url('company/edit_user/'.  $users->id)}}" data-toggle="tooltip" title=""
                                                             class="btn-link btn-primary" data-original-title="Edit Task">
                                                             <i class="fa fa-edit"></i>
                                                     </a>
@@ -87,7 +89,7 @@
                                                         $statustite = @$users->status == 1 ? 'InActive' : 'Active';
                                                     @endphp
 
-                                                     <a href="{{url('UserChangeStatus/'. $users->id.'/'. $status) }}"
+                                                     <a href="{{url('company/UserChangeStatus/'. $users->id.'/'. $status) }}"
                                                         onclick="return confirm('Are you sure to change status?')"   data-toggle="tooltip" title=""
                                                             class="btn-link {{$statusicon}}" data-original-title="{{$statustite}}">
                                                             @if($users->status==0)

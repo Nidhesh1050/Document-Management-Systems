@@ -7,7 +7,7 @@
             <div class="page-header">
                 <ul class="breadcrumbs">
                     <li class="nav-home">
-                        <a href="{{ url('admin/notification') }}">
+                        <a href="{{ url('company/notification') }}">
                             <i class="flaticon-home"></i>
                         </a>
                     </li>
@@ -15,7 +15,7 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('admin/show_notification') }}">Notification Management</a>
+                        <a href="{{ url('company/show_notification') }}">Notification Management</a>
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>
@@ -49,20 +49,20 @@
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                        <label for="description">Description</label>
-                                        <textarea class="form-control" name="description" id="editor" placeholder="write text" rows="2">
+                                    <label for="description">Description</label>
+                                    <textarea class="form-control" name="description" id="editor" placeholder="write text" rows="2">
                                             </textarea>
-                                        <span class="text-danger error ">
-                                            @error('description')
-                                                {{ $message }}
-                                            @enderror
-                                        </span>
-                                    </div>
+                                    <span class="text-danger error ">
+                                        @error('description')
+                                            {{ $message }}
+                                        @enderror
+                                    </span>
+                                </div>
 
 
                                 <div class="text-right">
                                     <button type="submit" class="mt-4 btn btn-success">Submit</button>
-                                    <a href="{{ url('admin/show_notification') }}" class="mt-4 btn btn-danger">Cancel</a>
+                                    <a href="{{ url('company/show_notification') }}" class="mt-4 btn btn-danger">Cancel</a>
                                     <div>
                             </form>
 
@@ -77,17 +77,17 @@
                                     // description: "required",
                                 },
                                 messages: {
-                                    title: "*Please Enter Title.",
+                                    title: "Please enter  title.",
                                     // description: "*Please Enter Description.",
                                 }
                             });
                         });
                     </script>
                     <script>
-                ClassicEditor
-                    .create(document.querySelector('#editor'))
-                    .catch(error => {
-                        console.error(error);
-                    });
-            </script>
-  @endsection
+                        ClassicEditor
+                            .create(document.querySelector('#editor'))
+                            .catch(error => {
+                                console.error(error);
+                            });
+                    </script>
+                @endsection

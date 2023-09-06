@@ -40,9 +40,9 @@ class DocumentTypeController extends Controller
             );
             $status = $request->status == 'on' ? 1 : 0;
             $inserData['name'] = $request->name;
-            
+
             $inserData['slug']= str_replace(' ', '-', trim($request->name));
-      
+
             DB::table('document_types')->insert($inserData);
             return redirect('admin/documentType_view')->with('success', 'Document type has been added successfully.');
         } else {
@@ -54,6 +54,7 @@ class DocumentTypeController extends Controller
     //edit code in user body
     public function documentTypeEdit(Request $request, $id)
     {
+
         $documentTypes = DB::table('document_types')->where(['id' => $id])->first();
         return view('admin.document_type.documentType_edit')->with(['documentTypes' => $documentTypes]);
     }
@@ -69,6 +70,8 @@ class DocumentTypeController extends Controller
             ->where('id', $request['id'])
             ->update([
                 'name' => $request['name'],
+                'slug' => str_replace(' ', '-',trim($request['name'])),
+                // 'name' => $request['name'],
             ]);
         return redirect('admin/documentType_view')->with('success', 'Document type has been updated successfully.');
 
@@ -78,10 +81,11 @@ class DocumentTypeController extends Controller
    // check if document type name already exist
    public function checkDocumentType(Request $request){
     $name = $request['name'];
+    $documenttype_slug = str_replace(' ', '-',$request['name']);
     $id = $request['id'];
-    if($id){ 
-         $name = DB::table('document_types')->select('name')->where('id','!=',$id)->where('name',$name)->first();
-        
+    if($id){
+         $name = DB::table('document_types')->select('name')->where('id','!=',$id)->where('name',$name,$documenttype_slug)->first();
+
           if($name){
             $name = 1;
           }else{

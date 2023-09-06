@@ -7,7 +7,7 @@
             <div class="page-header">
                 <ul class="breadcrumbs">
                     <li class="nav-home">
-                        <a href="{{ url('admin/home') }}">
+                        <a href="{{ url('company/home') }}">
                             <i class="flaticon-home"></i>
                         </a>
                     </li>
@@ -15,7 +15,7 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('admin/show_notification') }}">Notification Management</a>
+                        <a href="{{ url('company/show_notification') }}">Notification Management</a>
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>
@@ -45,22 +45,22 @@
                             <div class="card-title">Update Notification</div>
                         </div>
                         <div class="card-body">
-                            <form action="{{ url('admin/update_notification') }}" id="form" method="POST">
+                            <form action="{{ url('company/update_notification') }}" id="form" method="POST">
                                 @csrf
-                                <input type="hidden" name="id" value="{{ $users->id }}">
+                                <input type="hidden" name="id" value="{{ $notifications->id }}">
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input type="text" name="title" value="{{ $users->title }}" class="form-control">
+                                    <input type="text" name="title" value="{{ $notifications->title }}" class="form-control">
                                     <span class="text-danger error ">
                                         @error('title')
                                             {{ $message }}
                                         @enderror
                                         <span>
                                 </div>
-                               
+
                                 <div class="form-group col-md-12">
                                         <label for="description">Description</label>
-                                        <textarea class="form-control" name="description" id="editor" placeholder="write text" rows="2">{{ $users->description }}
+                                        <textarea class="form-control" name="description" id="editor" placeholder="write text" rows="2">{{ $notifications->description }}
                                             </textarea>
                                         <span class="text-danger error ">
                                             @error('description')
@@ -71,7 +71,7 @@
 
                                 <div class="text-right">
                                     <button type="submit" class="mt-4 btn btn-success">Submit</button>
-                                    <a href="{{ url('admin/show_notification') }}" class="mt-4 btn btn-danger">Cancel</a>
+                                    <a href="{{ url('company/show_notification') }}" class="mt-4 btn btn-danger">Cancel</a>
                                     <div>
                             </form>
                         </div>
@@ -82,11 +82,11 @@
                             $("#form").validate({
                                 rules: {
                                     title: "required",
-                                    // description: "required",
+
                                 },
                                 messages: {
-                                    title: "*Update your title",
-                                    // description: "*Update your description",
+                                    title: "Update title",
+
                                 }
                             });
                         });

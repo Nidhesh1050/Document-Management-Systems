@@ -64,7 +64,6 @@
             rules: {
                 name: {
                     required:true,
-                
                 },
 
             },

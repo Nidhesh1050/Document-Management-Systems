@@ -55,7 +55,9 @@
                                 <select name="project_id" class="form-control">
                                         <option value=""> Please Select</option>
                                         <?php foreach($project_documents as $project_documents){?>
-                                        <option <?php if($users->project_id == $project_documents->id){?>selected <?php } ?> value="{{$project_documents->id}}">{{$project_documents->project_name}}</option>
+                                        <option <?php if($users->project_id == $project_documents->id){?>selected 
+                                            <?php } ?> value="{{$project_documents->id}}">{{$project_documents->project_name}}
+                                        </option>
                                         <?php }?>
                                     </select>
 
@@ -76,7 +78,7 @@
                                         <option <?php if($users->category_id == $category_documents->id){?>selected <?php } ?> value="{{$category_documents->id}}">{{$category_documents->name}}</option>
                                         <?php }?>
                                     </select>
-                                <span class="text-danger  ">
+                                <span class="text-danger">
                                     @error('category_id')
                                         {{ $message }}
                                     @enderror

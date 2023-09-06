@@ -6,26 +6,29 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Common;
+use Auth;
 class NotificationController extends Controller
 {
     
     public function addNotification(Request $request){
-        if(!empty($request->all())){
-            $request->validate(
-            [
-              'title'=>'required',
-            ]
-            );
-            $inserData['title'] = $request->title;
-            $inserData['description']= $request->description;
-
-            DB::table('notifications')->insert($inserData);
-            return redirect('admin/show_notification')->with('success', 'Notification has been added successfully.');
-        }
-        else{
-            return view('admin.notification.Notification');
-        }
+       
+            if(!empty($request->all())){
+                $request->validate(
+                [
+                  'title'=>'required',
+                ]
+                );
+                $inserData['title'] = $request->title;
+                $inserData['description']= $request->description;
+    
+                DB::table('notifications')->insert($inserData);
+                return redirect('admin/show_notification')->with('success', 'Notification has been added successfully.');
+            }
+            else{
+                return view('admin.notification.Notification');
+            }
+        
     }
     public function showNotification(){
 

@@ -104,15 +104,13 @@
                     rules: {
                         parent_id: "required",
                         name: "required",
-                        // description: "required",
                         image: "required",
                         status: "required",
                     },
                     messages: {
                         parent_id: "Please select parent name",
-                        name: "Please enter your Name",
-                        // description: "Please enter  description",
-                        image: "Chose any image",
+                        name: "Please enter your name",
+                        image: "Choose any image",
                         status: "Please enter status",
 
                     }

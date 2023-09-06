@@ -7,7 +7,7 @@
             <div class="page-header">
                 <ul class="breadcrumbs">
                     <li class="nav-home">
-                        <a href="{{ url('admin/home') }}">
+                        <a href="{{ url('company/home') }}">
                             <i class="flaticon-home"></i>
                         </a>
                     </li>
@@ -15,7 +15,7 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('admin/show_email') }}">Email Management</a>
+                        <a href="{{ url('company/show_email') }}">Email Management</a>
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>
@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="text-right">
                                     <button type="submit" class="mt-4 btn btn-success">Submit</button>
-                                    <a href="{{ url('admin/show_email') }}" class="mt-4 btn btn-danger">Cancel</a>
+                                    <a href="{{ url('company/show_email') }}" class="mt-4 btn btn-danger">Cancel</a>
                                     <div>
                             </form>
 
