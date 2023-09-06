@@ -37,8 +37,8 @@
                         <form action="{{url('company/register_user')}}" method="post" id="validate">
                             @csrf
                             <div class="form-row">
-                            <div class="form-group col-md-6">
-                            <label for="name">Company Name*</label>
+                                <div class="form-group col-md-6">
+                                    <label for="name">Company Name*</label>
                                     <select name="company_name" class="form-control">
                                         <option value=""> Please Select</option>
                                         @foreach($company_name as $company_name)
@@ -53,7 +53,7 @@
                                     </span>
                                 </div>
                                 <div class="form-group col-md-6">
-                                <label for="name">Name*</label>
+                                    <label for="name">Name*</label>
                                     <input type="text" class="form-control" id="name" placeholder="Enter Name"
                                         name="name" onkeypress="return /[A-Za-z/ _-]/i.test(event.key)">
                                     <span class="text-danger  ">
@@ -62,10 +62,10 @@
                                         @enderror
                                     </span>
                                 </div>
-                                </div>
-                                <div class="form-row">
-                                  <div class="form-group col-md-6">
-                                  <label for="email">Email Address*</label>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="email">Email Address*</label>
                                     <input type="email" class="form-control" id="user_email" placeholder="Enter Email"
                                         name="email">
                                     <span class="text-danger error" id="email_err">
@@ -75,7 +75,7 @@
                                     </span>
                                 </div>
                                 <div class="form-group col-md-6">
-                                <label for="password">Password*</label>
+                                    <label for="password">Password*</label>
                                     <input type="password" class="form-control" id="password"
                                         placeholder="Enter your password" name="password">
                                     <span class="text-danger error">
@@ -87,7 +87,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                <label for="mobile">Mobile*</label>
+                                    <label for="mobile">Mobile*</label>
                                     <input type="text" class="form-control" id="user_mobile" placeholder="Enter Mobile"
                                         name="mobile">
                                     <span class="text-danger error" id="mobile_err">
@@ -125,7 +125,9 @@
 </div>
 
 <script>
-$.validator.addMethod("indianMobile", function(value, element) {
+$(document).ready(function() {
+
+    $.validator.addMethod("indianMobile", function(value, element) {
         return this.optional(element) || /^[6789]\d{9}$/.test(value);
     }, "Please enter a valid  mobile number");
 
@@ -150,8 +152,8 @@ $.validator.addMethod("indianMobile", function(value, element) {
             },
 
             mobile: {
-                required: true,
-                number: true,
+                required:true,
+                number:true,
                 minlength: 10,
                 maxlength: 12,
                 indianMobile: true,
@@ -169,7 +171,7 @@ $.validator.addMethod("indianMobile", function(value, element) {
         },
         messages: {
             name: {
-                required: "Please enter your name",
+                required: "Please enter your Name",
                 minlength: "Enter your name at least 4 letters",
                 maxlength: "Your name length should not be greater than 20 letters",
             },

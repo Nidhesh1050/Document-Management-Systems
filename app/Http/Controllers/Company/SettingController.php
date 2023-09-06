@@ -43,22 +43,11 @@ public function Updateimage(Request $request) {
 				$inserData['profile'] = $profile_name;
 				$update = DB::table('logos')->where('id',$request->id)->update($inserData);
 
-        }
-
-
-
-        if($update){
-            return  redirect()->back()->with('success', ' Image has been updated successfully.');
-
         }else {
             return redirect()->back()->with('error', 'Image could not updated .');
         }
 
-
-
     }
-
-
 
     public function add_image(Request $request) {
         // $request->validate([
