@@ -207,7 +207,7 @@ $(document).ready(function() {
     var email = $(this).val();
     $.ajax({
       type: "GET",
-      url: "/admin/checkUserEmail?email="+email,
+      url: "/company/checkUserEmail?email="+email,
 
       success: function(response)
       {
@@ -236,7 +236,7 @@ $(document).ready(function() {
     var mobile = $(this).val();
     $.ajax({
       type: "GET",
-      url: "/admin/checkUserMobile?mobile="+mobile,
+      url: "/company/checkUserMobile?mobile="+mobile,
 
       success: function(response)
       {

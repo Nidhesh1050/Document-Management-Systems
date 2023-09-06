@@ -18,11 +18,12 @@ class UserController extends Controller
 {
     //List of users
     public function userManagement(){
+      $companyId= auth()->user()->id;
       $users = DB::table('users')->select(
         "users.*",
         "companies.company_name")
         ->leftJoin("companies",  "companies.id" ,"=", "users.company_id"  )->whereIn('type', [0])
-        ->orderBy('id','DESC')->get();
+        ->orderBy('id','DESC')->where('users.manager_id',$companyId)->get();
       return view('company.user.userManagement',['users'=>$users]);
     }
 
@@ -64,6 +65,7 @@ class UserController extends Controller
 
         //Insert data Code
     public function adduser(){
+     
         $project_manager = DB::table('usertype')->select('id','name')->whereIn('id', [2,0])->get();
         $company_name = DB::table('companies')->select('id','company_name')->get();
         return view('company.user.adduser',['project_manager'=>$project_manager,'company_name'=>$company_name]);

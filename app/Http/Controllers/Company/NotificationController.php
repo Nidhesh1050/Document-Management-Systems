@@ -60,6 +60,7 @@ class NotificationController extends Controller
             public function editNotification(Request $request,$id)
             {
               $authId= auth()->user()->id;
+             
 
                $notifications = DB::table('notifications')->where(['id'=> $id])->where('company_id',$authId)->first();
                return view('company.notification.edit_notification')->with(['notifications'=>$notifications]);
