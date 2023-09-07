@@ -78,7 +78,7 @@
                         <label for="exampleFormControlFile1"> Update Image</label>
                         <input type="file" class="form-control-file" name="image" id="exampleFormControlFile1" value="{{ $setting->image }}">
                         <span>{{$setting->image}}</span>
-                                <span class="text-danger  ">
+                                <span class="text-danger">
                                     @error('image')
                                         {{ $message }}
                                     @enderror

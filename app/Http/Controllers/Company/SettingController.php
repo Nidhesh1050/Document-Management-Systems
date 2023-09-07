@@ -46,7 +46,6 @@ public function Updateimage(Request $request) {
         }else {
             return redirect()->back()->with('error', 'Image could not updated .');
         }
-
     }
 
     public function add_image(Request $request) {

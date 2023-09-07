@@ -9,9 +9,8 @@ use Illuminate\Support\Facades\DB;
 class PermissionController extends Controller
 {
     public function module_permissioN(){
-        $companyId= auth()->user()->id;
-
-        $modules = DB::table('users')->select('id','name')->get();
+      $companyId= auth()->user()->id;
+        $modules = DB::table('users')->select('id','name')->where('type',0)->where('manager_id', $companyId)->get();
         $users = DB::table('modules')->orderBy('id','ASC')->get();
         return view('company.permission.module_permission')->with(['users'=>$users,'modules'=>    $modules]);
     }
