@@ -44,6 +44,7 @@ class DocumentController extends Controller
             $documents = $request->file('documents');
             $destinationPath = public_path('documents/');
             $documents_name = rand().'.'.$documents->getClientOriginalExtension();
+            
             $documents->move($destinationPath, $documents_name);
            // $status = $request->status == 'on' ? 1 : 0;
             DB::table('file_uploads')
