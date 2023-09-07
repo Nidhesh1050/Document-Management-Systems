@@ -39,7 +39,6 @@ class DocumentController extends Controller
             'document_type_id' =>'required',
             'title' => 'required',
             ]);
-
         if(!empty($request->file('documents'))){
             $documents = $request->file('documents');
             $destinationPath = public_path('documents/');
