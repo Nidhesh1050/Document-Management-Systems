@@ -122,13 +122,13 @@
 
 
 
-                                                        <a href="{{ url('admin/view_document/' . $document->id) }}"
+                                                        <!-- <a href="{{ url('admin/view_document/' . $document->id) }}"
                                                             onclick="return confirm('Are you sure you want to view this document ?')"
                                                             data-toggle="tooltip" title=""
                                                             class="btn btn-link btn-success" data-original-title="Remove">
                                                             <i class="fa fa-eye"></i>
 
-                                                        </a>
+                                                        </a> -->
 
 
 
