@@ -32,6 +32,7 @@ public function Updateimage(Request $request) {
 
                 $inserData['logo'] = $logo_name;
 				$update = DB::table('logos')->where('id',$request->id)->update($inserData);
+                return redirect('/admin/logos')->with('success', 'Profile & logo has been updated successfully.');
 
         }
 
@@ -42,6 +43,7 @@ public function Updateimage(Request $request) {
 				$image->move($destinationPath, $profile_name);
 				$inserData['profile'] = $profile_name;
 				$update = DB::table('logos')->where('id',$request->id)->update($inserData);
+                return redirect('/admin/logos')->with('success', 'Profile & logo has been updated successfully.');
 
         }
         else {
