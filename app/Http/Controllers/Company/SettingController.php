@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\company;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -18,7 +18,7 @@ class SettingController extends Controller
 	 public function setting(){
 		           $logos = DB::table('logos')->first();
 
-			return view('company.setting.setting')->with(['logos'=>$logos]);
+			return view('admin.setting.setting')->with(['logos'=>$logos]);
 	}
 
 public function Updateimage(Request $request) {
@@ -32,6 +32,7 @@ public function Updateimage(Request $request) {
 
                 $inserData['logo'] = $logo_name;
 				$update = DB::table('logos')->where('id',$request->id)->update($inserData);
+                return redirect('/admin/logos')->with('success', 'Profile & logo has been updated successfully.');
 
         }
 
@@ -42,11 +43,18 @@ public function Updateimage(Request $request) {
 				$image->move($destinationPath, $profile_name);
 				$inserData['profile'] = $profile_name;
 				$update = DB::table('logos')->where('id',$request->id)->update($inserData);
+                return redirect('/admin/logos')->with('success', 'Profile & logo has been updated successfully.');
 
-        }else {
+        }
+        else {
             return redirect()->back()->with('error', 'Image could not updated .');
         }
+
+
+
     }
+
+
 
     public function add_image(Request $request) {
         // $request->validate([
@@ -69,13 +77,14 @@ public function Updateimage(Request $request) {
             return redirect()->back()->with('error', 'Image already exists.');
         }
 
+
         DB::table('side_setting')->insert($inserData);
-        return redirect('/company/view_image')->with('success', 'Profile Image has been updated successfully.');
+        return redirect('/admin/view_image')->with('success', 'Profile Image has been updated successfully.');
     }
 
     public function view_image(){
        $users = DB::table('side_setting')->orderBy('id','DESC')->get();
-       return view('company.setting.view_setting',['users'=>$users]);
+       return view('admin.setting.view_setting',['users'=>$users]);
     }
 
     public function edit_image(Request $request,$id){
@@ -83,7 +92,7 @@ public function Updateimage(Request $request) {
         $company_name = DB::table('users')->select('company_name')->get();
         $setting = DB::table('side_setting')->where(['id'=> $id])->first();
       // print_r($setting);die;
-        return view('company.setting.edit_image')->with(['company_name'=>$company_name,'setting'=>$setting]);
+        return view('admin.setting.edit_image')->with(['company_name'=>$company_name,'setting'=>$setting]);
     }
 
     public function update_image(Request $request){
@@ -98,6 +107,7 @@ public function Updateimage(Request $request) {
             $destinationPath = public_path('/images');
             $image_name = rand().'.'.$image->getClientOriginalExtension();
             $image->move($destinationPath, $image_name);
+
             DB::table('side_setting')
             ->where('id', $request['id'])
             ->update([
@@ -116,7 +126,7 @@ public function Updateimage(Request $request) {
             ]);
 
         }
-            return redirect('company/view_image')->with('success', 'profile has been updated successfully.');
+            return redirect('admin/view_image')->with('success', 'profile has been updated successfully.');
 }
 
 
