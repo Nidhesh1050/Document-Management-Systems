@@ -65,6 +65,7 @@ use app\Models\User;
                         <th>Title</th>
                         <th>Description</th>
                         <th> Documents </th>
+                        <th> Document Extension </th>
                         <th> Status</th>
                         <th> Action</th>
 
@@ -88,6 +89,7 @@ use app\Models\User;
                             <td> {{ $document->title }}</td>
                             <td> <?php echo $document->description ?></td>
                             <td> {{ $document->documents }}</td>
+                            <td> {{ $document->extension }}</td>
                             <td>{{ $status }}</td>
                             <td class="action_td">
                                 <div class="form-button-action">

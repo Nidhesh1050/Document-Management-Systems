@@ -89,6 +89,8 @@ class DocumentController extends Controller
         $document = $request->file('document');
         $destinationPath = public_path('/documents');
         $document_name = $request->project_id.'-'.$request->category_id.'-'.$request->document_type_id.$document->getClientOriginalExtension();
+        $extension= $document->getClientOriginalExtension();
+       
         $document->move($destinationPath, $document_name);
 
             $inserData['project_id'] = $request->project_id;
@@ -97,6 +99,7 @@ class DocumentController extends Controller
             $inserData['description'] = $request['description'];
             $inserData['title'] = $request->title;
             $inserData['documents'] = $document_name;
+            $inserData['extension'] = $extension;
 
             DB::table('file_uploads')->insert($inserData);
             return  redirect('admin/document')->with('success', 'Document has been added successfully.');
