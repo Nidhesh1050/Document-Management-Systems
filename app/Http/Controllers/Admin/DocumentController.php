@@ -85,8 +85,6 @@ class DocumentController extends Controller
            'document' =>  'required|mimes:pdf,xlsx,docx,ppt',
         ]);
 
-
-
         $document = $request->file('document');
         $destinationPath = public_path('/documents');
         $document_name = $request->project_id.'-'.$request->category_id.'-'.$request->document_type_id.$document->getClientOriginalExtension();
