@@ -42,14 +42,14 @@ class LoginController extends Controller
     }
 
     public function login(Request $request): RedirectResponse
-    {   
+    {
         $input = $request->all();
-     
+
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required',
         ]);
-     
+
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
            // echo auth()->user()->type; die;
@@ -62,12 +62,12 @@ class LoginController extends Controller
                 Session::put('user_id', auth()->user()->id);
                 return redirect()->route('company.home');
             }else{
-                return redirect()->route('home');
+                return redirect()->route('user.home');
             }
         }else{
             return redirect()->route('login')
                 ->with('error','Email-Address And Password Are Wrong.');
         }
-          
+
     }
 }

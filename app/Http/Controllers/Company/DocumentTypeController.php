@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB;
-use Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 class DocumentTypeController extends Controller
 {
@@ -26,7 +27,7 @@ class DocumentTypeController extends Controller
 
     //Delete data
     public function documentTypeDelete($id)
-    { 
+    {
         $authId = auth()->user()->id;
         DB::table('document_types')->where('company_id',$authId)->delete($id);
         return redirect('company/documentType_view')->with('success', 'Document type has been deleted successfully.');
@@ -43,7 +44,7 @@ class DocumentTypeController extends Controller
             );
             $status = $request->status == 'on' ? 1 : 0;
             $inserData['name'] = $request->name;
-            
+
             $inserData['slug']= str_replace(' ', '-', trim($request->name));
 
             if(Auth::user()->type=="company"){
@@ -53,9 +54,9 @@ class DocumentTypeController extends Controller
 			if(Auth::user()->type=="user"){
 				$inserData['company_id']= Auth::user()->company_id;
 			}
-			
 
-      
+
+
             DB::table('document_types')->insert($inserData);
             return redirect('company/documentType_view')->with('success', 'Document type has been added successfully.');
         } else {
@@ -93,9 +94,9 @@ class DocumentTypeController extends Controller
    public function checkDocumentType(Request $request){
     $name = $request['name'];
     $id = $request['id'];
-    if($id){ 
+    if($id){
          $name = DB::table('document_types')->select('name')->where('id','!=',$id)->where('name',$name)->first();
-        
+
           if($name){
             $name = 1;
           }else{
@@ -118,6 +119,6 @@ class DocumentTypeController extends Controller
         $documentTypes = DB::table('document_types')->where('id', $id)->update(['status' => $status]);
         return back()->withInput()->with('success', 'Status has been changed.');
     }
-    
+
     //code by soni end
 }
