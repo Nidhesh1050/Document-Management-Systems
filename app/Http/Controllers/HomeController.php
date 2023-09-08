@@ -42,6 +42,10 @@ class HomeController extends Controller
     {
         return view('companyHome');
     }
+    public function userHome(): View
+    {
+        return view('userHome');
+    }
 
     //List of users
     public function userManagement(){

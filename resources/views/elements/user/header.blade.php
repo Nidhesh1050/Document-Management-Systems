@@ -6,15 +6,15 @@ $logo = DB::table('logos')->first();
 <div class="main-header">
 	<!-- Logo Header -->
 				<head>
-					<script src="{{asset('company/js/min.js')}}"></script>
+					<script src="{{asset('user/js/min.js')}}"></script>
 				</head>
 			<div class="logo-header" data-background-color="blue">
 
-				<a href="{{url('company/home')}}" class="logo">
+				<a href="{{url('user/home')}}" class="logo">
 					<?php if($logo->logo){?>
 					<img src="{{asset('/images/logo/'.$logo->logo)}}" width="100" alt="navbar brand" class="navbar-brand">
 					<?php }else{?>
-					<img src="{{asset('company/img/STPL_Logo_white.png')}}" width="100" alt="navbar brand" class="navbar-brand">
+					<img src="{{asset('user/img/STPL_Logo_white.png')}}" width="100" alt="navbar brand" class="navbar-brand">
 					<?php }?>
 
 				</a>
@@ -70,7 +70,7 @@ $logo = DB::table('logos')->first();
 										<div class="notif-center">
 											<a href="#">
 												<div class="notif-img">
-													<img src="{{asset('company/img/jm_denis.jpg')}}" alt="Img Profile">
+													<img src="{{asset('user/img/jm_denis.jpg')}}" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="subject">Jimmy Denis</span>
@@ -82,7 +82,7 @@ $logo = DB::table('logos')->first();
 											</a>
 											<a href="#">
 												<div class="notif-img">
-													<img src="{{asset('company/img/chadengle.jpg')}}" alt="Img Profile">
+													<img src="{{asset('user/img/chadengle.jpg')}}" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="subject">Chad</span>
@@ -94,7 +94,7 @@ $logo = DB::table('logos')->first();
 											</a>
 											<a href="#">
 												<div class="notif-img">
-													<img src="{{asset('company/img/mlane.jpg')}}" alt="Img Profile">
+													<img src="{{asset('user/img/mlane.jpg')}}" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="subject">Jhon Doe</span>
@@ -106,7 +106,7 @@ $logo = DB::table('logos')->first();
 											</a>
 											<a href="#">
 												<div class="notif-img">
-													<img src="{{asset('company/img/talha.jpg')}}" alt="Img Profile">
+													<img src="{{asset('user/img/talha.jpg')}}" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="subject">Talha</span>
@@ -149,14 +149,14 @@ $logo = DB::table('logos')->first();
 												<div class="notif-icon notif-success"> <i class="fa fa-comment"></i> </div>
 												<div class="notif-content">
 													<span class="block">
-														Rahmad commented on company
+														Rahmad commented on user
 													</span>
 													<span class="time">12 minutes ago</span>
 												</div>
 											</a>
 											<a href="#">
 												<div class="notif-img">
-													<img src="{{asset('company/img/profile2.jpg')}}" alt="Img Profile">
+													<img src="{{asset('user/img/profile2.jpg')}}" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="block">
@@ -169,7 +169,7 @@ $logo = DB::table('logos')->first();
 												<div class="notif-icon notif-danger"> <i class="fa fa-heart"></i> </div>
 												<div class="notif-content">
 													<span class="block">
-														Farrah liked company
+														Farrah liked user
 													</span>
 													<span class="time">17 minutes ago</span>
 												</div>
@@ -295,5 +295,5 @@ $logo = DB::table('logos')->first();
 		</div>
 
 		<!-- Sidebar -->
-		@include('elements.company.left_menus')
+		@include('elements.user.left_menus')
 		<!-- End Sidebar -->

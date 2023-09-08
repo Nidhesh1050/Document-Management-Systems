@@ -75,6 +75,9 @@ Route::group(['prefix' => 'user'], function () {
     /* Document management routes end*/
 
 
+    
+
+
        /* Project management routes start*/
         Route::get('/project',[ProjectManagementController::class,'addProject']);
         Route::post('/add_project',[ProjectManagementController::class,'addProject']);
