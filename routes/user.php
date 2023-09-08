@@ -161,15 +161,15 @@ Route::group(['prefix' => 'user'], function () {
 
 
 
-        /* Module Commpany route start here*/
-        Route::get('/addcompany', [CompanyController::class, 'addCompany']);
-        Route::post('/company_add', [CompanyController::class, 'Company_add']);
-        Route::get('/view_company', [CompanyController::class, 'view_company']);
-        Route::get('/delete_company/{id}', [CompanyController::class, 'delete_company']);
-        Route::get('/update_company/{id}', [CompanyController::class, 'update_company']);
-        Route::post('/edit_company', [CompanyController::class, 'edit_company']);
-        Route::get('/checkCompany', [CompanyController::class, 'checkCompany'])->name('checkCompany');
+        // /* Module Commpany route start here*/
+        // Route::get('/addcompany', [CompanyController::class, 'addCompany']);
+        // Route::post('/company_add', [CompanyController::class, 'Company_add']);
+        // Route::get('/view_company', [CompanyController::class, 'view_company']);
+        // Route::get('/delete_company/{id}', [CompanyController::class, 'delete_company']);
+        // Route::get('/update_company/{id}', [CompanyController::class, 'update_company']);
+        // Route::post('/edit_company', [CompanyController::class, 'edit_company']);
+        // Route::get('/checkCompany', [CompanyController::class, 'checkCompany'])->name('checkCompany');
 
-        /* Module Commpany route end here*/
+        // /* Module Commpany route end here*/
     });
 });
