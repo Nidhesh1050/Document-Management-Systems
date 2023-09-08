@@ -9,9 +9,9 @@ $currentURL =Route::current()->uri;
 
                 <div class="avatar-sm float-left mr-2">
                     <?php if($logo->profile){?>
-                        <img src="{{ asset('images/profile/' .$logo->profile) }}" alt="..." class="avatar-img rounded-circle" >
+                        <img src="<?php echo e(asset('images/profile/' .$logo->profile)); ?>" alt="..." class="avatar-img rounded-circle" >
                     <?php }else{?>
-                        <img src="{{ asset('images/profiles/demo-profile.png') }}" alt="..." class="avatar-img rounded-circle" >
+                        <img src="<?php echo e(asset('images/profiles/demo-profile.png')); ?>" alt="..." class="avatar-img rounded-circle" >
                     <?php }?>
                 </div>
 
@@ -19,7 +19,8 @@ $currentURL =Route::current()->uri;
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                         <span>
-                            {{ Auth::user()->name }}
+                            <?php echo e(Auth::user()->name); ?>
+
                             <span class="user-level">Administrator</span>
                             <span class="caret"></span>
                         </span>
@@ -56,7 +57,7 @@ $currentURL =Route::current()->uri;
                     <h4 class="text-section">Components</h4>
                 </li>
                 <li class="nav-item <?php if($currentURL =='user/home'){ echo ' '; }?>">
-                    <a href="{{url('user/home')}}">
+                    <a href="<?php echo e(url('user/home')); ?>">
                         <i class="fas fa-layer-group"></i>
                         <p>Dashboard</p>
                     </a>
@@ -70,12 +71,12 @@ $currentURL =Route::current()->uri;
                     <div class="collapse <?php if(in_array($currentURL,['user/userManagement','user/adduser','user/edit_user/{id}'])){ echo 'show';}?>" id="base">
                         <ul class="nav nav-collapse">
                             <li class="sidebar-item <?php if($currentURL =='user/userManagement' || $currentURL =='user/edit_user/{id}'){ echo 'active '; }?> ">
-                                <a  class="sidebar-link" href="{{url('user/userManagement')}}">
+                                <a  class="sidebar-link" href="<?php echo e(url('user/userManagement')); ?>">
                                     <span class="sub-item">User List</span>
                                 </a>
                             </li>
                             <li class="sidebar-item <?php if($currentURL =='user/adduser'){ echo 'active '; }?> ">
-                                <a href="{{url('user/adduser')}}">
+                                <a href="<?php echo e(url('user/adduser')); ?>">
                                     <span class="sub-item">Add User</span>
                                 </a>
                             </li>
@@ -94,12 +95,12 @@ $currentURL =Route::current()->uri;
                     <div class="collapse <?php if(in_array($currentURL,['user/view_category','user/category','user/update_category/{id}'])){ echo 'show';}?>" id="sidebarLayouts">
                         <ul class="nav nav-collapse">
                             <li class="sidebar-item <?php if($currentURL =='user/view_category' || $currentURL =='user/update_category/{id}'){ echo 'active'; }?> ">
-                                <a  class="sidebar-link" href="{{url('user/view_category')}}">
+                                <a  class="sidebar-link" href="<?php echo e(url('user/view_category')); ?>">
                                     <span class="sub-item">Category List</span>
                                 </a>
                             </li>
                             <li class="sidebar-item <?php if($currentURL =='user/category'){ echo 'active'; }?> ">
-                                <a href="{{url('user/category')}}">
+                                <a href="<?php echo e(url('user/category')); ?>">
                                     <span class="sub-item">Add Category</span>
                                 </a>
                             </li>
@@ -118,12 +119,12 @@ $currentURL =Route::current()->uri;
                     <div class="collapse <?php if(in_array($currentURL,['user/view_project','user/project','user/update_project/{id}'])){ echo 'show';}?>" id="project">
                         <ul class="nav nav-collapse">
                             <li class="sidebar-item <?php if($currentURL =='user/view_project' || $currentURL =='user/update_project/{id}'){ echo 'active'; }?> ">
-                                <a  class="sidebar-link" href="{{url('user/view_project')}}">
+                                <a  class="sidebar-link" href="<?php echo e(url('user/view_project')); ?>">
                                     <span class="sub-item">Project List</span>
                                 </a>
                             </li>
                             <li class="sidebar-item <?php if($currentURL =='user/project'){ echo 'active'; }?> ">
-                                <a href="{{url('user/project')}}">
+                                <a href="<?php echo e(url('user/project')); ?>">
                                     <span class="sub-item">Add Project</span>
                                 </a>
                             </li>
@@ -142,12 +143,12 @@ $currentURL =Route::current()->uri;
                     <div class="collapse <?php if(in_array($currentURL,['user/document','user/createdocument','user/edit_document/{id}'])){ echo 'show';}?>" id="forms">
                         <ul class="nav nav-collapse">
                             <li class="sidebar-item <?php if($currentURL =='user/document' || $currentURL =='user/edit_document/{id}'){ echo 'active'; }?> ">
-                                <a  class="sidebar-link" href="{{url('user/document')}}">
+                                <a  class="sidebar-link" href="<?php echo e(url('user/document')); ?>">
                                     <span class="sub-item">View Document</span>
                                 </a>
                             </li>
                             <li class="sidebar-item <?php if($currentURL =='user/createdocument'){ echo 'active'; }?> ">
-                                <a href="{{url('user/createdocument')}}">
+                                <a href="<?php echo e(url('user/createdocument')); ?>">
                                     <span class="sub-item">Add Document</span>
                                 </a>
                             </li>
@@ -167,12 +168,12 @@ $currentURL =Route::current()->uri;
                     <div class="collapse <?php if(in_array($currentURL,['user/documentType_view','user/documentType_add','user/documentType_edit/{id}'])){ echo 'show';}?>" id="list">
                         <ul class="nav nav-collapse">
                             <li class="sidebar-item <?php if($currentURL =='user/documentType_view' || $currentURL =='user/documentType_edit/{id}'){ echo 'active'; }?> ">
-                                <a  class="sidebar-link" href="{{url('user/documentType_view')}}">
+                                <a  class="sidebar-link" href="<?php echo e(url('user/documentType_view')); ?>">
                                     <span class="sub-item">Document List</span>
                                 </a>
                             </li>
                             <li class="sidebar-item <?php if($currentURL =='user/documentType_add'){ echo ''; }?> ">
-                                <a href="{{url('user/documentType_add')}}">
+                                <a href="<?php echo e(url('user/documentType_add')); ?>">
                                     <span class="sub-item">Add Document</span>
                                 </a>
                             </li>
@@ -192,7 +193,7 @@ $currentURL =Route::current()->uri;
                     <div class="collapse <?php if(in_array($currentURL,['user/logos','user/update_logo'])){ echo 'show';}?>" id="setting">
                         <ul class="nav nav-collapse">
                             <li class="sidebar-item <?php if($currentURL =='user/logos' || $currentURL =='user/update_logo'){ echo 'active'; }?> ">
-                                <a  class="sidebar-link" href="{{url('user/logos')}}">
+                                <a  class="sidebar-link" href="<?php echo e(url('user/logos')); ?>">
                                     <span class="sub-item">Logo & profile</span>
                                 </a>
                             </li>
@@ -209,12 +210,12 @@ $currentURL =Route::current()->uri;
                     <div class="collapse <?php if(in_array($currentURL,['user/show_notification','user/notification','user/edit_notification/{id}'])){ echo 'show';}?>" id="tables">
                         <ul class="nav nav-collapse">
                             <li class="sidebar-item <?php if($currentURL =='user/show_notification' || $currentURL =='user/edit_notification/{id}'){ echo 'active'; }?> ">
-                                <a  class="sidebar-link" href="{{url('user/show_notification')}}">
+                                <a  class="sidebar-link" href="<?php echo e(url('user/show_notification')); ?>">
                                     <span class="sub-item">View Notification</span>
                                 </a>
                             </li>
                             <li class="sidebar-item <?php if($currentURL =='user/notification'){ echo 'active'; }?> ">
-                                <a href="{{url('user/notification')}}">
+                                <a href="<?php echo e(url('user/notification')); ?>">
                                     <span class="sub-item">Add Notification</span>
                                 </a>
                             </li>
@@ -232,12 +233,12 @@ $currentURL =Route::current()->uri;
                     <div class="collapse <?php if(in_array($currentURL,['user/view_content','user/addcontent','user/update_content/{id}'])){ echo 'show';}?>" id="charts">
                         <ul class="nav nav-collapse">
                             <li class="sidebar-item <?php if($currentURL =='user/view_content' || $currentURL =='user/update_content/{id}'){ echo 'active'; }?> ">
-                                <a  class="sidebar-link" href="{{url('user/view_content')}}">
+                                <a  class="sidebar-link" href="<?php echo e(url('user/view_content')); ?>">
                                     <span class="sub-item">View CMS</span>
                                 </a>
                             </li>
                             <li class="sidebar-item <?php if($currentURL =='user/addcontent'){ echo 'active'; }?> ">
-                                <a href="{{url('user/addcontent')}}">
+                                <a href="<?php echo e(url('user/addcontent')); ?>">
                                     <span class="sub-item">Add CMS</span>
                                 </a>
                             </li>
@@ -255,23 +256,23 @@ $currentURL =Route::current()->uri;
                     <div class="collapse <?php if(in_array($currentURL,['user/show_email','user/email','user/edit_email/{id}','user/show_content','user/content','user/edit_content/{id}'])){ echo 'show';}?>" id="email">
                         <ul class="nav nav-collapse">
                             <li class="sidebar-item <?php if($currentURL =='user/show_email' || $currentURL =='user/edit_email/{id}'){ echo 'active'; }?> ">
-                                <a  class="sidebar-link" href="{{url('user/show_email')}}">
+                                <a  class="sidebar-link" href="<?php echo e(url('user/show_email')); ?>">
                                     <span class="sub-item">Email Types</span>
                                 </a>
                             </li>
                             <li class="sidebar-item <?php if($currentURL =='user/email'){ echo 'active'; }?> ">
-                                <a href="{{url('user/email')}}">
+                                <a href="<?php echo e(url('user/email')); ?>">
                                     <span class="sub-item">Add Email Type</span>
                                 </a>
                             </li>
 
                             <li class="sidebar-item <?php if($currentURL =='user/show_content' || $currentURL =='user/edit_content/{id}'){ echo 'active'; }?> ">
-                                <a  class="sidebar-link" href="{{url('user/show_content')}}">
+                                <a  class="sidebar-link" href="<?php echo e(url('user/show_content')); ?>">
                                     <span class="sub-item">Email Content</span>
                                 </a>
                             </li>
                             <li class="sidebar-item <?php if($currentURL =='user/content'){ echo 'active'; }?> ">
-                                <a href="{{url('user/content')}}">
+                                <a href="<?php echo e(url('user/content')); ?>">
                                     <span class="sub-item">Add Email Content</span>
                                 </a>
                             </li>
@@ -292,7 +293,7 @@ $currentURL =Route::current()->uri;
                     <div class="collapse <?php if(in_array($currentURL,['user/module_permission'])){ echo 'show';}?>" id="maps">
                         <ul class="nav nav-collapse">
                             <li class="sidebar-item <?php if($currentURL =='user/module_permission'){ echo 'active'; }?> ">
-                                <a  class="sidebar-link" href="{{url('user/module_permission')}}">
+                                <a  class="sidebar-link" href="<?php echo e(url('user/module_permission')); ?>">
                                     <span class="sub-item">Module Permission</span>
                                 </a>
                             </li>
@@ -305,3 +306,4 @@ $currentURL =Route::current()->uri;
     </div>
 </div>
 
+<?php /**PATH C:\wamp\www\dms\resources\views/elements/user/left_menus.blade.php ENDPATH**/ ?>
