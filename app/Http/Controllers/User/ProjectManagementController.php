@@ -61,8 +61,11 @@ class ProjectManagementController extends Controller
             DB::table('projects')->insert($inserData);
             return redirect('/user/view_project')->with('success', 'Project has been added successfully.');
         }else{
+           $userId=Auth::user()->id;
             $project_manager = DB::table('users')->where(['user_type'=> 2])->get();
-            return view('user.project_management.project',['project_manager'=>$project_manager]);
+            $users = DB::table('users')->orderBy('id','ASC')->get();
+
+            return view('user.project_management.project')->with(['project_manager'=>$project_manager,'users'=> $users]);
         }
 
 
@@ -71,13 +74,18 @@ class ProjectManagementController extends Controller
 
 
     public function viewProject(){
+      $statusId= auth()->user()->status;
+      if($statusId=="1"){
         $authID= auth()->user()->id;
-        $projects = DB::table('projects')->select(
+        $projects = DB::table('projects')->select(     
             "projects.*",
             "users.name" )
         ->leftJoin("users",  "users.id" ,"=", "projects.manager_d")
         ->orderBy('id','DESC')
        ->where('projects.user_id',$authID)->get();
+        }else{
+          $projects = [];
+          } 
        return view('user.project_management.view_project',['projects'=>$projects]);
     }
 
