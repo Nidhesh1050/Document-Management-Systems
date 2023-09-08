@@ -62,7 +62,7 @@ class LoginController extends Controller
                 Session::put('user_id', auth()->user()->id);
                 return redirect()->route('company.home');
             }else{
-                return redirect()->route('home');
+                return redirect()->route('user.home');
             }
         }else{
             return redirect()->route('login')

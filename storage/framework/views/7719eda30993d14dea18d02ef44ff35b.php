@@ -6,15 +6,15 @@ $logo = DB::table('logos')->first();
 <div class="main-header">
 	<!-- Logo Header -->
 				<head>
-					<script src="{{asset('user/js/min.js')}}"></script>
+					<script src="<?php echo e(asset('user/js/min.js')); ?>"></script>
 				</head>
 			<div class="logo-header" data-background-color="blue">
 
-				<a href="{{url('user/home')}}" class="logo">
+				<a href="<?php echo e(url('user/home')); ?>" class="logo">
 					<?php if($logo->logo){?>
-					<img src="{{asset('/images/logo/'.$logo->logo)}}" width="100" alt="navbar brand" class="navbar-brand">
+					<img src="<?php echo e(asset('/images/logo/'.$logo->logo)); ?>" width="100" alt="navbar brand" class="navbar-brand">
 					<?php }else{?>
-					<img src="{{asset('user/img/STPL_Logo_white.png')}}" width="100" alt="navbar brand" class="navbar-brand">
+					<img src="<?php echo e(asset('user/img/STPL_Logo_white.png')); ?>" width="100" alt="navbar brand" class="navbar-brand">
 					<?php }?>
 
 				</a>
@@ -70,7 +70,7 @@ $logo = DB::table('logos')->first();
 										<div class="notif-center">
 											<a href="#">
 												<div class="notif-img">
-													<img src="{{asset('user/img/jm_denis.jpg')}}" alt="Img Profile">
+													<img src="<?php echo e(asset('user/img/jm_denis.jpg')); ?>" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="subject">Jimmy Denis</span>
@@ -82,7 +82,7 @@ $logo = DB::table('logos')->first();
 											</a>
 											<a href="#">
 												<div class="notif-img">
-													<img src="{{asset('user/img/chadengle.jpg')}}" alt="Img Profile">
+													<img src="<?php echo e(asset('user/img/chadengle.jpg')); ?>" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="subject">Chad</span>
@@ -94,7 +94,7 @@ $logo = DB::table('logos')->first();
 											</a>
 											<a href="#">
 												<div class="notif-img">
-													<img src="{{asset('user/img/mlane.jpg')}}" alt="Img Profile">
+													<img src="<?php echo e(asset('user/img/mlane.jpg')); ?>" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="subject">Jhon Doe</span>
@@ -106,7 +106,7 @@ $logo = DB::table('logos')->first();
 											</a>
 											<a href="#">
 												<div class="notif-img">
-													<img src="{{asset('user/img/talha.jpg')}}" alt="Img Profile">
+													<img src="<?php echo e(asset('user/img/talha.jpg')); ?>" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="subject">Talha</span>
@@ -156,7 +156,7 @@ $logo = DB::table('logos')->first();
 											</a>
 											<a href="#">
 												<div class="notif-img">
-													<img src="{{asset('user/img/profile2.jpg')}}" alt="Img Profile">
+													<img src="<?php echo e(asset('user/img/profile2.jpg')); ?>" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="block">
@@ -241,9 +241,9 @@ $logo = DB::table('logos')->first();
 							<div class="avatar-sm">
 								<td>
 								<?php if($logo->profile){?>
-									<img src="{{ asset('images/profile/' .$logo->profile) }}" alt="..." class="avatar-img rounded" >
+									<img src="<?php echo e(asset('images/profile/' .$logo->profile)); ?>" alt="..." class="avatar-img rounded" >
 									<?php }else{?>
-									<img src="{{ asset('images/profiles/demo-profile.png') }}" alt="..." class="avatar-img rounded" >
+									<img src="<?php echo e(asset('images/profiles/demo-profile.png')); ?>" alt="..." class="avatar-img rounded" >
 									<?php }?>
 								</td>
 							</div>
@@ -255,14 +255,14 @@ $logo = DB::table('logos')->first();
 										<div class="user-box">
 											<div class="avatar-lg">
 												<?php if($logo->profile){?>
-									 		<img src="{{ asset('images/profile/' .$logo->profile) }}" alt="..." class="avatar-img rounded" >
+									 		<img src="<?php echo e(asset('images/profile/' .$logo->profile)); ?>" alt="..." class="avatar-img rounded" >
 									 			<?php }else{?>
-										  	<img src="{{ asset('images/profiles/demo-profile.png') }}" alt="..." class="avatar-img rounded" >
+										  	<img src="<?php echo e(asset('images/profiles/demo-profile.png')); ?>" alt="..." class="avatar-img rounded" >
 										 		<?php }?>
 											</div>
 											<div class="u-text">
-												<h4>{{ Auth::user()->name }} </a></h4>
-												<p class="text-muted">{{ Auth::user()->email }} </a></p>
+												<h4><?php echo e(Auth::user()->name); ?> </a></h4>
+												<p class="text-muted"><?php echo e(Auth::user()->email); ?> </a></p>
 												<a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
 											</div>
 										</div>
@@ -276,11 +276,11 @@ $logo = DB::table('logos')->first();
 										<a class="dropdown-item" href="#">Account Setting</a>
 										<div class="dropdown-divider"></div>
 
-										<a class="dropdown-item" href="{{ route('logout') }}"
+										<a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();" >{{ __('Logout') }}</a>
-										<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
+                                                     document.getElementById('logout-form').submit();" ><?php echo e(__('Logout')); ?></a>
+										<form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" class="d-none">
+                                        <?php echo csrf_field(); ?>
                                     </form>
 
 
@@ -295,5 +295,6 @@ $logo = DB::table('logos')->first();
 		</div>
 
 		<!-- Sidebar -->
-		@include('elements.user.left_menus')
+		<?php echo $__env->make('elements.user.left_menus', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 		<!-- End Sidebar -->
+<?php /**PATH C:\wamp64\www\dms\resources\views/elements/user/header.blade.php ENDPATH**/ ?>
