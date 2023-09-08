@@ -89,8 +89,8 @@ class CompanyController extends Controller
       public function delete_company($id) {
 
         $image = DB::table('companies')->select('logo')->where('user_id', $id)->first();
-        $imgpath = public_path('/images/logo/'.$image->logo);
-        unlink( $imgpath );
+        // $imgpath = public_path('/images/logo/'.$image->logo);
+        // unlink( $imgpath );
         $delete_from_companies = DB::table('companies')->where('user_id',$id)->delete();
         $delete_from_users = DB::table('users')->where('id',$id)->delete();
 

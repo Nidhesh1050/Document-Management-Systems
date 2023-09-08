@@ -1,5 +1,5 @@
 @extends('layouts.user-app')
-  
+
 @section('content')
 
 <div class="content">
