@@ -1,4 +1,4 @@
-@extends('layouts.admin-app')
+@extends('layouts.user-app')
 @section('content')
 
 <div class="content">
@@ -6,7 +6,7 @@
         <div class="page-header">
             <ul class="breadcrumbs">
                 <li class="nav-home">
-                    <a href="{{url('admin/home')}}">
+                    <a href="{{url('user/home')}}">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -41,7 +41,7 @@
                                     @endif
                         </div>
                         <div class="d-flex align-items-center">
-                            <a href="{{ url('admin/adduser') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
+                            <a href="{{ url('user/adduser') }}"><button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
                                     data-target="#addRowModal">
                                     <i class="fa fa-plus"></i>
                                     Add User
@@ -50,7 +50,6 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        
                         <div class="table-responsive">
                             <table id="datatables" class="display table table-striped table-hover">
                                 <thead>
@@ -78,8 +77,8 @@
                                             <td> {{ $users->mobile }}</td>
                                             <td>{{ $status }}</td>
                                             <td class="action_td">
-                                               
-                                                    <a href='/admin/edit_user/{{ $users->id }}' data-toggle="tooltip" title=""
+
+                                                    <a href="{{ url('user/edit_user/'.  $users->id)}}" data-toggle="tooltip" title=""
                                                             class="btn-link btn-primary" data-original-title="Edit Task">
                                                             <i class="fa fa-edit"></i>
                                                     </a>
@@ -88,9 +87,9 @@
                                                         $statusicon = @$users->status == 1 ? 'btn-danger' : 'btn-success';
 
                                                         $statustite = @$users->status == 1 ? 'InActive' : 'Active';
-                                                    @endphp 
-                                                                                             
-                                                     <a href="{{url('UserChangeStatus/'. $users->id.'/'. $status) }}"
+                                                    @endphp
+
+                                                     <a href="{{url('user/UserChangeStatus/'. $users->id.'/'. $status) }}"
                                                         onclick="return confirm('Are you sure to change status?')"   data-toggle="tooltip" title=""
                                                             class="btn-link {{$statusicon}}" data-original-title="{{$statustite}}">
                                                             @if($users->status==0)
@@ -99,12 +98,12 @@
                                                             <i class="fa fa-times"></i>
                                                             @endif
                                                     </a>
-                                                    <a href="/admin/delete_user/{{ $users->id }}"
+                                                    <a href="/user/delete_user/{{ $users->id }}"
                                                         onclick="return confirm('Are you sure you want to delete this user ?')"  data-toggle="tooltip" title=""
                                                             class="btn-link btn-danger" data-original-title="Remove">
                                                             <i class="fa fa-trash"></i>
                                                     </a>
-                                             
+
                                             </td>
                                         </tr>
                                     @endforeach

@@ -173,3 +173,4 @@ Route::group(['prefix' => 'user'], function () {
         /* Module Commpany route end here*/
     });
 });
+
