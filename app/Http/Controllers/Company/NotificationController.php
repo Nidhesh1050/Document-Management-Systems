@@ -11,7 +11,7 @@ use Common;
 class NotificationController extends Controller
 {
         public function addNotification(Request $request){
-         
+
             if(!empty($request->all())){
                 $request->validate(
                 [
@@ -36,8 +36,8 @@ class NotificationController extends Controller
             else{
                 return view('company.notification.Notification');
             }
-        
-        
+
+
         }
         public function showNotification(){
 
@@ -60,7 +60,7 @@ class NotificationController extends Controller
             public function editNotification(Request $request,$id)
             {
               $authId= auth()->user()->id;
-             
+
 
                $notifications = DB::table('notifications')->where(['id'=> $id])->where('company_id',$authId)->first();
                return view('company.notification.edit_notification')->with(['notifications'=>$notifications]);
