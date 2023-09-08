@@ -246,7 +246,7 @@ $currentURL =Route::current()->uri;
                     </div>
                 </li>
 
-                <li class="nav-item <?php if($currentURL =='user/show_email' || $currentURL =='user/edit_email/{id}' || $currentURL =='user/email' || $currentURL =='user/content' || $currentURL =='user/show_content' || $currentURL =='user/edit_content/{id}'){ echo ''; }?>">
+                    <li class="nav-item <?php if($currentURL =='user/show_email' || $currentURL =='user/edit_email/{id}' || $currentURL =='user/email' || $currentURL =='user/content' || $currentURL =='user/show_content' || $currentURL =='user/edit_content/{id}'){ echo ''; }?>">
                     <a data-toggle="collapse" href="#email">
                     <i class="fas fa-envelope"></i>
                         <p>Email Management</p>
