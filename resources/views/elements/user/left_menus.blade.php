@@ -20,7 +20,7 @@ $currentURL =Route::current()->uri;
                     <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                         <span>
                             {{ Auth::user()->name }}
-                            <span class="user-level">user Name</span>
+                            <span class="user-level">Administrator</span>
                             <span class="caret"></span>
                         </span>
                     </a>
@@ -32,7 +32,7 @@ $currentURL =Route::current()->uri;
                                 <a href="#profile">
                                     <span class="link-collapse">My Profile</span>
                                 </a>
-                            </li>ile
+                            </li>
                             <li>
                                 <a href="#edit">
                                     <span class="link-collapse">Edit Profile</span>
@@ -61,7 +61,7 @@ $currentURL =Route::current()->uri;
                         <p>Dashboard</p>
                     </a>
                 </li>
-                    <li class="nav-item <?php if($currentURL =='user/userManagement' || $currentURL =='user/adduser'|| $currentURL =='user/edit_user/{id}'){ echo ' '; }?>">
+                <li class="nav-item <?php if($currentURL =='user/userManagement' || $currentURL =='user/adduser'|| $currentURL =='user/edit_user/{id}'){ echo ' '; }?>">
                     <a data-toggle="collapse" href="#base">
                         <i class="fas fa-users"></i>
                         <p>User Management</p>
@@ -85,8 +85,6 @@ $currentURL =Route::current()->uri;
 
 
                 </li>
-
-
                 <li class="nav-item <?php if($currentURL =='user/view_category' || $currentURL =='user/category'|| $currentURL =='user/update_category/{id}'){ echo ''; }?>">
                     <a data-toggle="collapse" href="#sidebarLayouts">
                     <i class="fas fa-th-list"></i>
@@ -109,7 +107,6 @@ $currentURL =Route::current()->uri;
                         </ul>
                     </div>
                 </li>
-
 
 
                 <li class="nav-item <?php if($currentURL =='user/view_project' || $currentURL =='user/project'|| $currentURL =='user/update_project/{id}'){ echo ''; }?>">
@@ -149,7 +146,7 @@ $currentURL =Route::current()->uri;
                                     <span class="sub-item">View Document</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item <?php if($currentURL =='user/createdocument'){ echo ''; }?> ">
+                            <li class="sidebar-item <?php if($currentURL =='user/createdocument'){ echo 'active'; }?> ">
                                 <a href="{{url('user/createdocument')}}">
                                     <span class="sub-item">Add Document</span>
                                 </a>
@@ -158,6 +155,8 @@ $currentURL =Route::current()->uri;
                         </ul>
                     </div>
                 </li>
+
+
 
                 <li class="nav-item <?php if($currentURL =='user/documentType_view' || $currentURL =='user/documentType_add'|| $currentURL =='user/documentType_edit/{id}'){ echo ''; }?>">
                     <a data-toggle="collapse" href="#list">
@@ -172,7 +171,7 @@ $currentURL =Route::current()->uri;
                                     <span class="sub-item">Document List</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item <?php if($currentURL =='user/documentType_add'){ echo 'active'; }?> ">
+                            <li class="sidebar-item <?php if($currentURL =='user/documentType_add'){ echo ''; }?> ">
                                 <a href="{{url('user/documentType_add')}}">
                                     <span class="sub-item">Add Document</span>
                                 </a>
@@ -183,7 +182,8 @@ $currentURL =Route::current()->uri;
                 </li>
 
 
-                <li class="nav-item <?php if($currentURL =='user/logos' || $currentURL =='user/update_logo'){ echo ''; }?>">
+
+                <li class="nav-item <?php if($currentURL =='user/logos' || $currentURL =='user/update_logo'){ echo ' '; }?>">
                     <a data-toggle="collapse" href="#setting">
                     <i class="fas fa-cog"></i>
                         <p>Setting Management</p>
@@ -199,9 +199,6 @@ $currentURL =Route::current()->uri;
                         </ul>
                     </div>
                 </li>
-
-
-
 
                 <li class="nav-item <?php if($currentURL =='user/show_notification' || $currentURL =='user/notification'|| $currentURL =='user/edit_notification/{id}'){ echo ''; }?>">
                     <a data-toggle="collapse" href="#tables">
@@ -284,7 +281,9 @@ $currentURL =Route::current()->uri;
                 </li>
 
 
-                        <li class="nav-item <?php if($currentURL =='user/module_permission'){ echo ''; }?>">
+
+
+                        <li class="nav-item <?php if($currentURL =='user/module_permission'){ echo ' '; }?>">
                     <a data-toggle="collapse" href="#maps">
                     <i class="fas fa-key"></i>
                         <p>Permission</p>

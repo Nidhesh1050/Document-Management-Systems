@@ -50,6 +50,7 @@
                         </div>
                     </div>
                     <div class="card-body">
+                        
                         <div class="table-responsive">
                             <table id="datatables" class="display table table-striped table-hover">
                                 <thead>
@@ -77,7 +78,7 @@
                                             <td> {{ $users->mobile }}</td>
                                             <td>{{ $status }}</td>
                                             <td class="action_td">
-
+                                               
                                                     <a href='/admin/edit_user/{{ $users->id }}' data-toggle="tooltip" title=""
                                                             class="btn-link btn-primary" data-original-title="Edit Task">
                                                             <i class="fa fa-edit"></i>
@@ -87,8 +88,8 @@
                                                         $statusicon = @$users->status == 1 ? 'btn-danger' : 'btn-success';
 
                                                         $statustite = @$users->status == 1 ? 'InActive' : 'Active';
-                                                    @endphp
-
+                                                    @endphp 
+                                                                                             
                                                      <a href="{{url('UserChangeStatus/'. $users->id.'/'. $status) }}"
                                                         onclick="return confirm('Are you sure to change status?')"   data-toggle="tooltip" title=""
                                                             class="btn-link {{$statusicon}}" data-original-title="{{$statustite}}">
@@ -103,7 +104,7 @@
                                                             class="btn-link btn-danger" data-original-title="Remove">
                                                             <i class="fa fa-trash"></i>
                                                     </a>
-
+                                             
                                             </td>
                                         </tr>
                                     @endforeach
