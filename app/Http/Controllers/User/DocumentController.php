@@ -84,6 +84,8 @@ class DocumentController extends Controller
 
 
     public function addDocument(Request $request){
+        $companyId= auth()->user()->id;
+
         if(!empty($request->all())){
 
         $request->validate([
@@ -123,9 +125,9 @@ class DocumentController extends Controller
             DB::table('file_uploads')->insert($inserData);
             return  redirect('user/document')->with('success', 'Document has been added successfully.');
         }else{
-            $project_documents = DB::table('projects')->select('id','project_name')->get();
-            $category_documents = DB::table('categories')->select('id','name')->get();
-            $document_type= DB::table('document_types')->select('id','name')->get();
+            $project_documents = DB::table('projects')->select('id','project_name')->where('user_id', $companyId)->get();
+            $category_documents = DB::table('categories')->select('id','name')->where('user_id', $companyId)->get();
+            $document_type= DB::table('document_types')->select('id','name')->where('user_id', $companyId)->get();
             return view ('user.document.createdocument')->with(['project_documents'=>$project_documents,'category_documents'=>$category_documents,'document_type'=>$document_type]);
         }
 

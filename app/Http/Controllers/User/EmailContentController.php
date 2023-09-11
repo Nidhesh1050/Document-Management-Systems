@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 class EmailContentController extends Controller
 {
     public function emailContentAdd(Request $request){
+        $companyId= auth()->user()->id;
         if(!empty($request->all())){
         $request->validate(
             [
@@ -44,7 +45,7 @@ class EmailContentController extends Controller
 
     }else{
 
-        $emailContents = DB::table('email_types')->select('id','email_type')->get();
+        $emailContents = DB::table('email_types')->select('id','email_type')->where('user_id', $companyId)->get();
 
         return view('user.email_management.content',['emailContents'=>$emailContents]);
 
