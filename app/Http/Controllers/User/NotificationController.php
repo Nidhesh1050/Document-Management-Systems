@@ -43,14 +43,9 @@ class NotificationController extends Controller
 
         }
         public function showNotification(){
-          $statusId= auth()->user()->status;
-          if($statusId=="1"){
+        
           $userId= auth()->user()->id;
-
              $notifications = DB::table('notifications')->where('user_id',$userId)->orderBy('id','DESC')->get();
-          }else{
-            $notifications = [];
-          }
              return view('user.notification.show_notification',['notifications'=>$notifications]);
             }
 
