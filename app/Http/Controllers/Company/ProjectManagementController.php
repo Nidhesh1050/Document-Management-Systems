@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ProjectManagementController extends Controller
 {
-    
+
 
         /**
          * Create a new controller instance.
@@ -21,8 +21,8 @@ class ProjectManagementController extends Controller
         {
             $this->middleware(['auth']);
         }
-    
-    
+
+
         public function addProject(Request $request) {
             if(!empty($request->all())){
                 $request->validate([
@@ -31,19 +31,19 @@ class ProjectManagementController extends Controller
                     'status' => 'nullable|boolean',
                 ]);
                $status = $request->status == 'on' ? 1 : 0;
-    
+
                $user_id =  Session::get('user_id');
                $user_type = Session::get('user_type');
-    
+
              if($user_type = "company"){
               $inserData['admin_id'] = $user_id;
               $inserData['manager_d'] = $request->manager_d;
              }
-    
+
                 $inserData['description']= $request->description;
                 $inserData['project_name']= $request->project_name;
-                // $inserData['slug'] =str_replace(' ', '-',$request->project_name);       
-                $inserData['slug'] =str_replace(' ', '-',trim($request->project_name));      
+                // $inserData['slug'] =str_replace(' ', '-',$request->project_name);
+                $inserData['slug'] =str_replace(' ', '-',trim($request->project_name));
                 $inserData['status'] =  $status;
                 if(Auth::user()->type=="company"){
                     $inserData['company_id']= Auth::user()->id;
@@ -52,20 +52,20 @@ class ProjectManagementController extends Controller
                 if(Auth::user()->type=="user"){
                     $inserData['company_id']= Auth::user()->company_id;
                 }
-    
-    
+
+
                 DB::table('projects')->insert($inserData);
                 return redirect('/company/view_project')->with('success', 'Project has been added successfully.');
             }else{
                 $project_manager = DB::table('users')->where(['user_type'=> 2])->get();
                 return view('company.project_management.project',['project_manager'=>$project_manager]);
             }
- 
-    
-    
+
+
+
         }
-    
-    
+
+
         public function viewProject(){
             $companyId= auth()->user()->id;
             $projects = DB::table('projects')->select(
@@ -76,22 +76,22 @@ class ProjectManagementController extends Controller
            ->where('projects.company_id',$companyId)->get();
            return view('company.project_management.view_project',['projects'=>$projects]);
         }
-    
-    
+
+
         public function deleteProject($id) {
             $authId= auth()->user()->id;
             DB::table('projects')->where('company_id',$authId)->delete($id);
             return redirect('/company/view_project')->with('success', 'Project has been deleted successfully.');
         }
-    
-    
+
+
         public function updateProject(Request $request,$id) {
             $authId= auth()->user()->id;
             $projects = DB::table('projects')->where(['id'=> $id])->where('company_id',$authId)->first();
             $managers=DB::table('users')->select('id','name')->get();
             return view('company.project_management.update_project')->with(['projects'=>$projects,'managers'=>    $managers]);
         }
-    
+
         public function editProject(Request $request){
             //print_r($request->all());die;
             $request->validate([
@@ -109,17 +109,17 @@ class ProjectManagementController extends Controller
                 'status' => $status,
             ]);
               return redirect('/company/view_project')->with('success', 'Project has been updated successfully.');
-    
+
         }
-    
+
         // check if project name already exist
         public function checkProject(Request $request){
             $project_name = $request['project_name'];
-            $project_slug = str_replace(' ', '-',$request['project_name']); 
+            $project_slug = str_replace(' ', '-',$request['project_name']);
             $id = $request['id'];
-            if($id){ 
+            if($id){
                  $project_name = DB::table('projects')->select('project_name')->where('id','!=',$id)->where('slug',$project_slug)->first();
-                
+
                   if($project_name){
                     $project_name = 1;
                   }else{
@@ -136,8 +136,8 @@ class ProjectManagementController extends Controller
             }
             return $project_name;
           }
-        
-    
+
+
         //ProjectChangeStatus function is use for change for the status
         public function ProjectChangeStatus($id=null, $status=null)   {
             $projects = DB::table('projects')->where('id',$id)->update(['status'=>$status]);
