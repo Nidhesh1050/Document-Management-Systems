@@ -19,7 +19,8 @@ class DocumentTypeController extends Controller
 
     //Show data
     public function documentTypeView()
-    {
+    {  
+        
         $userId= auth()->user()->id;
         $documentTypes = DB::table('document_types')->where('document_types.user_id',$userId)->orderBy('id', 'DESC')->get();
         return view('user.document_type.documentType_view', ['documentTypes' => $documentTypes]);
@@ -27,9 +28,11 @@ class DocumentTypeController extends Controller
 
     //Delete data
     public function documentTypeDelete($id)
-    {
+    {   
+        
         $authId = auth()->user()->id;
         DB::table('document_types')->where('user_id',$authId)->delete($id);
+    
         // DB::delete('delete from document_types where id = ?', [$id]);
         return redirect('user/documentType_view')->with('success', 'Document type has been deleted successfully.');
     }

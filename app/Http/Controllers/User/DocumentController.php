@@ -18,6 +18,7 @@ class DocumentController extends Controller
         $this->middleware(['auth']);
     }
     public function documentView(){
+        
         $authId= auth()->user()->id;
         $documents = DB::table('file_uploads')->where('user_id',$authId)->orderBy('id','DESC')->get();
         return view('user.document.show_document',['documents'=>$documents]);
