@@ -24,7 +24,7 @@
                 <li class="nav-item">
                     <a href="{{url('user/project_management')}}">Add Project</a>
                 </li>
-            </ul>
+            </ul>        
         </div>
         <div class="row">
             <div class="col-md-10">
@@ -45,6 +45,15 @@
                             </div>
                             <div class="card-title">Add Project</div>
                         </div>
+
+                        <div>
+                        <select name="user_id" class="form-control input-solid">
+                            <option value="">Please Select</option>
+                            @foreach ($users as $users)
+                            <option value="{{ $users->id }}">{{ $users->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
 
                         <div class="card-body">
                             <form action="{{url('user/add_project')}}" method="post" id="category"

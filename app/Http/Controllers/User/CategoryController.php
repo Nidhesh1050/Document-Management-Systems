@@ -45,7 +45,7 @@ class CategoryController extends Controller
 
     public function categoryView(){
        $userId=Auth::user()->id;
-        $categories = DB::table('categories')->orderBy('id','DESC')->where('user_id',$userId)->get();
+        $categories = DB::table('categories')->orderBy('id','DESC')->where('user_id',$userId)->get();      
         return view('user.category.view_category',['categories'=>$categories]);
     }
     public function categoryChangeStatus($id=null, $status=null)   {

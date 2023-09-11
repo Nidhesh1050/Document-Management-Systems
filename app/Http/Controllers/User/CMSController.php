@@ -53,9 +53,8 @@ class CMSController extends Controller
     }
     public function viewContent(){
         $userId= auth()->user()->id;
-
-       
         $cms = DB::table('cms')->where('cms.user_id',$userId)->orderBy('id','DESC')->get();
+        
         return view('user.content_management.view_content',['cms'=>$cms]);
     }
 
