@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Facades\DB;
 
-class User extends Authenticatable 
+class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -81,7 +81,7 @@ class User extends Authenticatable
         }else{
             return '';
         }
-        
+
     }
 
     public static function getDocumentID($project_id){
@@ -92,7 +92,7 @@ class User extends Authenticatable
         }else{
             return '';
         }
-        
+
     }
 
     public static function getCategoryParentID($categories_id){
@@ -104,5 +104,14 @@ class User extends Authenticatable
             return '';
         }
     }
+    // public static function getCompanyName($company_id){
+    //     $users = DB::table('companies')->select('company_name')->where('id', $company_id)
+    //     ->first();
+    //     if(!empty($users->company_name)){
+    //         return $users->company_name;
+    //     }else{
+    //         return '';
+    //     }
+    // }
 
 }

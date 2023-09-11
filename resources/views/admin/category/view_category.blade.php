@@ -63,6 +63,7 @@ use app\Models\User;
                 <th> Parent Name </th>
                 <th> Name </th>
                 <th> Description</th>
+                {{-- <th> Company Name</th> --}}
                 <th> Status</th>
                 <th> Action</th>
             </tr>
@@ -79,6 +80,7 @@ use app\Models\User;
                     <td> {{ User::getCategoryID($category->parent_id) }}</td>
                     <td> {{$category ->name}}</td>
                     <td><?php echo $category ->description ?></td>
+                    {{-- <td> {{ User::getCompanyName($category->company_id) }}</td> --}}
                     <td> {{$status}}</td>
                     <td class="action_td">
                         <div class="form-button-action">

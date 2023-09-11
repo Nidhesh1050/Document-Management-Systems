@@ -102,13 +102,11 @@
 
                 $("#category").validate({
                     rules: {
-                        parent_id: "required",
                         name: "required",
                         image: "required",
                         status: "required",
                     },
                     messages: {
-                        parent_id: "Please select parent name",
                         name: "Please enter your name",
                         image: "Choose any image",
                         status: "Please enter status",
