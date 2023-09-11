@@ -20,13 +20,9 @@ class DocumentTypeController extends Controller
     //Show data
     public function documentTypeView()
     {  
-         $statusId= auth()->user()->status;
-        if( $statusId=="1"){
+        
         $userId= auth()->user()->id;
         $documentTypes = DB::table('document_types')->where('document_types.user_id',$userId)->orderBy('id', 'DESC')->get();
-        }else{
-            $documentTypes = [];
-        }
         return view('user.document_type.documentType_view', ['documentTypes' => $documentTypes]);
     }
 

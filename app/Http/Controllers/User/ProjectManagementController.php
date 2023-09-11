@@ -74,8 +74,7 @@ class ProjectManagementController extends Controller
 
 
     public function viewProject(){
-      $statusId= auth()->user()->status;
-      if($statusId=="1"){
+   
         $authID= auth()->user()->id;
         $projects = DB::table('projects')->select(     
             "projects.*",
@@ -83,9 +82,6 @@ class ProjectManagementController extends Controller
         ->leftJoin("users",  "users.id" ,"=", "projects.manager_d")
         ->orderBy('id','DESC')
        ->where('projects.user_id',$authID)->get();
-        }else{
-          $projects = [];
-          } 
        return view('user.project_management.view_project',['projects'=>$projects]);
     }
 
