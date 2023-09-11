@@ -57,7 +57,8 @@ class ProjectManagementController extends Controller
                 DB::table('projects')->insert($inserData);
                 return redirect('/company/view_project')->with('success', 'Project has been added successfully.');
             }else{
-                $project_manager = DB::table('users')->where(['user_type'=> 2])->get();
+                $companyId= auth()->user()->id;
+                $project_manager = DB::table('users')->where(['user_type'=> 0])->where('manager_id', $companyId)->get();
                 return view('company.project_management.project',['project_manager'=>$project_manager]);
             }
 
