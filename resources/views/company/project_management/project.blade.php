@@ -63,7 +63,7 @@
                                         </span>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label>Manager</label>
+                                        <label>Assign User</label>
                                         <select name="manager_d" class="form-control">
                                             <option value=""> Please Select</option>
                                             @foreach($project_manager as $project_manager)
@@ -117,15 +117,15 @@
                 }
             });
         });
-      
-        
+
+
         ClassicEditor
             .create(document.querySelector('#editor'))
             .catch(error => {
                 console.error(error);
             });
 
-            
+
 
 
  $("#project_name").blur(function(){
@@ -134,9 +134,9 @@
     $.ajax({
       type: "GET",
       url: "/company/checkProject?project_name="+project_name,
-      
-      success: function(response) 
-      { 
+
+      success: function(response)
+      {
         console.log(response);
         if(response == 1){
           $('#project_err').text('This project name is already exist');
@@ -147,12 +147,12 @@
           $('#submit').removeAttr('disabled');
         }
       },
-      error: function(response) 
+      error: function(response)
       {
-        
+
       }
     });
   });
   </script>
-        
+
         @endsection

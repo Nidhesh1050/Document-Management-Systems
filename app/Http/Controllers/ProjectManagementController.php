@@ -29,27 +29,27 @@ class ProjectManagementController extends Controller
                 'status' => 'nullable|boolean',
             ]);
            $status = $request->status == 'on' ? 1 : 0;
-    
+
            $user_id =  Session::get('user_id');
            $user_type = Session::get('user_type');
-    
+
          if($user_type = "admin"){
           $inserData['admin_id'] = $user_id;
           $inserData['manager_d'] = $request->manager_d;
          }
-        
+
             $inserData['description']= $request->description;
             $inserData['project_name']= $request->project_name;
             $inserData['status'] =  $status;
-    
-    
+
+
             DB::table('projects')->insert($inserData);
             return redirect('/admin/view_project')->with('success', 'Project has been added successfully.');
         }else{
             $project_manager = DB::table('users')->where(['user_type'=> 2])->get();
             return view('admin.project_management.project',['project_manager'=>$project_manager]);
         }
-       
+
 
 
     }
@@ -57,7 +57,7 @@ class ProjectManagementController extends Controller
 
     public function viewProject(){
         $projects = DB::table('projects')->select(
-            "projects.*", 
+            "projects.*",
             "users.name" )
         ->leftJoin("users",  "users.id" ,"=", "projects.manager_d"  )
         ->orderBy('id','DESC')->get();
@@ -93,13 +93,13 @@ class ProjectManagementController extends Controller
             'status' => $status,
         ]);
           return redirect('/admin/view_project')->with('success', 'Project has been updated successfully.');
-    
+
     }
 
     //ProjectChangeStatus function is use for change for the status
     public function ProjectChangeStatus($id=null, $status=null)   {
         $projects = DB::table('projects')->where('id',$id)->update(['status'=>$status]);
         return back()->withInput()->with('success','Status has been changed.');
-    } 
+    }
 
 }
