@@ -30,6 +30,8 @@ class CategoryController extends Controller
             return redirect('admin/view_category')->with('success', 'Category has been added successfully.');
         }else{
             $parent_catogeris=DB::table('categories')->select('id','name')->get();
+
+            
             return view ('admin.category.category')->with(['parent_categories'=> $parent_catogeris]);
         }
         }
